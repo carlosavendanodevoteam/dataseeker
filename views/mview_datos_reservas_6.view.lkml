@@ -456,7 +456,7 @@ view: mview_datos_reservas_6 {
     type: number
     sql: CASE
           WHEN ${TABLE}.cancelled = 1 THEN 0
-          WHEN ${TABLE}.cancelled = 0 THEN ${TABLE}.price + ${TABLE}.price_supplements)
+          WHEN ${TABLE}.cancelled = 0 THEN ${TABLE}.price + ${TABLE}.price_supplements
         END
   }
 
@@ -464,7 +464,7 @@ view: mview_datos_reservas_6 {
     type: number
     sql: CASE
         WHEN ${TABLE}.cancelled = 0 THEN 0
-        WHEN ${TABLE}.cancelled = 1 THEN ${TABLE}.price + ${TABLE}.price_supplements)
+        WHEN ${TABLE}.cancelled = 1 THEN ${TABLE}.price + ${TABLE}.price_supplements
     END
   }
 
