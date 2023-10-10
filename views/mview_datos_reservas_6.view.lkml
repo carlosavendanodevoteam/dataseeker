@@ -457,7 +457,7 @@ view: mview_datos_reservas_6 {
     sql: CASE
           WHEN ${TABLE}.cancelled = 1 THEN 0
           WHEN ${TABLE}.cancelled = 0 THEN ${TABLE}.price + ${TABLE}.price_supplements
-        END
+        END;;
   }
 
   dimension: cancellation {
@@ -465,7 +465,7 @@ view: mview_datos_reservas_6 {
     sql: CASE
         WHEN ${TABLE}.cancelled = 0 THEN 0
         WHEN ${TABLE}.cancelled = 1 THEN ${TABLE}.price + ${TABLE}.price_supplements
-    END
+      END;;
   }
 
   dimension_group: timestamp {
