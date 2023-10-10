@@ -451,6 +451,18 @@ view: mview_datos_reservas_6 {
     sql: cast(${TABLE}.startDate as timestamp);;
   }
 
+  dimension: revenue {
+    type: number
+    sql: case(when(${TABLE}.cancelled = yes, 0),
+      ${TABLE}.price + ${TABLE}.price_supplements);;
+  }
+
+  dimension: cancellation {
+    type: number
+    sql: case(when(${TABLE}.cancelled = no, 0),
+      ${TABLE}.price + ${TABLE}.price_supplements);;
+  }
+
   dimension_group: timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
