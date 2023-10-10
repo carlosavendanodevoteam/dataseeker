@@ -446,8 +446,9 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.startDate ;;
   }
 
-  dimension: start_date_timestamp {
-    type: string
+  dimension_group: start_date_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: cast(${TABLE}.startDate as timestamp);;
   }
 
