@@ -455,16 +455,16 @@ view: mview_datos_reservas_6 {
   dimension: revenue {
     type: number
     sql: CASE
-          WHEN ${TABLE}.cancelled = 1 THEN 0
-          WHEN ${TABLE}.cancelled = 0 THEN ${TABLE}.price + ${TABLE}.price_supplements
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + ${TABLE}.price_supplements
         END;;
   }
 
   dimension: cancellation {
     type: number
     sql: CASE
-        WHEN ${TABLE}.cancelled = 0 THEN 0
-        WHEN ${TABLE}.cancelled = 1 THEN ${TABLE}.price + ${TABLE}.price_supplements
+        WHEN ${TABLE}.cancelled = False THEN 0
+        WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price + ${TABLE}.price_supplements
       END;;
   }
 
