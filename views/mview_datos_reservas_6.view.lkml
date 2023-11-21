@@ -406,6 +406,12 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.referenceTimestamp ;;
   }
 
+  dimension_group: partition_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}.partitionTimestamp ;;
+  }
+
   dimension: regimen {
     type: string
     sql: ${TABLE}.regimen ;;
