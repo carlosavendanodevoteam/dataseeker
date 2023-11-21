@@ -460,7 +460,7 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
-  dimension: RN {
+  dimension: rn {
     type: number
     sql: CASE
           WHEN ${TABLE}.cancelled = True THEN 0
@@ -468,7 +468,7 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
-  dimension: CancelledRN {
+  dimension: rn_cancelled {
     type: number
     sql: CASE
           WHEN ${TABLE}.cancelled = False THEN 0
