@@ -460,6 +460,22 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
+  dimension: RN {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * ${TABLE}.num_rooms
+        END;;
+  }
+
+  dimension: CancelledRN {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = False THEN 0
+          WHEN ${TABLE}.cancelled = True THEN ${TABLE}.nights * ${TABLE}.num_rooms
+        END;;
+  }
+
   dimension: cancellation {
     type: number
     sql: CASE
