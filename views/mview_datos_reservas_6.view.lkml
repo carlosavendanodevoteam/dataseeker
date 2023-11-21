@@ -464,7 +464,7 @@ view: mview_datos_reservas_6 {
     type: number
     sql: CASE
           WHEN ${TABLE}.cancelled = True THEN 0
-          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INT)
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as SIGNED)
         END;;
   }
 
@@ -472,7 +472,7 @@ view: mview_datos_reservas_6 {
     type: number
     sql: CASE
           WHEN ${TABLE}.cancelled = False THEN 0
-          WHEN ${TABLE}.cancelled = True THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INT)
+          WHEN ${TABLE}.cancelled = True THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as SIGNED)
         END;;
   }
 
