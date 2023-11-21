@@ -302,7 +302,7 @@ view: mview_datos_reservas_6 {
   }
 
   dimension: num_rooms {
-    type: string
+    type: number
     sql: ${TABLE}.numRooms ;;
   }
 
