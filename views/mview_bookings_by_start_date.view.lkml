@@ -520,4 +520,9 @@ view: mview_bookings_by_start_date {
     type:  count
     drill_fields: [identifier]
   }
+
+  dimension: occupation {
+    type: string
+    sql: concat(${TABLE}.adults1, '-', ${TABLE}.kids1, '-', ${TABLE}.babies1) ;;
+  }
 }
