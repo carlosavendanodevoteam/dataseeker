@@ -517,7 +517,7 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.used_bono ;;
   }
   measure: count {
-    type: count
-    drill_fields: [hotel_name, rate_name, name, package_name]
+    type:  count
+    drill_fields: [identifier]
   }
 }
