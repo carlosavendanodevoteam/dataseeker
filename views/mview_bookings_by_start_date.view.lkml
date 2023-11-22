@@ -463,6 +463,50 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.timestamp_date ;;
   }
 
+
+  dimension_group: start_date_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: cast(${TABLE}.startDate as timestamp);;
+  }
+
+  dimension: revenue {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
+        END;;
+  }
+
+  dimension: rn {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INTEGER)
+        END;;
+  }
+
+  dimension: rn_cancelled {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = False THEN 0
+          WHEN ${TABLE}.cancelled = True THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INTEGER)
+        END;;
+  }
+
+  dimension: cancellation {
+    type: number
+    sql: CASE
+        WHEN ${TABLE}.cancelled = False THEN 0
+        WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
+      END;;
+  }
+
+  dimension: timestamp_date_datos_reservas_6 {
+    type: string
+    sql: ${TABLE}.timestamp_date ;;
+  }
+
   dimension: timestamp_dayofweek {
     type: number
     sql: ${TABLE}.timestamp_dayofweek ;;
