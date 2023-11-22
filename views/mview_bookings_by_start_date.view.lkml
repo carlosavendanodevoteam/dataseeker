@@ -509,7 +509,7 @@ view: mview_bookings_by_start_date {
 
   dimension: antelation {
     type: number
-    sql: date_diff(cast(${TABLE}.timestamp as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
+    sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
   }
 
   dimension: used_bono {
