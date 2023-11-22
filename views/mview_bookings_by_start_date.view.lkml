@@ -507,7 +507,7 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.timestamp_dayofweek ;;
   }
 
-  measure: antelation {
+  dimension: antelation {
     type: number
     sql: date_diff(cast(${TABLE}.timestamp as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
   }
