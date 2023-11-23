@@ -514,4 +514,12 @@ view: mview_datos_reservas_6 {
     type: count
     drill_fields: [hotel_name, rate_name, name, package_name]
   }
+  measure: num_reservas {
+    type:  count
+    drill_fields: [identifier]
+  }
+  dimension: occupation {
+    type: string
+    sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
+  }
 }
