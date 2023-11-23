@@ -524,6 +524,6 @@ view: mview_datos_reservas_6 {
   }
   dimension: advance{
     type: number
-    sql: date_diff(cast(${TABLE}.timestamp as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
+    sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
     }
 }
