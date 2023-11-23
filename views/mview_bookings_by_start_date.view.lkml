@@ -512,6 +512,11 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.timestamp_dayofweek ;;
   }
 
+  dimension: antelation {
+    type: number
+    sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
+  }
+
   dimension: used_bono {
     type: yesno
     sql: ${TABLE}.used_bono ;;
@@ -520,5 +525,14 @@ view: mview_bookings_by_start_date {
   measure: num_reservas {
     type:  count
     drill_fields: [identifier]
+  }
+  measure: count {
+    type:  count
+    drill_fields: [identifier]
+  }
+
+  dimension: occupation {
+    type: string
+    sql: concat(${TABLE}.adults1, '-', ${TABLE}.kids1, '-', ${TABLE}.babies1) ;;
   }
 }
