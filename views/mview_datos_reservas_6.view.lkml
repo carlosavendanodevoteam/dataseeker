@@ -522,4 +522,8 @@ view: mview_datos_reservas_6 {
     type: string
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
+  dimension: advance{
+    type: number
+    sql: date_diff(cast(${TABLE}.timestamp as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
+    }
 }
