@@ -1,4 +1,4 @@
-view: reserva_busqueda {
+view: Busquedas_reservas {
   derived_table: {
     sql:
       SELECT
