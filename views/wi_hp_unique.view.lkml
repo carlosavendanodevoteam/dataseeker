@@ -266,18 +266,48 @@ view: wi_hp_unique {
     drill_fields: [detail*]
   }
 
+  dimension: hotel_code_group_filter {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.hotel_code IN ("em-serenade-punta-cana", "parkroyal-grancancun", "parkroyal-cozumel",
+            "parkroyal-vallarta", "parkroyal-acapulco", "parkroyal-beachcancun",
+            "parkroyal-huatulco", "parkroyal-ixtapa", "parkroyal-mazatlan",
+            "parkroyal-buenosaires", "parkroyal-loscabos", "parkroyal-puertorico",
+            "parkroyal-miami", "parkroyal-orlando", "parkroyal-villascancun",
+            "port-alicante", "port-azafata", "port-benidorm", "port-denia", "port-elche",
+            "port-europa", "port-feria", "port-fiesta", "port-huerto", "port-jardin",
+            "port-vista", "fuerte-marbella", "fuerte-rompido", "fuerte-grazalema",
+            "fuerte-conil-costaluz", "olee-calaceite", "olee-torrox", "amare-marbella",
+            "amare-ibiza", "marsol-hotel", "marsol-blau", "marsol-condado", "marsol-encantada") THEN 'David'
+          WHEN ${TABLE}.hotel_code IN ("casa-romana-boutique", "casual-mar-malaga", "casual-rinascimiento-florencia",
+            "casual-duende", "casual-olas-sansebastian", "casual-vintage-valencia",
+            "casual-socarrat", "casual-teatro-madrid", "casual-artes-valencia",
+            "casual-pop-art", "casual-letras-sevilla", "casual-don-juan-tenorio",
+            "casual-cine-valencia", "estival-centurion", "estival-eldorado",
+            "estival-torrequebrada", "estival-vilamari", "isla-cristina", "ocean-islantilla",
+            "estival-club", "estival-pineda", "estival-park-2", "estival-park-3",
+            "oasishoteles-grandcancun", "oasishoteles-grandpalm", "oasishoteles-oasispalm",
+            "oasishoteles-pyramid", "oasishoteles-senscancun", "el-patio", "ipv-palace",
+            "villa-flamenca", "maria-del-mar", "summum-ventas", "zero-drach", "summum-rosellon") THEN 'Dani'
+          WHEN ${TABLE}.hotel_code IN ("stein-chateau-eza", "blaumar-blaumar", "impressive-granada",
+            "impressive-premium", "impressive-puntacana", "impressive-zocos",
+            "landmar-gigantes", "landmar-arena") THEN 'Sandra'
+          ELSE ${TABLE}.hotel_code
+        END ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	price_competitiveness_name,
-	day_to_arrival_name,
-	device_name,
-	los_name,
-	checkinday_name,
-	date_type_name,
-	market_name,
-	hotel_name
-	]
+  price_competitiveness_name,
+  day_to_arrival_name,
+  device_name,
+  los_name,
+  checkinday_name,
+  date_type_name,
+  market_name,
+  hotel_name,
+  hotel_code]
   }
 
 }

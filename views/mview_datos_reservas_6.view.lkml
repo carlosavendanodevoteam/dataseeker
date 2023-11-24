@@ -510,20 +510,59 @@ view: mview_datos_reservas_6 {
     type: yesno
     sql: ${TABLE}.used_bono ;;
   }
+
   measure: count {
     type: count
     drill_fields: [hotel_name, rate_name, name, package_name]
   }
+
   measure: num_reservas {
     type:  count
     drill_fields: [identifier]
   }
+
   dimension: occupation {
     type: string
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
+
   dimension: advance{
     type: number
     sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
     }
+
+  dimension: hotel_code_by_account {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.hotel_code IN ("em-serenade-punta-cana", "parkroyal-grancancun", "parkroyal-cozumel",
+            "parkroyal-vallarta", "parkroyal-acapulco", "parkroyal-beachcancun",
+            "parkroyal-huatulco", "parkroyal-ixtapa", "parkroyal-mazatlan",
+            "parkroyal-buenosaires", "parkroyal-loscabos", "parkroyal-puertorico",
+            "parkroyal-miami", "parkroyal-orlando", "parkroyal-villascancun",
+            "port-alicante", "port-azafata", "port-benidorm", "port-denia", "port-elche",
+            "port-europa", "port-feria", "port-fiesta", "port-huerto", "port-jardin",
+            "port-vista", "fuerte-marbella", "fuerte-rompido", "fuerte-grazalema",
+            "fuerte-conil-costaluz", "olee-calaceite", "olee-torrox", "amare-marbella",
+            "amare-ibiza", "marsol-hotel", "marsol-blau", "marsol-condado", "marsol-encantada")
+          THEN 'David'
+          WHEN ${TABLE}.hotel_code IN ("casa-romana-boutique", "casual-mar-malaga", "casual-rinascimiento-florencia",
+            "casual-duende", "casual-olas-sansebastian", "casual-vintage-valencia",
+            "casual-socarrat", "casual-teatro-madrid", "casual-artes-valencia",
+            "casual-pop-art", "casual-letras-sevilla", "casual-don-juan-tenorio",
+            "casual-cine-valencia", "estival-centurion", "estival-eldorado",
+            "estival-torrequebrada", "estival-vilamari", "isla-cristina", "ocean-islantilla",
+            "estival-club", "estival-pineda", "estival-park-2", "estival-park-3",
+            "oasishoteles-grandcancun", "oasishoteles-grandpalm", "oasishoteles-oasispalm",
+            "oasishoteles-pyramid", "oasishoteles-senscancun", "el-patio", "ipv-palace",
+            "villa-flamenca", "maria-del-mar", "summum-ventas", "zero-drach", "summum-rosellon")
+          THEN 'Dani'
+          WHEN ${TABLE}.hotel_code IN ("stein-chateau-eza", "blaumar-blaumar", "impressive-granada",
+            "impressive-premium", "impressive-puntacana", "impressive-zocos",
+            "landmar-gigantes", "landmar-arena")
+          THEN 'Sandra'
+          ELSE ${TABLE}.hotel_code
+        END ;;
+  }
+
+
 }
