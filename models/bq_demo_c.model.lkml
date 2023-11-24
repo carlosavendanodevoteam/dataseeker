@@ -25,8 +25,18 @@ persist_with: bq_demo_c_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: Busquedas_reservas {}
-
+explore: Busquedas_reservas {
+  join: mview_bookings_by_start_date {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${Busquedas_reservas.hotel_code} = ${mview_bookings_by_start_date.hotel_code};;
+  }
+  join: mview_busquedas {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${Busquedas_reservas.hotel_code} = ${mview_busquedas.hotel_code} ;;
+  }
+}
 explore: call_agent2 {}
 
 explore: additional_services_consolidate {}
