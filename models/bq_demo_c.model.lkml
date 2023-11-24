@@ -25,6 +25,8 @@ persist_with: bq_demo_c_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
+explore: reserva_busqueda {}
+
 explore: call_agent2 {}
 
 explore: additional_services_consolidate {}
