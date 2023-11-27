@@ -278,7 +278,7 @@ view: wi_hp_unique {
             "port-europa", "port-feria", "port-fiesta", "port-huerto", "port-jardin",
             "port-vista", "fuerte-marbella", "fuerte-rompido", "fuerte-grazalema",
             "fuerte-conil-costaluz", "olee-calaceite", "olee-torrox", "amare-marbella",
-            "amare-ibiza", "marsol-hotel", "marsol-blau", "marsol-condado", "marsol-encantada") THEN 'David'
+            "amare-ibiza", "marsol-hotel", "marsol-blau", "marsol-condado", "marsol-encantada", "best-serenade") THEN 'David'
           WHEN ${TABLE}.hotel_code IN ("casa-romana-boutique", "casual-mar-malaga", "casual-rinascimiento-florencia",
             "casual-duende", "casual-olas-sansebastian", "casual-vintage-valencia",
             "casual-socarrat", "casual-teatro-madrid", "casual-artes-valencia",
@@ -288,19 +288,15 @@ view: wi_hp_unique {
             "estival-club", "estival-pineda", "estival-park-2", "estival-park-3",
             "oasishoteles-grandcancun", "oasishoteles-grandpalm", "oasishoteles-oasispalm",
             "oasishoteles-pyramid", "oasishoteles-senscancun", "el-patio", "ipv-palace",
-            "villa-flamenca", "maria-del-mar", "summum-ventas", "zero-drach", "summum-rosellon") THEN 'Dani'
+            "villa-flamenca", "maria-del-mar", "summum-ventas", "zero-drach", "summum-rosellon",
+            "oasishoteles-grandcancun","oasishoteles-grandpalm","oasishoteles-tulum","oasishoteles-oasispalm",
+            "oasishoteles-ohurban","oasishoteles-smart","oasishoteles-pyramid","oasishoteles-senscancun","oasishoteles-senstulum") THEN 'Dani'
           WHEN ${TABLE}.hotel_code IN ("stein-chateau-eza", "blaumar-blaumar", "impressive-granada",
             "impressive-premium", "impressive-puntacana", "impressive-zocos",
             "landmar-gigantes", "landmar-arena") THEN 'Sandra'
           ELSE ${TABLE}.hotel_code
         END ;;
   }
-
-  measure: cpa {
-    type: number
-    sql: CASE WHEN wi_hp_unique.spent = 0 THEN NULL ELSE SUM(wi_hp_unique.generated / wi_hp_unique.spent) END ;;
-  }
-
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
