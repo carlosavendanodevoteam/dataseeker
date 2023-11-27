@@ -297,6 +297,8 @@ view: wi_hp_unique {
           ELSE ${TABLE}.hotel_code
         END ;;
   }
+
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
