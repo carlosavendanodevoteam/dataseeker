@@ -38,17 +38,11 @@ explore: wihp_datos_reservas{
   join:  mview_datos_reservas_6{
     type:left_outer
     relationship: many_to_one
-    sql_on:  ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code};;
+    sql_on: ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code};;
   }
 }
 
-explore: ratio_conversion {
-  join: mview_busquedas {
-    type:  left_outer
-    relationship: many_to_one
-    sql_on: ${mview_busquedas.hotel_code} = ${ratio_conversion.hotel_code} AND ${mview_busquedas.reference_timestamp_date} = ${ratio_conversion.timestamp_date} ;;
-  }
-}
+explore: ratio_conversion {}
 
 explore: call_agent2 {}
 
