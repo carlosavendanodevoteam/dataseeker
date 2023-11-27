@@ -63,14 +63,15 @@ view: ratio_conversion {
     sql: ${TABLE}.busquedas_ok;;
   }
 
-  measure: total_reservas {
-    type: sum
-    sql: ${TABLE}.total_reservas ;;
+  measure: conversion_rate{
+    type: number
+    sql: CASE WHEN sum(${TABLE}.ok) = 0 THEN NULL ELSE SUM(${TABLE}.total_reservas) / sum(${TABLE}.ok) END;;
+    value_format: "0.00%"
   }
 
   dimension: referenceTimestamp {
     type: number
-    sql: ${TABLE}.referenceTimestamp ;;
+    sql: ${TABLE}.referenceTimestamp;;
   }
 
 
