@@ -33,6 +33,16 @@ explore: Busquedas_reservas {
     ;;
   }
 }
+
+explore: wihp_datos_reservas{
+  join:  mview_datos_reservas_6{
+    type:left_outer
+    relationship: many_to_one
+    sql_on:  ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code};;
+  }
+}
+
+
 explore: call_agent2 {}
 
 explore: additional_services_consolidate {}

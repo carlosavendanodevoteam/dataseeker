@@ -14,7 +14,7 @@ view: mview_datos_reservas_6 {
   dimension: account {
     type: string
     sql: ${TABLE}.account
-    suggestable: no;;
+    ;;
   }
 
   dimension: additional_services {

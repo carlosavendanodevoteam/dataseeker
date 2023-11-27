@@ -164,4 +164,11 @@ view: mview_busquedas {
     type: count
     drill_fields: [hotel_name]
   }
+  measure: OK{
+    type: sum
+    sql: CASE
+            WHEN ${TABLE}.result ='OK' THEN 1
+            ELSE 0
+    END ;;
+  }
 }
