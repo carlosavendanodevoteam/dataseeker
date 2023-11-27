@@ -42,6 +42,13 @@ explore: wihp_datos_reservas{
   }
 }
 
+explore: ratio_conversion {
+  join: mview_busquedas {
+    type:  left_outer
+    relationship: many_to_one
+    sql_on: ${mview_busquedas.hotel_code} = ${ratio_conversion.hotel_code} AND ${mview_busquedas.reference_timestamp_date} = ${ratio_conversion.timestamp_date} ;;
+  }
+}
 
 explore: call_agent2 {}
 
