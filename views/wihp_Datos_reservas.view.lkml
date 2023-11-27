@@ -266,6 +266,11 @@ view: wihp_datos_reservas {
     drill_fields: [detail*]
   }
 
+  measure: CPA {
+    type: number
+    sql: ${TABLE}.generated /${TABLE}.spent ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

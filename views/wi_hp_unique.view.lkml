@@ -296,6 +296,11 @@ view: wi_hp_unique {
         END ;;
   }
 
+  measure: cpa {
+    type: number
+    sql: CASE WHEN wi_hp_unique.spent = 0 THEN NULL ELSE SUM(wi_hp_unique.generated / wi_hp_unique.spent) END ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
