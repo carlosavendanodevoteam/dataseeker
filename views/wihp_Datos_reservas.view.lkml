@@ -303,6 +303,12 @@ view: wihp_datos_reservas {
         END ;;
     }
 
+  measure: cpa {
+    type: number
+    sql: CASE WHEN sum(wi_hp_unique.generated) = 0 THEN NULL ELSE SUM(wi_hp_unique.spent) / sum(wi_hp_unique.generated) END;;
+    value_format: "0.00%"
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
