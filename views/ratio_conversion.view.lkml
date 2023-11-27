@@ -3,6 +3,7 @@ view: ratio_conversion {
     sql:
       SELECT
         DR.hotel_code,
+        DR.identifier,
         MIN(B.count_busquedas) as count_busquedas,
         MIN(B.Ok) as busquedas_ok,
         COUNT(*) as total_reservas,
@@ -27,4 +28,50 @@ view: ratio_conversion {
         DR.hotel_code
   ;;
   }
+  dimension: hotel_code {
+    type: string
+    sql: ${TABLE}.hotel_code ;;
+  }
+
+  dimension_group: timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}.timestamp ;;
+  }
+
+  dimension: timestamp_date_datos_reservas_6 {
+    type: string
+    sql: ${TABLE}.timestamp_date ;;
+  }
+
+  dimension: timestamp_dayofweek {
+    type: number
+    sql: ${TABLE}.timestamp_dayofweek ;;
+  }
+
+  dimension: identifier {
+    type: string
+    sql: ${TABLE}.identifier ;;
+  }
+
+  measure: num_reservas {
+    type:  count
+    drill_fields: [identifier]
+  }
+  measure: ok {
+    type: sum
+    sql: ${TABLE}.busquedas_ok;;
+  }
+
+  measure: total_reservas {
+    type: sum
+    sql: ${TABLE}.total_reservas ;;
+  }
+
+  dimension: referenceTimestamp {
+    type: number
+    sql: ${TABLE}.referenceTimestamp ;;
+  }
+
+
 }
