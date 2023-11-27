@@ -266,7 +266,7 @@ view: wi_hp_unique {
     drill_fields: [detail*]
   }
 
-  dimension: hotel_code_group_filter {
+   dimension: hotel_code_group_filter {
     type: string
     sql: CASE
           WHEN ${TABLE}.hotel_code IN ("em-serenade-punta-cana", "parkroyal-grancancun", "parkroyal-cozumel",
@@ -296,11 +296,6 @@ view: wi_hp_unique {
             "landmar-gigantes", "landmar-arena") THEN 'Sandra'
           ELSE ${TABLE}.hotel_code
         END ;;
-  }
-
-  measure: wi_hp_unique_cpa {
-    type: number
-    sql: CASE WHEN sum(wi_hp_unique.spent) = 0 THEN NULL ELSE SUM(wi_hp_unique.spent / wi_hp_unique.generated)*100 END ;;
   }
 
   # ----- Sets of fields for drilling ------
