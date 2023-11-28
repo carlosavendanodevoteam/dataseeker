@@ -198,6 +198,7 @@ view: mview_datos_reservas_6 {
   }
 
   dimension: hotel_code {
+    primary_key: yes
     type: string
     sql: ${TABLE}.hotel_code ;;
   }
@@ -410,7 +411,7 @@ view: mview_datos_reservas_6 {
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.partitionTimestamp ;;
+    sql: ${TABLE}.partitionTimestamp;;
   }
 
   dimension: regimen {
@@ -449,7 +450,7 @@ view: mview_datos_reservas_6 {
   }
 
   dimension: start_date {
-    type: string
+    type: date
     sql: ${TABLE}.startDate ;;
   }
 
@@ -466,6 +467,7 @@ view: mview_datos_reservas_6 {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
+
 
   dimension: rn {
     type: number
@@ -564,6 +566,4 @@ view: mview_datos_reservas_6 {
           ELSE ${TABLE}.hotel_code
         END ;;
   }
-
-
 }

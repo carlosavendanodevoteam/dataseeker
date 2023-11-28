@@ -153,7 +153,7 @@ view: mview_busquedas {
   dimension_group: start_date {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.startDate ;;
+    sql: cast(${TABLE}.startDate as timestamp) ;;
   }
 
   dimension_group: timestamp {
