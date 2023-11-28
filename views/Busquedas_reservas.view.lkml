@@ -448,7 +448,7 @@ view: Busquedas_reservas {
   }
 
   dimension: start_date {
-    type: string
+    type: date
     sql: ${TABLE}.startDate ;;
   }
 
@@ -530,7 +530,4 @@ view: Busquedas_reservas {
     type: number
     sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
   }
-
-
-
 }
