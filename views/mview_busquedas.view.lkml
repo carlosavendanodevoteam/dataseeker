@@ -160,10 +160,12 @@ view: mview_busquedas {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.timestamp ;;
   }
+
   measure: count {
     type: count
     drill_fields: [hotel_name]
   }
+
   measure: OK{
     type: sum
     sql: CASE
@@ -171,4 +173,33 @@ view: mview_busquedas {
             ELSE 0
     END ;;
   }
+
+  measure: Restrictions{
+    type: sum
+    sql: CASE
+            WHEN ${TABLE}.result ='RESTRICTIONS' THEN 1
+            ELSE 0
+    END ;;
+  }
+
+  measure: NO_RATE{
+    type: sum
+    sql: CASE
+            WHEN ${TABLE}.result ='NO_RATE' THEN 1
+            ELSE 0
+    END ;;
+  }
+
+  measure:  no_availability{
+    type: sum
+    sql: CASE
+            WHEN ${TABLE}.result ='NO_AVAILABILITY' THEN 1
+            ELSE 0
+    END ;;
+  }
+  dimension: nights{
+    type: number
+    sql: date_diff(cast(${TABLE}.endDate as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
+  }
+
 }
