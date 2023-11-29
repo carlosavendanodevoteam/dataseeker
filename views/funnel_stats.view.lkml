@@ -22,10 +22,13 @@ view: funnel_stats {
 
   measure: total_b1_to_b2 {
     type: sum
-    sql: ${b1_to_b2} ;;  }
+    sql: ${b1_to_b2} ;;
+  }
+
   measure: average_b1_to_b2 {
     type: average
-    sql: ${b1_to_b2} ;;  }
+    sql: ${b1_to_b2} ;;
+  }
 
   dimension: b1_unique_ips_to_b2 {
     type: number
@@ -35,6 +38,11 @@ view: funnel_stats {
   dimension: b2_to_b3 {
     type: number
     sql: ${TABLE}.b2_to_b3 ;;
+  }
+
+  measure: average_b2_to_b3 {
+    type: average
+    sql: ${b2_to_b3} ;;
   }
 
   dimension: booking1 {
@@ -79,4 +87,5 @@ view: funnel_stats {
   measure: count {
     type: count
   }
+
 }

@@ -695,3 +695,7 @@ explore: z_to_delete_status_call {}
 explore: z_to_delete_view_datos_reservas_4_old_copy {}
 
 explore: z_to_delete_search_log_entry {}
+
+explore: revenue_forecast {}
+
+explore: revenue_forecast2 {}
