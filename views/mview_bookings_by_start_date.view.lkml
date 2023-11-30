@@ -143,7 +143,7 @@ view: mview_bookings_by_start_date {
   dimension: country {
     type: string
     map_layer_name: countries
-    sql: ${TABLE}.country ;;
+    sql: UPPER(${TABLE}.country) ;;
   }
 
   dimension: credit_card {
