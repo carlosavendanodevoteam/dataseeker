@@ -529,8 +529,8 @@ view: mview_datos_reservas_6 {
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
 
-  measure: advance{
-    type: average
+  dimension: advance{
+    type: number
     sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
     }
 
@@ -589,6 +589,29 @@ view: mview_datos_reservas_6 {
           THEN 'Sandra'
           ELSE ${TABLE}.hotel_code
         END ;;
+  }
+
+  dimension: month{
+    type: number
+    sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
+  }
+
+  dimension: month_text {
+    type: string
+    sql: Case
+          when ${month} = 1 then 'Jan'
+          when ${month} = 2 then 'Feb'
+          when ${month} = 3 then 'Mar'
+          when ${month} = 4 then 'Apr'
+          when ${month} = 5 then 'May'
+          when ${month} = 6 then 'Jun'
+          when ${month} = 7 then 'Jul'
+          when ${month} = 8 then 'Aug'
+          when ${month} = 9 then 'Sep'
+          when ${month} = 10 then 'Oct'
+          when ${month} = 11 then 'Nov'
+          else 'Dec'
+        End;;
   }
 
 }
