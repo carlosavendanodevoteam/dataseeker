@@ -538,7 +538,7 @@ view: mview_bookings_by_start_date {
 
   dimension: month {
     type: number
-    sql:  EXTRACT(month FROM ${TABLE}.startDate) ;;
+    sql:  EXTRACT(month FROM ${TABLE}.startDatetime) ;;
   }
 
   dimension: month_text {
