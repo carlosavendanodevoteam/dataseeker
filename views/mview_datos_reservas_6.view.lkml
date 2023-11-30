@@ -566,4 +566,29 @@ view: mview_datos_reservas_6 {
           ELSE ${TABLE}.hotel_code
         END ;;
   }
+
+  dimension: source_fixed_by_origen{
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.source_fixed IN ()
+          THEN 'David'
+          WHEN ${TABLE}.hotel_code IN ("casa-romana-boutique", "casual-mar-malaga", "casual-rinascimiento-florencia",
+            "casual-duende", "casual-olas-sansebastian", "casual-vintage-valencia",
+            "casual-socarrat", "casual-teatro-madrid", "casual-artes-valencia",
+            "casual-pop-art", "casual-letras-sevilla", "casual-don-juan-tenorio",
+            "casual-cine-valencia", "estival-centurion", "estival-eldorado",
+            "estival-torrequebrada", "estival-vilamari", "isla-cristina", "ocean-islantilla",
+            "estival-club", "estival-pineda", "estival-park-2", "estival-park-3",
+            "oasishoteles-grandcancun", "oasishoteles-grandpalm", "oasishoteles-oasispalm",
+            "oasishoteles-pyramid", "oasishoteles-senscancun", "el-patio", "ipv-palace",
+            "villa-flamenca", "maria-del-mar", "summum-ventas", "zero-drach", "summum-rosellon")
+          THEN 'Dani'
+          WHEN ${TABLE}.hotel_code IN ("stein-chateau-eza", "blaumar-blaumar", "impressive-granada",
+            "impressive-premium", "impressive-puntacana", "impressive-zocos",
+            "landmar-gigantes", "landmar-arena")
+          THEN 'Sandra'
+          ELSE ${TABLE}.hotel_code
+        END ;;
+  }
+
 }
