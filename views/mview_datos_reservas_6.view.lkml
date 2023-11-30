@@ -613,5 +613,9 @@ view: mview_datos_reservas_6 {
           else "Dec"
         End;;
   }
+  dimension: device {
+    type: string
+    sql: ${TABLE}.device ;;
+  }
 
 }
