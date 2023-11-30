@@ -203,4 +203,10 @@ view: mview_busquedas {
     sql: date_diff(cast(${TABLE}.endDate as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
   }
 
+  dimension: year{
+    type: number
+    sql:  EXTRACT(YEAR FROM ${TABLE}.timestamp) ;;
+  }
+
+
 }

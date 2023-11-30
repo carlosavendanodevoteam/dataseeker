@@ -596,6 +596,22 @@ view: mview_datos_reservas_6 {
     sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
   }
 
+  dimension: month_startDate{
+    type: number
+    sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
+  }
+
+  dimension: year{
+    type: number
+    sql:  EXTRACT(YEAR FROM ${TABLE}.partitionTimestamp) ;;
+  }
+
+  dimension: year_startDate{
+    type: number
+    sql:  EXTRACT(YEAR FROM cast(${TABLE}.startDate as timestamp)) ;;
+  }
+
+
   dimension: month_text {
     type: string
     sql: Case
@@ -613,9 +629,27 @@ view: mview_datos_reservas_6 {
           else "Dec"
         End;;
   }
+
+  dimension: month_text_startDate {
+    type: string
+    sql: Case
+          when ${month_startDate} = 1 then "Jan"
+          when ${month_startDate} = 2 then "Feb"
+          when ${month_startDate} = 3 then "Mar"
+          when ${month_startDate} = 4 then "Apr"
+          when ${month_startDate} = 5 then "May"
+          when ${month_startDate} = 6 then "Jun"
+          when ${month_startDate} = 7 then "Jul"
+          when ${month_startDate} = 8 then "Aug"
+          when ${month_startDate} = 9 then "Sep"
+          when ${month_startDate} = 10 then "Oct"
+          when ${month_startDate} = 11 then "Nov"
+          else "Dec"
+        End;;
+  }
+
   dimension: device {
     type: string
     sql: ${TABLE}.device ;;
   }
-
 }

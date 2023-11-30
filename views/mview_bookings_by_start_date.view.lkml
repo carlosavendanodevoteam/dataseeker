@@ -536,26 +536,32 @@ view: mview_bookings_by_start_date {
     sql: concat(${TABLE}.adults1, '-', ${TABLE}.kids1, '-', ${TABLE}.babies1) ;;
   }
 
-  dimension: month {
-    type: number
-    sql:  EXTRACT(month FROM ${TABLE}.startDatetime) ;;
-  }
+    dimension: month_startDate{
+      type: number
+      sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
+    }
 
-  dimension: month_text {
-    type: string
-    sql: Case
-          when ${month} = 1 then "Jan"
-          when ${month} = 2 then "Feb"
-          when ${month} = 3 then "Mar"
-          when ${month} = 4 then "Apr"
-          when ${month} = 5 then "May"
-          when ${month} = 6 then "Jun"
-          when ${month} = 7 then "Jul"
-          when ${month} = 8 then "Aug"
-          when ${month} = 9 then "Sep"
-          when ${month} = 10 then "Oct"
-          when ${month} = 11 then "Nov"
+    dimension: year_startDate{
+      type: number
+      sql:  EXTRACT(YEAR FROM cast(${TABLE}.startDate as timestamp)) ;;
+    }
+
+    dimension: month_text_startDate {
+      type: string
+      sql: Case
+          when ${month_startDate} = 1 then "Jan"
+          when ${month_startDate} = 2 then "Feb"
+          when ${month_startDate} = 3 then "Mar"
+          when ${month_startDate} = 4 then "Apr"
+          when ${month_startDate} = 5 then "May"
+          when ${month_startDate} = 6 then "Jun"
+          when ${month_startDate} = 7 then "Jul"
+          when ${month_startDate} = 8 then "Aug"
+          when ${month_startDate} = 9 then "Sep"
+          when ${month_startDate} = 10 then "Oct"
+          when ${month_startDate} = 11 then "Nov"
           else "Dec"
         End;;
-  }
+    }
+
 }
