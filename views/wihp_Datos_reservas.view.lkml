@@ -128,6 +128,7 @@ view: wihp_datos_reservas {
   }
 
   dimension: hotel_code {
+    primary_key: yes
     type: string
     sql: ${TABLE}.hotel_code ;;
   }

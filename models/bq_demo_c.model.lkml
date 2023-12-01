@@ -36,9 +36,8 @@ explore: Busquedas_reservas {
 explore: wihp_datos_reservas{
   join:  mview_datos_reservas_6{
     type:left_outer
-    relationship: many_to_one
-    sql_on: ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code} and ${mview_datos_reservas_6.partition_timestamp_date} = ${wihp_datos_reservas.date_date} ;;
-    fields: [wihp_datos_reservas.hotel_code, wihp_datos_reservas.date_date, mview_datos_reservas_6.revenue, mview_datos_reservas_6.hotel_code]
+    relationship: many_to_many
+    sql_on: ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code} ;;
   }
 }
 
