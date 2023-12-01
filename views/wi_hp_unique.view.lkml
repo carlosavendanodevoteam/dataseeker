@@ -304,6 +304,11 @@ view: wi_hp_unique {
     value_format: "0.00%"
   }
 
+  dimension: date_string {
+    type: string
+    sql: ${TABLE}.date ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
