@@ -671,4 +671,26 @@ view: mview_datos_reservas_6 {
         END ;;
   }
 
+  dimension_group: comparation_partitiontimestamp_and_future{
+    type: time
+    sql: TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY);;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+  dimension_group: comparation_startDate_and_future{
+    type: time
+    sql: TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY);;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+  dimension_group: comparation_endDate_and_future{
+    type: time
+    sql: TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY);;
+  }
+
+  dimension_group: comparation_cancellationTimestamp_and_future{
+    type: time
+    sql:  TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY);;
+  }
+
 }
