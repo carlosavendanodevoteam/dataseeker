@@ -208,5 +208,38 @@ view: mview_busquedas {
     sql:  EXTRACT(YEAR FROM ${TABLE}.timestamp) ;;
   }
 
+  dimension_group: comparation_referenceTimestamp{
+    type: time
+    sql: CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.referenceTimestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.referenceTimestamp, INTERVAL 365 DAY)
+        END ;;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+  dimension_group: comparation_startDate{
+    type: time
+    sql: CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY)
+        END ;;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+  dimension_group: comparation_endDate{
+    type: time
+    sql:  CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.endDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.endDate, INTERVAL 365 DAY)
+        END ;;
+  }
+
+  dimension_group: comparation_cancellationTimestamp{
+    type: time
+    sql:  CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY)
+        END ;;
+  }
 
 }

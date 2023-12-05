@@ -644,20 +644,27 @@ view: mview_datos_reservas_6 {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: timestamp_add(CAST(${TABLE}.startDate as timestamp), interval 365 day);;
+    sql: CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY)
+        END ;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_endDate{
     type: time
-    sql: timestamp_add(CAST(${TABLE}.endDate as timestamp), interval 365 day);;
-    timeframes: [raw, time, date, week, month, quarter, year]
+    sql:  CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.endDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.endDate, INTERVAL 365 DAY)
+        END ;;
   }
 
   dimension_group: comparation_cancellationTimestamp{
     type: time
-    sql: timestamp_add(${TABLE}.cancellationTimestamp, interval 365 day);;
-    timeframes: [raw, time, date, week, month, quarter, year]
+    sql:  CASE
+          WHEN TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY)
+        END ;;
   }
 
 }
