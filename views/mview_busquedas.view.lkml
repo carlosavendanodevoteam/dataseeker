@@ -234,12 +234,4 @@ view: mview_busquedas {
         END ;;
   }
 
-  dimension_group: comparation_cancellationTimestamp{
-    type: time
-    sql:  CASE
-          WHEN TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY)
-        END ;;
-  }
-
 }
