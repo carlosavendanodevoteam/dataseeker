@@ -649,8 +649,8 @@ view: mview_datos_reservas_6 {
   dimension_group: comparation_startDate{
     type: time
     sql: CASE
-          WHEN DATE_ADD(${TABLE}.startDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE DATE_ADD(${TABLE}.startDate, INTERVAL 365 DAY)
+          WHEN TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY)
         END ;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
@@ -658,8 +658,8 @@ view: mview_datos_reservas_6 {
   dimension_group: comparation_endDate{
     type: time
     sql:  CASE
-          WHEN DATE_ADD(${TABLE}.endDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE DATE_ADD(${TABLE}.endDate, INTERVAL 365 DAY)
+          WHEN TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY)
         END ;;
   }
 
