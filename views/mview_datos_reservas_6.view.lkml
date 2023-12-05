@@ -468,13 +468,17 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
-
   dimension: rn {
     type: number
     sql: CASE
           WHEN ${TABLE}.cancelled = True THEN 0
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INTEGER)
         END;;
+  }
+
+  dimension: ADR {
+    type: number
+    sql: ${revenue} / ${rn} ;;
   }
 
   dimension: rn_cancelled {
