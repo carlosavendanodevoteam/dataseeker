@@ -636,9 +636,9 @@ view: mview_datos_reservas_6 {
   dimension_group: comparation_partitiontimestamp{
     type: time
     sql: CASE
-                WHEN TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY) > CURRENT_DATE() THEN NULL
-                ELSE TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY)
-              END ;;
+          WHEN TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY) > CURRENT_DATE() THEN NULL
+          ELSE TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY)
+        END ;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
