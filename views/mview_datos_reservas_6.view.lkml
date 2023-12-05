@@ -635,25 +635,25 @@ view: mview_datos_reservas_6 {
 
   dimension_group: comparation_partitiontimestamp{
     type: time
-    sql: timestamp_add(${TABLE}.partitionTimestamp, interval 1 year);;
+    sql: timestamp_add(${TABLE}.partitionTimestamp, interval 365 day);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_startDate{
     type: time
-    sql: timestamp_add(CAST(${TABLE}.startDate as timestamp), interval 1 year);;
+    sql: timestamp_add(CAST(${TABLE}.startDate as timestamp), interval 365 day);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_endDate{
     type: time
-    sql: timestamp_add(CAST(${TABLE}.endDate as timestamp), interval 1 year);;
+    sql: timestamp_add(CAST(${TABLE}.endDate as timestamp), interval 365 day);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_cancellationTimestamp{
     type: time
-    sql: timestamp_add(${TABLE}.cancellationTimestamp, interval 1 year);;
+    sql: timestamp_add(${TABLE}.cancellationTimestamp, interval 365 day);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
