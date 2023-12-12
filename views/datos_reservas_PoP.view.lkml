@@ -722,10 +722,8 @@ view: datos_reservas_pop {
   }
 
   measure: num_reservas_PoP {
-    view_label: "_PoP"
-    type: sum
-    sql: ${num_reservas} ;;
-    drill_fields: [partitioTimestamp_PoP_date]
+    type:  count
+    drill_fields: [identifier, partitioTimestamp_PoP_date]
   }
 
 
