@@ -641,8 +641,8 @@ view: mview_comparation_bookings {
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
         CASE
-          WHEN TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY)
+          WHEN CAST(${TABLE}.startDate AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE CAST(${TABLE}.startDate AS timestamp)
         END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
@@ -651,8 +651,8 @@ view: mview_comparation_bookings {
     type: time
     sql:  IF(${TABLE}.last_year_booking = 0, ${TABLE}.endDate,
         CASE
-          WHEN TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY)
+          WHEN CAST(${TABLE}.endDate AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+          ELSE CAST(${TABLE}.endDate AS timestamp)
         END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
@@ -661,8 +661,8 @@ view: mview_comparation_bookings {
     type: time
     sql:  IF(${TABLE}.last_year_booking = 0, ${TABLE}.endDate,
       CASE
-        WHEN TIMESTAMP_ADD(CAST(${TABLE}.cancellationTimestamp AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE TIMESTAMP_ADD(CAST(${TABLE}.cancellationTimestamp AS timestamp), INTERVAL 365 DAY)
+        WHEN CAST(${TABLE}.cancellationTimestamp AS timestamp > CURRENT_TIMESTAMP() THEN NULL
+        ELSE CAST(${TABLE}.cancellationTimestamp AS timestamp
       END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
@@ -671,8 +671,8 @@ view: mview_comparation_bookings {
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
       CASE
-        WHEN TIMESTAMP_ADD(CAST(${TABLE}.partitionTimestamp AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE TIMESTAMP_ADD(CAST(${TABLE}.partitionTimestamp AS timestamp), INTERVAL 365 DAY)
+        WHEN CAST(${TABLE}.partitionTimestamp AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE CAST(${TABLE}.partitionTimestamp AS timestamp)
       END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
