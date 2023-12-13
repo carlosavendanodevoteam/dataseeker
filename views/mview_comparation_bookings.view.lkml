@@ -639,31 +639,19 @@ view: mview_comparation_bookings {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
-        CASE
-          WHEN CAST(${TABLE}.startDate AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE CAST(${TABLE}.startDate AS timestamp)
-        END);;
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), 365 DAY));;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_endDate{
     type: time
-    sql:  IF(${TABLE}.last_year_booking = 0, ${TABLE}.endDate,
-        CASE
-          WHEN CAST(${TABLE}.endDate AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
-          ELSE CAST(${TABLE}.endDate AS timestamp)
-        END);;
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.endDate,TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), 365 DAY));;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_cancellationTimestamp{
     type: time
-    sql:  IF(${TABLE}.last_year_booking = 0, ${TABLE}.endDate,
-      CASE
-        WHEN CAST(${TABLE}.cancellationTimestamp AS timestamp > CURRENT_TIMESTAMP() THEN NULL
-        ELSE CAST(${TABLE}.cancellationTimestamp AS timestamp
-      END);;
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.cancellationTimestamp,TIMESTAMP_ADD(CAST(${TABLE}.cancellationTimestamp AS timestamp), 365 DAY));;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
