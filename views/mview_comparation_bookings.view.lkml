@@ -639,19 +639,19 @@ view: mview_comparation_bookings {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN ${TABLE}.startDate ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) END;;
+    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.startDate AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_endDate{
     type: time
-    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN ${TABLE}.endDate ELSE TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY) END;;
+    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.endDate AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension_group: comparation_cancellationTimestamp{
     type: time
-    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN ${TABLE}.cancellationTimestamp ELSE TIMESTAMP_ADD(CAST(${TABLE}.cancellationTimestamp AS timestamp), INTERVAL 365 DAY) END;;
+    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.cancellationTimestamp AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.cancellationTimestamp AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
