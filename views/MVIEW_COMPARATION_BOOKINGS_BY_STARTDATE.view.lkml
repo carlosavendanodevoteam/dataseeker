@@ -592,4 +592,10 @@ view: mview_comparation_bookings_by_start_date {
     sql: ${TABLE}.last_year_booking ;;
   }
 
+  dimension: advance{
+    type: number
+    sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
+  }
+
+
 }
