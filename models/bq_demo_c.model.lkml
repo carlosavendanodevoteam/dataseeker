@@ -41,6 +41,10 @@ explore: wihp_datos_reservas{
   }
 }
 
+explore: mview_comparation_bookings_by_start_date {}
+
+explore: mview_comparation_searches {}
+
 explore: ratio_conversion {}
 
 explore: call_agent2 {}
