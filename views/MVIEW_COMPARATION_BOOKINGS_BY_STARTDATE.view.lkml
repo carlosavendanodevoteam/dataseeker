@@ -587,5 +587,9 @@ view: mview_comparation_bookings_by_start_date {
       END ;;
   }
 
+  dimension: last_year_booking {
+    type: number
+    sql: ${TABLE}.last_year_booking ;;
+  }
 
 }
