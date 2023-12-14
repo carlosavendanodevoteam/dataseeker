@@ -476,11 +476,6 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
-  dimension: ADR {
-    type: number
-    sql: ${revenue} / ${rn} ;;
-  }
-
   dimension: rn_cancelled {
     type: number
     sql: CASE
@@ -652,7 +647,7 @@ view: mview_datos_reservas_6 {
           WHEN TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
           ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY)
         END ;;
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
   dimension_group: comparation_endDate{
