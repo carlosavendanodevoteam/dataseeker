@@ -562,9 +562,9 @@ view: mview_comparation_bookings_by_start_date {
       End;;
   }
 
-  dimension_group: comparation_startDate{
+  dimension_group: partition_timestamp{
     type: time
-    sql: ${TABLE}.startDatetime;;
+    sql: ${TABLE}.partitionTimestamp;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
