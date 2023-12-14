@@ -1,6 +1,6 @@
 view: mview_comparation_bookings_by_start_date {
 
-  sql_table_name: `bi_dataset.MVIEW_COMPARATION_BOOKINGS_BY_START_DATE` ;;
+  sql_table_name: `bi_dataset.MVIEW_COMPARATION_BOOKING_BY_START_DATE` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -562,12 +562,9 @@ view: mview_comparation_bookings_by_start_date {
       End;;
   }
 
-  dimension_group: comparation_startDate{
+  dimension_group: partition_timestamp{
     type: time
-    sql: CASE
-        WHEN TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY)
-      END ;;
+    sql: ${TABLE}.partitionTimestamp;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
