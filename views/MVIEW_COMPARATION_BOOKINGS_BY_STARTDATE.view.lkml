@@ -564,10 +564,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: CASE
-        WHEN TIMESTAMP_ADD(${TABLE}.startDatetime, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE TIMESTAMP_ADD(${TABLE}.startDatetime, INTERVAL 365 DAY)
-      END ;;
+    sql: ${TABLE}.startDatetime;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
