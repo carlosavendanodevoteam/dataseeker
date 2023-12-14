@@ -588,4 +588,4 @@ view: mview_comparation_bookings_by_start_date {
   }
 
 
-  }
+}
