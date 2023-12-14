@@ -533,6 +533,8 @@ explore: mview_bookings_by_start_date {}
 
 explore: mview_datos_reservas_6 {}
 
+explore: mview_comparation_bookings {}
+
 explore: mview_satisfaction_form_answers {}
 
 explore: mview_satisfaction_form {}
