@@ -65,8 +65,6 @@ explore: additional_services {
   }
 }
 
-explore: datos_reservas_pop {}
-
 explore: costa_del_sol_data_search_20220531 {}
 
 explore: costal_del_sol_rsv_data_20211005 {}
