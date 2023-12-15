@@ -235,4 +235,10 @@ view: mview_comparation_searches {
       END ;;
   }
 
+  dimension: last_year_searches {
+    type: number
+    sql: ${TABLE}.last_year_searches ;;
+
+  }
+
 }
