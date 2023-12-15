@@ -242,7 +242,7 @@ view: mview_comparation_searches {
 
   dimension_group: comparation_partitiontimestamp_and_future{
     type: time
-    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
+    sql: IF(${TABLE}.last_year_searches = 0, ${TABLE}.partitionTimestamp,
       CASE
         WHEN CAST(${TABLE}.partitionTimestamp AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
         ELSE CAST(${TABLE}.partitionTimestamp AS timestamp)
