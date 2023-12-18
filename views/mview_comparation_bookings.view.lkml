@@ -669,4 +669,12 @@ view: mview_comparation_bookings {
     type: number
     sql: ${TABLE}.last_year_booking ;;
   }
+
+  dimension: grouping_source_fixed {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.source_fixed like '%callcenter%' then 'callcenter'
+          ELSE ${TABLE}.source_fixed
+        END ;;
+  }
 }
