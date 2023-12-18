@@ -218,10 +218,15 @@ view: mview_comparation_searches {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
+  dimension: last_year_searches {
+    type: number
+    sql: ${TABLE}.last_year_searches ;;
+  }
+
   dimension_group: comparation_startDate{
     type: time
     sql: CASE
-        WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.startDate AS timestamp)
+        WHEN ${TABLE}.last_year_searches = 0 THEN CAST(${TABLE}.startDate AS timestamp)
               ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY)
       END ;;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
@@ -235,10 +240,6 @@ view: mview_comparation_searches {
       END ;;
   }
 
-  dimension: last_year_searches {
-    type: number
-    sql: ${TABLE}.last_year_searches ;;
-  }
 
   dimension_group: comparation_partitiontimestamp_without_future{
     type: time
