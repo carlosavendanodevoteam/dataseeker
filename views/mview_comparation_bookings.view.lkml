@@ -446,7 +446,10 @@ view: mview_comparation_bookings {
 
   dimension: source_fixed {
     type: string
-    sql: ${TABLE}.source_fixed ;;
+    sql: CASE
+          WHEN ${TABLE}.source_fixed like '%callcenter%' then 'callcenter'
+          ELSE ${TABLE}.source_fixed
+        END ;;
   }
 
   dimension: start_date {
@@ -668,13 +671,5 @@ view: mview_comparation_bookings {
   dimension: last_year_booking {
     type: number
     sql: ${TABLE}.last_year_booking ;;
-  }
-
-  dimension: grouping_source_fixed {
-    type: string
-    sql: CASE
-          WHEN ${TABLE}.source_fixed like '%callcenter%' then 'callcenter'
-          ELSE ${TABLE}.source_fixed
-        END ;;
   }
 }
