@@ -221,8 +221,8 @@ view: mview_comparation_searches {
   dimension_group: comparation_startDate{
     type: time
     sql: CASE
-        WHEN TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE TIMESTAMP_ADD(${TABLE}.startDate, INTERVAL 365 DAY)
+        WHEN TIMESTAMP_ADD(cast(${TABLE}.startDate as timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE TIMESTAMP_ADD(cast(${TABLE}.startDate as timestamp), INTERVAL 365 DAY)
       END ;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
