@@ -240,7 +240,7 @@ view: mview_comparation_searches {
     sql: ${TABLE}.last_year_searches ;;
   }
 
-  dimension_group: comparation_partitiontimestamp_and_future{
+  dimension_group: comparation_partitiontimestamp_without_future{
     type: time
     sql: IF(${TABLE}.last_year_searches = 0, ${TABLE}.partitionTimestamp,
       CASE

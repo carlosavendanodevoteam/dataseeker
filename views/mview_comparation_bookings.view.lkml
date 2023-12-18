@@ -655,7 +655,7 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
-  dimension_group: comparation_partitiontimestamp_and_future{
+  dimension_group: comparation_partitiontimestamp_without_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
       CASE
