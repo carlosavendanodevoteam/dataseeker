@@ -562,7 +562,7 @@ view: mview_datos_reservas_6 {
             "impressive-premium", "imressive-puntacana", "impressive-zocos",
             "landmar-gigantes", "landmar-arena")
           THEN 'Sandra'
-          ELSE ''
+          ELSE null
         END ;;
   }
 
