@@ -294,7 +294,7 @@ view: wi_hp_unique {
           WHEN ${TABLE}.hotel_code IN ("stein-chateau-eza", "blaumar-blaumar", "impressive-granada",
             "impressive-premium", "impressive-puntacana", "impressive-zocos",
             "landmar-gigantes", "landmar-arena") THEN 'Sandra'
-          ELSE ${TABLE}.hotel_code
+          ELSE null
         END ;;
   }
 
