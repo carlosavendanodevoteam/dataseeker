@@ -594,5 +594,11 @@ view: mview_comparation_bookings_by_start_date {
     sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
   }
 
-
+  dimension_group:comparation_startDatetime{
+    type: time
+    sql:  CASE
+        WHEN TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE TIMESTAMP_ADD(${TABLE}.partitionTimestamp , INTERVAL 365 DAY)
+      END ;;
+  }
 }
