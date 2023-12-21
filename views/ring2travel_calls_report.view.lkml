@@ -28,7 +28,10 @@ view: ring2travel_calls_report {
     sql: ${TABLE}.ID_AGENTE ;;
   }
 
-
+  dimension: Agent_First_Name {
+    type: string
+    sql: ${TABLE}.Agent_First_Name ;;
+  }
 
 
 }
