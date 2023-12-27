@@ -447,7 +447,7 @@ view: mview_comparation_bookings {
   dimension: source_fixed {
     type: string
     sql: CASE
-          WHEN ${TABLE}.source_fixed like '%Callcenter%' then 'callcenter'
+          WHEN ${TABLE}.source_fixed like '%Callcenter%' then 'Callcenter'
           ELSE ${TABLE}.source_fixed
         END ;;
   }
