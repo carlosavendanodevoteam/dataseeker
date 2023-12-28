@@ -603,5 +603,9 @@ view: mview_bookings_by_start_date {
     END ;;
   }
 
+  dimension: device {
+    type: string
+    sql: ${TABLE}.device ;;
+  }
 
 }
