@@ -588,6 +588,14 @@ view: mview_bookings_by_start_date {
           ELSE TIMESTAMP_ADD(${TABLE}.cancellationTimestamp, INTERVAL 365 DAY)
         END ;;
   }
+  dimension: revenue_eur  {
+    type: number
+    sql: ${mview_bookings_by_start_date.currency} IS NULL OR ${mview_bookings_by_start_date.currency} = 'EUR' THEN ${mview_bookings_by_start_date.revenue} ELSE 0 END ;;
+  }
+  dimension: revenue_usd  {
+    type: number
+    sql: ${mview_bookings_by_start_date.currency} = 'USD' THEN ${mview_bookings_by_start_date.revenue} ELSE 0 END ;;
+  }
 
 
 }

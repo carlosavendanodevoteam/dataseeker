@@ -866,9 +866,7 @@ view: mview_comparation_bookings_by_start_date {
       WHEN ${country} = 'TH' THEN 'Thailand'
       WHEN ${country} = 'PS' THEN 'Palestinian Territories'
       WHEN ${country} = 'MP' THEN 'Northern Mariana Islands'
-
       ELSE upper.${country}
     END ;;
   }
-
 }
