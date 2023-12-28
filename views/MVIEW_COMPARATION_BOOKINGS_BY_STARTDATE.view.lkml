@@ -608,7 +608,7 @@ view: mview_comparation_bookings_by_start_date {
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
        TIMESTAMP_ADD(${TABLE}.partitionTimestamp , INTERVAL 365 DAY));;
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, month_name, date, week, month, quarter, year]
   }
 
   dimension: full_country {
