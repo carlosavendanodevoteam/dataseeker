@@ -278,7 +278,7 @@ view: wi_hp_unique {
             "port-europa", "port-feria", "port-fiesta", "port-huerto", "port-jardin",
             "port-vista", "fuerte-marbella", "fuerte-rompido", "fuerte-grazalema",
             "fuerte-conil-costaluz", "olee-calaceite", "olee-torrox", "amare-marbella",
-            "amare-ibiza", "marsol-hotel", "marsol-blau", "marsol-condado", "marsol-encantada", "best-serenade") THEN 'David'
+            "amare-ibiza", "marsol-hotel", "marsol-blau", "marsol-condado", "marsol-encantada", "best-serenade", "serenade-all-suites") THEN 'David'
           WHEN ${TABLE}.hotel_code IN ("casa-romana-boutique", "casual-mar-malaga", "casual-rinascimiento-florencia",
             "casual-duende", "casual-olas-sansebastian", "casual-vintage-valencia",
             "casual-socarrat", "casual-teatro-madrid", "casual-artes-valencia",
