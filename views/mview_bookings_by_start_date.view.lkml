@@ -438,7 +438,10 @@ view: mview_bookings_by_start_date {
 
   dimension: source_fixed {
     type: string
-    sql: ${TABLE}.source_fixed ;;
+    sql: CASE
+          WHEN ${TABLE}.source_fixed like '%Callcenter%' then 'Callcenter'
+          ELSE ${TABLE}.source_fixed
+        END ;;
   }
 
   dimension: start_date {
