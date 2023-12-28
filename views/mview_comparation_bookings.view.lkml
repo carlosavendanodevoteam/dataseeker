@@ -935,7 +935,7 @@ view: mview_comparation_bookings {
       WHEN ${country} = 'TH' THEN 'Thailand'
       WHEN ${country} = 'PS' THEN 'Palestinian Territories'
       WHEN ${country} = 'MP' THEN 'Northern Mariana Islands'
-      ELSE upper.${country}
+      ELSE ${country}
     END ;;
   }
 
