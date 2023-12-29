@@ -629,8 +629,7 @@ view: mview_bookings_by_start_date {
 
   dimension: converted_comission {
     type: number
-    sql: ${TABLE}.converted_comission ;;
-
+    sql: ${TABLE}.converted_commission ;;
   }
 
   dimension: full_country {
