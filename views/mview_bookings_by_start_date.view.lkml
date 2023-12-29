@@ -609,7 +609,7 @@ view: mview_bookings_by_start_date {
   dimension: cancellation_eur  {
     type: number
     sql:CASE
-      WHEN ${mview_bookings_by_start_date.currency} IS NULL OR ${mview_bookings_by_start_date.currency} = 'EUR' THEN ${mview_bookings_by_start_date.revenue}
+      WHEN ${mview_bookings_by_start_date.currency} IS NULL OR ${mview_bookings_by_start_date.currency} = 'EUR' THEN ${mview_bookings_by_start_date.cancellation}
       ELSE 0
     END ;;
   }
