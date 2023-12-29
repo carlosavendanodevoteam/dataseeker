@@ -627,6 +627,12 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.device ;;
   }
 
+  dimension: converted_comission {
+    type: number
+    sql: ${TABLE}.converted_comission ;;
+
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
