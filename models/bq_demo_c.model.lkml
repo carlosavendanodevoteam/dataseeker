@@ -112,7 +112,6 @@ explore: mview_precheckins {
 explore: mview_bookings_by_start_date {}
 
 explore: mview_datos_reservas_6 {
-  sql_always_where: ${hotel_code} in {{ _user_attributes['hotel_code'] }} ;;
 }
 
 explore: reservations_with_hotel_code_filter {
