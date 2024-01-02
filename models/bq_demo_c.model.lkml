@@ -61,11 +61,11 @@ explore: board {}
 
 explore: call_agent {}
 
-explore: additional_services {
-  join: view_datos_reservas_4 {
+explore: additional_service_comparation {
+  join: additional_services {
     type: left_outer
     relationship: one_to_one
-    sql_on: ${additional_services.hotel_code}=${view_datos_reservas_4.hotel_code} ;;
+    sql_on: ${additional_service_comparation.identifier} = ${additional_services.identifier} ;;
   }
 }
 
