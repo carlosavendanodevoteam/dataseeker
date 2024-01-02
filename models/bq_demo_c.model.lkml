@@ -102,16 +102,18 @@ explore: mview_prebookings {}
 explore: mview_bookings_by_cancel_date {}
 
 explore: mview_precheckins {
-    join: mview_precheckins__guests {
-      view_label: "Mview Precheckins: Guests"
-      sql: LEFT JOIN UNNEST(${mview_precheckins.guests}) as mview_precheckins__guests ;;
-      relationship: one_to_many
-    }
+  join: mview_precheckins__guests {
+    view_label: "Mview Precheckins: Guests"
+    sql: LEFT JOIN UNNEST(${mview_precheckins.guests}) as mview_precheckins__guests ;;
+    relationship: one_to_many
+  }
 }
 
 explore: mview_bookings_by_start_date {}
 
-explore: mview_datos_reservas_6 {}
+explore: mview_datos_reservas_6 {
+  sql_always_where: ${hotel_code} = {{ _user_attributes['hotel_code'] }} ;;
+}
 
 explore: reservations_with_hotel_code_filter {
   sql_always_where: ${hotel_code} = {{ _user_attributes['hotel_code'] }} ;;
@@ -130,11 +132,11 @@ explore: mview_satisfaction_form_analytics {}
 explore: packages {}
 
 explore: precheckins {
-    join: precheckins__guests {
-      view_label: "Precheckins: Guests"
-      sql: LEFT JOIN UNNEST(${precheckins.guests}) as precheckins__guests ;;
-      relationship: one_to_many
-    }
+  join: precheckins__guests {
+    view_label: "Precheckins: Guests"
+    sql: LEFT JOIN UNNEST(${precheckins.guests}) as precheckins__guests ;;
+    relationship: one_to_many
+  }
 }
 
 explore: rates_spanish {}
