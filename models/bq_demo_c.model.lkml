@@ -40,10 +40,10 @@ explore: wihp_datos_reservas{
 }
 
 explore: mview_comparation_bookings_by_start_date {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}"  ;;}
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}"  ;;}
 
 explore: mview_comparation_searches {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: ratio_conversion {}
 
@@ -98,12 +98,12 @@ explore: hotel_revenue_target {}
 explore: mview_additional_services {}
 
 explore: mview_busquedas {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: mview_prebookings {}
 
 explore: mview_bookings_by_cancel_date {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: mview_precheckins {
   join: mview_precheckins__guests {
@@ -114,14 +114,14 @@ explore: mview_precheckins {
 }
 
 explore: mview_bookings_by_start_date {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: mview_datos_reservas_6 {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
 }
 
 explore: mview_comparation_bookings {
-  sql_always_where: "{{ _user_attributes['filter_by_hotel_code'] }}" = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: mview_satisfaction_form_answers {}
 
