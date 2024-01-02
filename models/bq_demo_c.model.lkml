@@ -83,7 +83,9 @@ explore: google_ads_per_country {}
 
 explore: google_hotel_reconciliation {}
 
-explore: funnel_stats {}
+explore: funnel_stats {
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
+}
 
 explore: google_ads_campaign_data {}
 
