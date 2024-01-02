@@ -62,11 +62,7 @@ explore: board {}
 explore: call_agent {}
 
 explore: additional_service_comparation {
-  join: additional_services {
-    type: left_outer
-    relationship: one_to_one
-    sql_on: ${additional_service_comparation.identifier} = ${additional_services.identifier} ;;
-  }
+
 }
 
 explore: call_name_agent_extend {}
@@ -123,7 +119,13 @@ explore: mview_datos_reservas_6 {
 }
 
 explore: mview_comparation_bookings {
+  join: additional_services {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_comparation_bookings.identifier} = ${additional_services.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services.hotel_code}  ;;
+  }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+
 
 explore: mview_satisfaction_form_answers {}
 
