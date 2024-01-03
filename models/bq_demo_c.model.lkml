@@ -119,10 +119,10 @@ explore: mview_datos_reservas_6 {
 }
 
 explore: mview_comparation_bookings {
-  join: additional_services {
+  join: additional_services_consolidate {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${mview_comparation_bookings.identifier} = ${additional_services.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services.hotel_code}  ;;
+    sql_on: ${mview_comparation_bookings.identifier} = ${additional_services_consolidate.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services_consolidate.hotel_code}  ;;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
