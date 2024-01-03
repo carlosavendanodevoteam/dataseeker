@@ -77,6 +77,11 @@ view: additional_services_consolidate {
     sql: ${TABLE}.precio ;;
   }
 
+  dimension: converted_price {
+    type: number
+    sql: ${TABLE}.converted_price ;;
+  }
+
   dimension: raw_additional_service {
     type: string
     sql: ${TABLE}.raw_additional_service ;;
