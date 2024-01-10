@@ -25,8 +25,8 @@ datagroup: bq_demo_c_default_datagroup {
 
 explore: Busquedas_reservas {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${Busquedas_reservas.hotel_code} = ${encrypted_hotel_code.hotel_code} and ${Busquedas_reservas.hotel_code} = ${mview_busquedas.hotel_code};;
     }
   join: mview_busquedas {
@@ -46,16 +46,16 @@ explore: wihp_datos_reservas{
 
 explore: mview_comparation_bookings_by_start_date {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${mview_comparation_bookings_by_start_date.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}"  ;;}
 
 explore: mview_comparation_searches {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${mview_comparation_searches.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
@@ -96,8 +96,8 @@ explore: google_hotel_reconciliation {}
 
 explore: funnel_stats {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${funnel_stats.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
@@ -117,8 +117,8 @@ explore: mview_additional_services {}
 
 explore: mview_busquedas {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${mview_busquedas.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
@@ -138,8 +138,8 @@ explore: mview_precheckins {
 
 explore: mview_bookings_by_start_date {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${mview_bookings_by_start_date.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
