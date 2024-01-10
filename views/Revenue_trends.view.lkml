@@ -7,12 +7,12 @@ view: revenue_trends {
   }
 
   measure: last_7_days {
-    type: string
+    type: number
     sql: ${TABLE}.Revenue_7_days ;;
   }
 
   measure: last_14_days {
-    type: string
+    type: number
     sql: ${TABLE}.Revenue_14_days;;
   }
 }
