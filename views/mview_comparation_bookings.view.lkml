@@ -13,8 +13,7 @@ view: mview_comparation_bookings {
 
   dimension: account {
     type: string
-    sql: ${TABLE}.account
-      ;;
+    sql: ${TABLE}.account;;
   }
 
   dimension: additional_services {

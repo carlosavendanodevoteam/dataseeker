@@ -29,6 +29,11 @@ explore: Busquedas_reservas {
     relationship: many_to_one
     sql_on: ${Busquedas_reservas.hotel_code} = ${mview_busquedas.hotel_code} AND ${Busquedas_reservas.timestamp_date} = ${mview_busquedas.timestamp_date};;
   }
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${Busquedas_reservas.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
 }
 
 explore: wihp_datos_reservas{
@@ -40,9 +45,19 @@ explore: wihp_datos_reservas{
 }
 
 explore: mview_comparation_bookings_by_start_date {
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_comparation_bookings_by_start_date.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}"  ;;}
 
 explore: mview_comparation_searches {
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_comparation_searches.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: ratio_conversion {}
@@ -80,6 +95,11 @@ explore: google_ads_per_country {}
 explore: google_hotel_reconciliation {}
 
 explore: funnel_stats {
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${funnel_stats.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
 }
 
@@ -96,6 +116,11 @@ explore: hotel_revenue_target {}
 explore: mview_additional_services {}
 
 explore: mview_busquedas {
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_busquedas.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
 
 explore: mview_prebookings {}
@@ -112,9 +137,20 @@ explore: mview_precheckins {
 }
 
 explore: mview_bookings_by_start_date {
-  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_bookings_by_start_date.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
+}
 
 explore: mview_datos_reservas_6 {
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_datos_reservas_6.hotel_code} = ${encrypted_hotel_code.hotel_code};;
+  }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
 }
 
@@ -124,7 +160,13 @@ explore: mview_comparation_bookings {
     relationship: one_to_many
     sql_on: ${mview_comparation_bookings.identifier} = ${additional_services_consolidate.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services_consolidate.hotel_code}  ;;
   }
-  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;}
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${mview_comparation_bookings.hotel_code} = ${encrypted_hotel_code.hotel_code} ;;
+  }
+  sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
+}
 
 
 explore: mview_satisfaction_form_answers {}
@@ -190,5 +232,3 @@ explore: wi_hp_unique {}
 explore: revenue_forecast {}
 
 explore: revenue_forecast2 {}
-
-explore: ring2travel_calls_report {}
