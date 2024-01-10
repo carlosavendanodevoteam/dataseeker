@@ -6,12 +6,12 @@ view: revenue_trends {
     sql: ${TABLE}.hotel_code ;;
   }
 
-  measure: Revenue_7_days {
+  dimension: Revenue_7_days {
     type: number
     sql: ${TABLE}.Revenue_7_days ;;
   }
 
-  measure: Revenue_14_days {
+  dimension: Revenue_14_days {
     type: number
     sql: ${TABLE}.Revenue_14_days;;
   }
