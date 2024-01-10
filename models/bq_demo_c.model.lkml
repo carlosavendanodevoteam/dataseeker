@@ -232,3 +232,5 @@ explore: wi_hp_unique {}
 explore: revenue_forecast {}
 
 explore: revenue_forecast2 {}
+
+explore: revenue_trends {}
