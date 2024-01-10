@@ -24,15 +24,15 @@ datagroup: bq_demo_c_default_datagroup {
 # Each joined view also needs to define a primary key.
 
 explore: Busquedas_reservas {
+  join: encrypted_hotel_code {
+    type: left_outer
+    relationship: one_to_many
+    sql_on: ${Busquedas_reservas.hotel_code} = ${encrypted_hotel_code.hotel_code} and ${Busquedas_reservas.hotel_code} = ${mview_busquedas.hotel_code};;
+    }
   join: mview_busquedas {
     type: left_outer
     relationship: many_to_one
     sql_on: ${Busquedas_reservas.hotel_code} = ${mview_busquedas.hotel_code} AND ${Busquedas_reservas.timestamp_date} = ${mview_busquedas.timestamp_date};;
-  }
-  join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
-    sql_on: ${Busquedas_reservas.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
 }
 
@@ -147,8 +147,8 @@ explore: mview_bookings_by_start_date {
 
 explore: mview_datos_reservas_6 {
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${encrypted_hotel_code.hotel_code};;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
@@ -161,8 +161,8 @@ explore: mview_comparation_bookings {
     sql_on: ${mview_comparation_bookings.identifier} = ${additional_services_consolidate.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services_consolidate.hotel_code}  ;;
   }
   join: encrypted_hotel_code {
-    type: left_outer
-    relationship: one_to_many
+    type: inner
+    relationship: many_to_one
     sql_on: ${mview_comparation_bookings.hotel_code} = ${encrypted_hotel_code.hotel_code} ;;
   }
   sql_always_where: {{ _user_attributes['filter_by_hotel_code'] }} = False OR ${hotel_code} = "{{ _user_attributes['hotel_code'] }}" ;;
