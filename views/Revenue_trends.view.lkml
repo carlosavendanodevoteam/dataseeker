@@ -1,5 +1,5 @@
 view: revenue_trends {
-  sql_table_name: `bi_dataset.MVIEW_COMPARATION_BOOKING_BY_START_DATE` ;;
+  sql_table_name: `bi_dataset.Revenue_trends` ;;
 
   dimension: hotel_code {
     type: string
