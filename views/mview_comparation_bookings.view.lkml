@@ -674,7 +674,8 @@ view: mview_comparation_bookings {
 
   dimension: source_grouped {
     type:  string
-    sql:CASE
+    sql:${TABLE}.source_fixed
+        CASE
           WHEN CONTAINS_TEXT(agent, 'agente') and CONTAINS_TEXT(source_fixed, 'Callcenter') THEN  'Ring2travel'
           WHEN (NOT CONTAINS_TEXT(agent, 'agente')) and CONTAINS_TEXT(source_fixed, 'Callcenter') then 'Callseeker'
           ELSE 'WEB'
