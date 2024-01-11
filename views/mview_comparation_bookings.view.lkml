@@ -672,6 +672,15 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.last_year_booking ;;
   }
 
+  dimension: source_grouped {
+    type:  string
+    sql:CASE
+          WHEN CONTAINS_TEXT(agent, 'agente') and CONTAINS_TEXT(source_fixed, 'Callcenter') THEN  'Ring2travel'
+          WHEN (NOT CONTAINS_TEXT(agent, 'agente')) and CONTAINS_TEXT(source_fixed, 'Callcenter') then 'Callseeker'
+          ELSE 'WEB'
+        END;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
