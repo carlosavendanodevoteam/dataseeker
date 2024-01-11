@@ -9,5 +9,6 @@ view: encrypted_hotel_code {
   dimension: encrypted{
     type: string
     sql: ${TABLE}.encrypted ;;
+    suggestable: no
   }
 }
