@@ -23,6 +23,8 @@ datagroup: bq_demo_c_default_datagroup {
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
+explore: hotel_corporative_encrypted{}
+
 explore: Busquedas_reservas {
   join: encrypted_hotel_code {
     type: inner
@@ -160,6 +162,10 @@ explore: mview_comparation_bookings {
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings.hotel_code} = ${encrypted_hotel_code.hotel_code} ;;
   }
+  join: hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${hotel_corporative_encrypted.hotel_children} = ${encrypted_hotel_code.hotel_code} ;;}
 }
 
 
