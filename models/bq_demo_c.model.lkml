@@ -162,12 +162,14 @@ explore: mview_comparation_bookings {
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings.hotel_code} = ${encrypted_hotel_code.hotel_code} ;;
   }
+}
+
+explore: encrypted_hotel_code  {
   join: hotel_corporative_encrypted{
     type: inner
     relationship: many_to_one
     sql_on: ${hotel_corporative_encrypted.hotel_children} = ${encrypted_hotel_code.hotel_code} ;;}
 }
-
 
 explore: mview_satisfaction_form_answers {}
 
