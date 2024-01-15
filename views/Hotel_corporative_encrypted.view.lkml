@@ -11,16 +11,11 @@ view: hotel_corporative_encrypted {
 
   dimension: hotel_corporative {
     type: string
-    sql: ${TABLE}.hotel_parent ;;
+    sql: ${TABLE}.corporative_hotel_code ;;
   }
 
   dimension: hotel_code {
     type: string
-    sql:  ${TABLE}.hotel_children ;;
-  }
-
-  dimension: hotel_parent_encrypted {
-    type: string
-    sql: ${TABLE}.encrypt ;;
+    sql:  ${TABLE}.hotel_code ;;
   }
 }
