@@ -1,6 +1,6 @@
 view: hotel_corporative_encrypted {
 
-  sql_table_name: `bi_dataset.HOTEL_CORPORATIVE_ENCRYPTED` ;;
+  sql_table_name: `bi_dataset.VIEW_HOTEL_CORPORATIVE_ENCRYPTED`` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -18,4 +18,15 @@ view: hotel_corporative_encrypted {
     type: string
     sql:  ${TABLE}.hotel_code ;;
   }
+
+  dimension: hotel_code_encrypted {
+    type: string
+    sql:${TABLE}.hotel_code_encrypted ;;
+  }
+
+  dimension: corporative_hotel_code_encrypted {
+    type: string
+    sql: ${TABLE}.corporative_hotel_code_encrypted ;;
+  }
+
 }
