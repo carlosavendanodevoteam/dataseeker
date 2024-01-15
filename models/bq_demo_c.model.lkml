@@ -236,3 +236,5 @@ explore: revenue_forecast {}
 explore: revenue_forecast2 {}
 
 explore: revenue_trends {}
+
+explore: ring2travel_calls_report {}
