@@ -14,7 +14,7 @@ view: hotel_corporative_encrypted {
     sql: ${TABLE}.hotel_parent ;;
   }
 
-  dimension: hotel_children {
+  dimension: hotel_code {
     type: string
     sql:  ${TABLE}.hotel_children ;;
   }
