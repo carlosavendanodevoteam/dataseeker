@@ -1,13 +1,6 @@
 view: hotel_corporative_encrypted {
 
-  sql_table_name: `bi_dataset.VIEW_HOTEL_CORPORATIVE_ENCRYPTED`` ;;
-
-  # No primary key is defined for this view. In order to join this view in an Explore,
-  # define primary_key: yes on a dimension that has no repeated values.
-
-  # Here's what a typical dimension looks like in LookML.
-  # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Account" in Explore.
+  sql_table_name: `bi_dataset.VIEW_HOTEL_CORPORATIVE_ENCRYPTED` ;;
 
   dimension: hotel_corporative {
     type: string
