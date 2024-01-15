@@ -166,7 +166,7 @@ explore: mview_comparation_bookings {
 
 explore: encrypted_hotel_code  {
   join: hotel_corporative_encrypted{
-    type: inner
+    type: left_outer
     relationship: one_to_one
     sql_on: ${hotel_corporative_encrypted.hotel_code} = ${encrypted_hotel_code.hotel_code} ;;}
 }
