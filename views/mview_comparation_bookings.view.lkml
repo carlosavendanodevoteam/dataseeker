@@ -18,7 +18,7 @@ view: mview_comparation_bookings {
 
   dimension: uniques_accounts{
     type: string
-    sql: distinct regexp_split(${account}, ';');;
+    sql: distinct ${account};;
   }
 
   dimension: additional_services {
@@ -679,7 +679,7 @@ view: mview_comparation_bookings {
 
   dimension: source_grouped {
     type:  string
-    sql:${TABLE}.source_fixed
+    sql:
         CASE
           WHEN CONTAINS_TEXT(${TABLE}.agent, 'agente') and CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN  'Ring2travel'
           WHEN (NOT CONTAINS_TEXT(${TABLE}.agent, 'agente')) and CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') then 'Callseeker'
