@@ -16,6 +16,11 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.account;;
   }
 
+  dimension: uniques_accounts{
+    type: string
+    sql: distinct regexp_split(${account}, ';');;
+  }
+
   dimension: additional_services {
     type: string
     sql: ${TABLE}.additionalServices ;;
