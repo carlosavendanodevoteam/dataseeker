@@ -678,14 +678,14 @@ view: mview_comparation_bookings {
   }
 
   dimension: source_grouped {
-    type:  string
-    sql:
-        CASE
-          WHEN CONTAINS_TEXT(${TABLE}.agent, 'agente') and CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN  'Ring2travel'
-          WHEN (NOT CONTAINS_TEXT(${TABLE}.agent, 'agente')) and CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') then 'Callseeker'
-          ELSE 'WEB'
-        END;;
+    type: string
+    sql: CASE
+      WHEN CONTAINS_TEXT(${TABLE}.agent, 'agente') AND CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN 'Ring2travel'
+      WHEN NOT CONTAINS_TEXT(${TABLE}.agent, 'agente') AND CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN 'Callseeker'
+      ELSE 'WEB'
+    END ;;
   }
+
 
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
