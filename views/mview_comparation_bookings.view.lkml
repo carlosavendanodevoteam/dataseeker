@@ -680,10 +680,10 @@ view: mview_comparation_bookings {
   dimension: source_grouped {
     type: string
     sql: CASE
-      WHEN CONTAINS_TEXT(${TABLE}.agent, 'agente') AND CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN 'Ring2travel'
-      WHEN NOT CONTAINS_TEXT(${TABLE}.agent, 'agente') AND CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN 'Callseeker'
-      ELSE 'WEB'
-    END ;;
+          WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
+          WHEN ${TABLE}.agent NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
+          ELSE 'WEB'
+        END ;;
   }
 
 
