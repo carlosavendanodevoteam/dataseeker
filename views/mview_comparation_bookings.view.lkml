@@ -16,6 +16,11 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.account;;
   }
 
+  dimension: uniques_accounts{
+    type: string
+    sql: distinct ${account};;
+  }
+
   dimension: additional_services {
     type: string
     sql: ${TABLE}.additionalServices ;;
@@ -673,14 +678,14 @@ view: mview_comparation_bookings {
   }
 
   dimension: source_grouped {
-    type:  string
-    sql:${TABLE}.source_fixed
-        CASE
-          WHEN CONTAINS_TEXT(${TABLE}.agent, 'agente') and CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') THEN  'Ring2travel'
-          WHEN (NOT CONTAINS_TEXT(${TABLE}.agent, 'agente')) and CONTAINS_TEXT(${TABLE}.source_fixed, 'Callcenter') then 'Callseeker'
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
+          WHEN ${TABLE}.agent NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
           ELSE 'WEB'
-        END;;
+        END ;;
   }
+
 
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
