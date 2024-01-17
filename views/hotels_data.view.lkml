@@ -122,6 +122,17 @@ view: hotels_data {
     type: string
     sql: ${TABLE}.zone ;;
   }
+
+  dimension: web_budget {
+    type: number
+    sql: ${TABLE}.web_budget ;;
+  }
+
+  dimension: ring2travel_budget {
+    type: number
+    sql: ${TABLE}.ring2travel_budget ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [name]
