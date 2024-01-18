@@ -84,8 +84,18 @@ view: funnel_stats {
     type: number
     sql: ${TABLE}.visitas ;;
   }
+
   measure: count {
     type: count
   }
 
+  dimension: booking4 {
+    type: number
+    sql: ${TABLE}.booking4 ;;
+  }
+
+  dimension: booking4_gateway {
+    type: number
+    sql: ${TABLE}.booking4_gateway ;;
+  }
 }
