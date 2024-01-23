@@ -105,7 +105,13 @@ explore: funnel_stats {
 
 explore: google_ads_campaign_data {}
 
-explore: hotels_data {}
+explore: hotels_data {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${hotels_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: hotels {}
 
