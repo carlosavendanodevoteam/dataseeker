@@ -237,6 +237,12 @@ explore: revenue_forecast {}
 
 explore: revenue_forecast2 {}
 
-explore: revenue_trends {}
+explore: revenue_trends {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${revenue_trends.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: ring2travel_calls_report {}
