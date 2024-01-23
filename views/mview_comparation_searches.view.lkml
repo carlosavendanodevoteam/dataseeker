@@ -225,10 +225,7 @@ view: mview_comparation_searches {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: CASE
-        WHEN ${TABLE}.last_year_searches = 0 THEN CAST(${TABLE}.startDate AS timestamp)
-              ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY)
-      END ;;
+    sql: ${TABLE}.comparation_startDate ;;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
@@ -243,11 +240,7 @@ view: mview_comparation_searches {
 
   dimension_group: comparation_partitiontimestamp_without_future{
     type: time
-    sql: IF(${TABLE}.last_year_searches = 0, ${TABLE}.partitionTimestamp,
-      CASE
-        WHEN CAST(${TABLE}.partitionTimestamp AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE CAST(${TABLE}.partitionTimestamp AS timestamp)
-      END);;
+    sql: ${TABLE}.comparationPartitionTimestampWithoutFuture ;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
