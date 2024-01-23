@@ -27,7 +27,6 @@ view: hotel_corporative_encrypted {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
-    suggestable: no
   }
 
 }
