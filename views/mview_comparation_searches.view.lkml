@@ -138,7 +138,7 @@ view: mview_comparation_searches {
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.partition_timestamp ;;
+    sql: ${TABLE}.partitionTimestamp ;;
   }
 
   dimension: result {
