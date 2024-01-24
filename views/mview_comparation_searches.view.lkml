@@ -135,10 +135,10 @@ view: mview_comparation_searches {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: reference_timestamp {
+  dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.referenceTimestamp ;;
+    sql: ${TABLE}.partition_timestamp ;;
   }
 
   dimension: result {
