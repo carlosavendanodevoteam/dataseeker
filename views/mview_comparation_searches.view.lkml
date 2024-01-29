@@ -244,6 +244,11 @@ view: mview_comparation_searches {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
+  dimension: occupation {
+    type: string
+    sql: CONCAT(${adults1},'-',${kids1},'-',${babies1}) ;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
