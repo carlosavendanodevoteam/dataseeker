@@ -64,4 +64,10 @@ view: mview_satisfaction_form_analytics {
   measure: count {
     type: count
   }
+
+  measure: num_forms {
+    type:  count
+    drill_fields: [booking_id]
+  }
+
 }
