@@ -2,7 +2,7 @@
 view: satisfaction_form {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `bi_dataset.SATISFACTION_FORM` ;;
+  sql_table_name: `bi_dataset.COMPARATION_SATISFACTION_FORM` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -32,7 +32,9 @@ view: satisfaction_form {
 
   measure: total_rating {
     type: sum
-    sql: ${rating} ;;  }
+    sql: ${rating} ;;
+  }
+
   measure: average_rating {
     type: average
     sql: ${rating} ;;  }
@@ -49,6 +51,13 @@ view: satisfaction_form {
     type: string
     sql: ${TABLE}.timestamp_str ;;
   }
+
+  dimension_group: partition_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}.partition_timestamp ;;
+  }
+
   measure: count {
     type: count
   }

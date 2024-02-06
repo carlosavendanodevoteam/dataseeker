@@ -77,9 +77,7 @@ explore: board {}
 
 explore: call_agent {}
 
-explore: additional_service_comparation {
-
-}
+explore: additional_service_comparation {}
 
 explore: call_name_agent_extend {}
 
@@ -173,11 +171,23 @@ explore: mview_comparation_bookings {
 explore: encrypted_hotel_code  {}
 
 
-explore: mview_satisfaction_form_answers {}
+explore: mview_satisfaction_form_answers {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_satisfaction_form_answers.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: mview_satisfaction_form {}
 
-explore: mview_satisfaction_form_text_answers {}
+explore: mview_satisfaction_form_text_answers {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_satisfaction_form_text_answers.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: mview_satisfaction_form_analytics {}
 

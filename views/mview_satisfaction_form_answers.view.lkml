@@ -2,7 +2,7 @@
 view: mview_satisfaction_form_answers {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `bi_dataset.MVIEW_SATISFACTION_FORM_ANSWERS` ;;
+  sql_table_name: `bi_dataset.MVIEW_COMPARATION_SATISFACTION_FORM_ANSWERS` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -66,5 +66,10 @@ view: mview_satisfaction_form_answers {
   }
   measure: count {
     type: count
+  }
+
+  dimension: last_year_form {
+    type: number
+    sql: ${TABLE}.last_year_form ;;
   }
 }
