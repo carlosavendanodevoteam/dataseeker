@@ -51,13 +51,11 @@ view: mview_satisfaction_form_answers {
     type: number
     sql: ${TABLE}.row_num ;;
   }
-  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
-  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: timestamp {
+  dimension_group: partitionTimestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.timestamp ;;
+    sql: ${TABLE}.partitionTimestamp ;;
   }
 
   dimension: timestamp_str {
