@@ -72,4 +72,30 @@ view: mview_satisfaction_form_answers {
     type: number
     sql: ${TABLE}.last_year_form ;;
   }
+
+  dimension:  result_1{
+    type: number
+    sql: sum(if(answer_int = 1, 1, 0 ));;
+  }
+
+  dimension:  result_2{
+    type: number
+    sql: sum(if(answer_int = 2, 1, 0 ));;
+  }
+
+  dimension:  result_3{
+    type: number
+    sql: sum(if(answer_int = 3, 1, 0 ));;
+  }
+
+  dimension:  result_4{
+    type: number
+    sql: sum(if(answer_int = 4, 1, 0 ));;
+  }
+
+  dimension:  result_5{
+    type: number
+    sql: sum(if(answer_int = 5, 1, 0 ));;
+  }
+
 }
