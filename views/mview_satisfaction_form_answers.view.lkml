@@ -22,7 +22,9 @@ view: mview_satisfaction_form_answers {
 
   measure: total_answer_int {
     type: sum
-    sql: ${answer_int} ;;  }
+    sql: ${answer_int} ;;
+  }
+
   measure: average_answer_int {
     type: average
     sql: ${answer_int} ;;  }
