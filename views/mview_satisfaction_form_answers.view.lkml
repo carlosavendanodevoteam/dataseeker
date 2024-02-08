@@ -73,29 +73,36 @@ view: mview_satisfaction_form_answers {
     sql: ${TABLE}.last_year_form ;;
   }
 
-  dimension:  result_1{
+  dimension: result_1{
     type: number
     sql: if(answer_int = 1, 1, 0 );;
   }
 
-  dimension:  result_2{
+  dimension: result_2{
     type: number
     sql: if(answer_int = 2, 1, 0 );;
   }
 
-  dimension:  result_3{
+  dimension: result_3{
     type: number
     sql: if(answer_int = 3, 1, 0 );;
   }
 
-  dimension:  result_4{
+  dimension: result_4{
     type: number
     sql: if(answer_int = 4, 1, 0 );;
   }
 
-  dimension:  result_5{
+  dimension: result_5{
     type: number
     sql: if(answer_int = 5, 1, 0 );;
   }
 
+  dimension: recommend_yes {
+    type: number
+    sql: Case
+          when ${answer_raw} contains('si') then 1 else 0
+          when ${answer_raw} contains('no') then 1 else 0
+          else 1;;
+  }
 }
