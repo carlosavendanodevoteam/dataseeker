@@ -211,7 +211,13 @@ explore: rate {}
 
 explore: promotions_spanish {}
 
-explore: reservations_with_satisfaction_form {}
+explore: reservations_with_satisfaction_form {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${reservations_with_satisfaction_form.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: reservations_consolidate_2 {}
 
