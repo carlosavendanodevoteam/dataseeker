@@ -98,7 +98,7 @@ view: mview_satisfaction_form_answers {
     sql: if(answer_int = 5, 1, 0 );;
   }
 
-  dimension: recommend_yes {
+  dimension: recommend {
     type: number
     sql: Case
           when ${answer_raw} contains('si') then 1 else 0
