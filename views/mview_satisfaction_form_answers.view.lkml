@@ -100,9 +100,10 @@ view: mview_satisfaction_form_answers {
 
   dimension: recommend {
     type: number
-    sql: Case
-          when ${answer_raw} contains('si') then 1 else 0
-          when ${answer_raw} contains('no') then 1 else 0
-          else 1;;
+    sql: CASE
+      WHEN ${answer_raw} LIKE '%si%' THEN 1
+      WHEN ${answer_raw} LIKE '%no%' THEN 1
+      ELSE 0
+      END ;;
   }
 }
