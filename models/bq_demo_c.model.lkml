@@ -12,16 +12,15 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-# Explores allow you to join together different views (database tables) based on the
-# relationships between fields. By joining a view into an Explore, you make those
-# fields available to users for data analysis.
-# Explores should be purpose-built for specific use cases.
+explore: view_unique_hotel_corporative_encrypted {}
 
-# To see the Explore you’re building, navigate to the Explore menu and select an Explore under "Bq Demo C"
-
-# To create more sophisticated Explores that involve multiple views, you can use the join parameter.
-# Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
-# Each joined view also needs to define a primary key.
+explore:mview_comparation_unique_bookings {
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_comparation_unique_bookings.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: hotel_corporative_encrypted {}
 
