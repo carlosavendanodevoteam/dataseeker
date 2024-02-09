@@ -1,6 +1,6 @@
 view: view_unique_hotel_corporative_encrypted {
 
-  sql_table_name: `bi_dataset.view_unique_hotel_corporative_encrypted` ;;
+  sql_table_name: `bi_dataset.VIEW_UNIQUE_HOTEL_CORPORATIVE_ENCRYPTED` ;;
 
   dimension: corporative_hotel_code {
     type: string
