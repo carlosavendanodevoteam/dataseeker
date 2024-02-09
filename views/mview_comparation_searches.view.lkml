@@ -514,5 +514,9 @@ view: mview_comparation_searches {
       ELSE ${country}
     END ;;
   }
+  measure: sumatoria {
+    type: number
+    sql: ${OK}+${Restrictions} ;;
+  }
 
 }
