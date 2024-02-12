@@ -252,8 +252,8 @@ view: mview_comparation_searches {
   dimension: source_grouped {
     type: string
     sql: CASE
-          WHEN ${TABLE}.agent_id LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
-          WHEN ${TABLE}.agent_id NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
+          WHEN ${TABLE}.agentId LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
+          WHEN ${TABLE}.agentId NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
           ELSE 'WEB'
         END ;;
   }
