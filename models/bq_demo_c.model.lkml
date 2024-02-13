@@ -12,8 +12,6 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-explore: logo_paraty {}
-
 explore: view_unique_hotel_corporative_encrypted {}
 
 explore:mview_comparation_unique_bookings {
