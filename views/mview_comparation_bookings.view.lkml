@@ -387,6 +387,11 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.Promo ;;
   }
 
+  dimension: promo2 {
+    type: string
+    sql: ${TABLE}.Promo2 ;;
+  }
+
   dimension: promocode {
     type: string
     sql: ${TABLE}.promocode ;;
