@@ -693,14 +693,12 @@ view: mview_comparation_bookings {
 
   dimension: source_grouped_by_hotel{
     type: string
-    sql: CASE
-          WHEN ${source_grouped}.Ring2travel THEN ${hotel_code} as 'Ring2travel'
-          WHEN ${source_grouped}.Callseeker THEN ${hotel_code} as 'Callseeker'
+    sql:CASE
+          WHEN ${source_grouped}.Ring2travel is not null THEN ${hotel_code} as 'Ring2travel'
+          WHEN ${source_grouped}.Callseeker is not null THEN ${hotel_code} as 'Callseeker'
           ELSE ${hotel_code} as 'WEB'
         END ;;
   }
-
-
 
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
