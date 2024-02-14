@@ -691,16 +691,6 @@ view: mview_comparation_bookings {
         END ;;
   }
 
-  dimension: source_grouped_by_hotel {
-    type: string
-    sql: CASE
-          WHEN ${source_grouped} = 'Ring2travel' THEN ${hotel_code}
-          WHEN ${source_grouped} = 'Callseeker' THEN ${hotel_code}
-          ELSE ${hotel_code}
-        END ;;
-  }
-
-
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
