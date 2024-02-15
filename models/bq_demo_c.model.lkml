@@ -51,6 +51,11 @@ explore: mview_comparation_bookings_by_start_date {
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings_by_start_date.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_comparation_bookings_by_start_date.hotel_code} = ${hotels_data.hotel_code};;
+  }
 }
 
 explore: mview_comparation_searches {
