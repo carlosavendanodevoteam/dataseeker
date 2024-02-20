@@ -141,6 +141,4 @@ view: rescue_seeker_log {
     type: string
     sql: concat(${num_adults}, ' - ', ${num_kids});;
   }
-
-
 }
