@@ -134,12 +134,12 @@ view: rescue_seeker_log {
 
   dimension: entrada_salida {
     type: string
-    sql: CONCAT(${date_from}, '-', ${date_to}) ;;
+    sql: CONCAT(${date_from}, ' - ', ${date_to}) ;;
   }
 
   dimension: ocupacion {
     type: string
-    sql: concat(${num_adults}, '-', ${num_kids});;
+    sql: concat(${num_adults}, ' - ', ${num_kids});;
   }
 
 }
