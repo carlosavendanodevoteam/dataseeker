@@ -101,7 +101,10 @@ view: funnel_stats {
 
   dimension: booking4_gateway_true {
     type: yesno
-    sql: if (COUNT_DISTINCT(${TABLE}.booking4_gateway) > 0, true, false) ;;
+    sql: CASE
+          WHEN COUNT(${TABLE}.booking4_gateway) > 0 THEN true
+          ELSE false
+        END ;;
   }
 
 }
