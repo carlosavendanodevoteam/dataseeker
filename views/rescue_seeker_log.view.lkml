@@ -22,7 +22,7 @@ view: rescue_seeker_log {
   }
 
   dimension: booking_price {
-    type: string
+    type: number
     sql: ${TABLE}.booking_price ;;
   }
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
