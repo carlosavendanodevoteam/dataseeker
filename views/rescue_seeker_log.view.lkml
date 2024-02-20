@@ -142,9 +142,5 @@ view: rescue_seeker_log {
     sql: concat(${num_adults}, ' - ', ${num_kids});;
   }
 
-  dimension: booking_done {
-    type: number
-    sql: if(${booking_id} is not null, 1, 0) ;;
-  }
 
 }
