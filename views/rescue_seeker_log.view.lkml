@@ -144,7 +144,7 @@ view: rescue_seeker_log {
 
   dimension: booking_done {
     type: number
-    sql: if ;;
+    sql: if(${booking_id} is not null, 1, 0) ;;
   }
 
 }
