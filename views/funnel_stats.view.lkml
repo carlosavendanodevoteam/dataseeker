@@ -98,4 +98,10 @@ view: funnel_stats {
     type: number
     sql: ${TABLE}.booking4_gateway ;;
   }
+
+  dimension: booking4_gateway_true {
+    type: yesno
+    sql: if (count ${TABLE}.booking4_gateway > 0, true, False) ;;
+  }
+
 }
