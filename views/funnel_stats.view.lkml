@@ -99,9 +99,4 @@ view: funnel_stats {
     sql: ${TABLE}.booking4_gateway ;;
   }
 
-  dimension: booking4_gateway_true {
-    type: number
-    sql: COUNT(${TABLE}.booking4_gateway);;
-  }
-
 }
