@@ -139,7 +139,7 @@ view: rescue_seeker_log {
 
   dimension: ocupacion {
     type: string
-    sql: concat(${num_adults}, '-', ${num_kids};;
+    sql: concat(${num_adults}, '-', ${num_kids});;
   }
 
 }
