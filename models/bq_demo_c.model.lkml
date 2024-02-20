@@ -12,7 +12,13 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-explore: rescue_seeker_log {}
+explore: rescue_seeker_log {
+  join:  view_unique_hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${rescue_seeker_log.user} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: view_unique_hotel_corporative_encrypted {}
 
