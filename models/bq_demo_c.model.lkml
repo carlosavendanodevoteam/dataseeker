@@ -279,3 +279,5 @@ explore: revenue_trends {
 }
 
 explore: ring2travel_calls_report {}
+
+explore: ratecheck_log {}
