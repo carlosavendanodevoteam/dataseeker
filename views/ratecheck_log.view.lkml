@@ -79,7 +79,7 @@ view: ratecheck_log {
     sql: ${TABLE}.parity_maker_displayed ;;
   }
 
-  dimension: price_seeker_adults {
+  dimension: num_adults {
     type: string
     sql: ${TABLE}.price_seeker_adults ;;
   }
@@ -89,12 +89,24 @@ view: ratecheck_log {
     sql: ${TABLE}.price_seeker_date_from ;;
   }
 
+  dimension_group: date_from {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}.price_seeker_date_from ;;
+  }
+
+  dimension_group: date_to {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}.price_seeker_date_to ;;
+  }
+
   dimension: price_seeker_date_to {
     type: string
     sql: ${TABLE}.price_seeker_date_to ;;
   }
 
-  dimension: price_seeker_kids {
+  dimension: num_kids {
     type: string
     sql: ${TABLE}.price_seeker_kids ;;
   }
@@ -121,4 +133,15 @@ view: ratecheck_log {
   measure: count {
     type: count
   }
+
+  dimension: entrada_salida {
+    type: string
+    sql: CONCAT(${price_seeker_date_to}, ' - ', ${price_seeker_date_to}) ;;
+  }
+
+  dimension: ocupacion {
+    type: string
+    sql: concat(${num_adults}, ' - ', ${num_kids});;
+  }
+
 }
