@@ -152,9 +152,9 @@ view: rescue_seeker_log {
     sql: if(${email} is not null, 1, 0) ;;
   }
 
-  dimension: sum_mail {
-    type: number
-    sql: sum(${mail_not_null} ;;
-  }
 
+  dimension: sent_total {
+    type: string
+    sql: CONCAT(${mail_sent}, '/', ${mail_not_null}) ;;
+  }
 }
