@@ -147,18 +147,24 @@ view: rescue_seeker_log {
     sql: if(${email_booking_sent} = True, 1, 0) ;;
   }
 
-  dimension: mail_not_null {
-    type: number
-    sql: if(${email} is not null, 1, 0) ;;
+  measure: emails_enviados {
+    type: count_distinct
+    sql: ${email} ;;
+    # Cuenta los correos electrónicos enviados (no nulos)
+    filters: {
+      field: mail_sent
+      value: "1"
+    }
   }
 
-  dimension: sum_mail {
-    type: number
-    sql: sum(${mail_not_null}) ;;
+  measure: emails_no_enviados {
+    type: count_distinct
+    sql: ${email} ;;
+    # Cuenta los correos electrónicos no enviados (nulos)
+    filters: {
+      field: mail_sent
+      value: "0"
+    }
   }
 
-  dimension: sent_total {
-    type: string
-    sql: CONCAT(${mail_sent}, '/', ${mail_not_null}) ;;
-  }
 }
