@@ -281,9 +281,15 @@ explore: revenue_trends {
 explore: ring2travel_calls_report {}
 
 explore: ratecheck_log {
+  join: mview_datos_reservas_6 {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${ratecheck_log.booking_id} = ${mview_datos_reservas_6.identifier} ;;
+  }
   join:  view_unique_hotel_corporative_encrypted{
     type: inner
     relationship: many_to_one
     sql_on: ${ratecheck_log.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
+
 }
