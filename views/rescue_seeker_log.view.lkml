@@ -141,4 +141,19 @@ view: rescue_seeker_log {
     type: string
     sql: concat(${num_adults}, ' - ', ${num_kids}, ' - ', ${num_babies});;
   }
+
+  dimension: mail_sent {
+    type: number
+    sql: if(${email_booking_sent} = True, 1, 0) ;;
+  }
+
+  dimension: mail_not_null {
+    type: number
+    sql: if(${email} is not null, 1, 0) ;;
+  }
+
+  dimension: sent_total {
+    type: string
+    sql: CONCAT(${mail_sent}, '/', ${mail_not_null}) ;;
+  }
 }
