@@ -50,7 +50,7 @@ view: ratecheck_log {
   }
 
   dimension: hotel_lower_price {
-    type: string
+    type: number
     sql: ${TABLE}.hotel_lower_price ;;
   }
 
@@ -70,7 +70,7 @@ view: ratecheck_log {
   }
 
   dimension: ota_lower_price {
-    type: string
+    type: number
     sql: ${TABLE}.ota_lower_price ;;
   }
 
