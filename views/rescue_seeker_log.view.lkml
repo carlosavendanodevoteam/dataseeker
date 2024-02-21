@@ -144,14 +144,13 @@ view: rescue_seeker_log {
 
   dimension: mail_sent {
     type: number
-    sql: if(${email_booking_sent} = True, 1, 0) ;;
+    sql: if(${email_booking_sent} = True, "Enviado", "No Enviado") ;;
   }
 
   dimension: mail_not_null {
     type: number
     sql: if(${email} is not null, 1, 0) ;;
   }
-
 
   dimension: sent_total {
     type: string
