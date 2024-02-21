@@ -144,4 +144,8 @@ view: ratecheck_log {
     sql: concat(${num_adults}, ' - ', ${num_kids});;
   }
 
+  dimension: ota {
+    type: string
+    sql: concat(${ota_lower_price}, '\n', ${ota_lower});;
+  }
 }
