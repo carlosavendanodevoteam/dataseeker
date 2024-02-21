@@ -149,7 +149,12 @@ view: rescue_seeker_log {
 
   dimension: mail_not_null {
     type: number
-    sql: ${email} IS NOT NULL ;;
+    sql: if(${email} is not null, 1, 0) ;;
+  }
+
+  dimension: sum_mail {
+    type: number
+    sql: sum(${mail_not_null}) ;;
   }
 
   dimension: sent_total {
