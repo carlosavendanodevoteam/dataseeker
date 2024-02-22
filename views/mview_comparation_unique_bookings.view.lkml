@@ -679,7 +679,7 @@ view: mview_comparation_unique_bookings {
   dimension: source_grouped {
     type: string
     sql: CASE
-          WHEN (agent LIKE '%agente%' OR agent LIKE '%-nau%') AND source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
+          WHEN (agent not LIKE '%agente%' OR agent LIKE '%-nau%') AND source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
           WHEN source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
           ELSE 'WEB'
          END ;;
