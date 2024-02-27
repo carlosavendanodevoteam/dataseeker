@@ -895,4 +895,23 @@ view: events__items__item_params {
     group_label: "Value"
     group_item_label: "String Value"
   }
+
+  dimension: budget_by_month {
+    type: string
+    sql: Case
+          when ${partition.month} = 1 then "0"
+          when ${partition.month} = 2 then "0"
+          when ${partition.month} = 3 then "0"
+          when ${partition.month} = 4 then "0"
+          when ${partition.month} = 5 then "0"
+          when ${partition.month} = 6 then "0"
+          when ${partition.month} = 7 then "0"
+          when ${partition.month} = 8 then "0"
+          when ${partition.month} = 9 then "0"
+          when ${partition.month} = 10 then "0"
+          when ${partition.month} = 11 then "0"
+          else "0"
+        End;;
+  }
+
 }
