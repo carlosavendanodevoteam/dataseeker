@@ -154,8 +154,9 @@ view: mview_comparation_bookings_by_start_date {
     sql: ${TABLE}.currency ;;
   }
 
-  dimension: day {
-    type: string
+  dimension_group: day {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.day ;;
   }
 
@@ -608,14 +609,14 @@ view: mview_comparation_bookings_by_start_date {
   dimension_group:comparation_startDatetime_with_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
-       TIMESTAMP_ADD(${TABLE}.partitionTimestamp , INTERVAL 365 DAY));;
+      TIMESTAMP_ADD(${TABLE}.partitionTimestamp , INTERVAL 365 DAY));;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
-    dimension: full_country {
-      # Nueva dimensión para los nombres completos de los países
-      type: string
-      sql: CASE
+  dimension: full_country {
+    # Nueva dimensión para los nombres completos de los países
+    type: string
+    sql: CASE
               WHEN ${country} = 'ES' THEN ' Spain'
               WHEN ${country} = 'CN' THEN 'China'
               WHEN ${country} = 'TR' THEN 'Turkey'
@@ -876,6 +877,6 @@ view: mview_comparation_bookings_by_start_date {
               WHEN ${country} = 'MP' THEN 'Northern Mariana Islands'
               ELSE ${country}
             END ;;
-    }
+  }
 
 }
