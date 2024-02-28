@@ -157,7 +157,7 @@ view: mview_comparation_bookings_by_start_date {
   dimension_group: day {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: CAST(${TABLE}.day as date) ;;
+    sql: CAST(${TABLE}.day AS timestamp) ;;
   }
 
   dimension: encrypted {
