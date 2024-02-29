@@ -51,6 +51,11 @@ explore: wihp_datos_reservas{
     relationship: many_to_many
     sql_on: ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code} ;;
   }
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${wihp_datos_reservas.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
 }
 
 explore: mview_comparation_bookings_by_start_date {
