@@ -269,7 +269,13 @@ explore: view_datos_reservas_4 {}
 
 explore: user_rescue {}
 
-explore: wi_hp_unique {}
+explore: wi_hp_unique {
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${wi_hp_unique.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: revenue_forecast {}
 
