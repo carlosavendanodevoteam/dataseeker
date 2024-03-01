@@ -132,6 +132,15 @@ view: hotels_data {
         END ;;
   }
 
+  dimension: zone_fixed_filter {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.zone = '' THEN ${city}
+          ELSE ${zone}
+        END ;;
+  }
+
+
   dimension: web_budget {
     type: number
     sql: ${TABLE}.web_budget ;;
