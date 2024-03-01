@@ -127,6 +127,7 @@ view: hotels_data {
     type: string
     sql: Case
           when ${TABLE}.zone= '' THEN ${city}
+          when ${city} not in ${TABLE}.zone Then CONCAT(${city}' ' ${TABLE}.zone)
           else ${zone}
         End;;
   }
