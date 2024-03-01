@@ -125,11 +125,11 @@ view: hotels_data {
 
   dimension: zone_fixed {
     type: string
-    sql: Case
-          when ${TABLE}.zone= '' THEN ${city}
-          when ${city} not in ${TABLE}.zone Then CONCAT(${city}' ' ${TABLE}.zone)
-          else ${zone}
-        End;;
+    sql: CASE
+          WHEN ${TABLE}.zone = '' THEN ${city}
+          WHEN ${city} NOT IN (${TABLE}.zone) THEN CONCAT(${city}, ' ', ${TABLE}.zone)
+          ELSE ${zone}
+        END ;;
   }
 
   dimension: web_budget {
