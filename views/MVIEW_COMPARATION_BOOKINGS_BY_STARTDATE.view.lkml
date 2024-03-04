@@ -586,7 +586,6 @@ view: mview_comparation_bookings_by_start_date {
         End;;
   }
 
-
   dimension_group: partition_timestamp{
     type: time
     sql: ${TABLE}.partitionTimestamp;;
