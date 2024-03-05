@@ -60,7 +60,7 @@ view: ClickUp_task {
   dimension_group: start_date {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.start_date ;;
+    sql:  CAST(${TABLE}.start_date as date) ;;
   }
 
   dimension: status {
