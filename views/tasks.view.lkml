@@ -57,8 +57,9 @@ view: ClickUp_task {
     sql: ${TABLE}.name ;;
   }
 
-  dimension: start_date {
-    type: string
+  dimension_group: start_date {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.start_date ;;
   }
 
