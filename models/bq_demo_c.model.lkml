@@ -304,3 +304,16 @@ explore: ratecheck_log {
   }
 
 }
+
+explore: tasks {
+  join: tracking {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${tasks.task_id} = ${tracking.task_id}  ;;
+  }
+  join: users {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${tasks.user_id} = ${users.user_id};;
+  }
+}
