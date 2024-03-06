@@ -95,6 +95,15 @@ view: events {
     group_item_label: "Manual Source"
   }
 
+  dimension: collected_traffic_source__manual_source_fixed {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.collected_traffic_source.manual_source IN ('google', 'GoogleHPA') THEN 'Google'
+          when ${TABLE}.collected_traffic_source.manual_source IN ('instagram', 'facebook','m.facebook.com','l.instagram.com','l.facebook.com','instagram.com','lm.facebook.com','facebook.com') THEN 'Facebook'
+          ELSE 'others'
+        End;;
+    }
+
   dimension: collected_traffic_source__manual_term {
     type: string
     sql: ${TABLE}.collected_traffic_source.manual_term ;;
