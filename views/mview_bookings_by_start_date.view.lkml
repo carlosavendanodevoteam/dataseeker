@@ -404,7 +404,7 @@ view: mview_bookings_by_start_date {
   dimension_group: reference_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.referenceTimestamp ;;
+    sql:CAST( ${TABLE}.referenceTimestamp as timestamp);;
   }
 
   dimension: regimen {
