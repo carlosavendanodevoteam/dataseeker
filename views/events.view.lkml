@@ -330,8 +330,9 @@ view: events {
     sql: ${TABLE}.event_bundle_sequence_id ;;
   }
 
-  dimension: event_date {
-    type: string
+  dimension_group: event_date {
+    type: time
+    timeframes: [date, month, month_name, year, raw]
     sql: ${TABLE}.event_date ;;
   }
 
