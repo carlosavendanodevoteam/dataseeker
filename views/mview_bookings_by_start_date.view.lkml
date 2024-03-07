@@ -401,8 +401,9 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.RateName ;;
   }
 
-  dimension: reference_timestamp {
-    type: string
+  dimension_group: reference_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.referenceTimestamp ;;
   }
 
