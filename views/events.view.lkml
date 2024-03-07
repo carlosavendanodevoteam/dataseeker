@@ -98,6 +98,7 @@ view: events {
   dimension: collected_traffic_source__manual_source_fixed {
     type: string
     sql: CASE
+          WHEN ${TABLE}.collected_traffic_source.manual_source IN ('google', 'GoogleHPA') THEN 'Google'
           WHEN ${TABLE}.collected_traffic_source.manual_source IN ('instagram', 'l.instagram.com', 'instagram.com', 'facebook-instagram') THEN 'Instagram'
           when ${TABLE}.collected_traffic_source.manual_source IN ( 'facebook','m.facebook.com','l.facebook.com','lm.facebook.com','facebook.com') THEN 'Facebook'
           ELSE 'others'
