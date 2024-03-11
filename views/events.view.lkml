@@ -423,6 +423,11 @@ view: events {
     sql: ${TABLE}.hotel_code ;;
   }
 
+  dimension: hotel_code_corporative {
+    type: string
+    sql: ${TABLE}.hotel_code_corporative ;;
+  }
+
   dimension: is_active_user {
     type: yesno
     sql: ${TABLE}.is_active_user ;;
