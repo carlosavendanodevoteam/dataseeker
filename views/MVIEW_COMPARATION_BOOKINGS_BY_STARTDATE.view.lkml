@@ -610,10 +610,11 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension_group: comparation_referenceTimestamp{
     type: time
-    sql:  CASE
+    sql: IF(${TABLE}.last_year_booking = 0, CAST(${TABLE}.day AS timestamp) ,
+      CASE
         WHEN TIMESTAMP_ADD(CAST(${TABLE}.day AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
         ELSE TIMESTAMP_ADD(CAST(${TABLE}.day AS timestamp), INTERVAL 365 DAY)
-      END ;;
+      END );;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
