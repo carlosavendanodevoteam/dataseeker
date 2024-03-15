@@ -614,6 +614,7 @@ view: mview_comparation_bookings_by_start_date {
         WHEN TIMESTAMP_ADD(CAST(${TABLE}.day AS timestamp), INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
         ELSE TIMESTAMP_ADD(CAST(${TABLE}.day AS timestamp), INTERVAL 365 DAY)
       END ;;
+    timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension: last_year_booking {
