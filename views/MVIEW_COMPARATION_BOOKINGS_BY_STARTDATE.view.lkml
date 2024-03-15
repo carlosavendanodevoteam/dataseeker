@@ -608,6 +608,14 @@ view: mview_comparation_bookings_by_start_date {
       END ;;
   }
 
+  dimension_group: comparation_referenceTimestamp{
+    type: time
+    sql:  CASE
+        WHEN TIMESTAMP_ADD(${TABLE}.reference_timestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE TIMESTAMP_ADD(${TABLE}.reference_timestamp, INTERVAL 365 DAY)
+      END ;;
+  }
+
   dimension: last_year_booking {
     type: number
     sql: ${TABLE}.last_year_booking ;;
