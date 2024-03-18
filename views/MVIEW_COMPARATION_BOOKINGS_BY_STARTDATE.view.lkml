@@ -159,6 +159,11 @@ view: mview_comparation_bookings_by_start_date {
     sql: ${TABLE}.day ;;
   }
 
+  dimension: device {
+    type: string
+    sql: ${TABLE}.device ;;
+  }
+
   dimension: encrypted {
     type: string
     sql: ${TABLE}.encrypted ;;
