@@ -51,6 +51,11 @@ explore: wihp_datos_reservas{
     relationship: many_to_many
     sql_on: ${wihp_datos_reservas.hotel_code} = ${mview_datos_reservas_6.hotel_code} ;;
   }
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${wihp_datos_reservas.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
 }
 
 explore: mview_comparation_bookings_by_start_date {
@@ -264,7 +269,13 @@ explore: view_datos_reservas_4 {}
 
 explore: user_rescue {}
 
-explore: wi_hp_unique {}
+explore: wi_hp_unique {
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${wi_hp_unique.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: revenue_forecast {}
 
@@ -292,4 +303,17 @@ explore: ratecheck_log {
     sql_on: ${ratecheck_log.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
 
+}
+
+explore: ClickUp_task {
+  join: tracking {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${ClickUp_task.task_id} = ${tracking.task_id}  ;;
+  }
+  join: users {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${ClickUp_task.user_id} = ${users.user_id};;
+  }
 }

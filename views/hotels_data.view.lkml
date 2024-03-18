@@ -123,14 +123,6 @@ view: hotels_data {
     sql: ${TABLE}.zone ;;
   }
 
-  dimension: zone_fixed {
-    type: string
-    sql: Case
-          when ${TABLE}.zone= '' THEN ${city}
-          else ${zone}
-        End;;
-  }
-
   dimension: web_budget {
     type: number
     sql: ${TABLE}.web_budget ;;
