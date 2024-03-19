@@ -650,11 +650,6 @@ view: mview_comparation_bookings_by_start_date {
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
-  dimension: device {
-    type: string
-    sql: ${TABLE}.device ;;
-  }
-
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
