@@ -122,6 +122,7 @@ view: mview_datos_reservas_6 {
       WHEN ${cancellation_reason} = 'He encontrado un precio más barato para su hotel' THEN 'I have found a cheaper price for your hotel'
       WHEN ${cancellation_reason} = 'Hice otras reservas y quiero anular las que no necesito' THEN 'I´ve made other reservations and I want to cancel the ones I don´t need'
       WHEN ${cancellation_reason} = 'Je ne pourrai pas voyager pour des raisons professionnelles' THEN 'I will not be able to travel for work reasons'
+      WHEN ${cancellation_reason} = 'Je vais voyager vers une autre destination' THEN 'I will travel to another destination'
       ELSE ${cancellation_reason}
     END ;;
   }
