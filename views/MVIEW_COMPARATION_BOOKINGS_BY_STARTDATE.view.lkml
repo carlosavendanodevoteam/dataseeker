@@ -382,7 +382,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: promocode {
     type: string
-    sql: ${TABLE}.promocode ;;
+    sql: UPPER(${TABLE}.promocode);;
   }
 
   dimension: promotions {
@@ -608,6 +608,11 @@ view: mview_comparation_bookings_by_start_date {
       END ;;
   }
 
+  dimension: last_year_booking {
+    type: number
+    sql: ${TABLE}.last_year_booking ;;
+  }
+
   dimension_group: comparation_referenceTimestamp{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, CAST(${TABLE}.day AS timestamp) ,
@@ -616,11 +621,6 @@ view: mview_comparation_bookings_by_start_date {
         ELSE TIMESTAMP_ADD(CAST(${TABLE}.day AS timestamp), INTERVAL 365 DAY)
       END );;
     timeframes: [raw, time, date, week, month, quarter, year]
-  }
-
-  dimension: last_year_booking {
-    type: number
-    sql: ${TABLE}.last_year_booking ;;
   }
 
   dimension: advance{
