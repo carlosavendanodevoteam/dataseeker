@@ -106,6 +106,27 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.cancellation_reason ;;
   }
 
+  dimension: cancellation_reason_grouped {
+    type: string
+    sql: CASE
+      WHEN ${cancellation_reason} = 'No viajaré' THEN 'I will not be traveling'
+      WHEN ${cancellation_reason} = 'He hecho otra reserva con algún cambio' THEN 'I have made another booking with a modification'
+      WHEN ${cancellation_reason} = 'I have made another reservation with some changes' THEN 'I have made another booking with a modification'
+      WHEN ${cancellation_reason} = 'No podré viajar por motivos personales' THEN 'I will not be able to travel for personal reasons'
+      WHEN ${cancellation_reason} = 'Voy a reservar otro hotel' THEN 'I will book another hotel'
+      WHEN ${cancellation_reason} = 'motivos personales' THEN 'I will not be able to travel for personal reasons'
+      WHEN ${cancellation_reason} = 'Otros' THEN 'Other'
+      WHEN ${cancellation_reason} = 'No podré viajar por motivos laborales' THEN 'I will not be able to travel for work reasons'
+      WHEN ${cancellation_reason} = 'POR MOTIVOS PERSONALES' THEN 'I will not be able to travel for personal reasons'
+      WHEN ${cancellation_reason} = 'Voy a viajar a otro destino' THEN 'I will travel to another destination'
+      WHEN ${cancellation_reason} = 'He encontrado un precio más barato para su hotel' THEN 'I have found a cheaper price for your hotel'
+      WHEN ${cancellation_reason} = 'Hice otras reservas y quiero anular las que no necesito' THEN 'I´ve made other reservations and I want to cancel the ones I don´t need'
+      WHEN ${cancellation_reason} = 'Je ne pourrai pas voyager pour des raisons professionnelles' THEN 'I will not be able to travel for work reasons'
+      WHEN ${cancellation_reason} = 'Je vais voyager vers une autre destination' THEN 'I will travel to another destination'
+      ELSE ${cancellation_reason}
+    END ;;
+  }
+
   dimension: cancellation_timestamp {
     type: string
     sql: ${TABLE}.cancellationTimestamp ;;

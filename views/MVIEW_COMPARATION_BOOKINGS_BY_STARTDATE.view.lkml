@@ -160,6 +160,11 @@ view: mview_comparation_bookings_by_start_date {
     sql: CAST(${TABLE}.day AS timestamp) ;;
   }
 
+  dimension: device {
+    type: string
+    sql: ${TABLE}.device ;;
+  }
+
   dimension: encrypted {
     type: string
     sql: ${TABLE}.encrypted ;;
@@ -643,11 +648,6 @@ view: mview_comparation_bookings_by_start_date {
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
       TIMESTAMP_ADD(${TABLE}.partitionTimestamp , INTERVAL 365 DAY));;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
-  }
-
-  dimension: device {
-    type: string
-    sql: ${TABLE}.device ;;
   }
 
   dimension: full_country {
