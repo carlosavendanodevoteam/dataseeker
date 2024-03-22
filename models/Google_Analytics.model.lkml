@@ -5,6 +5,8 @@ include: "/views/*.view.lkml"
 
 explore: events{}
 
+explore:  parkroyal_costs {}
+
 explore: bookings_google_analytics {
   join:  parkroyal_costs{
     type:left_outer
@@ -12,5 +14,3 @@ explore: bookings_google_analytics {
     sql_on: ${bookings_google_analytics.hotel_code} = ${parkroyal_costs.hotel_code};;
   }
 }
-
-explore:  parkroyal_costs {}
