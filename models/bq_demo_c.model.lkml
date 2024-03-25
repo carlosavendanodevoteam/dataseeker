@@ -317,3 +317,5 @@ explore: ClickUp_task {
     sql_on: ${ClickUp_task.user_id} = ${users.user_id};;
   }
 }
+
+explore: parkroyal_2024budget_fixed {}
