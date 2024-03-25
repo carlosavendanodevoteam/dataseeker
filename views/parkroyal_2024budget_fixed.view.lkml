@@ -2,7 +2,7 @@
 view: parkroyal_2024budget_fixed {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `ga-bigquery-storage.costs.parkroyal_2024budget_fixed` ;;
+  sql_table_name: `analysis-seeker.bi_dataset.parkroyal_2024budget_fixed` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -39,22 +39,22 @@ view: parkroyal_2024budget_fixed {
 
   dimension: ingresos_mxn {
     type: number
-    sql: ${TABLE}.ingresos_MXN ;;
+    sql: ${TABLE}.Ingresos_MXN ;;
   }
 
   dimension: ingresos_usd {
     type: number
-    sql: ${TABLE}.ingresos_USD ;;
+    sql: ${TABLE}.Ingresos_USD ;;
   }
 
   dimension: inversion_mxn {
     type: number
-    sql: ${TABLE}.inversion_MXN ;;
+    sql: ${TABLE}.Inversion_MXN ;;
   }
 
   dimension: inversion_usd {
     type: number
-    sql: ${TABLE}.inversion_USD ;;
+    sql: ${TABLE}.Inversion_USD ;;
   }
 
   dimension: month {
@@ -87,7 +87,5 @@ view: parkroyal_2024budget_fixed {
           else "Dec"
         End;;
   }
-
-
 
 }
