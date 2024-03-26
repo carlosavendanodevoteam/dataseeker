@@ -18,8 +18,8 @@ view: tracking {
     # This dimension will be called "Duration" in Explore.
 
   dimension: duration {
-    type: number
-    sql: ${TABLE}.duration / (1000 * 3600);;
+    type: string
+    sql: ${TABLE}.duration;;
   }
 
   dimension: end_date {
