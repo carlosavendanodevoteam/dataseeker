@@ -4,18 +4,12 @@ include: "/views/*.view.lkml"
 
 explore: Ga_hotel_corporative_encrypted {}
 
-explore: events{
-  join: Ga_hotel_corporative_encrypted {
-   type: left_outer
-    relationship: many_to_one
-    sql_on: ${events.hotel_code} = ${Ga_hotel_corporative_encrypted.hotel_code};;
-  }
-}
+explore: events{}
 
 explore:  parkroyal_costs {
   join: Ga_hotel_corporative_encrypted {
-    type: inner
-    relationship: many_to_one
+    type: left_outer
+    relationship: one_to_one
     sql_on: ${parkroyal_costs.hotel_code} = ${Ga_hotel_corporative_encrypted.hotel_code};;
   }
 }
