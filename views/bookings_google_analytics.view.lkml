@@ -40,7 +40,6 @@ view: bookings_google_analytics {
 
   dimension: hotel_code {
     type: string
-    primary_key: yes
     sql: ${TABLE}.hotelCode ;;
   }
 
