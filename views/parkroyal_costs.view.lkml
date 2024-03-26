@@ -1,6 +1,12 @@
 view: parkroyal_costs {
   sql_table_name: `ga-bigquery-storage.costs.parkroyal_costs` ;;
 
+  dimension: id {
+    type: number
+    primary_key: yes
+    sql: ${TABLE}.id ;;
+  }
+
   dimension_group: date {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
