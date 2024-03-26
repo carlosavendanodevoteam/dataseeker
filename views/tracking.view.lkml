@@ -18,8 +18,8 @@ view: tracking {
     # This dimension will be called "Duration" in Explore.
 
   dimension: duration {
-    type: string
-    sql: ${TABLE}.duration ;;
+    type: number
+    sql: ${TABLE}.duration / (1000 * 3600);;
   }
 
   dimension: end_date {
@@ -51,13 +51,13 @@ view: tracking {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	users.user_id,
-	users.group_name,
-	users.username,
-	tasks.task_id,
-	tasks.name
-	]
+  id,
+  users.user_id,
+  users.group_name,
+  users.username,
+  tasks.task_id,
+  tasks.name
+  ]
   }
 
 }
