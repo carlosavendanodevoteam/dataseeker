@@ -4,7 +4,7 @@ view: parkroyal_costs {
   dimension: id {
     type: number
     primary_key: yes
-    sql: ${TABLE}.id ;;
+    sql: GENERATE_UUID() ;;
   }
 
   dimension_group: date {
