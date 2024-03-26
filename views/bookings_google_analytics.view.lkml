@@ -45,17 +45,8 @@ view: bookings_google_analytics {
 
   dimension: session_campaign {
     type: string
+    primary_key: yes
     sql: ${TABLE}.session_campaign ;;
-  }
-
-  dimension: session_medium {
-    type: string
-    sql: ${TABLE}.session_medium ;;
-  }
-
-  dimension: session_source {
-    type: string
-    sql: ${TABLE}.session_source ;;
   }
 
   dimension: transactions {
