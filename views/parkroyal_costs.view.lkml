@@ -6,7 +6,7 @@ view: parkroyal_costs {
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.fecha ;;
+    sql: ${TABLE}.date ;;
   }
 
   dimension: google_ads {
@@ -26,7 +26,7 @@ view: parkroyal_costs {
 
   dimension: month{
     type: number
-    sql:  EXTRACT(month FROM ${TABLE}.fecha) ;;
+    sql:  EXTRACT(month FROM ${TABLE}.date) ;;
   }
 
   dimension: month_text {
