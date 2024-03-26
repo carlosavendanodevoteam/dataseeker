@@ -9,7 +9,7 @@ explore: events{}
 explore:  parkroyal_costs {
   join: Ga_hotel_corporative_encrypted {
     type: left_outer
-    relationship: one_to_one
+    relationship: many_to_one
     sql_on: ${parkroyal_costs.hotel_code} = ${Ga_hotel_corporative_encrypted.hotel_code};;
   }
 }
