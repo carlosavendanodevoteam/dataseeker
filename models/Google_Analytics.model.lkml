@@ -6,7 +6,7 @@ explore: Ga_hotel_corporative_encrypted {}
 
 explore: events{
   join: Ga_hotel_corporative_encrypted {
-   type: inner
+   type: left_outer
     relationship: many_to_one
     sql_on: ${events.hotel_code} = ${Ga_hotel_corporative_encrypted.hotel_code};;
   }
