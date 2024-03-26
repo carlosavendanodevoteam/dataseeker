@@ -12,7 +12,13 @@ explore: events{
   }
 }
 
-explore:  parkroyal_costs {}
+explore:  parkroyal_costs {
+  join: Ga_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${parkroyal_costs.hotel_code} = ${Ga_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: bookings_google_analytics {
   join:  parkroyal_costs{
