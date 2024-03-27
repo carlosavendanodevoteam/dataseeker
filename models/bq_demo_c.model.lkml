@@ -32,6 +32,8 @@ explore:mview_comparation_unique_bookings {
 
 explore: hotel_corporative_encrypted {}
 
+explore: mview_campaign_data {}
+
 explore: Busquedas_reservas {
   join: hotel_corporative_encrypted {
     type: inner
