@@ -32,7 +32,13 @@ explore:mview_comparation_unique_bookings {
 
 explore: hotel_corporative_encrypted {}
 
-explore: mview_campaign_data {}
+explore: mview_campaign_data {
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_campaign_data.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: Busquedas_reservas {
   join: hotel_corporative_encrypted {
