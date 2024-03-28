@@ -38,6 +38,11 @@ explore: mview_campaign_data {
     relationship: many_to_one
     sql_on: ${mview_campaign_data.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_campaign_data.hotel_code} = ${hotels_data.hotel_code};;
+  }
 }
 
 explore: Busquedas_reservas {
