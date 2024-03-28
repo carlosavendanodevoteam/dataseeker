@@ -29,4 +29,12 @@ view: hotel_corporative_encrypted {
     sql: ${TABLE}.name ;;
   }
 
+  dimension: name_fixed {
+    type: string
+    sql: CASE
+          WHEN ${name} IS NULL then ${hotel_code}
+          else ${name}
+        END;;
+  }
+
 }
