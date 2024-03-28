@@ -33,7 +33,7 @@ view: view_unique_hotel_corporative_encrypted {
     type: string
     sql: CASE
           WHEN ${name} IS NULL then ${hotel_code}
-          else ${hotel_code}
+          else ${name}
         END;;
   }
 
