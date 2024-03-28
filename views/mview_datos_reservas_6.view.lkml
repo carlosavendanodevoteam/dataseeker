@@ -431,7 +431,7 @@ view: mview_datos_reservas_6 {
 
   dimension_group: partition_timestamp {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, hour, date, week, month, quarter, year]
     sql: ${TABLE}.partitionTimestamp;;
   }
 
