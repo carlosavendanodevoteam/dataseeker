@@ -129,6 +129,7 @@ view: ga_wi_hp_unique {
 
   dimension: hotel_code {
     type: string
+    primary_key: yes
     sql: ${TABLE}.hotel_code ;;
   }
 
@@ -269,15 +270,15 @@ view: ga_wi_hp_unique {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	price_competitiveness_name,
-	day_to_arrival_name,
-	device_name,
-	los_name,
-	checkinday_name,
-	date_type_name,
-	market_name,
-	hotel_name
-	]
+  price_competitiveness_name,
+  day_to_arrival_name,
+  device_name,
+  los_name,
+  checkinday_name,
+  date_type_name,
+  market_name,
+  hotel_name
+  ]
   }
 
 }
