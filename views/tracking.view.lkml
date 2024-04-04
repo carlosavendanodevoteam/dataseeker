@@ -18,7 +18,7 @@ view: tracking {
     # This dimension will be called "Duration" in Explore.
 
   dimension: duration {
-    type: string
+    type: number
     sql: ${TABLE}.duration;;
   }
 
@@ -28,7 +28,7 @@ view: tracking {
   }
 
   dimension: start_date {
-    type: string
+    type: number
     sql: ${TABLE}.start_date ;;
   }
 
