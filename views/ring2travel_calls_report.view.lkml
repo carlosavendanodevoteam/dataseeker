@@ -59,4 +59,9 @@ view: ring2travel_calls_report {
     sql: ${TABLE}.Call_Outcome_ID ;;
   }
 
+  measure: count {
+    type: count
+  }
+
+
 }
