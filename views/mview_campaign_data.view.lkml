@@ -43,7 +43,7 @@ view: mview_campaign_data {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.cost /1000000 ;;
+    sql: ${TABLE}.cost ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
