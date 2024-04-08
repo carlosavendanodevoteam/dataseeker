@@ -123,6 +123,9 @@ explore: google_ads_per_country {}
 
 explore: google_hotel_reconciliation {}
 
+explore: forms {}
+
+
 explore: funnel_stats {
   join: hotel_corporative_encrypted {
     type: inner
