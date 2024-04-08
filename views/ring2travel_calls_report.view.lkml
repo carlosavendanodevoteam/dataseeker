@@ -26,7 +26,7 @@ view: ring2travel_calls_report {
 
   dimension: wait_time {
     type: number
-    sql: CAST(${TABLE}.Wait_Time AS NUMBER) ;;
+    sql: CAST(${TABLE}.Wait_Time AS INT) ;;
   }
 
   dimension: ID_Agent {
