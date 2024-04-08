@@ -84,4 +84,9 @@ view: ring2travel_calls_report {
           else 0
         END;;
   }
+
+  dimension: Call_Outcome_name {
+    type: string
+    sql: ${TABLE}.Call_Outcome_name ;;
+  }
 }
