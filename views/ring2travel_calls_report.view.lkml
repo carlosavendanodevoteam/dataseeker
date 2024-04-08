@@ -41,7 +41,7 @@ view: ring2travel_calls_report {
 
   dimension: call_length {
     type: number
-    sql: ${TABLE}.Call_length ;;
+    sql: CAST(${TABLE}.Call_length AS INT) ;;
   }
 
   dimension: Booking_Start_Date {
