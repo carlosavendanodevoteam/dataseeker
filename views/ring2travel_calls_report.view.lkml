@@ -63,4 +63,11 @@ view: ring2travel_calls_report {
     type: count
   }
 
+  measure: count_agent_first_name {
+    type: count_distinct
+    sql: ${TABLE}.Agent_First_Name != '';;
+
+  }
+
+
 }
