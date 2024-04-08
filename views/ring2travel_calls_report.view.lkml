@@ -66,8 +66,19 @@ view: ring2travel_calls_report {
   measure: count_agent_first_name {
     type: count_distinct
     sql: ${TABLE}.Agent_First_Name != '';;
-
   }
 
+  dimension: DDI {
+    type: string
+    sql: ${TABLE}.DDI ;;
+  }
+
+  dimension: Contestadas {
+    type: number
+    sql: Case
+          when ${TABLE}.DDI is not Null and  ${TABLE}.Agent_First_Name != '' then 1
+          else 0
+        END;;
+  }
 
 }
