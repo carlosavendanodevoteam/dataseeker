@@ -81,4 +81,11 @@ view: ring2travel_calls_report {
         END;;
   }
 
+  dimension: abandonos {
+    type: number
+    sql: Case
+          when ${TABLE}.DDI is not Null and CAST(${TABLE}.Wait_Time AS INT) < 20 then 1
+          else 0
+        END;;
+  }
 }
