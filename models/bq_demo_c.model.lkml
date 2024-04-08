@@ -123,7 +123,13 @@ explore: google_ads_per_country {}
 
 explore: google_hotel_reconciliation {}
 
-explore: forms {}
+explore: forms {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${forms.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 
 explore: funnel_stats {
