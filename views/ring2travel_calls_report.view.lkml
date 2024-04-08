@@ -20,12 +20,12 @@ view: ring2travel_calls_report {
   }
 
   dimension: talk_time {
-    type: string
+    type: number
     sql: ${TABLE}.Talk_time;;
   }
 
   dimension: wait_time {
-    type: string
+    type: number
     sql:${TABLE}.Wait_Time;;
   }
 
