@@ -69,6 +69,12 @@ view: ring2travel_calls_report {
     sql: ${TABLE}.DDI ;;
   }
 
+  dimension: DDI_Description {
+    type: string
+    sql: ${TABLE}.DDI_Description ;;
+  }
+
+
   dimension: Contestadas {
     type: number
     sql: Case
