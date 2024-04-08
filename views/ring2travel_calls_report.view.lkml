@@ -65,6 +65,7 @@ view: ring2travel_calls_report {
 
   dimension: DDI {
     type: string
+    primary_key: yes
     sql: ${TABLE}.DDI ;;
   }
 
