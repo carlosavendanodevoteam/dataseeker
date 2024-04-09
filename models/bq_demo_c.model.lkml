@@ -20,6 +20,8 @@ explore: rescue_seeker_log {
   }
 }
 
+explore: hotel_ads_data {}
+
 explore: view_unique_hotel_corporative_encrypted {}
 
 explore:mview_comparation_unique_bookings {
