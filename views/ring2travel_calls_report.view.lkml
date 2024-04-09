@@ -1,6 +1,6 @@
 view: ring2travel_calls_report {
 
-  sql_table_name: `analysis-seeker.bi_dataset.RING2TRAVEL_CALLS_REPORT`  ;;
+  sql_table_name: `analysis-seeker.RING2TRAVEL_CALLS_REPORT`  ;;
 
   dimension: total_calls{
     type: number
