@@ -313,13 +313,7 @@ explore: revenue_trends {
   }
 }
 
-explore: ring2travel_calls_report {
-  join: mview_datos_reservas_6 {
-    type: left_outer
-    relationship: many_to_many
-    sql_on: ${mview_datos_reservas_6.partition_timestamp_date} = ${ring2travel_calls_report.Call_start_date} ;;
-  }
-}
+explore: ring2travel_calls_report {}
 
 explore: ratecheck_log {
   join: mview_datos_reservas_6 {
