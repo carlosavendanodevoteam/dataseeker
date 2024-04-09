@@ -85,26 +85,26 @@ view: hotel_ads_data {
   dimension: cost_percent{
     type: number
     sql: Case
-          when ${campaign_name} like '3%' then 3
-          when ${campaign_name} like '4%' then 4
-          when ${campaign_name} like '5%' then 5
-          when ${campaign_name} like '6%' then 6
-          when ${campaign_name} like '7%' then 7
-          when ${campaign_name} like '8%' then 8
-          when ${campaign_name} like '9%' then 9
-          when ${campaign_name} like '10%' then 10
-          when ${campaign_name} like '11%' then 11
-          when ${campaign_name} like '12%' then 12
-          when ${campaign_name} like '13%' then 13
-          when ${campaign_name} like '14%' then 14
-          when ${campaign_name} like '15%' then 15
-          when ${campaign_name} like '16%' then 16
-          when ${campaign_name} like '17%' then 17
-          when ${campaign_name} like '18%' then 18
-          when ${campaign_name} like '19%' then 19
-          when ${campaign_name} like '20%' then 20
-          when ${campaign_name} like '1%' then 1
-          when ${campaign_name} like '2%' then 2
+          when ${campaign_name} like '%3%' then 3
+          when ${campaign_name} like '%4%' then 4
+          when ${campaign_name} like '%5%' then 5
+          when ${campaign_name} like '%6%' then 6
+          when ${campaign_name} like '%7%' then 7
+          when ${campaign_name} like '%8%' then 8
+          when ${campaign_name} like '%9%' then 9
+          when ${campaign_name} like '%10%' then 10
+          when ${campaign_name} like '%11%' then 11
+          when ${campaign_name} like '%12%' then 12
+          when ${campaign_name} like '%13%' then 13
+          when ${campaign_name} like '%14%' then 14
+          when ${campaign_name} like '%15%' then 15
+          when ${campaign_name} like '%16%' then 16
+          when ${campaign_name} like '%17%' then 17
+          when ${campaign_name} like '%18%' then 18
+          when ${campaign_name} like '%19%' then 19
+          when ${campaign_name} like '%20%' then 20
+          when ${campaign_name} like '%1%' then 1
+          when ${campaign_name} like '%2%' then 2
           else 0
         End;;
   }
