@@ -77,6 +77,10 @@ view: hotel_ads_data {
     sql: ${TABLE}.conversionsValue ;;
   }
 
+  dimension: eligible_impressions {
+    type: number
+    sql: ${TABLE}.eligible_impressions ;;
+  }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
