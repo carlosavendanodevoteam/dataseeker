@@ -82,6 +82,33 @@ view: hotel_ads_data {
     sql: ${TABLE}.eligible_impressions ;;
   }
 
+  dimension: cost_percent{
+    type: number
+    sql: Case
+          when ${campaign_name} like 'Hoteles al 1%' then 1
+          when ${campaign_name} like 'Hoteles al 2%' then 2
+          when ${campaign_name} like 'Hoteles al 3%' then 3
+          when ${campaign_name} like 'Hoteles al 4%' then 4
+          when ${campaign_name} like 'Hoteles al 5%' then 5
+          when ${campaign_name} like 'Hoteles al 6%' then 6
+          when ${campaign_name} like 'Hoteles al 7%' then 7
+          when ${campaign_name} like 'Hoteles al 8%' then 8
+          when ${campaign_name} like 'Hoteles al 9%' then 9
+          when ${campaign_name} like 'Hoteles al 10%' then 10
+          when ${campaign_name} like 'Hoteles al 11%' then 11
+          when ${campaign_name} like 'Hoteles al 12%' then 12
+          when ${campaign_name} like 'Hoteles al 13%' then 13
+          when ${campaign_name} like 'Hoteles al 14%' then 14
+          when ${campaign_name} like 'Hoteles al 15%' then 15
+          when ${campaign_name} like 'Hoteles al 16%' then 16
+          when ${campaign_name} like 'Hoteles al 17%' then 17
+          when ${campaign_name} like 'Hoteles al 18%' then 18
+          when ${campaign_name} like 'Hoteles al 19%' then 19
+          when ${campaign_name} like 'Hoteles al 20%' then 20
+          else 0
+        End;;
+  }
+
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
@@ -94,4 +121,5 @@ view: hotel_ads_data {
     type: count
     drill_fields: [campaign_name]
   }
+
 }
