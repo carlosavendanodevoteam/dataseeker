@@ -85,8 +85,6 @@ view: hotel_ads_data {
   dimension: cost_percent{
     type: number
     sql: Case
-          when ${campaign_name} like 'Hoteles al 1%' then 1
-          when ${campaign_name} like 'Hoteles al 2%' then 2
           when ${campaign_name} like 'Hoteles al 3%' then 3
           when ${campaign_name} like 'Hoteles al 4%' then 4
           when ${campaign_name} like 'Hoteles al 5%' then 5
@@ -105,6 +103,8 @@ view: hotel_ads_data {
           when ${campaign_name} like 'Hoteles al 18%' then 18
           when ${campaign_name} like 'Hoteles al 19%' then 19
           when ${campaign_name} like 'Hoteles al 20%' then 20
+          when ${campaign_name} like 'Hoteles al 1%' then 1
+          when ${campaign_name} like 'Hoteles al 2%' then 2
           else 0
         End;;
   }
