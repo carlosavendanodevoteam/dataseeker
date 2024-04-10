@@ -650,6 +650,16 @@ view: mview_comparation_bookings_by_start_date {
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
+  dimension: rateName_fixed {
+    type: string
+    sql:Case
+          when ${rate_name} like '%lexible%' then 'Flexible'
+          when ${rate_name} like '%eembolsable%' then 'non refundable'
+          when ${rate_name} like '%ago directo en%' or ${rate_name} like '%aga directamente en %' then 'direct payment at the hotel'
+          else 'Other'
+        End;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
