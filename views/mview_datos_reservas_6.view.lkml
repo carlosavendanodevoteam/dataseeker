@@ -521,6 +521,16 @@ view: mview_datos_reservas_6 {
       END;;
   }
 
+  dimension: rateName_fixed {
+    type: string
+    sql:Case
+          when ${rate_name} like '%lexible%' then 'Flexible'
+          when ${rate_name} like '%eembolsable%' then 'non refundable'
+          when ${rate_name} like '%ago directo en%' or ${rate_name} like '%aga directamente en %' then 'direct payment at the hotel'
+          else 'Other'
+        End;;
+  }
+
   dimension_group: timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
