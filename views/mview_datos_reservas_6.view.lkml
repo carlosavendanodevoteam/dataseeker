@@ -127,6 +127,14 @@ view: mview_datos_reservas_6 {
     END ;;
   }
 
+  dimension: filter_ring2_travel_agent {
+    type: string
+    sql: Case
+          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${source_fixed} like '%Callcenter%' THEN True
+          else False
+        End;;
+  }
+
   dimension: cancellation_timestamp {
     type: string
     sql: ${TABLE}.cancellationTimestamp ;;
