@@ -553,9 +553,9 @@ view: mview_comparation_bookings {
   dimension: rateName_fixed {
     type: string
     sql: CASE
-          WHEN CONTAINS_TEXT(RateName, "Flexible") THEN "Flexible"
-          WHEN CONTAINS_TEXT(RateName, "Reembolsable") THEN "No Reembolsable"
-          When CONTAINS_TEXT(RateName, "nline"
+          WHEN CONTAINS_TEXT(${rate_name}, "Flexible") THEN "Flexible"
+          WHEN CONTAINS_TEXT(${rate_name}, "Reembolsable") THEN "No Reembolsable"
+          When CONTAINS_TEXT(${rate_name}, "nline") THEN "Online"
           ELSE "Otro caso"
         END ;;
   }
