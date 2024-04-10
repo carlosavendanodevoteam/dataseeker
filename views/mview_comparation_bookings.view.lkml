@@ -553,8 +553,8 @@ view: mview_comparation_bookings {
   dimension: rateName_fixed {
     type: string
     sql: CASE
-          WHEN ${TABLE}.rate_name LIKE '%Flexible%' THEN 'Flexible'
-          WHEN ${TABLE}.rate_name LIKE '%Reembolsable%' THEN 'No Reembolsable'
+          WHEN ${TABLE}.RateName LIKE '%Flexible%' THEN 'Flexible'
+          WHEN ${TABLE}.RateName LIKE '%Reembolsable%' THEN 'No Reembolsable'
           ELSE 'Otro caso'
         END ;;
   }
