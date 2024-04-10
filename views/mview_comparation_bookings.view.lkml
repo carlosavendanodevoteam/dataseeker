@@ -552,11 +552,11 @@ view: mview_comparation_bookings {
 
   dimension: rateName_fixed {
     type: string
-    sql: CASE
-          WHEN ${TABLE}.RateName LIKE '%Flexible%' THEN 'Flexible'
-          WHEN ${TABLE}.RateName LIKE '%Reembolsable%' THEN 'No Reembolsable'
-          ELSE 'Otro caso'
-        END ;;
+    sql:Case
+          when ${rate_name} like '%lexible%' then 'Flexible'
+          when ${rate_name} like '%eembolsable%' then 'non refundable'
+          else 'Other'
+        End;;
   }
 
   dimension: hotel_code_by_account {
