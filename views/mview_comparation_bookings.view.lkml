@@ -555,6 +555,7 @@ view: mview_comparation_bookings {
     sql: CASE
           WHEN CONTAINS_TEXT(RateName, "Flexible") THEN "Flexible"
           WHEN CONTAINS_TEXT(RateName, "Reembolsable") THEN "No Reembolsable"
+          When CONTAINS_TEXT(RateName, "nline"
           ELSE "Otro caso"
         END ;;
   }
