@@ -555,6 +555,7 @@ view: mview_comparation_bookings {
     sql:Case
           when ${rate_name} like '%lexible%' then 'Flexible'
           when ${rate_name} like '%eembolsable%' then 'non refundable'
+          when ${rate_name} like '%ago directo en%' or ${rate_name} like '%aga directamente en %' then 'direct payment at the hotel'
           else 'Other'
         End;;
   }
