@@ -550,6 +550,15 @@ view: mview_comparation_bookings {
     sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
   }
 
+  dimension: rateName_fixed {
+    type: string
+    sql: CASE
+          WHEN CONTAINS_TEXT(RateName, "Flexible") THEN "Flexible"
+          WHEN CONTAINS_TEXT(RateName, "Reembolsable") THEN "No Reembolsable"
+          ELSE "Otro caso"
+        END ;;
+  }
+
   dimension: hotel_code_by_account {
     type: string
     sql: CASE
