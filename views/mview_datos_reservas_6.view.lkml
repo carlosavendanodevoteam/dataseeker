@@ -130,8 +130,8 @@ view: mview_datos_reservas_6 {
   dimension: filter_ring2_travel_agent {
     type: string
     sql: Case
-          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${source_fixed} like '%Callcenter%' THEN True
-          else False
+          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${source_fixed} like '%Callcenter%' THEN 'True'
+          else 'False'
         End;;
   }
 
