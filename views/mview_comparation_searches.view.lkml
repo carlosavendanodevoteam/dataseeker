@@ -258,6 +258,15 @@ view: mview_comparation_searches {
         END ;;
   }
 
+  dimension: source_fixed_with_Ring2travel{
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.agent not LIKE '%-nau%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
+          WHEN ${TABLE}.source_fixed like '%Callcenter%' then 'Callcenter'
+          ELSE ${TABLE}.source_fixed
+        END ;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
