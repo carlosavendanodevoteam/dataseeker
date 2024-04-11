@@ -212,6 +212,11 @@ explore: mview_comparation_bookings {
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings.hotel_code} = ${hotel_corporative_encrypted.hotel_code} ;;
   }
+  join: hotels_data {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${mview_comparation_bookings.hotel_code} = ${hotels_data.hotel_code} ;;
+  }
 }
 
 explore: encrypted_hotel_code  {}
