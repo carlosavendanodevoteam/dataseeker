@@ -139,6 +139,11 @@ view: hotels_data {
     drill_fields: [name]
   }
 
+  dimension: primer_elemento {
+    type: string
+    sql: SUBSTRING_INDEX(${TABLE}.account, ';', 1) ;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
