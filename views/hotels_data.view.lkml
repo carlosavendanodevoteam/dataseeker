@@ -144,6 +144,14 @@ view: hotels_data {
     sql: CONCAT(SPLIT(${TABLE}.account, ';')[OFFSET(0)], "") ;;
   }
 
+  dimension: unique_account{
+    type: string
+    sql: Case
+          when ${primer_elemento} like '%@paratytech%' then  CONCAT(SPLIT(${TABLE}.account, '@')[OFFSET(0)], "")
+          else ${primer_elemento}
+        END ;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
