@@ -141,7 +141,7 @@ view: hotels_data {
 
   dimension: primer_elemento {
     type: string
-    sql: SUBSTRING_INDEX(${TABLE}.account, ';', 1) ;;
+    sql: CONCAT(SPLIT(${TABLE}.accounts, ';')[OFFSET(0)], "") ;;
   }
 
   dimension: full_country {
