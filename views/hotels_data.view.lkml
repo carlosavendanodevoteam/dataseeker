@@ -147,7 +147,7 @@ view: hotels_data {
   dimension: unique_account{
     type: string
     sql: Case
-          when ${primer_elemento} like '%@paratytech%' then  CONCAT(SPLIT(${primer_elemento}., '@')[OFFSET(0)], "")
+          when ${primer_elemento} like '%@paratytech%' then  CONCAT(SPLIT(${primer_elemento}, '@')[OFFSET(0)], "")
           else ${primer_elemento}
         END ;;
   }
