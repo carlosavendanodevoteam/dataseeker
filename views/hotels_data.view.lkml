@@ -69,7 +69,9 @@ view: hotels_data {
 
   measure: total_hotel_fingersprint {
     type: sum
-    sql: ${hotel_fingersprint} ;;  }
+    sql: ${hotel_fingersprint} ;;
+  }
+
   measure: average_hotel_fingersprint {
     type: average
     sql: ${hotel_fingersprint} ;;  }
