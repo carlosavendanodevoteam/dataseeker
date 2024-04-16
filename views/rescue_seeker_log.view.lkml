@@ -21,7 +21,7 @@ view: rescue_seeker_log {
     sql: ${TABLE}.booking_id ;;
   }
 
-  dimension: booking_price_float {
+  dimension: booking_price {
     type: number
     sql: CASE WHEN ${TABLE}.booking_price ~ '^[0-9]*(\.[0-9]*)?$' THEN CAST(${TABLE}.booking_price AS FLOAT64) ELSE NULL END ;;
   }
