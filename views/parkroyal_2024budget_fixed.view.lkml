@@ -92,4 +92,24 @@ view: parkroyal_2024budget_fixed {
     sql: ${TABLE}.hotel_name ;;
   }
 
+  dimension: month_short_text {
+    type: string
+    sql: Case
+          when UPPER(${month}) = "ENERO" then "Jan"
+          when UPPER(${month}) = "FEBRERO" then "Feb"
+          when UPPER(${month}) = "MARZO" then "Mar"
+          when UPPER(${month}) = "ABRIL" then "Apr"
+          when UPPER(${month}) = "MAYO" then "May"
+          when UPPER(${month}) = "JUNIO" then "Jun"
+          when UPPER(${month}) = "JULIO" then "Jul"
+          when UPPER(${month}) = "AGOSTO" then "Aug"
+          when UPPER(${month}) = "SEPTIEMBRE" then "Sep"
+          when UPPER(${month}) = "OCTUBRE" then "Oct"
+          when UPPER(${month}) = "NOVIEMBRE" then "Nov"
+          else "Dec"
+        End;;
+  }
+
+
+
 }
