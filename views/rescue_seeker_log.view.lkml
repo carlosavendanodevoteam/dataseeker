@@ -21,9 +21,9 @@ view: rescue_seeker_log {
     sql: ${TABLE}.booking_id ;;
   }
 
-  dimension: booking_price {
+  dimension: booking_price_float {
     type: number
-    sql:  CAST(${TABLE}.booking_price as INTEGER) ;;
+    sql: CASE WHEN TRY_CAST(${TABLE}.booking_price AS FLOAT64) IS NULL THEN NULL ELSE CAST(${TABLE}.booking_price AS FLOAT64) END ;;
   }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
