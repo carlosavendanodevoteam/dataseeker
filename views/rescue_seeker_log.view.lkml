@@ -21,7 +21,7 @@ view: rescue_seeker_log {
     sql: ${TABLE}.booking_id ;;
   }
 
-  dimension: booking_price_float {
+  dimension: booking_price {
     type: number
     sql: CASE WHEN TRY_CAST(${TABLE}.booking_price AS FLOAT64) IS NULL THEN NULL ELSE CAST(${TABLE}.booking_price AS FLOAT64) END ;;
   }
