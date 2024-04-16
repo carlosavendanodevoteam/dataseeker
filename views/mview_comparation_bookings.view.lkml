@@ -652,7 +652,7 @@ view: mview_comparation_bookings {
 
   dimension: device {
     type: string
-    sql: ${TABLE}.device ;;
+    sql: IFNULL(${TABLE}.device, 'Web') ;;
   }
 
   dimension: partition_string {
