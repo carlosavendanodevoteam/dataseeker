@@ -87,5 +87,9 @@ view: parkroyal_2024budget_fixed {
           else "December"
         End;;
   }
+  dimension: hotel_name {
+    type: string
+    sql: ${TABLE}.hotel_name ;;
+  }
 
 }
