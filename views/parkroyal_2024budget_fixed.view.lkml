@@ -73,18 +73,18 @@ view: parkroyal_2024budget_fixed {
   dimension: month_text {
     type: string
     sql: Case
-          when UPPER(${month}) = "ENERO" then "Jan"
-          when UPPER(${month}) = "FEBRERO" then "Feb"
-          when UPPER(${month}) = "MARZO" then "Mar"
-          when UPPER(${month}) = "ABRIL" then "Apr"
+          when UPPER(${month}) = "ENERO" then "January"
+          when UPPER(${month}) = "FEBRERO" then "February"
+          when UPPER(${month}) = "MARZO" then "March"
+          when UPPER(${month}) = "ABRIL" then "April"
           when UPPER(${month}) = "MAYO" then "May"
-          when UPPER(${month}) = "JUNIO" then "Jun"
-          when UPPER(${month}) = "JULIO" then "Jul"
-          when UPPER(${month}) = "AGOSTO" then "Aug"
-          when UPPER(${month}) = "SEPTIEMBRE" then "Sep"
-          when UPPER(${month}) = "OCTUBRE" then "Oct"
-          when UPPER(${month}) = "NOVIEMBRE" then "Nov"
-          else "Dec"
+          when UPPER(${month}) = "JUNIO" then "June"
+          when UPPER(${month}) = "JULIO" then "July"
+          when UPPER(${month}) = "AGOSTO" then "August"
+          when UPPER(${month}) = "SEPTIEMBRE" then "September"
+          when UPPER(${month}) = "OCTUBRE" then "October"
+          when UPPER(${month}) = "NOVIEMBRE" then "November"
+          else "December"
         End;;
   }
 
