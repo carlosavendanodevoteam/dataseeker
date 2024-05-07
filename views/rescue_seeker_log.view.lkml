@@ -23,7 +23,7 @@ view: rescue_seeker_log {
 
   measure: booking_price {
     type: number
-    sql: COALESCE(NULLIF(${TABLE}.booking_price, 0), ${TABLE}.booking_price) ;;
+    sql: COALESCE(NULLIF(${TABLE}.booking_price, ''), '0') ;;
   }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
