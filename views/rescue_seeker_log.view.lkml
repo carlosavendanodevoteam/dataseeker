@@ -23,7 +23,7 @@ view: rescue_seeker_log {
 
   dimension: booking_price {
     type: number
-    sql: CASE WHEN ${TABLE}.booking_price ~ '^[0-9]*(\.[0-9]*)?$' THEN CAST(${TABLE}.booking_price AS FLOAT64) ELSE NULL END ;;
+    sql: CASE WHEN ${TABLE}.booking_price IS NOT NULL THEN CAST(${TABLE}.booking_price AS float) END ;;
   }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
