@@ -213,7 +213,6 @@ view: mview_users {
   }
 
   dimension: full_country {
-    # Nueva dimensión para los nombres completos de los países
     type: string
     sql: CASE
       WHEN ${country} = 'ES' THEN ' Spain'
