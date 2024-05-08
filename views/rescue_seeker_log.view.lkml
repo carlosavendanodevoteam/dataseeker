@@ -19,6 +19,11 @@ view: rescue_seeker_log {
     sql: ${TABLE}.booking_price ;;
   }
 
+  dimension: booking_price_float {
+    type: number
+    sql: ${TABLE}.booking_price_float ;;
+  }
+
   dimension: converted_booking_price {
     type: number
     sql: CASE WHEN ${TABLE}.booking_price IS NOT NULL THEN booking_price ELSE 0 END ;;
