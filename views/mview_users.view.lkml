@@ -215,7 +215,7 @@ view: mview_users {
   dimension: full_country {
     type: string
     sql: CASE
-      WHEN ${country} = 'ES' THEN ' Spain'
+      WHEN ${country} = 'ES' OR ${country} = 'ESPAÑA' THEN ' Spain'
       WHEN ${country} = 'CN' THEN 'China'
       WHEN ${country} = 'TR' THEN 'Turkey'
       WHEN ${country} = 'SH' THEN 'Saint Helena'
