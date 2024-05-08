@@ -16,10 +16,7 @@ view: rescue_seeker_log {
 
   dimension: booking_price {
     type: number
-    sql: CASE
-          WHEN ${TABLE}.booking_price IS NOT NULL THEN ${TABLE}.booking_price
-          ELSE 0
-        END ;;
+    sql: IF(${TABLE}.booking_price IS NOT NULL, ${TABLE}.booking_price, 0) ;;
   }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
