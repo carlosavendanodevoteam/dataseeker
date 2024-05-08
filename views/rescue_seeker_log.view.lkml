@@ -4,13 +4,6 @@ view: rescue_seeker_log {
   # to be used for all fields in this view.
   sql_table_name: `analysis-seeker.bi_dataset.RESCUE_SEEKER_LOG` ;;
 
-  # No primary key is defined for this view. In order to join this view in an Explore,
-  # define primary_key: yes on a dimension that has no repeated values.
-
-    # Here's what a typical dimension looks like in LookML.
-    # A dimension is a groupable field that can be used to filter query results.
-    # This dimension will be called "Auto Save Booking Enabled" in Explore.
-
   dimension: auto_save_booking_enabled {
     type: yesno
     sql: ${TABLE}.auto_save_booking_enabled ;;
@@ -21,9 +14,12 @@ view: rescue_seeker_log {
     sql: ${TABLE}.booking_id ;;
   }
 
-  measure: booking_price {
+  dimension: booking_price {
     type: number
-    sql: COALESCE(NULLIF(${TABLE}.booking_price, ''), '0') ;;
+    sql: CASE
+          WHEN ${TABLE}.booking_price IS NOT NULL THEN ${TABLE}.booking_price
+          ELSE 0
+        END ;;
   }
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
