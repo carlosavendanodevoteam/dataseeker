@@ -660,6 +660,14 @@ view: mview_comparation_bookings_by_start_date {
         End;;
   }
 
+  dimension: filter_ring2_travel_agent {
+    type: string
+    sql: Case
+          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${source_fixed} like '%Callcenter%' THEN 'True'
+          else 'False'
+        End;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
