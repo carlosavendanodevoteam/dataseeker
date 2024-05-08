@@ -142,7 +142,7 @@ view: mview_users {
 
   dimension: country {
     type: string
-    sql: ${TABLE}.pais ;;
+    sql:UPPER(${TABLE}.pais);;
   }
 
   dimension: postal_code {
