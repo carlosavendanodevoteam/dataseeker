@@ -1,5 +1,5 @@
 # The name of this view in Looker is "Tasks"
-view: ClickUp_tasks {
+view: ClickUp_task {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
   sql_table_name: `analysis-seeker.clickup_dataset.TASKS` ;;

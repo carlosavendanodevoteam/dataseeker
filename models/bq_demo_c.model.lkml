@@ -336,16 +336,16 @@ explore: ratecheck_log {
 
 }
 
-explore: ClickUp_tasks {
+explore: ClickUp_task {
   join: tracking {
     type: left_outer
     relationship: many_to_many
-    sql_on: ${ClickUp_tasks.task_id} = ${tracking.task_id}  ;;
+    sql_on: ${ClickUp_task.task_id} = ${tracking.task_id}  ;;
   }
   join: users {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${ClickUp_tasks.user_id} = ${users.user_id};;
+    sql_on: ${ClickUp_task.user_id} = ${users.user_id};;
   }
 }
 
