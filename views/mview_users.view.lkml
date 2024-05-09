@@ -28,7 +28,7 @@ view: mview_users {
 
   dimension: city {
     type: string
-    sql: ${TABLE}.city ;;
+    sql: UPPER(${TABLE}.city) ;;
   }
 
   dimension: civil_status {
