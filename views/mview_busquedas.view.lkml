@@ -234,6 +234,16 @@ view: mview_busquedas {
         END ;;
   }
 
+  dimension: fix_source_fixed {
+    type: string
+    sql: Case
+          when UPPER(${TABLE}.source_fixed) = 'GOOGLEHPA_CPC' OR UPPER(${TABLE}.source_fixed) ='GOOGLEHPA_FREE' OR UPPER(${TABLE}.source_fixed) ='GOOGLE-GHA' OR  UPPER(${TABLE}.source_fixed) = 'HOTELADS' OR UPPER(${TABLE}.source_fixed) = 'GOOLGEHA' OR UPPER(${TABLE}.source_fixed) ='GOOGLEHPA' THEN 'Google Hotel Ads'
+          WHEN REGEXP_CONTAINS(UPPER(${TABLE}.source_fixed), '[0-9]') then Null
+          Else ${TABLE}.source_fixed
+      END;;
+  }
+
+
   dimension: occupation {
     type: string
     sql: CONCAT(${adults1},'-',${kids1},'-',${babies1}) ;;
