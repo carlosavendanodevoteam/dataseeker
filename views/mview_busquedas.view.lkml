@@ -147,7 +147,7 @@ view: mview_busquedas {
 
   dimension: source_fixed {
     type: string
-    sql: ${TABLE}.source_fixed ;;
+    sql: UPPER(${TABLE}.source_fixed) ;;
   }
 
   dimension_group: start_date {
