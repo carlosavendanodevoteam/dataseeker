@@ -253,7 +253,6 @@ view: mview_busquedas {
       }
   }
 
-
   measure: count {
     type: count
     drill_fields: [result]
