@@ -237,6 +237,7 @@ view: mview_busquedas {
 
   measure: count_if_google_hotel_ads {
     type: count
+    drill_fields: [hotel_name]
     filters: {
       field: fix_source_fixed
       value: "Google Hotel Ads"
@@ -245,6 +246,7 @@ view: mview_busquedas {
 
   measure: count_if_nul {
     type: count
+    drill_fields: [hotel_name]
     filters: {
       field: fix_source_fixed
       value: "NULL"
