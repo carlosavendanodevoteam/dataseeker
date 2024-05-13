@@ -11,10 +11,7 @@ view: mview_busquedas {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Account" in Explore.
 
-  dimension: account {
-    type: string
-    sql: ${TABLE}.account ;;
-  }
+
 
   dimension: adults1 {
     type: string
@@ -162,11 +159,6 @@ view: mview_busquedas {
     sql: ${TABLE}.timestamp ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [hotel_name]
-  }
-
   measure: OK{
     type: sum
     sql: CASE
@@ -241,6 +233,22 @@ view: mview_busquedas {
           WHEN REGEXP_CONTAINS(UPPER(${TABLE}.source_fixed), '[0-9]') or REGEXP_CONTAINS(UPPER(${TABLE}.source_fixed), '../') or REGEXP_CONTAINS(UPPER(${TABLE}.source_fixed), 'C://') OR REGEXP_CONTAINS(UPPER(${TABLE}.source_fixed), '!') then Null
           Else ${TABLE}.source_fixed
       END;;
+  }
+
+  measure: count_if_google_hotel_ads {
+    type: count
+    filters: {
+      field: fix_source_fixed
+      value: "Google Hotel Ads"
+    }
+  }
+
+  measure: count_excluding_nul {
+    type: count
+    filters: {
+      field: fix_source_fixed
+      value: "NULL" # Excluir valores NULL
+      }
   }
 
 
