@@ -247,9 +247,16 @@ view: mview_busquedas {
     type: count
     filters: {
       field: fix_source_fixed
-      value: "NULL" # Excluir valores NULL
+      value: "NULL"
       }
   }
+
+
+  measure: count {
+    type: count
+    drill_fields: [hotel_name]
+  }
+
 
 
   dimension: occupation {
