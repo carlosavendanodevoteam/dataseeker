@@ -243,7 +243,7 @@ view: mview_busquedas {
     }
   }
 
-  measure: count_excluding_nul {
+  measure: count_if_nul {
     type: count
     filters: {
       field: fix_source_fixed
