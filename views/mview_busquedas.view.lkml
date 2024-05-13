@@ -246,7 +246,6 @@ view: mview_busquedas {
 
   measure: count_if_nul {
     type: count
-    drill_fields: [hotel_name]
     filters: {
       field: fix_source_fixed
       value: "NULL"
