@@ -246,6 +246,7 @@ view: mview_busquedas {
 
   measure: count_if_nul {
     type: count
+    drill_fields: [result]
     filters: {
       field: fix_source_fixed
       value: "NULL"
@@ -253,6 +254,7 @@ view: mview_busquedas {
   }
 
   measure: count {
+    drill_fields: [result]
     type: count
   }
 
