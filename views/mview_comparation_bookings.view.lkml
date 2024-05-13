@@ -688,6 +688,16 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
+  dimension_group: comparation_startDate_without_future{
+    type: time
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
+      CASE
+        WHEN CAST(${TABLE}.startDate AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE CAST(${TABLE}.startDate AS timestamp)
+      END);;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
   dimension: last_year_booking {
     type: number
     sql: ${TABLE}.last_year_booking ;;
