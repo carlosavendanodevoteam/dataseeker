@@ -253,6 +253,15 @@ view: mview_busquedas {
       }
   }
 
+  measure: count_if_nul_except_web_and_mobile {
+    type: count
+    drill_fields: [hotel_name]
+    filters: {
+      field: fix_source_fixed
+      value: "- web, - mobile"
+    }
+  }
+
   measure: count {
     drill_fields: [hotel_name]
     type: count
