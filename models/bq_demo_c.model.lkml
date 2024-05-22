@@ -15,7 +15,7 @@ datagroup: bq_demo_c_default_datagroup {
 explore: rescue_seeker_log {
   join:  view_unique_hotel_corporative_encrypted{
     type: inner
-    relationship: many_to_one
+    relationship: one_to_many
     sql_on: ${rescue_seeker_log.user} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
 }
