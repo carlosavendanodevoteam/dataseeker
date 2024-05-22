@@ -37,10 +37,13 @@ view: additional_services_consolidate {
 
   measure: total_cantidad {
     type: sum
-    sql: ${cantidad} ;;  }
+    sql: ${cantidad} ;;
+  }
+
   measure: average_cantidad {
     type: average
-    sql: ${cantidad} ;;  }
+    sql: ${cantidad} ;;
+    }
 
   dimension: dias {
     type: number

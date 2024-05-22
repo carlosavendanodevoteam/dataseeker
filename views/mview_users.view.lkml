@@ -86,6 +86,11 @@ view: mview_users {
     sql: ${TABLE}.hotel_code ;;
   }
 
+  dimension: corporative_hotel_code {
+    type: string
+    sql: ${TABLE}.hotel_code ;;
+  }
+
   dimension: hotels {
     type: string
     sql: ${TABLE}.hotels ;;
