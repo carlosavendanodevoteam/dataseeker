@@ -82,6 +82,7 @@ view: mview_users {
   }
 
   dimension: hotel_code {
+    primary_key: yes
     type: string
     sql: ${TABLE}.hotel_code ;;
   }
