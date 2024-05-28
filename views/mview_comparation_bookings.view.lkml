@@ -392,6 +392,21 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.Promo2 ;;
   }
 
+  dimension: promo3 {
+    type: string
+    sql: ${TABLE}.PROMO3 ;;
+  }
+
+  dimension: promos {
+    type: string
+    sql: CONCAT(
+           CONCAT(${TABLE}.Promo1, ','),
+           CONCAT(${TABLE}.Promo2, ','),
+           ${TABLE}.PROMO3
+         ) ;;
+  }
+
+
   dimension: promocode {
     type: string
     sql: ${TABLE}.promocode ;;
