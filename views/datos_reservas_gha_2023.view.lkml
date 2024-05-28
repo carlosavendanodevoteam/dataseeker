@@ -60,12 +60,12 @@ view: DATOS_RESERVAS_GHA_2023 {
     type: count
   }
 
-  measure: COSTE {
+  dimension: COSTE {
     type: number
     sql: ${TABLE}.COSTE;;
   }
 
-  measure: AVG_CPC {
+  dimension: AVG_CPC {
     type: number
     sql: ${TABLE}.AVG_CPC;;
   }
