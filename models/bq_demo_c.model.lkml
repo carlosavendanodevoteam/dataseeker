@@ -18,6 +18,11 @@ explore: DATOS_RESERVAS_GHA_2023 {
     relationship: many_to_one
     sql_on: ${DATOS_RESERVAS_GHA_2023.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
+  join: mview_datos_reservas_6 {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${DATOS_RESERVAS_GHA_2023.hotel_code} = ${mview_datos_reservas_6.hotel_code} and ${DATOS_RESERVAS_GHA_2023.month} = ${mview_datos_reservas_6.partition_timestamp_month} ;;
+  }
 }
 
 explore: rescue_seeker_log {
