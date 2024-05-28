@@ -1,8 +1,8 @@
 # The name of this view in Looker is "Datos Reservas Gha 2023"
-view: datos_reservas_gha_2023 {
+view: DATOS_RESERVAS_GHA_2023 {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `analysis-seeker.Google_ads_dataset.DATOS_RESERVAS_GHA_2023` ;;
+  sql_table_name: `analysis-seeker.Google_ads_dataset.DATOS_RESERVAS_GHA_2023_FIXED` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -59,4 +59,15 @@ view: datos_reservas_gha_2023 {
   measure: count {
     type: count
   }
+
+  measure: COSTE {
+    type: number
+    sql: ${TABLE}.COSTE;;
+  }
+
+  measure: AVG_CPC {
+    type: number
+    sql: ${TABLE}.AVG_CPC;;
+  }
+
 }

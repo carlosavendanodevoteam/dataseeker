@@ -12,11 +12,11 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-explore: datos_reservas_gha_2023 {
+explore: DATOS_RESERVAS_GHA_2023 {
   join: view_unique_hotel_corporative_encrypted{
     type: inner
     relationship: many_to_one
-    sql_on: ${datos_reservas_gha_2023.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+    sql_on: ${DATOS_RESERVAS_GHA_2023.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
 }
 
