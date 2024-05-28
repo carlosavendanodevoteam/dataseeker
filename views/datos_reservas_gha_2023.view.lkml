@@ -70,4 +70,9 @@ view: DATOS_RESERVAS_GHA_2023 {
     sql: ${TABLE}.AVG_CPC;;
   }
 
+  dimension: month_text {
+    type: string
+    sql: ${TABLE}.month_text ;;
+  }
+
 }
