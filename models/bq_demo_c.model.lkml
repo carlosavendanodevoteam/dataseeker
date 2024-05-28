@@ -280,6 +280,14 @@ explore: reservations_with_satisfaction_form {
 
 explore: reservations_consolidate_2 {}
 
+explore: manager_change_history {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${manager_change_history.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
+
 explore: rooms_spanish {}
 
 explore: reservations {}
