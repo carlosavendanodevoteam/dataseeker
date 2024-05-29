@@ -2,8 +2,8 @@ view: manager_change_history {
   sql_table_name: `bi_dataset.MANAGER_CHANGE_HISTORY` ;;
 
   dimension: changes {
-    type: string
     sql: ${TABLE}.changes ;;
+    html: {{value}} ;;
   }
   dimension: data {
     type: string
