@@ -181,7 +181,7 @@ view: DATOS_RESERVAS_GHA_2023 {
   dimension: scoring_format {
     sql: ${scoring} ;;
     html: {% if value == 'Platinum' %}
-      <p style="color: black; background-color: platinum; font-size:100%; text-align:center">{{ rendered_value }}</p>
+      <p style="color: black; background-color: grey; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value == 'GOLD' %}
       <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value == 'Silver' %}
