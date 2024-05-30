@@ -181,17 +181,17 @@ view: DATOS_RESERVAS_GHA_2023 {
   dimension: scoring_format {
     sql: ${scoring} ;;
     html: {% if value == 'Platinum' %}
-      <p style="color: black; background-color: Platinum; font-size:100%; text-align:center">{{ rendered_value }}</p>
+      <p style="color: black; background-color: platinum; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value == 'GOLD' %}
       <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value == 'Silver' %}
       <p style="color: black; background-color: Silver; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value == 'BRONZE' %}
-      <p style="color: black; background-color: BRONZE; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% elsif value == 'LITE' %}
-      <p style="color: black; background-color: LITE; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% else %}
       <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'LITE' %}
+      <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+      <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% endif %}
 ;;
   }
