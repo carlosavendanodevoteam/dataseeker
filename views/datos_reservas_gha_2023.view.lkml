@@ -108,7 +108,7 @@ view: DATOS_RESERVAS_GHA_2023 {
         "ona-rosas","ona-sueno-azul","ona-suites-salou","ona-valle-romano","playamaro","port-alicante","port-azafata","port-benidorm","port-denia","port-elche",
         "port-europa","port-feria","port-fiesta","port-huerto","port-jardin","port-vista","serenade-all-suites","solvasa-laurisilva","solvasa-valencia",
         "super8-augsburg","super8-chemnitz","super8-freiburg","super8-hamburg-mitte","super8-koblenz","super8-mainz-zollhafen","super8-munich-city-north",
-        "super8-munich-city-west","super8-oberhausen") THEN 'Platinum'
+        "super8-munich-city-west","super8-oberhausen","ona-hacienda-alamo") THEN 'Platinum'
         WHEN ${TABLE}.hotel_code IN ("alamos-benidorm","apartamentos-vall-boi","bahia-serena","dom-jose-beach","don-ramon","eco-europa","eco-sorra",
         "estudios-salinas","eurohotel-diagonal","gavimararielchico","gavimarcalagranhotel","gavimarlamirada","hospital-benasque","hotel-alay","hotel-myramar",
         "madeira-centro","maisonnave","malvasia","marmoris-alentejo","marmoris-camelia","marmoris-sintra","mediterraneo-park","monte-novo","montesol","nuriasol",
@@ -145,7 +145,8 @@ view: DATOS_RESERVAS_GHA_2023 {
         "soho-colon","soho-columela","soho-congreso","soho-cordoba","soho-equitativa","soho-fernando","soho-gabriel","soho-jerez","soho-malaga","soho-moon-dreams",
         "soho-naranjos","soho-opera","soho-oviedo","soho-pombo","soho-puerto","soho-salamanca","soho-sevilla","soho-tiburon","soho-turia","soho-urban","soho-vegas",
         "soho-vistahermosa-hotel","toboso-almunecar","toboso-aparturis","toboso-plaza","torre-cristina","var-sanpedro","var-sierra-cazorla","vik-cayena",
-        "vik-coralbeach","vik-costadelsol","vik-sanantonio","vik-villavik","zahara-beach","zahara-sol") THEN 'GOLD'
+        "vik-coralbeach","vik-costadelsol","vik-sanantonio","vik-villavik","zahara-beach","zahara-sol","b4u-san-sebastian","b4u-santander","hotel-guadalquivir",
+        "hotel-luve") THEN 'GOLD'
         WHEN ${TABLE}.hotel_code IN ("summum-ventas","summum-rosellon","el-patio","maria-del-mar","casa-romana-boutique","08028-apartments","1888-triana-epoca",
         "1920-sevilla-epoca","4us-rioja-wine","abeto","abrigall-masella","acostacentro","acostamusica","acostavetonia","adaria-vera","agaro","alp-masella",
         "america-sevilla","aptos-chinitas","aqua-mar","arcos-nerja","arenacenter","arillo","ateneo","aubi","ayamontino","baia-cristal","baia-grande","baltum",
@@ -171,10 +172,16 @@ view: DATOS_RESERVAS_GHA_2023 {
         "sirena-3","sol-y-miel","solar-alvura","soratama","sorrabona","stella-maris","suites-pintor","sul-villas","summum-ratxo","summum-rosellon","tarik","torre-nunez",
         "traina","tropical-sol","ur-avenida","ur-m-house","ur-portofino","urban-dream-granada","urban-dream-nevada","urban-dream-torrox","urbansense-bellagranada",
         "urbansense-bellasevilla","urbansense-hostelsevilla","urbansense-oboegranada","urbansense-oboemadrid","urbansense-oboesevillai","urbansense-oboesevillaii",
-        "v-vejer","valderrabanos","vale-dazenha","vasco-gama","viadero","vila-petra","vilagaros","villa-frigiliana","villamarina","zeus","zeus-malaga") THEN 'BRONZE'
+        "v-vejer","valderrabanos","vale-dazenha","vasco-gama","viadero","vila-petra","vilagaros","villa-frigiliana","villamarina","zeus","zeus-malaga",
+        "citymar-montblanc","citymar-santacruz","hotel-royal-costa","sao-felix","seayou-saplaya") THEN 'BRONZE'
          WHEN ${TABLE}.hotel_code IN ("ahc-lowcost","ahc-palacio-coria","choromar","do-parque","don-manuel","douro-palace","douro-royal","hemd-gloria",
         "hemd-puertareal","hemd-sanandres","hemd-zaida","hotel-embarcadero","hotel-ninays","hotel-orquidea","oasis-conil-hotel","parkhouse-101",
-        "rainha-isabel","sa-amaro","sa-serra","sarga","serenity-boutique","sierra-arcos","tejera","torre-quintana","vista-real") THEN 'LITE'
+        "rainha-isabel","sa-amaro","sa-serra","sarga","serenity-boutique","sierra-arcos","tejera","torre-quintana","vista-real","campanario","sesimbra") THEN 'LITE'
+        when ${TABLE}.hotel_code IN ("albero","alboran-algeciras","alboran-chiclana","bcl-levante-club","bcl-levante-lux","bcl-levante-spa","clube-maria-luisa",
+        "fhb-agaves","fhb-casa-florida","fhb-casa-liza","fhb-casa88","fhb-casaluna-boutique","fhb-mansion-bosque","fhb-maria-bonita","fhb-maria-isabela",
+        "fhb-milkaella","fhb-portal-miguel-allende","fhb-quetzal","flavia","greco-antidoto","greco-pintor","hotel-santa-rosa","hotel-veintiuno","jardin-reina",
+        "lineros","miramar-cantabria","mogay","montiel","nahuel-huapi","palm-playa","quinta-pedra","san-marcos","santuario-spa","spiwak-chipichape",
+        "spiwak-spirito","tracos-doutrora","tranquilo-puerto-dreams","urh-moli-del-mig","varandas","veramar","yellow-praia") THEN 'BAJA'
         ELSE 'NO SCORING'
     END ;;}
 
