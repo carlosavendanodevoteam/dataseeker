@@ -1,10 +1,16 @@
 view: manager_change_history {
   sql_table_name: `bi_dataset.MANAGER_CHANGE_HISTORY` ;;
 
+
   dimension: changes {
-    sql: ${TABLE}.changes ;;
-    html: {{value}} ;;
+    type: string
+    html: {% assign words = value | split: '\n' %}
+    {% for word in words %}
+        {% assign values = word | split: ': ' %}
+        <b>{{values[0]}}</b>: {{values[1]}}
+    {% endfor %};;
   }
+
   dimension: data {
     type: string
     sql: ${TABLE}.data ;;
