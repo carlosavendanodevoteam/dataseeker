@@ -175,7 +175,7 @@ view: DATOS_RESERVAS_GHA_2023 {
          WHEN ${TABLE}.hotel_code IN ("ahc-lowcost","ahc-palacio-coria","choromar","do-parque","don-manuel","douro-palace","douro-royal","hemd-gloria",
         "hemd-puertareal","hemd-sanandres","hemd-zaida","hotel-embarcadero","hotel-ninays","hotel-orquidea","oasis-conil-hotel","parkhouse-101",
         "rainha-isabel","sa-amaro","sa-serra","sarga","serenity-boutique","sierra-arcos","tejera","torre-quintana","vista-real") THEN 'LITE'
-        ELSE null
+        ELSE 'NO SCORING'
     END ;;}
 
 }
