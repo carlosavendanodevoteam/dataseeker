@@ -31,7 +31,7 @@ explore: rescue_seeker_log {
 explore: mview_users {
   join:  view_unique_hotel_corporative_encrypted {
     type: left_outer
-    relationship: many_to_one
+    relationship: many_to_many
     sql_on: ${mview_users.hotel_code} = ${view_unique_hotel_corporative_encrypted.corporative_hotel_code};;
   }
 }
