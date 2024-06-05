@@ -4,10 +4,29 @@ view: manager_change_history {
 
   dimension: changes {
     type: string
-    html: {% assign words = value | split: '\n' %}
+    html: {% assign words = value | split: '*@@*' %}
     {% for word in words %}
-        {% assign values = word | split: ': ' %}
-        <b>{{values[0]}}</b>: {{values[1]}}
+      {% if word == "B" %}
+        <b>
+      {% elsif word == "CLOSE_B" %}
+        </b>
+      {% elsif word == "BR" %}
+        </br>
+      {% elsif word == "RED" %}
+        <span style=“color:#ba1a1a”>
+      {% elsif word == "CLOSE_RED" %}
+        </span>
+      {% elsif word == "GRAY" %}
+        <span style=“color:#6e6565”>
+      {% elsif word == "CLOSE_GRAY" %}
+        </span>
+      {% elsif word == "GREEN" %}
+        <span style=“color:#30b50b”>
+      {% elsif word == "CLOSE_GREEN" %}
+        </span>
+      {% else %}
+        {{word}}
+      {% endif %}
     {% endfor %};;
   }
 
