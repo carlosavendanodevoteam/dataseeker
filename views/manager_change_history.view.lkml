@@ -6,22 +6,22 @@ view: manager_change_history {
     type: string
     html: {% assign words = value | split: '*@@*' %}
     {% for word in words %}
-      {% if word == "B" %}
+      {% if word == "B" or word == "*@@*B"%}
         <b>
       {% elsif word == "CLOSE_B" %}
         </b>
       {% elsif word == "BR" %}
         </br>
       {% elsif word == "RED" %}
-        <span style=“color:#ba1a1a”>
+        <span style='color:#ba1a1a'>
       {% elsif word == "CLOSE_RED" %}
         </span>
-      {% elsif word == "GRAY" %}
-        <span style=“color:#6e6565”>
-      {% elsif word == "CLOSE_GRAY" %}
+      {% elsif word == "GREY" %}
+        <span style='color:#6e6565'>
+      {% elsif word == "CLOSE_GREY" %}
         </span>
       {% elsif word == "GREEN" %}
-        <span style=“color:#30b50b”>
+        <span style='color:#30b50b'>
       {% elsif word == "CLOSE_GREEN" %}
         </span>
       {% else %}
