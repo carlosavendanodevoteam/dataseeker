@@ -570,10 +570,7 @@ view: mview_comparation_bookings {
     type: string
     sql:Case
           when UPPER(${rate_name}) like '% TRADE %' then 'Trade Area'
-          when UPPER(${rate_name}) like 'FLEXIBLE%' then 'Flexible'
-          when UPPER(${rate_name}) like '%REEMBOLSABLE%' then 'non refundable'
-          when UPPER(${rate_name}) like '%PAGO DIRECTO EN%' or UPPER(${rate_name}) like '%PAGA DIRECTAMENTE EN %' then 'direct payment at the hotel'
-          else 'Other'
+          else ${rate_name}
         End;;
   }
 
