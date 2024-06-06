@@ -340,6 +340,11 @@ explore: revenue_trends {
     relationship: many_to_one
     sql_on: ${revenue_trends.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+  join:  hotels_data{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${revenue_trends.hotel_code} = ${hotels_data.hotel_code};;
+  }
 }
 
 explore: ring2travel_calls_report {}
@@ -372,3 +377,5 @@ explore: ClickUp_task {
 }
 
 explore: parkroyal_2024budget_fixed {}
+
+explore: google_hotel_center{}

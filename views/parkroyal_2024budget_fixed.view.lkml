@@ -11,6 +11,11 @@ view: parkroyal_2024budget_fixed {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Adr Mxn" in Explore.
 
+  dimension: hotel_name {
+    type: string
+    sql: ${TABLE}.hotel_name ;;
+  }
+
   dimension: adr_mxn {
     type: number
     sql: ${TABLE}.ADR_MXN ;;
@@ -86,10 +91,6 @@ view: parkroyal_2024budget_fixed {
           when UPPER(${month}) = "NOVIEMBRE" then "November"
           else "December"
         End;;
-  }
-  dimension: hotel_name {
-    type: string
-    sql: ${TABLE}.hotel_name ;;
   }
 
   dimension: month_short_text {
