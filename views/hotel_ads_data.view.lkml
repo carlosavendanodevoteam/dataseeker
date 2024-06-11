@@ -124,7 +124,7 @@ view: hotel_ads_data {
 
   measure: commission {
     type: number
-    sql: ${TABLE}.commission_percent / 1000000 ;;
+    sql: ${TABLE}.commission_percent ;; #DIVIDIR POR 1000000 PARA SACAR EL VALOR EXACTO
   }
 
 }
