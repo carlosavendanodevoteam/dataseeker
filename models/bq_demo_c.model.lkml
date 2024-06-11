@@ -38,6 +38,8 @@ explore: mview_users {
 
 explore: hotel_ads_data {}
 
+explore: ring2_travel_agents_report {}
+
 explore: view_unique_hotel_corporative_encrypted {}
 
 explore:mview_comparation_unique_bookings {
