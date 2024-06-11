@@ -80,12 +80,12 @@ view: ring2_travel_agents_report {
 
   dimension: login_timestamp {
     type: date
-    sql: CASE WHEN ${event_type} = 'login' and ${event_subtype} = 'voice-channel' THEN ${event_raw} ELSE NULL END ;;
+    sql: CASE WHEN ${event_type} = 'login' and ${event_subtype} = 'voice-channel' THEN ${event_time} ELSE NULL END ;;
   }
 
   dimension: logout_timestamp {
     type: date
-    sql: CASE WHEN ${event_type} = 'logout' and ${event_subtype} = 'voice-channel' THEN ${event_raw} ELSE NULL END ;;
+    sql: CASE WHEN ${event_type} = 'logout' and ${event_subtype} = 'voice-channel' THEN ${event_time} ELSE NULL END ;;
   }
 
 # Medida para calcular la diferencia en horas entre login y logout
