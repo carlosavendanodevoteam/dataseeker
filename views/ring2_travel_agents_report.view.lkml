@@ -77,4 +77,24 @@ view: ring2_travel_agents_report {
     type: count
     drill_fields: [event_subtype_name, username, user_full_name]
   }
+
+  dimension: login_timestamp {
+    type: date
+    sql: CASE WHEN ${event_type} = 'login' and ${event_subtype} = 'voice-channel' THEN ${event_raw} ELSE NULL END ;;
+  }
+
+  dimension: logout_timestamp {
+    type: date
+    sql: CASE WHEN ${event_type} = 'logout' THEN ${event_raw} ELSE NULL END ;;
+  }
+
+# Medida para calcular la diferencia en horas entre login y logout
+  measure: hours_between_login_logout {
+    type: number
+    sql: TIMESTAMP_DIFF(
+         MAX(CASE WHEN ${event_type} = 'logout' THEN ${event_raw} END),
+         MIN(CASE WHEN ${event_type} = 'login' THEN ${event_raw} END),
+         HOUR
+       ) ;;
+  }
 }
