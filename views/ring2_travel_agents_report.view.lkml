@@ -89,7 +89,7 @@ view: ring2_travel_agents_report {
   }
 
 # Medida para calcular la diferencia en horas entre login y logout
-  dimension: hours_between_login_logout {
+  measure: hours_between_login_logout {
     type: number
     sql: TIMESTAMP_DIFF(
          MAX(CASE WHEN ${event_type} = 'logout' THEN ${event_raw} END),
