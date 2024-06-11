@@ -10,7 +10,7 @@ view: ring2_travel_agents_report {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension_group: event {
+  dimension_group: Event_Date {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.Event_Date ;;
@@ -80,20 +80,20 @@ view: ring2_travel_agents_report {
 
   dimension: login_timestamp {
     type: date
-    sql: CASE WHEN ${event_type} = 'login' and ${event_subtype} = 'voice-channel' THEN ${event_time} ELSE NULL END ;;
+    sql: CASE WHEN ${event_type} = 'login' and ${event_subtype} = 'voice-channel' THEN ${Event_Date_time} ELSE NULL END ;;
   }
 
   dimension: logout_timestamp {
     type: date
-    sql: CASE WHEN ${event_type} = 'logout' and ${event_subtype} = 'voice-channel' THEN ${event_time} ELSE NULL END ;;
+    sql: CASE WHEN ${event_type} = 'logout' and ${event_subtype} = 'voice-channel' THEN ${Event_Date_time} ELSE NULL END ;;
   }
 
 # Medida para calcular la diferencia en horas entre login y logout
   measure: hours_between_login_logout {
     type: number
     sql: TIMESTAMP_DIFF(
-         MAX(CASE WHEN ${event_type} = 'logout' THEN ${event_raw} END),
-         MIN(CASE WHEN ${event_type} = 'login' THEN ${event_raw} END),
+         MAX(CASE WHEN ${event_type} = 'logout' THEN ${Event_Date_time} END),
+         MIN(CASE WHEN ${event_type} = 'login' THEN ${Event_Date_time} END),
          HOUR
        ) ;;
   }
