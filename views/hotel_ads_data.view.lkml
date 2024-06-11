@@ -122,4 +122,9 @@ view: hotel_ads_data {
     drill_fields: [campaign_name]
   }
 
+  measure: commission {
+    type: number
+    sql: ${TABLE}.commission_percent / 1000000 ;;
+  }
+
 }
