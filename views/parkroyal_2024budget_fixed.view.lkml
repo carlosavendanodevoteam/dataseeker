@@ -66,7 +66,6 @@ view: parkroyal_2024budget_fixed {
     type: string
     sql: ${TABLE}.month ;;
   }
-
   dimension: rn {
     type: number
     sql: ${TABLE}.RN ;;
@@ -110,25 +109,4 @@ view: parkroyal_2024budget_fixed {
           else "Dec"
         End;;
   }
-
-  dimension_group: timestamp{
-    type: time
-    timeframes: [month, quarter, year]
-    sql: Case
-          when UPPER(${month}) = "ENERO" then "2024-01-01"
-          when UPPER(${month}) = "FEBRERO" then "2024-02-01"
-          when UPPER(${month}) = "MARZO" then "2024-03-01"
-          when UPPER(${month}) = "ABRIL" then "2024-04-01"
-          when UPPER(${month}) = "MAYO" then "2024-05-01"
-          when UPPER(${month}) = "JUNIO" then "2024-06-01"
-          when UPPER(${month}) = "JULIO" then "2024-07-01"
-          when UPPER(${month}) = "AGOSTO" then "2024-08-01"
-          when UPPER(${month}) = "SEPTIEMBRE" then "2024-09-01"
-          when UPPER(${month}) = "OCTUBRE" then "2024-10-01"
-          when UPPER(${month}) = "NOVIEMBRE" then "2024-11-01"
-          else "2024-12-01"
-        End;;
-  }
-
-
 }
