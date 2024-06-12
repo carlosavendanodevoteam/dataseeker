@@ -12,6 +12,8 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+explore: agent_work_time {}
+
 explore: DATOS_RESERVAS_GHA_2023 {
   join: view_unique_hotel_corporative_encrypted{
     type: inner
