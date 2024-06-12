@@ -63,10 +63,4 @@ view: agent_work_time {
     type: number
     sql: TIMESTAMP_DIFF(${logout_time}, ${login_time}, HOUR) ;;
   }
-
-  measure: total_work_hours {
-    type: sum
-    sql: ${TABLE}.work_duration_hours ;;
-  }
-
 }
