@@ -4,6 +4,7 @@ view: agent_work_time {
       WITH logins AS (
         SELECT
           Username,
+          Event_Type,
           Event_Date AS login_time,
           LEAD(Event_Date) OVER (PARTITION BY Username ORDER BY Event_Date) AS next_event_time,
           LEAD(Event_Type) OVER (PARTITION BY Username ORDER BY Event_Date) AS next_event
@@ -41,6 +42,11 @@ view: agent_work_time {
   dimension: agent {
     type: string
     sql: ${TABLE}.Username ;;
+  }
+
+  dimension: Event_Subtype {
+    type: string
+    sql: ${TABLE}.Event_Subtype ;;
   }
 
   dimension: login_time {
