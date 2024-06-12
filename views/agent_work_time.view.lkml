@@ -56,7 +56,7 @@ view: agent_work_time {
 
   dimension: login_time {
     type: duration_minute
-    sql: if(${TABLE}.Event_Type = 'login' and ${TABLE}.Event_Subtype = 'voice-channel' ,${TABLE}.login_time, 0) ;;
+    sql: if(${Event_Type} = 'login' and ${TABLE}.Event_Subtype = 'voice-channel' ,${TABLE}.login_time, 0) ;;
   }
 
   dimension: logout_time {
