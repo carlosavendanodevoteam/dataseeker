@@ -4,7 +4,6 @@ view: agent_work_time {
       WITH logins AS (
         SELECT
           Username,
-          User_Full_Name,
           Event_Date AS login_time,
           LEAD(Event_Date) OVER (PARTITION BY Username ORDER BY Event_Date) AS next_event_time,
           LEAD(Event_Type) OVER (PARTITION BY Username ORDER BY Event_Date) AS next_event
@@ -18,7 +17,6 @@ view: agent_work_time {
         SELECT
           Username,
           Event_Date AS logout_time,
-          User_Full_Name
         FROM
           `analysis-seeker.bi_dataset.RING2TRAVEL_AGENTS_REPORT`
         WHERE
@@ -28,7 +26,6 @@ view: agent_work_time {
         logins.Username,
         logins.login_time,
         MIN(logouts.logout_time) AS logout_time,
-        logins.User_Full_Name
       FROM
         logins
       JOIN
@@ -44,11 +41,6 @@ view: agent_work_time {
   dimension: agent {
     type: string
     sql: ${TABLE}.Username ;;
-  }
-
-  dimension: agent_name {
-    type: string
-    sql: ${TABLE}.User_Full_Name ;;
   }
 
   dimension: login_time {
