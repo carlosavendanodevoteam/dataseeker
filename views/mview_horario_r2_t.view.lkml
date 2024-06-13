@@ -53,4 +53,14 @@ view: mview_horario_r2t {
     type: count
     drill_fields: [username, user_full_name]
   }
+
+  dimension: total_hour {
+    type: number
+    sql: Case
+          when ${login_hours} > ${logout_hours} then ${login_hours} + ${logout_hours}
+          when ${login_hours} < ${logout_hours} then ${logout_hours} - ${login_hours}
+          else 0
+        END;;
+  }
+
 }
