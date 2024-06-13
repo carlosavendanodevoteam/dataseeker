@@ -40,6 +40,8 @@ explore: mview_users {
   }
 }
 
+explore: mview_horario_r2t {}
+
 explore: hotel_ads_data {}
 
 explore: ring2_travel_agents_report {}
