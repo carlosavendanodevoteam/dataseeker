@@ -60,22 +60,4 @@ view: mview_horario_r2t {
     drill_fields: [username, user_full_name]
   }
 
-
-measure: operation {
-  type: yesno
-  sql: CASE
-          WHEN ${total_login_hours} > ${total_logout_hours} THEN YES
-          WHEN ${total_login_hours} < ${total_logout_hours} THEN NO
-          ELSE 0
-       END ;;
-}
-measure: total_hour {
-  type: number
-  sql: CASE
-          WHEN ${operation} = YES THEN ((${total_login_hours} + ${total_logout_hours}) / 360)
-          WHEN ${operation} = NO THEN ((${total_logout_hours} - ${total_login_hours}) / 360)
-          ELSE 0
-       END ;;
-}
-
 }
