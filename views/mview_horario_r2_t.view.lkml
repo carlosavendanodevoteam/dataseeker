@@ -31,6 +31,8 @@ view: mview_horario_r2t {
   measure: total_login_hours {
     type: sum
     sql: ${login_hours} ;;  }
+
+
   measure: average_login_hours {
     type: average
     sql: ${login_hours} ;;  }
@@ -39,6 +41,10 @@ view: mview_horario_r2t {
     type: number
     sql: ${TABLE}.logout_hours ;;
   }
+
+  measure: total_logout_hours {
+    type: sum
+    sql: ${logout_hours} ;;  }
 
   dimension: user_full_name {
     type: string
@@ -54,11 +60,11 @@ view: mview_horario_r2t {
     drill_fields: [username, user_full_name]
   }
 
-  dimension: total_hour {
+  measure: total_hour {
     type: number
     sql: Case
-          when sum(${login_hours}) > sum(${logout_hours}) then sum(${login_hours}) + sum(${logout_hours})
-          when sum(${login_hours}) < sum(${logout_hours}) then sum(${logout_hours}) - sum(${login_hours})
+          when ${total_login_hours}> ${total_logout_hours} then  ${total_login_hours} + ${total_logout_hours} /360
+          when ${total_login_hours} < ${total_logout_hours} then ${total_logout_hours} - ${total_login_hours} /360
           else 0
         END;;
   }
