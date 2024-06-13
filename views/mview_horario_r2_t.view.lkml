@@ -63,8 +63,8 @@ view: mview_horario_r2t {
   measure: total_hour {
     type: number
     sql: Case
-          when ${total_login_hours}> ${total_logout_hours} then  ${total_login_hours} + ${total_logout_hours} /360
-          when ${total_login_hours} < ${total_logout_hours} then ${total_logout_hours} - ${total_login_hours} /360
+          when ${total_login_hours}> ${total_logout_hours} then (${total_login_hours} + ${total_logout_hours} /360)
+          when ${total_login_hours} < ${total_logout_hours} then (${average_login_hours}${total_logout_hours} - ${total_login_hours} /360)
           else 0
         END;;
   }
