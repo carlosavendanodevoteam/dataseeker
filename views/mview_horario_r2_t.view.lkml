@@ -48,7 +48,7 @@ view: mview_horario_r2t {
 
   dimension: user_full_name {
     type: string
-    sql: ${TABLE}.User_Full_Name ;;
+    sql: UPPER(${TABLE}.User_Full_Name) ;;
   }
 
   dimension: username {
