@@ -57,10 +57,9 @@ view: mview_horario_r2t {
   dimension: total_hour {
     type: number
     sql: Case
-          when sum(${login_hours}) > sum(${logout_hours}) then sum(${login_hours}) + sum(${logout_hours}) /360
-          when sum(${login_hours}) < sum(${logout_hours}) then sum(${logout_hours}) - sum(${login_hours}) /360
+          when sum(${login_hours}) > sum(${logout_hours}) then sum(${login_hours}) + sum(${logout_hours})
+          when sum(${login_hours}) < sum(${logout_hours}) then sum(${logout_hours}) - sum(${login_hours})
           else 0
         END;;
   }
-
 }
