@@ -89,5 +89,4 @@ view: mview_horario_r2t {
     type: number
     sql: ${TABLE}.stop_break_admin ;;
   }
-
 }
