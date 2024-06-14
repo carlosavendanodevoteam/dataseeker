@@ -60,4 +60,34 @@ view: mview_horario_r2t {
     drill_fields: [username, user_full_name]
   }
 
+  dimension: start_break_rest {
+    type: number
+    sql: ${TABLE}.start_break_rest ;;
+  }
+
+  dimension: stop_break_rest {
+    type: number
+    sql: ${TABLE}.stop_break_rest ;;
+  }
+
+  dimension: start_break_visual_pause {
+    type: number
+    sql: ${TABLE}.start_break_visual_pause ;;
+  }
+
+  dimension: stop_break_visual_pause {
+    type: number
+    sql: ${TABLE}.stop_break_visual_pause ;;
+  }
+
+  dimension: start_break_admin {
+    type: number
+    sql: ${TABLE}.start_break_admin ;;
+  }
+
+  dimension: stop_break_admin {
+    type: number
+    sql: ${TABLE}.stop_break_admin ;;
+  }
+
 }
