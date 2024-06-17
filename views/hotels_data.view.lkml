@@ -16,6 +16,11 @@ view: hotels_data {
     sql: ${TABLE}.account ;;
   }
 
+  dimension: ring2travel_Account {
+    type: string
+    sql: ${TABLE}.ring2travel_Account ;;
+  }
+
   dimension: amenities {
     type: string
     sql: ${TABLE}.amenities ;;
