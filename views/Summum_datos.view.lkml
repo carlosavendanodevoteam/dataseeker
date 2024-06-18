@@ -9,7 +9,7 @@ view: summum_datos_reservas{
           UNION ALL
           SELECT
               hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo,
-              SUM(price + priceSupplements) AS Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, True AS PMS
+              SUM(price + priceSupplements) AS Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, False AS PMS
           FROM `analysis-seeker.bi_dataset.MVIEW_DATOS_RESERVAS_6`
           WHERE hotel_code IN (
               SELECT hotel_code
