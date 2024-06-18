@@ -14,6 +14,8 @@ datagroup: bq_demo_c_default_datagroup {
 
 explore: agent_work_time {}
 
+explore: summum_datos_reservas {}
+
 explore: total_work_time {}
 
 explore: DATOS_RESERVAS_GHA_2023 {
