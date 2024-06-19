@@ -61,7 +61,7 @@ view: summum_datos_reservas{
     sql: ${TABLE}.Board ;;
   }
 
-  dimension: RateName {
+  dimension: bad_RateName {
     type: string
     sql: ${TABLE}.RateName ;;
   }
@@ -105,6 +105,7 @@ view: summum_datos_reservas{
      type: string
     sql: ${TABLE}.Origen ;;
    }
+
   dimension: board {
     type: string
     sql: Case
@@ -114,4 +115,14 @@ view: summum_datos_reservas{
           ELSE UPPER(${bad_Board})
         END;;
   }
+  dimension: RateName {
+    type: string
+    sql: Case
+          when ${bad_RateName} like 'NR %' OR ${bad_RateName} like 'No Reembolsable %' then 'No reembolsable Club || Una modificación'
+          when ${bad_RateName} like 'FLEX %' then 'Tarifa Flexible Club || Cancelación Gratuita'
+          else ${bad_RateName}
+        end
+          ;;
+  }
+
 }
