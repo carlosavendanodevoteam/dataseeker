@@ -1,22 +1,7 @@
 view: summum_datos_reservas{
-  derived_table: {
-    sql:
-      SELECT hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo, Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, PMS
-      FROM (
-          SELECT
-                 hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, Reservador,Origen,
-                 RateName, promotions, Promo, Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, PMS
-          FROM `analysis-seeker.bi_dataset.DATOS_RESERVAS_SUMMMUM_PMS_FIXED`
-          UNION ALL
-          SELECT
-              hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, 'paraty' as Reservador, 'paraty web' as Origen, RateName,
-              promotions, Promo, SUM(price + priceSupplements) AS Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, False AS PMS
-          FROM `analysis-seeker.bi_dataset.MVIEW_DATOS_RESERVAS_6`
-          WHERE hotel_code IN ('summum-corpo','summum-zurbaran','summum-rosellon','summum-ventas','summum-ratxo','summum-poblado-suites','summum-virrey-finca','summum-joan-miro')
-          AND TIMESTAMP_TRUNC(partitionTimestamp, DAY) >= TIMESTAMP('2024-01-01')
-          GROUP BY hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo, payment_method, partitionTimestamp, cancellation_timestamp_date
-      ) ;;
-  }
+
+  sql_table_name:  `analysis-seeker.bi_dataset.DATOS_RESERVAS_SUMMMUM_PMS_FIXED` ;;
+
 
   dimension: hotel_code {
     type: string
@@ -113,4 +98,9 @@ view: summum_datos_reservas{
     type: yesno
     sql: ${TABLE}.PMS ;;
   }
+   dimension: origen {
+     type: string
+    sql: ${TABLE}.Origen ;;
+   }
+
 }
