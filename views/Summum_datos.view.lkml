@@ -109,7 +109,8 @@ view: summum_datos_reservas{
     type: string
     sql: Case
           when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' and ${hotel_code} = 'summum-ventas' then 'SÓLO ALOJAMIENTO'
-          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' then 'SOLO ALOJAMIENTO '
+          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' and ${hotel_code} = 'sant-roc' then 'SOLO ALOJAMIENTO '
+          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' then 'SOLO ALOJAMIENTO'
           ELSE UPPER(${bad_Board})
         END;;
   }
