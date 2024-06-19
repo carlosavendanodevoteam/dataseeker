@@ -11,11 +11,7 @@ view: summum_datos_reservas{
               hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo,
               SUM(price + priceSupplements) AS Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, False AS PMS
           FROM `analysis-seeker.bi_dataset.MVIEW_DATOS_RESERVAS_6`
-          WHERE hotel_code IN (
-              SELECT hotel_code
-              FROM `analysis-seeker.bi_dataset.VIEW_HOTEL_CORPORATIVE_ENCRYPTED`
-              WHERE corporative_hotel_code = 'summum-corpo' OR hotel_code = '1881-corpo'
-          )
+          WHERE hotel_code IN ('summum-corpo','summum-zurbaran','summum-rosellon','summum-ventas','summum-ratxo','summum-poblado-suites','summum-virrey-finca','summum-joan-miro')
           AND TIMESTAMP_TRUNC(partitionTimestamp, DAY) >= TIMESTAMP('2024-01-01')
           GROUP BY hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo, payment_method, partitionTimestamp, cancellation_timestamp_date
       ) ;;
