@@ -4,12 +4,13 @@ view: summum_datos_reservas{
       SELECT hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo, Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, PMS
       FROM (
           SELECT
-              *
+                 hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, Reservador,Origen,
+                Channel, RateName, promotions, Promo, Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, PMS
           FROM `analysis-seeker.bi_dataset.DATOS_RESERVAS_SUMMMUM_PMS_FIXED`
           UNION ALL
           SELECT
-              hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, RateName, promotions, Promo,
-              SUM(price + priceSupplements) AS Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, False AS PMS
+              hotel_code, identifier, startDate, endDate, country, adults1, kids1, babies1, babies2, Room, Board, 'paraty' as Reservador, RateName,
+              promotions, Promo, SUM(price + priceSupplements) AS Revenue, payment_method, partitionTimestamp, cancellation_timestamp_date, False AS PMS
           FROM `analysis-seeker.bi_dataset.MVIEW_DATOS_RESERVAS_6`
           WHERE hotel_code IN ('summum-corpo','summum-zurbaran','summum-rosellon','summum-ventas','summum-ratxo','summum-poblado-suites','summum-virrey-finca','summum-joan-miro')
           AND TIMESTAMP_TRUNC(partitionTimestamp, DAY) >= TIMESTAMP('2024-01-01')
