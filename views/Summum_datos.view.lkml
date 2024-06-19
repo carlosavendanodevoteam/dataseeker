@@ -56,7 +56,7 @@ view: summum_datos_reservas{
     sql: ${TABLE}.Room ;;
   }
 
-  dimension: Board {
+  dimension: bad_Board {
     type: string
     sql: ${TABLE}.Board ;;
   }
@@ -105,5 +105,11 @@ view: summum_datos_reservas{
      type: string
     sql: ${TABLE}.Origen ;;
    }
-
+  dimension: board {
+    type: string
+    sql: Case
+          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' then 'SOLO ALOJAMIENTO'
+          ELSE UPPER(${bad_Board}
+        END;;
+  }
 }

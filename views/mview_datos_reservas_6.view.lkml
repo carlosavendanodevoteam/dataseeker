@@ -83,6 +83,11 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.Board ;;
   }
 
+  dimension: upper_board{
+    type: string
+    sql:upper(${board}) ;;
+  }
+
   dimension: bono_gift_used {
     type: string
     sql: ${TABLE}.bono_gift_used ;;
