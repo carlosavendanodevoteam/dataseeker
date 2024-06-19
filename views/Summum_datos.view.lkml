@@ -4,7 +4,11 @@ view: summum_datos_reservas{
 
   dimension: hotel_code {
     type: string
-    sql: ${TABLE}.hotel_code ;;
+    sql: case
+          when ${TABLE}.hotel_code = 'villa-nazules ' then 'villa-nazules'
+          when ${TABLE}.hotel_code = 'summum-zurbaran ' then 'summum-zurbaran'
+          else ${TABLE}
+        end;;
   }
 
   dimension: identifier {
@@ -105,9 +109,10 @@ view: summum_datos_reservas{
   dimension: board {
     type: string
     sql: Case
-          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' and ${hotel_code} = 'summum-ventas' then 'SÓLO ALOJAMIENTO'
-          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' and ${hotel_code} = 'sant-roc' then 'SOLO ALOJAMIENTO '
-          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' then 'SOLO ALOJAMIENTO'
+          when UPPER(${bad_Board}) = 'SA' and ${hotel_code} = 'summum-ventas' then 'SÓLO ALOJAMIENTO'
+          when UPPER(${bad_Board}) = 'SA' and ${hotel_code} = 'sant-roc' then 'SOLO ALOJAMIENTO '
+          when UPPER(${bad_Board}) = 'SA' then 'SOLO ALOJAMIENTO'
+          when UPPER(${bad_Board}) = 'AD' then 'ALOJAMIENTO Y DESAYUNO'
           ELSE UPPER(${bad_Board})
         END;;
   }
