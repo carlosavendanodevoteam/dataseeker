@@ -679,11 +679,20 @@ view: mview_comparation_unique_bookings {
   dimension: source_grouped {
     type: string
     sql: CASE
-          WHEN ((${hotel_code} like '%nau-%' and ${agent} like '%agente%') or ${TABLE}.agent NOT LIKE '%agente%') and ${source_fixed} like '%Callcenter%' then 'Callseeker'
-          WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
+          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${agent} not like '%landmar%' and ${agent} not like '%oasis%' and ${agent} not like '%qhotels%' and ${agent} not like '%_ona' and ${source_fixed} like '%Callcenter%' THEN 'Ring2travel'
+          WHEN ((${hotel_code} like '%nau-%' and ${agent} like '%agente%') or ${agent} like '%-nau%' or ${agent} like '%landmar%' or ${agent} like '%oasis%' or ${agent} like '%qhotels%' or ${agent} like '%_ona' or ${TABLE}.agent not LIKE '%agente%') and ${source_fixed} like '%Callcenter%' then 'Callseeker'
           ELSE 'WEB'
         END ;;
   }
+
+  dimension: filter_ring2_travel_agent {
+    type: string
+    sql: Case
+          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${agent} not like '%landmar%' and ${agent} not like '%oasis%' and ${agent} not like '%qhotels%' and ${agent} not like '%_ona' and ${source_fixed} like '%Callcenter%' THEN 'True'
+          else 'False'
+        End;;
+  }
+
 
 
   dimension: full_country {
