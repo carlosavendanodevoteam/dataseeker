@@ -2,10 +2,13 @@ view: summum_datos_reservas{
 
   sql_table_name:  `analysis-seeker.bi_dataset.DATOS_RESERVAS_SUMMMUM_PMS_FIXED` ;;
 
-
   dimension: hotel_code {
     type: string
-    sql: ${TABLE}.hotel_code ;;
+    sql: case
+          when ${TABLE}.hotel_code = 'summum-zurbaran ' then 'summum-zurbaran'
+          when ${TABLE}.hotel_code = 'villa-nazules ' then 'villa-nazules'
+          else ${TABLE}.hotel_code
+        end;;
   }
 
   dimension: identifier {
