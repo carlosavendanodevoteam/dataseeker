@@ -108,6 +108,7 @@ view: summum_datos_reservas{
   dimension: board {
     type: string
     sql: Case
+          when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' and ${hotel_code} = 'summum-ventas' then 'SÓLO ALOJAMIENTO'
           when UPPER(${bad_Board}) = 'SOLO ALOJAMIENTO' then 'SOLO ALOJAMIENTO '
           ELSE UPPER(${bad_Board})
         END;;
