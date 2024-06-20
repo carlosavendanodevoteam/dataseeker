@@ -4,11 +4,7 @@ view: summum_datos_reservas{
 
   dimension: hotel_code {
     type: string
-    sql: case
-          when ${TABLE}.hotel_code = 'villa-nazules ' then 'villa-nazules'
-          when ${TABLE}.hotel_code = 'summum-zurbaran ' then 'summum-zurbaran'
-          else ${TABLE}
-        end;;
+    sql: ${TABLE}.hotel_code
   }
 
   dimension: identifier {
