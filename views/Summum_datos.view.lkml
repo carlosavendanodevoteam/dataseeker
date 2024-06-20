@@ -1,6 +1,6 @@
 view: summum_datos_reservas{
 
-  sql_table_name:  `analysis-seeker.bi_dataset.DATOS_RESERVAS_SUMMMUM_PMS_FIXED` ;;
+  sql_table_name: `analysis-seeker.bi_dataset.DATOS_RESERVAS_SUMMMUM_PMS_FIXED` ;;
 
   dimension: hotel_code {
     type: string
