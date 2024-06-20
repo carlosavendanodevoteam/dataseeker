@@ -568,7 +568,11 @@ view: mview_comparation_bookings {
 
   dimension: advance_cancellation{
     type: number
-    sql: DATE_DIFF(CAST(${TABLE}.startDate AS TIMESTAMP), CAST(${TABLE}.modificationTimestamp AS TIMESTAMP), DAY) ;;
+      sql:
+    CASE
+    WHEN ${TABLE}.cancellationTimestamp IS NULL THEN NULL
+    ELSE DATE_DIFF(CAST(${TABLE}.startDate AS TIMESTAMP), CAST(${TABLE}.cancellationTimestamp AS TIMESTAMP), DAY)
+    END ;;
   }
 
   dimension: rateName_fixed {
