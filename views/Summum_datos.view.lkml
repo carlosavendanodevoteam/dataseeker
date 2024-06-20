@@ -4,7 +4,11 @@ view: summum_datos_reservas{
 
   dimension: hotel_code {
     type: string
-    sql: ${TABLE}.hotel_code
+    sql: case
+          when ${TABLE}.hotel_code = 'villa-nazules ' then 'villa-nazules'
+          when ${TABLE}.hotel_code = 'summum-zurbaran ' then 'summum-zurbaran'
+          else ${TABLE}.hotel_code
+        end;;
   }
 
   dimension: identifier {
@@ -63,7 +67,7 @@ view: summum_datos_reservas{
       when ${TABLE}.Room = 'DS' and ${hotel_code} = 'villa-nazules' THEN 'Superior confort con balcón'
       when ${TABLE}.Room = 'DS' THEN 'Habitación Doble Superior'
       when ${TABLE}.Room = 'SDLX' THEN 'Habitación doble superior deluxe'
-      ELSE ${TABLE}.Room
+    ELSE ${TABLE}.Room
     end;;
   }
 
