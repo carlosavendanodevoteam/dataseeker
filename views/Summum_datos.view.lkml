@@ -53,17 +53,41 @@ view: summum_datos_reservas{
 
   dimension: Room {
     type: string
-    sql: ${TABLE}.Room ;;
+    sql: Case
+      when ${TABLE}.Room = 'DBT' THEN 'Doble Estándar con Balcón'
+      when ${TABLE}.Room = 'DB' and ${hotel_code} = 'villa-nazules' THEN 'Confort con balcón'
+      when ${TABLE}.Room = 'DB' THEN 'Habitación doble estándar'
+      when ${TABLE}.Room = 'PVM' THEN 'Premium Vista Mar'
+      when ${TABLE}.Room = 'PVP' THEN 'Premium Vista Piscina'
+      when ${TABLE}.Room = 'DLT' THEN 'Deluxe Vista Mar con Terraza'
+      when ${TABLE}.Room = 'JSB' THEN 'Junior Suite con balcón'
+      when ${TABLE}.Room = 'JS' THEN 'Junior Suite'
+      when ${TABLE}.Room = 'CLS' THEN 'Habitación Rustic'
+      when ${TABLE}.Room = 'TST' THEN 'Habitación Triple'
+      when ${TABLE}.Room = 'DS' and ${hotel_code} = 'villa-nazules' THEN 'Superior confort con balcón'
+      when ${TABLE}.Room = 'DS' THEN 'Habitación Doble Superior'
+      when ${TABLE}.Room = 'SDLX' THEN 'Habitación doble superior deluxe'
+    ELSE ${TABLE}.Room;;
   }
 
-  dimension: bad_Board {
+  dimension: Board {
     type: string
-    sql: ${TABLE}.Board ;;
+    sql: Case
+      when UPPER(${TABLE}.Board) = 'SA' and ${hotel_code} = 'summum-ventas' then 'SÓLO ALOJAMIENTO'
+      when UPPER(${TABLE}.Board) = 'SA' and ${hotel_code} = 'sant-roc' then 'SOLO ALOJAMIENTO '
+      when UPPER(${TABLE}.Board) = 'SA' then 'SOLO ALOJAMIENTO'
+      when UPPER(${TABLE}.Board) = 'AD' then 'ALOJAMIENTO Y DESAYUNO'
+      ELSE UPPER(${TABLE}.Board)
+    END;;
   }
 
-  dimension: bad_RateName {
+  dimension: RateName {
     type: string
-    sql: ${TABLE}.RateName ;;
+    sql: Case
+      when ${TABLE}.RateName  like 'NR %' OR  ${TABLE}.RateName  like 'No Reembolsable %' then 'No reembolsable Club || Una modificación'
+      when ${TABLE}.RateName  like 'FLEX %' then 'Tarifa Flexible Club || Cancelación Gratuita'
+      else ${TABLE}.RateName
+    end;;
   }
 
   dimension: promotions {
@@ -106,24 +130,5 @@ view: summum_datos_reservas{
     sql: ${TABLE}.Origen ;;
    }
 
-  dimension: board {
-    type: string
-    sql: Case
-          when UPPER(${bad_Board}) = 'SA' and ${hotel_code} = 'summum-ventas' then 'SÓLO ALOJAMIENTO'
-          when UPPER(${bad_Board}) = 'SA' and ${hotel_code} = 'sant-roc' then 'SOLO ALOJAMIENTO '
-          when UPPER(${bad_Board}) = 'SA' then 'SOLO ALOJAMIENTO'
-          when UPPER(${bad_Board}) = 'AD' then 'ALOJAMIENTO Y DESAYUNO'
-          ELSE UPPER(${bad_Board})
-        END;;
-  }
-  dimension: RateName {
-    type: string
-    sql: Case
-          when ${bad_RateName} like 'NR %' OR ${bad_RateName} like 'No Reembolsable %' then 'No reembolsable Club || Una modificación'
-          when ${bad_RateName} like 'FLEX %' then 'Tarifa Flexible Club || Cancelación Gratuita'
-          else ${bad_RateName}
-        end
-          ;;
-  }
 
 }
