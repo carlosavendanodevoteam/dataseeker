@@ -16,7 +16,7 @@ explore: mview_global_lead_time_stats {
   join: hotel_corporative_encrypted{
     type: inner
     relationship: one_to_one
-    sql_on: ${hotel_corporative_encrypted.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+    sql_on: ${hotel_corporative_encrypted.hotel_code} = ${mview_global_lead_time_stats.hotel_code};;
   }
 }
 
