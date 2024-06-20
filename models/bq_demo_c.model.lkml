@@ -12,6 +12,14 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+explore: mview_global_lead_time_stats {
+  join: view_unique_hotel_corporative_encrypted{
+    type: inner
+    relationship: one_to_one
+    sql_on: ${mview_global_lead_time_stats.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
+
 explore: agent_work_time {}
 
 explore: summum_datos_reservas {}
