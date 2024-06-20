@@ -67,7 +67,7 @@ view: summum_datos_reservas{
       when ${TABLE}.Room = 'DS' and ${hotel_code} = 'villa-nazules' THEN 'Superior confort con balcón'
       when ${TABLE}.Room = 'DS' THEN 'Habitación Doble Superior'
       when ${TABLE}.Room = 'SDLX' THEN 'Habitación doble superior deluxe'
-    ELSE ${TABLE}.Room
+      ELSE ${TABLE}.Room
     end;;
   }
 
