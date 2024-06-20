@@ -801,6 +801,5 @@ view: mview_comparation_searches {
       WHEN ${country} = 'MP' THEN 'Northern Mariana Islands'
       ELSE ${country}
     END ;;
-
   }
 }
