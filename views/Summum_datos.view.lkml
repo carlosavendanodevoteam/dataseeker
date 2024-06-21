@@ -87,6 +87,7 @@ view: summum_datos_reservas{
     sql: Case
       when ${TABLE}.RateName  like 'NR %' OR  UPPER(${TABLE}.RateName)  like 'NO REEMBOLSABLE %' then 'No reembolsable || Una modificación'
       when ${TABLE}.RateName  like 'FLEX %' then 'Tarifa Flexible Club || Cancelación Gratuita'
+      when UPPER(${TABLE}.RateName) = 'DESAYUNO GRATIS' THEN 'D'
       else ${TABLE}.RateName
     end;;
   }
