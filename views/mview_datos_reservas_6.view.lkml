@@ -1007,4 +1007,19 @@ view: mview_datos_reservas_6 {
     END ;;
   }
 
+  dimension: isSUMMUM {
+    type: yesno
+    sql: if(${hotel_code} in ('summum-zurbaran','summum-ratxo', 'summum-poblado-suites', 'summum-virrey-finca', 'summum-rosellon', 'summum-ventas', 'summum-joan-miro', 'villa-nazules'), TRUE, FALSE)  ;;
+  }
+
+  dimension: summum_ratename {
+    type: string
+    sql: CASE
+          WHEN (${rate_name} = 'Tarifa Flexible Club | Cancelación Gratuita' OR ${rate_name} = 'Tarifa Flexible Club | Pago directo en el hotel' or ${rate_name} = 'Tarifa Flexible | Pago directo en el hotel' or ${rate_name} = 'Tarifa Flexible - Cancelación Gratuita') and ${isSUMMUM} = True then 'Tarifa Flexible Club || Cancelación Gratuita'
+          WHEN (${rate_name} = 'No reembolsable | Una modificación gratis' OR ${rate_name} = 'No reembolsable Club || Una modificación' OR ${rate_name} = 'No reembolsable || Una modificación' OR ${rate_name} = 'No reembolsable Club | Una modificación gratis' or ${rate_name} = 'No reembolsable Club | Una modificación gratis') and ${isSUMMUM} = True then 'No reembolsable Club || Una modificación'
+          else ${TABLE}.rateName
+        end;;
+  }
+
+
 }
