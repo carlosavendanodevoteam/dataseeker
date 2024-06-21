@@ -85,7 +85,7 @@ view: summum_datos_reservas{
   dimension: RateName {
     type: string
     sql: Case
-      when ${TABLE}.RateName  like 'NR %' OR  ${TABLE}.RateName  like 'No Reembolsable %' then 'No reembolsable Club || Una modificación'
+      when ${TABLE}.RateName  like 'NR %' OR  UPPER(${TABLE}.RateName)  like 'NO REEMBOLSABLE %' then 'No reembolsable Club || Una modificación'
       when ${TABLE}.RateName  like 'FLEX %' then 'Tarifa Flexible Club || Cancelación Gratuita'
       else ${TABLE}.RateName
     end;;
