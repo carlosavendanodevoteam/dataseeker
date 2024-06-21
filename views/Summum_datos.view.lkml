@@ -200,7 +200,7 @@ view: summum_datos_reservas{
             WHEN ${TABLE}.country = 'IMN' THEN 'Isle of Man'
             WHEN ${TABLE}.country = 'GIN' THEN 'Guinea'
             WHEN ${TABLE}.country = 'EST' THEN 'Estonia'
-            ELSE ${TABLE}.country = 'Unknown Country'
+            ELSE'Unknown Country'
           End;;
   }
 }
