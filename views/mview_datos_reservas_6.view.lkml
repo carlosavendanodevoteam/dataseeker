@@ -1016,7 +1016,7 @@ view: mview_datos_reservas_6 {
     type: string
     sql: CASE
           WHEN (${rate_name} = 'Tarifa Flexible Club | Cancelación Gratuita' OR ${rate_name} = 'Tarifa Flexible Club | Pago directo en el hotel' or ${rate_name} = 'Tarifa Flexible | Pago directo en el hotel' or ${rate_name} = 'Tarifa Flexible - Cancelación Gratuita') and ${isSUMMUM} = True then 'Tarifa Flexible Club || Cancelación Gratuita'
-          WHEN (${rate_name} = 'No reembolsable | Una modificación gratis' OR ${rate_name} = 'No reembolsable Club || Una modificación' OR ${rate_name} = 'No reembolsable || Una modificación' OR ${rate_name} = 'No reembolsable Club | Una modificación gratis' or ${rate_name} = 'No reembolsable Club | Una modificación gratis') and ${isSUMMUM} = True then 'No reembolsable Club || Una modificación'
+          WHEN (${rate_name} = 'No reembolsable | Una modificación gratis' OR ${rate_name} = 'No reembolsable Club || Una modificación' OR ${rate_name} = 'No reembolsable || Una modificación' or ${rate_name} = 'Tarifa No Reembolsable Club | Una Modificación' OR ${rate_name} = 'No reembolsable Club | Una modificación gratis' or ${rate_name} = 'No reembolsable Club | Una modificación gratis') and ${isSUMMUM} = True then 'No reembolsable || Una modificación'
           else ${TABLE}.rateName
         end;;
   }
