@@ -745,7 +745,7 @@ view: mview_datos_reservas_6 {
     # Nueva dimensión para los nombres completos de los países
     type: string
     sql: CASE
-      WHEN ${country} = 'ES' THEN ' Spain'
+      WHEN ${country} = 'ES' THEN 'Spain'
       WHEN ${country} = 'CN' THEN 'China'
       WHEN ${country} = 'TR' THEN 'Turkey'
       WHEN ${country} = 'SH' THEN 'Saint Helena'
@@ -767,7 +767,7 @@ view: mview_datos_reservas_6 {
       WHEN ${country} = 'TV' THEN 'Tuvalu'
       WHEN ${country} = 'KE' THEN 'Kenya'
       WHEN ${country} = 'UM' THEN 'United States Minor Outlying Islands'
-      WHEN ${country} = 'BR' THEN 'Brasil'
+      WHEN ${country} = 'BR' THEN 'Brazil'
        WHEN ${country} = 'IR' THEN 'Irán'
       WHEN ${country} = 'AF' THEN 'Afghanistan'
       WHEN ${country} = 'EC' THEN 'Ecuador'
@@ -796,7 +796,7 @@ view: mview_datos_reservas_6 {
       WHEN ${country} = 'BM' THEN 'Bermudas'
       WHEN ${country} = 'TJ' THEN 'Tajikistan'
       WHEN ${country} = 'PT' THEN 'Portugal'
-      WHEN ${country} = 'CA' THEN 'Canadá'
+      WHEN ${country} = 'CA' THEN 'Canada'
       WHEN ${country} = 'MC' THEN 'Mónaco'
       WHEN ${country} = 'UZ' THEN 'Uzbekistán'
       WHEN ${country} = 'SR' THEN 'Surinam'
