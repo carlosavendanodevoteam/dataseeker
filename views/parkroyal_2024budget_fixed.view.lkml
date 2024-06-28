@@ -66,6 +66,13 @@ view: parkroyal_2024budget_fixed {
     type: string
     sql: ${TABLE}.month ;;
   }
+
+  dimension_group: month_date {
+    type: time
+    timeframes: [month]
+    sql: ${TABLE}.month ;;
+  }
+
   dimension: rn {
     type: number
     sql: ${TABLE}.RN ;;
