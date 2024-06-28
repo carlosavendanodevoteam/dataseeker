@@ -67,12 +67,6 @@ view: parkroyal_2024budget_fixed {
     sql: ${TABLE}.month ;;
   }
 
-  dimension_group: month_date {
-    type: time
-    timeframes: [month]
-    sql: ${TABLE}.month ;;
-  }
-
   dimension: rn {
     type: number
     sql: ${TABLE}.RN ;;
@@ -116,4 +110,29 @@ view: parkroyal_2024budget_fixed {
           else "Dec"
         End;;
   }
+
+  dimension: month_timestamp {
+    type: string
+    sql: Case
+          when month_short_text = "Jan" then "2024-01"
+          when month_short_text = "Feb" then "2024-02"
+          when month_short_text = "Mar" then "2024-03"
+          when month_short_text = "Apr" then "2024-04"
+          when month_short_text = "May" then "2024-05"
+          when month_short_text = "Jun" then "2024-06"
+          when month_short_text = "Jul" then "2024-07"
+          when month_short_text = "Aug" then "2024-08"
+          when month_short_text = "Sep" then "2024-09"
+          when month_short_text = "Oct" then "2024-10"
+          when month_short_text = "Nov" then "2024-11"
+          else "2024-12"
+        End;;
+  }
+
+  dimension_group: month_date {
+    type: time
+    timeframes: [month]
+    sql: ${month_timestamp} ;;
+  }
+
 }
