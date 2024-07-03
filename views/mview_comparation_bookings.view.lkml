@@ -577,7 +577,10 @@ view: mview_comparation_bookings {
 
   dimension: rateName_fixed {
     type: string
-    sql:${TABLE}.RateName ;;
+    sql:CASE
+          WHEN UPPER(${TABLE}.RateName) like '% TRADE %' THEN 'Trade area'
+          else ${TABLE}.RateName
+        END;;
   }
 
   dimension: hotel_code_by_account {

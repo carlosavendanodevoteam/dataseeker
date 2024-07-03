@@ -652,7 +652,10 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: rateName_fixed {
     type: string
-    sql:${TABLE}.RateName;;
+    sql:CASE
+          WHEN UPPER(${TABLE}.RateName) like '% TRADE %' THEN 'Trade area'
+          else ${TABLE}.RateName
+        END;;
   }
 
   dimension: filter_ring2_travel_agent {
