@@ -652,7 +652,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: rateName_fixed {
     type: string
-    sql:${TABLE}.rate_name;;
+    sql:${TABLE}.RateName;;
   }
 
   dimension: filter_ring2_travel_agent {
