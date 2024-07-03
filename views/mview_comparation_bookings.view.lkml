@@ -577,7 +577,7 @@ view: mview_comparation_bookings {
 
   dimension: rateName_fixed {
     type: string
-    sql:${TABLE}.rate_name ;;
+    sql:${TABLE}.RateName ;;
   }
 
   dimension: hotel_code_by_account {
