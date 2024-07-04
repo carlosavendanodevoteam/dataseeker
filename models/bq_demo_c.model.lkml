@@ -12,6 +12,8 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+explore: mview_gha_bookings {}
+
 explore: mview_global_lead_time_stats {
   join: hotel_corporative_encrypted{
     type: inner
