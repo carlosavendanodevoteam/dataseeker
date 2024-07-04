@@ -2,7 +2,7 @@
 view: mview_gha_bookings {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `analysis-seeker.bi_dataset.MVIEW_GHA_BOOKINGS` ;;
+  sql_table_name: `analysis-seeker.Google_ads_dataset.MVIEW_GHA_BOOKINGS` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -296,11 +296,6 @@ view: mview_gha_bookings {
     sql: ${TABLE}.parity_maker ;;
   }
 
-  dimension_group: partition_timestamp {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.partitionTimestamp ;;
-  }
 
   dimension: partner {
     type: string
@@ -454,7 +449,7 @@ view: mview_gha_bookings {
 
   dimension: month{
     type: number
-    sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
+    sql:  EXTRACT(month FROM ${TABLE}.timestamp) ;;
   }
 
   dimension: month_startDate{
