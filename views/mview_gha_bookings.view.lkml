@@ -445,4 +445,11 @@ view: mview_gha_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
+
+  dimension_group: start_date_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: cast(${TABLE}.startDate as timestamp);;
+  }
+
 }
