@@ -437,4 +437,12 @@ view: mview_gha_bookings {
     type: count
     drill_fields: [name]
   }
+
+  dimension: revenue {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
+        END;;
+  }
 }
