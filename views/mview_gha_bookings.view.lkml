@@ -461,7 +461,7 @@ view: mview_gha_bookings {
     type: string
     sql: Case
           when ${month} = 1 then "Enero"
-          when ${month} = 2 then "Febrer"
+          when ${month} = 2 then "Febrero"
           when ${month} = 3 then "Marzo"
           when ${month} = 4 then "Abril"
           when ${month} = 5 then "Mayo"
