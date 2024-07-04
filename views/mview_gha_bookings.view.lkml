@@ -452,4 +452,50 @@ view: mview_gha_bookings {
     sql: cast(${TABLE}.startDate as timestamp);;
   }
 
+  dimension: month{
+    type: number
+    sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
+  }
+
+  dimension: month_startDate{
+    type: number
+    sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
+  }
+
+  dimension: month_text {
+    type: string
+    sql: Case
+          when ${month} = 1 then "Enero"
+          when ${month} = 2 then "Febrer"
+          when ${month} = 3 then "Marzo"
+          when ${month} = 4 then "Abril"
+          when ${month} = 5 then "Mayo"
+          when ${month} = 6 then "Junio"
+          when ${month} = 7 then "Julio"
+          when ${month} = 8 then "Agosto"
+          when ${month} = 9 then "Septiembre"
+          when ${month} = 10 then "Octubre"
+          when ${month} = 11 then "Noviembre"
+          else "Diciembre"
+        End;;
+  }
+
+  dimension: month_text_startDate {
+    type: string
+    sql: Case
+          when ${month_startDate} = 1 then "Enero"
+          when ${month_startDate} = 2 then "Febrero"
+          when ${month_startDate} = 3 then "Marzo"
+          when ${month_startDate} = 4 then "Abril"
+          when ${month_startDate} = 5 then "Mayo"
+          when ${month_startDate} = 6 then "Junio"
+          when ${month_startDate} = 7 then "Julio"
+          when ${month_startDate} = 8 then "Agosto"
+          when ${month_startDate} = 9 then "Septiembre"
+          when ${month_startDate} = 10 then "Octubre"
+          when ${month_startDate} = 11 then "Noviembre"
+          else "Diciembre"
+        End;;
+  }
+
 }
