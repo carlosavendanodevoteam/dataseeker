@@ -447,60 +447,62 @@ view: mview_gha_bookings {
     sql: cast(${TABLE}.startDate as timestamp);;
   }
 
-  dimension: month{
-    type: number
-    sql:  EXTRACT(month FROM ${TABLE}.timestamp) ;;
-  }
 
-  dimension: month_startDate{
-    type: number
-    sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
-  }
+ dimension: month {
+  type: number
+  sql: EXTRACT(month FROM ${TABLE}.timestamp) ;;
+}
 
-  dimension: year{
-    type: number
-    sql:  EXTRACT(year FROM ${TABLE}.timestamp) ;;
-  }
+dimension: month_startDate {
+  type: number
+  sql: EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) ;;
+}
 
-  dimension: year_startDate{
-    type: number
-    sql:  EXTRACT(year FROM cast(${TABLE}.startDate as timestamp)) ;;
-  }
+dimension: year {
+  type: number
+  sql: EXTRACT(year FROM ${TABLE}.timestamp) ;;
+}
 
-  dimension: month_text {
-    type: string
-    sql: Case
-          when ${month} = 1 then Concat("Enero", ${year})
-          when ${month} = 2 then oncat("Febrero", ${year})
-          when ${month} = 3 then Contat("Marzo", ${year})
-          when ${month} = 4 then Contat("Abril", ${year})
-          when ${month} = 5 then Contat("Mayo", ${year})
-          when ${month} = 6 then Contat("Junio", ${year})
-          when ${month} = 7 then Contat("Julio", ${year})
-          when ${month} = 8 then Contat("Agosto", ${year})
-          when ${month} = 9 then Contat("Septiembre", ${year})
-          when ${month} = 10 then Contat("Octubre", ${year})
-          when ${month} = 11 then Contat("Noviembre", ${year})
-          else Contat("Diciembre", ${year})
-        End;;
-  }
+dimension: year_startDate {
+  type: number
+  sql: EXTRACT(year FROM CAST(${TABLE}.startDate AS timestamp)) ;;
+}
 
-  dimension: month_text_startDate {
-    type: string
-    sql: Case
-          when ${month_startDate} = 1 then Concat("Enero", ${year_startDate})
-          when ${month_startDate} = 2 then Concat("Febrero", ${year_startDate})
-          when ${month_startDate} = 3 then Concat("Marzo", ${year_startDate})
-          when ${month_startDate} = 4 then Concat("Abril", ${year_startDate})
-          when ${month_startDate} = 5 then Concat("Mayo", ${year_startDate})
-          when ${month_startDate} = 6 then Concat("Junio", ${year_startDate})
-          when ${month_startDate} = 7 then Concat("Julio", ${year_startDate})
-          when ${month_startDate} = 8 then Concat("Agosto", ${year_startDate})
-          when ${month_startDate} = 9 then Concat("Septiembre", ${year_startDate})
-          when ${month_startDate} = 10 then Concat("Octubre", ${year_startDate})
-          when ${month_startDate} = 11 then Concat("Noviembre", ${year_startDate})
-          else Concat("Diciembre", ${year_startDate})
-        End;;
-  }
+dimension: month_text {
+  type: string
+  sql: CASE
+         WHEN ${month} = 1 THEN CONCAT("Enero ", ${year})
+         WHEN ${month} = 2 THEN CONCAT("Febrero ", ${year})
+         WHEN ${month} = 3 THEN CONCAT("Marzo ", ${year})
+         WHEN ${month} = 4 THEN CONCAT("Abril ", ${year})
+         WHEN ${month} = 5 THEN CONCAT("Mayo ", ${year})
+         WHEN ${month} = 6 THEN CONCAT("Junio ", ${year})
+         WHEN ${month} = 7 THEN CONCAT("Julio ", ${year})
+         WHEN ${month} = 8 THEN CONCAT("Agosto ", ${year})
+         WHEN ${month} = 9 THEN CONCAT("Septiembre ", ${year})
+         WHEN ${month} = 10 THEN CONCAT("Octubre ", ${year})
+         WHEN ${month} = 11 THEN CONCAT("Noviembre ", ${year})
+         ELSE CONCAT("Diciembre ", ${year})
+       END ;;
+}
+
+dimension: month_text_startDate {
+  type: string
+  sql: CASE
+         WHEN ${month_startDate} = 1 THEN CONCAT("Enero ", ${year_startDate})
+         WHEN ${month_startDate} = 2 THEN CONCAT("Febrero ", ${year_startDate})
+         WHEN ${month_startDate} = 3 THEN CONCAT("Marzo ", ${year_startDate})
+         WHEN ${month_startDate} = 4 THEN CONCAT("Abril ", ${year_startDate})
+         WHEN ${month_startDate} = 5 THEN CONCAT("Mayo ", ${year_startDate})
+         WHEN ${month_startDate} = 6 THEN CONCAT("Junio ", ${year_startDate})
+         WHEN ${month_startDate} = 7 THEN CONCAT("Julio ", ${year_startDate})
+         WHEN ${month_startDate} = 8 THEN CONCAT("Agosto ", ${year_startDate})
+         WHEN ${month_startDate} = 9 THEN CONCAT("Septiembre ", ${year_startDate})
+         WHEN ${month_startDate} = 10 THEN CONCAT("Octubre ", ${year_startDate})
+         WHEN ${month_startDate} = 11 THEN CONCAT("Noviembre ", ${year_startDate})
+         ELSE CONCAT("Diciembre ", ${year_startDate})
+       END ;;
+}
+
 
 }
