@@ -12,6 +12,8 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+explore: mview_parkroyal_all_marketing {}
+
 explore: wi_hp_gha_bookings_identifier_fixed{}
 
 explore: mview_gha_bookings {
