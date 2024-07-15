@@ -60,4 +60,13 @@ view: mview_parkroyal_all_marketing {
   measure: count {
     type: count
   }
+
+  dimension: report_fixed {
+    type: string
+    sql: Case
+          when ${report} = 'google' or ${report} = 'google_fbl' or ${report} = 'google_promoted' or ${report} = 'Google_Ads' then 'Google_Ads'
+          else 'Social_ads'
+        End;;
+  }
+
 }
