@@ -52,10 +52,10 @@ explore: DATOS_RESERVAS_GHA_2023 {
 }
 
 explore: rescue_seeker_log {
-  join:  hotel_corporative_encrypted{
+  join:  view_unique_hotel_corporative_encrypted{
     type: inner
     relationship: many_to_one
-    sql_on: ${rescue_seeker_log.user} = ${hotel_corporative_encrypted.hotel_code};;
+    sql_on: ${rescue_seeker_log.user} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
 }
 
