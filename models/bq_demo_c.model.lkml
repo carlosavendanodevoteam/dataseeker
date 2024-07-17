@@ -55,7 +55,7 @@ explore: rescue_seeker_log {
   join:  view_unique_hotel_corporative_encrypted{
     type: inner
     relationship: many_to_one
-    sql_on: ${rescue_seeker_log.user} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+    sql_on: ${rescue_seeker_log.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
 }
 
