@@ -591,11 +591,30 @@ view: mview_comparation_bookings_by_start_date {
         End;;
   }
 
+
   dimension_group: partition_timestamp{
     type: time
     sql: ${TABLE}.partitionTimestamp;;
     timeframes: [raw, time, date, week, month_name, month, quarter, year]
   }
+
+  dimension: month_days {
+    type: number
+      sql: Case
+          when ${month} = 1 THEN 31
+          when ${month} = 2 then 28
+          when ${month} = 3 then 31
+          when ${month} = 4 then 30
+          when ${month} = 5 then 31
+          when ${month} = 6 then 30
+          when ${month} = 7 then 31
+          when ${month} = 8 then 31
+          when ${month} = 9 then 30
+          when ${month} = 10 then 31
+          when ${month} = 11 then 30
+          else 31
+        End;;
+    }
 
   dimension_group: comparation_endDate{
     type: time
