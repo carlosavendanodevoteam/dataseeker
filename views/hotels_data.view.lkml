@@ -58,7 +58,7 @@ view: hotels_data {
     sql: ${TABLE}.hotel_code ;;
   }
 
-  dimension: dispo_rooms {
+  dimension: total_rooms {
     type: number
     sql: ${TABLE}.num_roms ;;
   }
