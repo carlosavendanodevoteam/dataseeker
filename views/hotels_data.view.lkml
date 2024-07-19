@@ -92,7 +92,7 @@ view: hotels_data {
   }
 
   dimension: total_rooms {
-    type: string
+    type: number
     sql: ${TABLE}.num_roms ;;
   }
 
