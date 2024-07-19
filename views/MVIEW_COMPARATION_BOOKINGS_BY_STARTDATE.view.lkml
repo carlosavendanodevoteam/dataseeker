@@ -575,11 +575,6 @@ view: mview_comparation_bookings_by_start_date {
     sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
   }
 
-  dimension: year{
-    type: number
-    sql:  EXTRACT(year FROM ${TABLE}.partitionTimestamp) ;;
-  }
-
   dimension: month_text {
     type: string
     sql: Case
@@ -597,25 +592,6 @@ view: mview_comparation_bookings_by_start_date {
           else "Dec"
         End;;
   }
-  dimension: month_number{
-    type: number
-    sql: Case
-    when ${month} = 1 then 31
-    when ${month} = 2 and ${year}%4=0 then 29
-    when ${month} = 2 and ${year}%4!=0 then 28
-    when ${month} = 3 then 31
-    when ${month} = 4 then 30
-    when ${month} = 5 then 31
-    when ${month} = 6 then 30
-    when ${month} = 7 then 31
-    when ${month} = 8 then 31
-    when ${month} = 9 then 30
-    when ${month} = 10 then 31
-    when ${month} = 11 then 30
-    else 31
-    End;;
-  }
-
 
   dimension_group: partition_timestamp{
     type: time
