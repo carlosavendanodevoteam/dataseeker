@@ -599,7 +599,7 @@ view: mview_comparation_bookings_by_start_date {
   }
   dimension: month_number{
     type: number
-    sql:  ql: Case
+    sql: Case
     when ${month} = 1 then 31
     when ${month} = 2 and ${year}%4=0 then 29
     when ${month} = 2 and ${year}%4!=0 then 28
