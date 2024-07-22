@@ -91,6 +91,11 @@ view: hotels_data {
     sql: ${TABLE}.latitude ;;
   }
 
+  dimension: total_rooms {
+    type: number
+    sql: ${TABLE}.num_roms ;;
+  }
+
   dimension: longitude {
     type: string
     sql: ${TABLE}.longitude ;;

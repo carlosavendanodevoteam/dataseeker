@@ -573,6 +573,7 @@ view: mview_comparation_bookings_by_start_date {
     type: number
     sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
   }
+
   dimension: month_text {
     type: string
     sql: Case
@@ -590,7 +591,6 @@ view: mview_comparation_bookings_by_start_date {
           else "Dec"
         End;;
   }
-
 
   dimension_group: partition_timestamp{
     type: time
