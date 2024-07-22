@@ -951,4 +951,48 @@ view: mview_comparation_bookings_by_start_date {
             END ;;
   }
 
+    dimension: agent_name {
+      type: string
+      sql: Case
+      when ${agent} = 2  then 'Veronica'
+      when ${agent} = 13 then 'Casilda'
+      when ${agent} = 23 then 'Mar'
+      when ${agent} = 9 then 'Laura'
+      when ${agent} = 26 then 'Inés'
+      when ${agent} = 12 then 'Tatiane'
+      when ${agent} = 3 then 'Mariana'
+      when ${agent} = 18 then 'Carmela'
+      when ${agent} = 22 then 'Oliva'
+      when ${agent} = 14 then 'Carlos'
+      when ${agent} = 33 then 'Toñi '
+      when ${agent} = 37 then 'Sandra'
+      when ${agent} = 39 then 'Saule'
+      when ${agent} = 40 then 'Irene'
+      when ${agent} = 42 then 'Fernanda'
+      when ${agent} = 44 then 'Pedro'
+      when ${agent} = 46 then 'Alexis'
+      when ${agent} = 48 then 'Wilson'
+      when ${agent} = 49 then 'Rajae'
+      when ${agent} = 51 then 'Mónica'
+      when ${agent} = 52 then 'Sandra Brown'
+      when ${agent} = 53 then 'Dmytro'
+      when ${agent} = 54 then 'Elianne'
+      when ${agent} = 55 then 'Guilherme'
+      when ${agent} = 56 then 'Cristina '
+      when ${agent} = 57 then 'Eduardo'
+      when ${agent} = 58 then 'Thiago'
+      when ${agent} = 59 then 'Lidia'
+      when ${agent} = 60 then 'Álvaro Badillo'
+      when ${agent} = 61 then 'Jazmina'
+      when ${agent} = 62 then 'Alejandro'
+      when ${agent} = 63 then 'Álvaro Márquez'
+      when ${agent} = 65 then 'Raquel'
+      when ${agent} = 66 then 'Marta'
+      when ${agent} = 67 then 'Valeria'
+      when ${agent} = 64 then 'Noam'
+      when ${agent} = 68 then 'Maria di Natale'
+      else ${agent}
+      End;;
+    }
+
 }
