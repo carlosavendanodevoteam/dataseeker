@@ -58,11 +58,6 @@ view: hotels_data {
     sql: ${TABLE}.hotel_code ;;
   }
 
-  dimension: total_rooms {
-    type: number
-    sql: ${TABLE}.num_roms ;;
-  }
-
   dimension: hotel_encoded {
     type: string
     sql: ${TABLE}.hotel_encoded ;;
