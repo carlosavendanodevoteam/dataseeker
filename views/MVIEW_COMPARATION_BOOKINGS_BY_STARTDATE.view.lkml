@@ -951,48 +951,47 @@ view: mview_comparation_bookings_by_start_date {
             END ;;
   }
 
-    dimension: agent_name {
-      type: string
-      sql: Case
-      when ${agent} = 2  then 'Veronica'
-      when ${agent} = 13 then 'Casilda'
-      when ${agent} = 23 then 'Mar'
-      when ${agent} = 9 then 'Laura'
-      when ${agent} = 26 then 'Inés'
-      when ${agent} = 12 then 'Tatiane'
-      when ${agent} = 3 then 'Mariana'
-      when ${agent} = 18 then 'Carmela'
-      when ${agent} = 22 then 'Oliva'
-      when ${agent} = 14 then 'Carlos'
-      when ${agent} = 33 then 'Toñi '
-      when ${agent} = 37 then 'Sandra'
-      when ${agent} = 39 then 'Saule'
-      when ${agent} = 40 then 'Irene'
-      when ${agent} = 42 then 'Fernanda'
-      when ${agent} = 44 then 'Pedro'
-      when ${agent} = 46 then 'Alexis'
-      when ${agent} = 48 then 'Wilson'
-      when ${agent} = 49 then 'Rajae'
-      when ${agent} = 51 then 'Mónica'
-      when ${agent} = 52 then 'Sandra Brown'
-      when ${agent} = 53 then 'Dmytro'
-      when ${agent} = 54 then 'Elianne'
-      when ${agent} = 55 then 'Guilherme'
-      when ${agent} = 56 then 'Cristina '
-      when ${agent} = 57 then 'Eduardo'
-      when ${agent} = 58 then 'Thiago'
-      when ${agent} = 59 then 'Lidia'
-      when ${agent} = 60 then 'Álvaro Badillo'
-      when ${agent} = 61 then 'Jazmina'
-      when ${agent} = 62 then 'Alejandro'
-      when ${agent} = 63 then 'Álvaro Márquez'
-      when ${agent} = 65 then 'Raquel'
-      when ${agent} = 66 then 'Marta'
-      when ${agent} = 67 then 'Valeria'
-      when ${agent} = 64 then 'Noam'
-      when ${agent} = 68 then 'Maria di Natale'
-      else ${agent}
-      End;;
-    }
-
+  dimension: agent_name {
+    type: string
+    sql: Case
+          when ${agent} = 'agente2'  then 'Veronica '
+          when ${agent} = 'agente13' then 'Casilda'
+          when ${agent} = 'agente23' then 'Mar'
+          when ${agent} = 'agente9' then 'Laura'
+          when ${agent} = 'agente26' then 'Inés'
+          when ${agent} = 'agente12' then 'Tatiane '
+          when ${agent} = 'agente3' then 'Mariana'
+          when ${agent} = 'agente18' then 'Carmela '
+          when ${agent} = 'agente22' then 'Oliva'
+          when ${agent} = 'agente14' then 'Carlos'
+          when ${agent} = 'agente33' then 'Toñi '
+          when ${agent} = 'agente37' then 'Sandra '
+          when ${agent} = 'agente39' then 'Saule'
+          when ${agent} = 'agente40' then 'Irene'
+          when ${agent} = 'agente42' then 'Fernanda'
+          when ${agent} = 'agente44' then 'Pedro'
+          when ${agent} = 'agente46' then 'Alexis '
+          when ${agent} = 'agente48' then 'Wilson'
+          when ${agent} = 'agente49' then 'Rajae'
+          when ${agent} = 'agente51' then 'Mónica '
+          when ${agent} = 'agente52' then 'Sandra Brown '
+          when ${agent} = 'agente53' then 'Dmytro '
+          when ${agent} = 'agente54' then 'Elianne '
+          when ${agent} = 'agente55' then 'Guilherme'
+          when ${agent} = 'agente56' then 'Cristina '
+          when ${agent} = 'agente57' then 'Eduardo'
+          when ${agent} = 'agente58' then 'Thiago'
+          when ${agent} = 'agente59' then 'Lidia'
+          when ${agent} = 'agente60' then 'Álvaro Badillo'
+          when ${agent} = 'agente61' then 'Jazmina'
+          when ${agent} = 'agente62' then 'Alejandro'
+          when ${agent} = 'agente63' then 'Álvaro Márquez'
+          when ${agent} = 'agente65' then 'Raquel'
+          when ${agent} = 'agente66' then 'Marta'
+          when ${agent} = 'agente67' then 'Valeria'
+          when ${agent} = 'agente64' then 'Noam'
+          when ${agent} = 'agente68' then 'Maria di Natale'
+          else ${agent}
+        End;;
+  }
 }
