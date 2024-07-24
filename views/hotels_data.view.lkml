@@ -434,7 +434,7 @@ view: hotels_data {
     type: string
     sql: Case
           when UPPER(${country}) = 'Portugal' then 3 --Portugal
-          when UPPER(${country}) IN ('MEXICO', 'MÉXICO', 'ESTADOS UNIDOS', 'COLOMBIA', 'REPUBLICA DOMINICANA', 'ARGENTINA', 'DOMINICAN REPUBLIC', 'REPÚBLICA DOMINICANA', 'PANAMA', 'PERÚ', 'PERU') then '2' --Latam
+          when UPPER(${country}) IN ('MEXICO', 'MÉXICO', 'ESTADOS UNIDOS', 'COLOMBIA', 'REPUBLICA DOMINICANA', 'ARGENTINA', 'DOMINICAN REPUBLIC', 'REPÚBLICA DOMINICANA', 'PANAMA', 'PERÚ', 'PERU', 'PUERTO RICO') then '2' --Latam
           ELSE 1 -- Europa;;
   }
 
