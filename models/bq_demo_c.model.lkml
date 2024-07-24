@@ -203,6 +203,14 @@ explore: hotels_data {
   }
 }
 
+explore: revenue_evolution_by_week {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${revenue_evolution_by_week.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
+
 explore: hotels {}
 
 explore: hotel_renaming {}
