@@ -50,7 +50,7 @@ view: revenue_evolution_by_week {
 
   dimension: week {
     type: string
-    sql: CONCAT('SEMANA ',${TABLE}.week) ;;
+    sql: ${TABLE}.week ;;
   }
 
   dimension: week_number {
