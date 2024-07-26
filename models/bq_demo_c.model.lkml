@@ -124,7 +124,13 @@ explore: wihp_datos_reservas{
   }
 }
 
-explore: view_datos_reservas_gha_2023_2024 {}
+explore: view_datos_reservas_gha_2023_2024 {
+  join: view_unique_hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_datos_reservas_gha_2023_2024.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: mview_comparation_bookings_by_start_date {
   join: hotel_corporative_encrypted {
