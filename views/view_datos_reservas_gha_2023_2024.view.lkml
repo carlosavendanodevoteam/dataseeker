@@ -107,7 +107,6 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: if(${year} = 2024, ${generated}* (${cost_percent}/100, ${coste});;
   }
 
-
   dimension: scoring {
     type: string
     sql: CASE
