@@ -81,6 +81,12 @@ view: view_datos_reservas_gha_2023_2024 {
     type: number
     sql: ${TABLE}.year ;;
   }
+
+  dimension: year_TEXT {
+    type: string
+    sql: ${TABLE}.year ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [mont_name]
