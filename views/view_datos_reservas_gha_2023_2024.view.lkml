@@ -108,7 +108,8 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: case
           when ${real_cost_2024} > 0 and ${generated} > 0 and year != 2023 then ${generated}/${real_cost_2024}
           when year = 2023 then ${TABLE}.roas
-          else 0 ;;
+          else 0
+        end;;
   }
 
   dimension: scoring {
