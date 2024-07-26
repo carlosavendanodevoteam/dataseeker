@@ -72,10 +72,6 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.porcentaje_diff_precio ;;
   }
 
-  dimension: roas {
-    type: number
-    sql: ${TABLE}.ROAS ;;
-  }
 
   dimension: year {
     type: number
@@ -105,6 +101,11 @@ view: view_datos_reservas_gha_2023_2024 {
   dimension: real_cost_2024 {
     type: number
     sql: IF(${year} = 2024, ${generated} * (${cost_percent} / 100), ${coste}) ;;
+  }
+
+  dimension: roas {
+    type: number
+    sql: IF(${real_cost_2024} > 0 and ${generated} > 0 ,${generated}/${real_cost_2024}, 0) ;;
   }
 
   dimension: scoring {
