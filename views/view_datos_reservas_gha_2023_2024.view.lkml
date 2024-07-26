@@ -97,6 +97,16 @@ view: view_datos_reservas_gha_2023_2024 {
     sql:  if( ${coste} > 0 and ${clicks} > 0, ${coste}/${clicks}, 0)  ;;
   }
 
+  dimension: cost_percent {
+    type: number
+    sql: ${TABLE}.cost_percent ;;
+  }
+
+  dimension: real_cost_2024{
+    type: number
+    sql: if(${year} = 2024, ${generated}* (${cost_percent}/100, ${coste});;
+  }
+
 
   dimension: scoring {
     type: string
