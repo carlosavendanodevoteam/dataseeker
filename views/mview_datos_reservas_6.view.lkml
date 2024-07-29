@@ -1021,5 +1021,10 @@ view: mview_datos_reservas_6 {
         end;;
   }
 
+  dimension_group: trend {
+    type:time
+    sql: TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -7 days) ;;
+    timeframes: [date]
+  }
 
 }
