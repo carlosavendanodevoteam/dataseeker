@@ -1021,10 +1021,14 @@ view: mview_datos_reservas_6 {
         end;;
   }
 
-  dimension_group: trend {
-    type:time
-    sql: TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -7 days) ;;
-    timeframes: [date]
+  dimension: trend_last_7_days {
+    type: yesno
+    sql: ${TABLE}.partitionTimestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 8 DAY) AND CURRENT_TIMESTAMP() ;;
+  }
+
+  dimension: trend_last_14_days {
+    type: yesno
+    sql: ${TABLE}.partitionTimestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 15 DAY) AND CURRENT_TIMESTAMP() ;;
   }
 
 }
