@@ -710,6 +710,12 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
+  dimension_group: trend {
+    type:time
+    sql: timestamp_add(CURRENT_TIMESTAMP() -7 days) ;;
+    timeframes: [date]
+  }
+
   dimension_group: comparation_startDate_without_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
