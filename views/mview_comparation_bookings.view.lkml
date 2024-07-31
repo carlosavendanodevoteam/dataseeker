@@ -1005,5 +1005,10 @@ view: mview_comparation_bookings {
       ELSE ${country}
     END ;;
   }
+  dimension: week_string {
+    type: string
+    sql: CAST(EXTRACT(WEEK FROM ${comparation_partitiontimestamp_without_future_date}) AS STRING) ;;
+  }
+
 
 }
