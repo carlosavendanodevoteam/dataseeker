@@ -1009,6 +1009,10 @@ view: mview_comparation_bookings {
     type: string
     sql: CAST(EXTRACT(WEEK FROM ${comparation_partitiontimestamp_without_future_date}) AS STRING) ;;
   }
+  dimension: week_number {
+    type:  number
+    sql: ${week_string} ;;
+  }
 
 
 }
