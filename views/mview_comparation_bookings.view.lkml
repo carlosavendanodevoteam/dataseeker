@@ -710,6 +710,17 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
+  dimension_group: comparation_cancellatioTimestamp_without_future{
+    type: time
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
+      CASE
+        WHEN CAST(${TABLE}.cancelation_datetime AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE CAST(${TABLE}.cancelation_datetime AS timestamp)
+      END);;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+
   dimension_group: trend {
     type:time
     sql: timestamp_add(CURRENT_TIMESTAMP() -7 days) ;;
@@ -1005,14 +1016,22 @@ view: mview_comparation_bookings {
       ELSE ${country}
     END ;;
   }
-  dimension: week_string {
+  dimension: week_string_booking {
     type: string
     sql: CAST(EXTRACT(WEEK FROM ${comparation_partitiontimestamp_without_future_date}) AS STRING) ;;
   }
-  dimension: week_number {
+  dimension: week_number_booking {
     type:  number
-    sql: ${week_string} ;;
+    sql: ${week_string_booking} ;;
   }
 
+  dimension: week_string_cancellation {
+    type: string
+    sql: CAST(EXTRACT(WEEK FROM ${comparation_cancellatioTimestamp_without_future_date}) AS STRING) ;;
+  }
+  dimension: week_number_cancellation {
+    type:  number
+    sql: ${week_string_booking} ;;
+  }
 
 }
