@@ -721,12 +721,6 @@ view: mview_comparation_bookings {
   }
 
 
-  dimension_group: trend {
-    type:time
-    sql: timestamp_add(CURRENT_TIMESTAMP() -7 days) ;;
-    timeframes: [date]
-  }
-
   dimension_group: comparation_startDate_without_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
@@ -1032,6 +1026,12 @@ view: mview_comparation_bookings {
   dimension: week_number_cancellation {
     type:  number
     sql: ${week_string_booking} ;;
+  }
+
+  dimension_group: comparation_timestamp {
+    type: time
+    sql: timestamp_add(${timestamp_date} Interval 365 days);;
+    timeframes: [raw, time, date, week, month, quarter, year]
   }
 
 }
