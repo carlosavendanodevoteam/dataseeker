@@ -1031,6 +1031,11 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.partitionTimestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 15 DAY) AND CURRENT_TIMESTAMP() ;;
   }
 
+  dimension: timestamp_converted {
+    type: date
+    sql: PARSE_TIMESTAMP('%Y-%m-%d', ${TABLE}.timestamp_date) ;;
+  }
+
   dimension: week_string_booking {
     type: string
     sql: CAST(EXTRACT(WEEK FROM ${timestamp_date}) AS STRING) ;;
@@ -1051,10 +1056,9 @@ view: mview_datos_reservas_6 {
 
   dimension_group: comparation_timestamp {
     type: time
-    sql: timestamp_add(${timestamp_date} Interval 365 days);;
+    sql: timestamp_add(${timestamp_converted}, INTERVAL 365 DAY) ;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
 
 
 }
