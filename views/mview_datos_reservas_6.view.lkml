@@ -1031,4 +1031,30 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.partitionTimestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 15 DAY) AND CURRENT_TIMESTAMP() ;;
   }
 
+  dimension: week_string_booking {
+    type: string
+    sql: CAST(EXTRACT(WEEK FROM ${timestamp_date}) AS STRING) ;;
+  }
+  dimension: week_number_booking {
+    type:  number
+    sql: ${week_string_booking} ;;
+  }
+
+  dimension: week_string_cancellation {
+    type: string
+    sql: CAST(EXTRACT(WEEK FROM ${cancellation_timestamp_date}) AS STRING) ;;
+  }
+  dimension: week_number_cancellation {
+    type:  number
+    sql: ${week_string_booking} ;;
+  }
+
+  dimension_group: comparation_timestamp {
+    type: time
+    sql: timestamp_add(${timestamp_date} Interval 365 days);;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+
+
 }
