@@ -1038,7 +1038,7 @@ view: mview_datos_reservas_6 {
 
   dimension: week_string_booking {
     type: string
-    sql: CAST(EXTRACT(WEEK FROM ${real_timestamp__date}) AS STRING) ;;
+    sql: CAST(EXTRACT(WEEK FROM DATE_TRUNC(${real_timestamp__date}, WEEK(MONDAY))) AS STRING) ;;
   }
   dimension: week_number_booking {
     type:  number
@@ -1047,7 +1047,7 @@ view: mview_datos_reservas_6 {
 
   dimension: week_string_cxl {
     type: string
-    sql: CAST(EXTRACT(WEEK FROM ${partition_timestamp_date}) AS STRING) ;;
+    sql: CAST(EXTRACT(WEEK FROM DATE_TRUNC(${partition_timestamp_date}, WEEK(MONDAY))) AS STRING) ;;
   }
   dimension: week_number_cxl {
     type:  number
