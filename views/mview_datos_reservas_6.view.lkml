@@ -1047,7 +1047,7 @@ view: mview_datos_reservas_6 {
 
   dimension: week_string_cancellation {
     type: string
-    sql: CAST(EXTRACT(WEEK FROM ${cancellation_timestamp_date}) AS STRING) ;;
+    sql: CAST(EXTRACT(WEEK FROM ${cancelation_datetime_date}) AS STRING) ;;
   }
   dimension: week_number_cancellation {
     type:  number
