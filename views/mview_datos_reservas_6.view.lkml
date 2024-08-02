@@ -1038,20 +1038,20 @@ view: mview_datos_reservas_6 {
 
   dimension: week_string_booking {
     type: string
-    sql: CAST(EXTRACT(WEEK FROM DATE_TRUNC(${real_timestamp__date}, WEEK(MONDAY))) AS STRING) ;;
+    sql: CAST(EXTRACT(WEEK FROM DATE_TRUNC(${real_timestamp__date}, WEEK(MONDAY))) +1 AS STRING) ;;
   }
   dimension: week_number_booking {
     type:  number
-    sql: ${week_string_booking} +1 ;;
+    sql: ${week_string_booking};;
   }
 
   dimension: week_string_cxl {
     type: string
-    sql: CAST(EXTRACT(WEEK FROM DATE_TRUNC(${partition_timestamp_date}, WEEK(MONDAY))) AS STRING) ;;
+    sql: CAST(EXTRACT(WEEK FROM DATE_TRUNC(${partition_timestamp_date}, WEEK(MONDAY))) +1 AS STRING) ;;
   }
   dimension: week_number_cxl {
     type:  number
-    sql: ${week_string_cxl} +1;;
+    sql: ${week_string_cxl} ;;
   }
 
 }
