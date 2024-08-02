@@ -1042,7 +1042,7 @@ view: mview_datos_reservas_6 {
   }
   dimension: week_number_booking {
     type:  number
-    sql: ${week_string_booking} ;;
+    sql: ${week_string_booking} +1 ;;
   }
 
   dimension: week_string_cxl {
@@ -1051,7 +1051,7 @@ view: mview_datos_reservas_6 {
   }
   dimension: week_number_cxl {
     type:  number
-    sql: ${week_string_cxl} ;;
+    sql: ${week_string_cxl} +1;;
   }
 
 }
