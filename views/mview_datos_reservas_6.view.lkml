@@ -1044,25 +1044,4 @@ view: mview_datos_reservas_6 {
     type:  number
     sql: ${week_string_booking} ;;
   }
-
-  dimension: week_string_cancellation {
-    type: string
-    sql: CAST(EXTRACT(WEEK FROM ${cancelation_datetime_date}) AS STRING) ;;
-  }
-  dimension: week_number_cancellation {
-    type:  number
-    sql: ${week_string_booking} ;;
-  }
-
-  dimension_group: comparation_timestamp {
-    type: time
-    sql: timestamp_add(${timestamp_converted}, INTERVAL 365 DAY) ;;
-    timeframes: [raw, time, date, week, month, quarter, year]
-  }
-
-
-  dimension: week_number_comparation_booking {
-    type:  number
-    sql: ${comparation_timestamp_date} ;;
-  }
 }
