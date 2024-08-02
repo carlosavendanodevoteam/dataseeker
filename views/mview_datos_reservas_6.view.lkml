@@ -1061,4 +1061,8 @@ view: mview_datos_reservas_6 {
   }
 
 
+  dimension: week_number_comparation_booking {
+    type:  number
+    sql: ${comparation_timestamp_date} ;;
+  }
 }
