@@ -1044,4 +1044,14 @@ view: mview_datos_reservas_6 {
     type:  number
     sql: ${week_string_booking} ;;
   }
+
+  dimension: week_string_cxl {
+    type: string
+    sql: CAST(EXTRACT(WEEK FROM ${partition_timestamp_date}) AS STRING) ;;
+  }
+  dimension: week_number_cxl {
+    type:  number
+    sql: ${week_string_cxl} ;;
+  }
+
 }

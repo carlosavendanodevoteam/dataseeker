@@ -1034,13 +1034,4 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
-  dimension: week_string_cxl {
-    type: string
-    sql: CAST(EXTRACT(WEEK FROM ${comparation_partitiontimestamp_without_future_date}) AS STRING) ;;
-  }
-  dimension: week_number_cxl {
-    type:  number
-    sql: ${week_string_cxl} ;;
-  }
-
 }
