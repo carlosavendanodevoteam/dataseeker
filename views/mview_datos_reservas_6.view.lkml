@@ -1054,4 +1054,18 @@ view: mview_datos_reservas_6 {
     sql: ${week_string_cxl} ;;
   }
 
+  dimension: continent {
+    type: string
+    sql: Case
+          when UPPER(${hotel_country}) = 'PORTUGAL' and ${hotel_code}  not in('serenade-all-suites','best-serenade','impressive-puntacana',
+          'impressive-premium','casual-belle-epoque','casual-incas','casual-raizes','smy-lisboa','smy-eulalia-algarve','vik-cayena','vik-arenablanca',
+          'summum-poblado-suites','habitus-mesod-jungle') then '3' --Portugal
+          when UPPER(${hotel_country}) IN ('MEXICO', 'MÉXICO', 'ESTADOS UNIDOS', 'COLOMBIA', 'REPUBLICA DOMINICANA', 'ARGENTINA', 'DOMINICAN REPUBLIC',
+          'REPÚBLICA DOMINICANA', 'PANAMA', 'PERÚ', 'PERU', 'PUERTO RICO') and ${hotel_code} not in('serenade-all-suites','best-serenade','impressive-puntacana',
+          'impressive-premium','casual-belle-epoque','casual-incas','casual-raizes','smy-lisboa','smy-eulalia-algarve','vik-cayena','vik-arenablanca',
+          'summum-poblado-suites','habitus-mesod-jungle') then '2' --Latam
+          ELSE '1' -- Europa
+          END ;;
+  }
+
 }
