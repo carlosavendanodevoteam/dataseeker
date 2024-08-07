@@ -358,7 +358,7 @@ view: hotel_ads_data {
           WHEN ${TABLE}.country = 'geoTargetConstants/2887' then 'Yemen'
           WHEN ${TABLE}.country = 'geoTargetConstants/2894' then 'Zambia'
           WHEN ${TABLE}.country = 'geoTargetConstants/2716' then 'Zimbabwe'
-          Else NULL
+          Else ${TABLE}.country
         END;;
   }
 
