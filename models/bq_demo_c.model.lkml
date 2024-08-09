@@ -266,6 +266,11 @@ explore: mview_datos_reservas_6 {
     relationship: many_to_one
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_datos_reservas_6.hotel_code} = ${hotels_data.hotel_code};;
+  }
 }
 
 explore: mview_comparation_bookings {
