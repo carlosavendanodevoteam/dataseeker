@@ -749,7 +749,7 @@ view: mview_comparation_bookings {
     # Nueva dimensión para los nombres completos de los países
     type: string
     sql: CASE
-      WHEN ${country} = 'ES' or ${country} = 'España'  THEN 'Spain'
+      WHEN ${country} = 'ES' or ${country} = 'ESPAÑA'  THEN 'Spain'
       WHEN ${country} = 'CN' THEN 'China'
       WHEN ${country} = 'TR' THEN 'Turkey'
       WHEN ${country} = 'SH' THEN 'Saint Helena'
@@ -789,7 +789,7 @@ view: mview_comparation_bookings {
       WHEN ${country} = 'TN' THEN 'Tunisia'
       WHEN ${country} = 'UG' THEN 'Uganda'
       WHEN ${country} = 'BD' THEN 'Bangladesh'
-      WHEN ${country} = 'FR' or ${country} = 'Francia' THEN 'France'
+      WHEN ${country} = 'FR' or ${country} = 'FRANCIA' THEN 'France'
       WHEN ${country} = 'CZ' THEN 'República Checa'
       WHEN ${country} = 'ST' THEN 'São Tomé and Príncipe'
       WHEN ${country} = 'OM' THEN 'Omán'
@@ -804,7 +804,7 @@ view: mview_comparation_bookings {
       WHEN ${country} = 'MC' THEN 'Mónaco'
       WHEN ${country} = 'UZ' THEN 'Uzbekistán'
       WHEN ${country} = 'SR' THEN 'Surinam'
-      WHEN ${country} = 'GB' or ${country} = 'United Kingdom of Great Britain and Northern Ireland' THEN 'United Kingdom'
+      WHEN ${country} = 'GB' or ${country} = 'UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND' THEN 'United Kingdom'
       WHEN ${country} = 'EG' THEN 'Egipto'
       WHEN ${country} = 'PM' THEN 'Saint Pierre and Miquelon'
       WHEN ${country} = 'VN' THEN 'Vietnam'
