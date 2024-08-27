@@ -37,9 +37,5 @@ view: view_unique_hotel_corporative_encrypted {
         END;;
   }
 
-  measure: count_hotels_in_corpo{
-    type: count_distinct
-    sql: ${hotel_code} ;;
-  }
 
 }
