@@ -38,8 +38,8 @@ view: view_unique_hotel_corporative_encrypted {
   }
 
   measure: count_hotels_in_corpo{
-    type: number
-    sql: distinct(${hotel_code}) ;;
+    type: count_distinct
+    sql: ${hotel_code} ;;
   }
 
 }
