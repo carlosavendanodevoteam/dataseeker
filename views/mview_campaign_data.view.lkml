@@ -73,4 +73,16 @@ view: mview_campaign_data {
     type: count
     drill_fields: [account_name, campaign_name]
   }
+
+  dimension: CURRENCY_format {
+    sql: ${hotel_code} ;;
+    html: {% if value == 'cancun-bay' %}
+      <p style="color: black; background-color: RED; font-size:100%; text-align:center">{{ "MXN" }}</p>
+    {% else %}
+      <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ "" }}</p>
+    {% endif %};;
+  }
+
+
+
 }
