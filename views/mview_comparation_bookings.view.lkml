@@ -749,7 +749,7 @@ view: mview_comparation_bookings {
     # Nueva dimensión para los nombres completos de los países
     type: string
     sql: CASE
-      WHEN ${country} = 'ES' or ${country} = 'ESPAÑA'  THEN 'Spain'
+      WHEN ${country} = 'ES' or ${country} like 'ESPAÑ%' THEN 'Spain'
       WHEN ${country} = 'CN' THEN 'China'
       WHEN ${country} = 'TR' THEN 'Turkey'
       WHEN ${country} = 'SH' THEN 'Saint Helena'
