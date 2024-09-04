@@ -279,10 +279,10 @@ explore: mview_datos_reservas_6 {
 }
 
 explore: mview_comparation_bookings {
-  join: additional_services_consolidate {
+  join: additional_services {
     type: left_outer
     relationship: one_to_many
-    sql_on: ${mview_comparation_bookings.identifier} = ${additional_services_consolidate.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services_consolidate.hotel_code}  ;;
+    sql_on: ${mview_comparation_bookings.identifier} = ${additional_services.identifier} and ${mview_comparation_bookings.hotel_code} = ${additional_services.hotel_code}  ;;
   }
   join: hotel_corporative_encrypted {
     type: inner
