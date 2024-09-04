@@ -93,4 +93,10 @@ view: additional_services {
   measure: count {
     type: count
   }
+
+  dimension: converted_price {
+    type: number
+    sql: ${TABLE}.converted_price ;;
+  }
+
 }
