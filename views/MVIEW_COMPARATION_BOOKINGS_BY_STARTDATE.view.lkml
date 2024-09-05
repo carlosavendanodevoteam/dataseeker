@@ -443,7 +443,11 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: source_fixed {
     type: string
-    sql: ${TABLE}.source_fixed ;;
+    sql: CASE
+          WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.agent not LIKE '%-nau%' AND ${TABLE}.source_fixed LIKE 'Callcenter%' THEN 'Ring2travel'
+          WHEN ${TABLE}.agent NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE 'Callcenter%' THEN 'Callseeker'
+          ELSE ${TABLE}.source_fixed
+        END ;;
   }
 
   dimension: start_date {
