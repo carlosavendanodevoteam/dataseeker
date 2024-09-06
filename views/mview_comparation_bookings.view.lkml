@@ -471,8 +471,8 @@ view: mview_comparation_bookings {
   dimension: source_fixed {
     type: string
     sql: CASE
-        WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
-        WHEN (${TABLE}.agent LIKE '%agente%' or ${TABLE}.agent LIKE 'qhotels%') AND ${TABLE}.source_fixed LIKE '%allcenter%' THEN 'Callseeker'
+        when ${TABLE}.agent like 'agente%' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%' and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and ${TABLE}.source_fixed like '%allcenter%'  THEN 'Ring2travel'
+        WHEN ${TABLE}.agent like '%agente%' AND ${TABLE}.source_fixed like '%allcenter%' THEN 'Callseeker'
         ELSE ${TABLE}.source_fixed
       END ;;
   }
