@@ -684,7 +684,7 @@ view: mview_comparation_bookings_by_start_date {
   dimension: filter_ring2_travel_agent {
     type: string
     sql: Case
-          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${agent} not like '%landmar%' and ${agent} not like '%oasis%' and ${agent} not like '%qhotels%' and ${agent} not like '%_ona' and ${source_fixed} like 'Callseeker' THEN 'True'
+          when ${TABLE}.agent like 'agente%' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%' and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and ${TABLE}.source_fixed like '%allcenter%' THEN 'True'
           else 'False'
         End;;
   }
