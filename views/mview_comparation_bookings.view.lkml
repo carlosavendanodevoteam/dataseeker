@@ -568,10 +568,6 @@ view: mview_comparation_bookings {
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
 
-  dimension: advance{
-    type: number
-    sql: date_diff(cast(${TABLE}.comparation_startDate as timestamp), cast(${TABLE}.partitionTimestamp as timestamp), day) ;;
-  }
 
   dimension: advance_cancellation{
     type: number
@@ -1041,4 +1037,8 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
+  dimension: advance{
+    type: number
+    sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
+  }
 }
