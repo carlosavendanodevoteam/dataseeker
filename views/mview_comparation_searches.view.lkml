@@ -204,6 +204,17 @@ view: mview_comparation_searches {
     sql: date_diff(cast(${TABLE}.endDate as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
   }
 
+  dimension_group: comparation_partitiontimestamp_without_future{
+    type: time
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
+      CASE
+        WHEN CAST(${TABLE}.partitionTimestamp AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE CAST(${TABLE}.partitionTimestamp AS timestamp)
+      END);;
+    timeframes: [raw, time, date, week, month, quarter, year]
+  }
+
+
   dimension: year{
     type: number
     sql:  EXTRACT(YEAR FROM ${TABLE}.timestamp) ;;
@@ -235,13 +246,6 @@ view: mview_comparation_searches {
         WHEN TIMESTAMP_ADD(${TABLE}.endDate, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
         ELSE TIMESTAMP_ADD(${TABLE}.endDate, INTERVAL 365 DAY)
       END ;;
-  }
-
-
-  dimension_group: comparation_partitiontimestamp_without_future{
-    type: time
-    sql: ${TABLE}.comparationPartitionTimestampWithoutFuture ;;
-    timeframes: [raw, time, date, week, month, quarter, year]
   }
 
   dimension: occupation {
@@ -802,4 +806,5 @@ view: mview_comparation_searches {
       ELSE UPPER(${country})
     END ;;
   }
+
 }
