@@ -229,7 +229,7 @@ view: mview_comparation_searches {
     timeframes: [raw, time, date, week, month, quarter, year]
   }
 
-  dimension: last_year_searches {
+  dimension: last_year_booking{
     type: number
     sql: ${TABLE}.last_year_searches ;;
   }
