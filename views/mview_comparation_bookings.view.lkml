@@ -568,13 +568,9 @@ view: mview_comparation_bookings {
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
 
-  dimension: advance {
+  dimension: advance{
     type: number
-    sql: date_diff(
-          PARSE_DATE('%Y%m%d', ${TABLE}.startDate),
-          PARSE_DATE('%Y%m%d', ${TABLE}.referenceTimestamp),
-          day
-        ) ;;
+    sql: date_diff(cast(${TABLE}.comparation_startDate as timestamp), cast(${TABLE}.partitionTimestamp as timestamp), day) ;;
   }
 
   dimension: advance_cancellation{
