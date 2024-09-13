@@ -571,12 +571,11 @@ view: mview_comparation_bookings {
   dimension: advance {
     type: number
     sql: date_diff(
-          cast(${TABLE}.startDate as date),
-          cast(${TABLE}.referenceTimestamp as date),
+          PARSE_DATE('%Y%m%d', ${TABLE}.startDate),
+          PARSE_DATE('%Y%m%d', ${TABLE}.referenceTimestamp),
           day
         ) ;;
   }
-
 
   dimension: advance_cancellation{
     type: number
