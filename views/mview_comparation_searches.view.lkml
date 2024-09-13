@@ -234,6 +234,11 @@ view: mview_comparation_searches {
     sql: ${TABLE}.last_year_searches ;;
   }
 
+  dimension: last_year_searches{
+    type: number
+    sql: ${TABLE}.last_year_searches ;;
+  }
+
   dimension_group: comparation_startDate{
     type: time
     sql: ${TABLE}.comparation_startDate ;;
