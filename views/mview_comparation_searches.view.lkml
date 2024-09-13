@@ -206,7 +206,7 @@ view: mview_comparation_searches {
 
   dimension_group: comparation_partitiontimestamp_without_future{
     type: time
-    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
+    sql: IF(${TABLE}.last_year_searches = 0, ${TABLE}.partitionTimestamp,
       CASE
         WHEN CAST(${TABLE}.partitionTimestamp AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
         ELSE CAST(${TABLE}.partitionTimestamp AS timestamp)
@@ -227,11 +227,6 @@ view: mview_comparation_searches {
         ELSE TIMESTAMP_ADD(${TABLE}.referenceTimestamp, INTERVAL 365 DAY)
       END ;;
     timeframes: [raw, time, date, week, month, quarter, year]
-  }
-
-  dimension: last_year_booking{
-    type: number
-    sql: ${TABLE}.last_year_searches ;;
   }
 
   dimension: last_year_searches{
