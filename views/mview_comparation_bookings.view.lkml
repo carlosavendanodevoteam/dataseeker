@@ -481,7 +481,7 @@ view: mview_comparation_bookings {
     sql: CASE
           when ${callseeker} = 'Callseeker' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%'
           and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' THEN 'Ring2travel'
-          WHEN ${callseeker} = 'callseeker' then 'Callseeker'
+          WHEN ${callseeker} = 'Callseeker' then 'Callseeker'
           ELSE ${TABLE}.source_fixed
       END ;;
   }
