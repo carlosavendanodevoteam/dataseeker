@@ -471,7 +471,7 @@ view: mview_comparation_bookings {
   dimension: callseeker {
     type: string
     sql: Case
-          when ${TABLE}.agent like 'agent%' and ${TABLE}.source_fixed like '%allcenter%' then 'Callseeker'
+          when ${TABLE}.source_fixed like '%allcenter%' then 'Callseeker'
           else ${TABLE}.source_fixed
         End;;
   }
@@ -479,8 +479,8 @@ view: mview_comparation_bookings {
   dimension: source_fixed {
     type: string
     sql: CASE
-          when ${callseeker} = 'Callseeker' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%'
-          and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' THEN 'Ring2travel'
+          when ${callseeker} = 'Callseeker' and ${TABLE}.agent like 'agent%'  and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%'
+          and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and not like '%ort_%' THEN 'Ring2travel'
           WHEN ${callseeker} = 'Callseeker' then 'Callseeker'
           ELSE ${TABLE}.source_fixed
       END ;;
