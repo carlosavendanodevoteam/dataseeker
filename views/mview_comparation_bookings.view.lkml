@@ -471,7 +471,7 @@ view: mview_comparation_bookings {
   dimension: callseeker {
     type: string
     sql: Case
-          when ${TABLE}.agent like 'agent%' and ${TABLE}.source_fixed LIKE '%allcenter%' then 'Callseeker'
+          when ${TABLE}.agent like 'agent%' and ${TABLE}.source_fixed like '%allcenter%' then 'Callseeker'
           else ${TABLE}.source_fixed
         End;;
   }
