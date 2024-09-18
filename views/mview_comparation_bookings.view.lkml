@@ -468,13 +468,21 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.source ;;
   }
 
+  dimension: callseeker {
+    type: string
+    sql: Case
+          when ${TABLE}.agent like 'agent%' and ${TABLE}.source_fixed LIKE '%allcenter%' then 'Callseeker'
+          else ${TABLE}.source_fixed
+        End;;
+  }
+
   dimension: source_fixed {
     type: string
     sql: CASE
-        when ${TABLE}.agent like 'agent%' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%' and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and ${TABLE}.source_fixed like '%allcenter%'  THEN 'Ring2travel'
-        WHEN ${TABLE}.agent LIKE '%agent%'
-            AND (${TABLE}.source_fixed LIKE '%allcenter%' OR ${TABLE}.source_fixed LIKE 'Callcenter%') then 'Callseeker'
-        ELSE ${TABLE}.source_fixed
+          when ${callseeker} = 'Callseeker' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%'
+          and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and ${TABLE}.source_fixed like '%allcenter%'  THEN 'Ring2travel'
+          WHEN ${callseeker} = 'callseeker' then 'Callseeker'
+          ELSE ${TABLE}.source_fixed
       END ;;
   }
   #   type: string
