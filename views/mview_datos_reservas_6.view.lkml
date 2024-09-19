@@ -108,7 +108,10 @@ view: mview_datos_reservas_6 {
 
   dimension: cancellation_reason {
     type: string
-    sql: ${TABLE}.cancellation_reason ;;
+    sql: CASE
+          WHEN ${TABLE}.cancellation_reason = '' OR ${TABLE}.cancellation_reason is null Then ''
+          ELSE ${TABLE}.cancellation_reason
+        End;;
   }
 
   dimension: cancellation_reason_grouped {
