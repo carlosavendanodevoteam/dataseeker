@@ -76,10 +76,10 @@ explore: ring2_travel_agents_report {}
 explore: view_unique_hotel_corporative_encrypted {}
 
 explore:mview_comparation_unique_bookings {
-  join: hotel_corporative_encrypted {
+  join: view_unique_hotel_corporative_encrypted {
     type: inner
     relationship: many_to_one
-    sql_on: ${mview_comparation_unique_bookings.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+    sql_on: ${mview_comparation_unique_bookings.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
   join: hotels_data {
     type: inner
