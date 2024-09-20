@@ -652,21 +652,22 @@ view: mview_comparation_bookings {
 
   dimension: month_text {
     type: string
-    sql: Case
-          when ${month} = 1 then CONCAT ("Jan", ${year_startDate})
-          when ${month} = 2 then CONCAT ("Feb", ${year_startDate})
-          when ${month} = 3 then CONCAT ("Mar", ${year_startDate})
-          when ${month} = 4 then CONCAT ("Apr", ${year_startDate})
-          when ${month} = 5 then CONCAT ("May", ${year_startDate})
-          when ${month} = 6 then CONCAT ("Jun", ${year_startDate})
-          when ${month} = 7 then CONCAT ("Jul", ${year_startDate})
-          when ${month} = 8 then CONCAT ("Aug", ${year_startDate})
-          when ${month} = 9 then CONCAT ("Sep", ${year_startDate})
-          when ${month} = 10 then CONCAT ("Oct", ${year_startDate})
-          when ${month} = 11 then CONCAT ("Nov", ${year_startDate})
-          else CONCAT("Dec", ${year_startDate})
-        End;;
+    sql: CASE
+          WHEN ${month} = 1 THEN CONCAT("Jan", ${year_startDate})
+          WHEN ${month} = 2 THEN CONCAT("Feb", ${year_startDate})
+          WHEN ${month} = 3 THEN CONCAT("Mar", ${year_startDate})
+          WHEN ${month} = 4 THEN CONCAT("Apr", ${year_startDate})
+          WHEN ${month} = 5 THEN CONCAT("May", ${year_startDate})
+          WHEN ${month} = 6 THEN CONCAT("Jun", ${year_startDate})
+          WHEN ${month} = 7 THEN CONCAT("Jul", ${year_startDate})
+          WHEN ${month} = 8 THEN CONCAT("Aug", ${year_startDate})
+          WHEN ${month} = 9 THEN CONCAT("Sep", ${year_startDate})
+          WHEN ${month} = 10 THEN CONCAT("Oct", ${year_startDate})
+          WHEN ${month} = 11 THEN CONCAT("Nov", ${year_startDate})
+          ELSE CONCAT("Dec", ${year_startDate})
+        END;;
   }
+
 
   dimension: month_text_startDate {
     type: string
