@@ -634,6 +634,7 @@ view: mview_comparation_bookings {
     sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
   }
 
+
   dimension: month_startDate{
     type: number
     sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
@@ -652,18 +653,18 @@ view: mview_comparation_bookings {
   dimension: month_text {
     type: string
     sql: Case
-          when ${month} = 1 then "Jan"
-          when ${month} = 2 then "Feb"
-          when ${month} = 3 then "Mar"
-          when ${month} = 4 then "Apr"
-          when ${month} = 5 then "May"
-          when ${month} = 6 then "Jun"
-          when ${month} = 7 then "Jul"
-          when ${month} = 8 then "Aug"
-          when ${month} = 9 then "Sep"
-          when ${month} = 10 then "Oct"
-          when ${month} = 11 then "Nov"
-          else "Dec"
+          when ${month} = 1 then CONCAT ("Jan", ${year_startDate})
+          when ${month} = 2 then CONCAT ("Feb", ${year_startDate})
+          when ${month} = 3 then CONCAT ("Mar", ${year_startDate})
+          when ${month} = 4 then CONCAT ("Apr", ${year_startDate})
+          when ${month} = 5 then CONCAT ("May", ${year_startDate})
+          when ${month} = 6 then CONCAT ("Jun", ${year_startDate})
+          when ${month} = 7 then CONCAT ("Jul", ${year_startDate})
+          when ${month} = 8 then CONCAT ("Aug", ${year_startDate})
+          when ${month} = 9 then CONCAT ("Sep", ${year_startDate})
+          when ${month} = 10 then CONCAT ("Oct", ${year_startDate})
+          when ${month} = 11 then CONCAT ("Nov", ${year_startDate})
+          else CONCAT("Dec", ${year_startDate})
         End;;
   }
 
