@@ -671,20 +671,20 @@ view: mview_comparation_bookings {
 
   dimension: month_text_startDate {
     type: string
-    sql: CASE
-          WHEN ${month_startDate} = 1 THEN CONCAT("Jan ", ${year_startDate})
-          WHEN ${month_startDate} = 2 THEN CONCAT("Feb ", ${year_startDate})
-          WHEN ${month_startDate} = 3 THEN CONCAT("Mar ", ${year_startDate})
-          WHEN ${month_startDate} = 4 THEN CONCAT("Apr ", ${year_startDate})
-          WHEN ${month_startDate} = 5 THEN CONCAT("May ", ${year_startDate})
-          WHEN ${month_startDate} = 6 THEN CONCAT("Jun ", ${year_startDate})
-          WHEN ${month_startDate} = 7 THEN CONCAT("Jul ", ${year_startDate})
-          WHEN ${month_startDate} = 8 THEN CONCAT("Aug ", ${year_startDate})
-          WHEN ${month_startDate} = 9 THEN CONCAT("Sep ", ${year_startDate})
-          WHEN ${month_startDate} = 10 THEN CONCAT("Oct ", ${year_startDate})
-          WHEN ${month_startDate} = 11 THEN CONCAT("Nov ", ${year_startDate})
-          ELSE CONCAT("Dec", ${year_startDate})
-         END;;
+    sql: Case
+          when ${month_startDate} = 1 then "Jan"
+          when ${month_startDate} = 2 then "Feb"
+          when ${month_startDate} = 3 then "Mar"
+          when ${month_startDate} = 4 then "Apr"
+          when ${month_startDate} = 5 then "May"
+          when ${month_startDate} = 6 then "Jun"
+          when ${month_startDate} = 7 then "Jul"
+          when ${month_startDate} = 8 then "Aug"
+          when ${month_startDate} = 9 then "Sep"
+          when ${month_startDate} = 10 then "Oct"
+          when ${month_startDate} = 11 then "Nov"
+          else "Dec"
+        END;;
   }
 
   dimension: device {
