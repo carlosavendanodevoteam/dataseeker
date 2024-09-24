@@ -237,7 +237,7 @@ view: mview_datos_reservas_6 {
   dimension: hotel_code {
     primary_key: yes
     type: string
-    sql: ${TABLE}.hotel_code ;;
+    sql: LOWER(${TABLE}.hotel_code) ;;
   }
 
   dimension: hotel_country {
