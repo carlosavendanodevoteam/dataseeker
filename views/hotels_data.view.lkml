@@ -55,7 +55,7 @@ view: hotels_data {
   dimension: hotel_code {
     type: string
     primary_key: yes
-    sql: ${TABLE}.hotel_code ;;
+    sql: LOWER(${TABLE}.hotel_code) ;;
   }
 
   dimension: hotel_encoded {
