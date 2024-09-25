@@ -37,6 +37,14 @@ explore: mview_global_lead_time_stats {
   }
 }
 
+explore: view_searches_by_start_date {
+  join: hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_searches_by_start_date.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+    }
+  }
+
 explore: agent_work_time {}
 
 explore: summum_datos_reservas {}
