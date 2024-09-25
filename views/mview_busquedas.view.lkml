@@ -160,7 +160,7 @@ view: mview_busquedas {
   }
 
   measure: OK{
-    type: number
+    type: sum
     sql: CASE
             WHEN ${TABLE}.result ='OK' THEN 1
             ELSE 0
@@ -168,7 +168,7 @@ view: mview_busquedas {
   }
 
   measure: Restrictions{
-    type: number
+    type: sum
     sql: CASE
             WHEN ${TABLE}.result ='RESTRICTIONS' THEN 1
             ELSE 0
@@ -176,7 +176,7 @@ view: mview_busquedas {
   }
 
   measure: NO_RATE{
-    type: number
+    type: sum
     sql: CASE
             WHEN ${TABLE}.result ='NO_RATE' THEN 1
             ELSE 0
@@ -184,13 +184,20 @@ view: mview_busquedas {
   }
 
   measure:  no_availability{
-    type: number
+    type: sum
     sql: CASE
             WHEN ${TABLE}.result ='NO_AVAILABILITY' THEN 1
             ELSE 0
     END ;;
   }
 
+ measure: unsatified_demand {
+    type: sum
+    sql:  CASE
+            WHEN ${TABLE}.result ='NO_AVAILABILITY' OR ${TABLE}.result ='NO_RATE' OR ${TABLE}.result ='RESTRICTIONS' THEN 1
+            ELSE 0
+    END ;;
+ }
 
   dimension: nights{
     type: number
