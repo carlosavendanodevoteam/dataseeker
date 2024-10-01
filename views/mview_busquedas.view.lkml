@@ -191,13 +191,6 @@ view: mview_busquedas {
     END ;;
   }
 
- measure: unsatified_demand {
-    type: sum
-    sql:  CASE
-            WHEN ${TABLE}.result ='NO_AVAILABILITY' OR ${TABLE}.result ='NO_RATE' OR ${TABLE}.result ='RESTRICTIONS' THEN 1
-            ELSE 0
-    END ;;
- }
 
   dimension: nights{
     type: number
