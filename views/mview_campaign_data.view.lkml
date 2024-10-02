@@ -83,6 +83,13 @@ view: mview_campaign_data {
     {% endif %};;
   }
 
+  dimension: PRUEBA_IFRAME {
+    sql: ${hotel_code} ;;
+    html:
+      <iframe src="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default" width="100%" height="500"></iframe>
+;;
+  }
+
 
 
 }
