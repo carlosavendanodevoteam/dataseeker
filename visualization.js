@@ -1,6 +1,6 @@
 looker.plugins.visualizations.add({
-    id: "custom_visualization", // Identificador único
-    label: "Custom Visualization", // Nombre visible en el menú
+    id: "custom_visualization",
+    label: "Custom Visualization",
     options: {
       text_color: {
         type: "string",
@@ -10,20 +10,19 @@ looker.plugins.visualizations.add({
       url_to_embed: {
         type: "string",
         label: "URL to embed",
-        default: "https://looker-viewer-dot-analysis-seeker.appspot.com/login?next=%2F"
+        default: "https://looker-viewer-dot-analysis-seeker.appspot.com/admin/calendar"
       }
     },
-    // Esta función se ejecuta al crear la visualización
+
     create: function(element, config) {
-      element.innerHTML = `
+      element.innerHTML == "
         <div id="custom-vis-container" style="width:100%; height:100%; overflow:auto;">
           <iframe id="embed-frame" src="${config.url_to_embed}" style="width:100%; height:100%; border:none;"></iframe>
-        </div>`;
+        </div>";
     },
-  
-    // Esta función se ejecuta cada vez que los datos o las opciones cambian
+
     update: function(data, element, config, queryResponse) {
-      document.getElementById('embed-frame').src = config.url_to_embed;
-      document.getElementById('embed-frame').style.color = config.text_color;
+      document.getElementById("embed-frame").src = config.url_to_embed;
+      document.getElementById("embed-frame").style.color = config.text_color;
     }
   });
