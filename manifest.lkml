@@ -1,6 +1,9 @@
 project_name: "bq_demo_c"
 
-application: my_custom_visualization {
-  label: "My Custom Visualization"
+visualization: {
+  id: "unique-id"
+  label: "Visualization Label"
   url: "https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default"
+  sri_hash: "SRI hash"
+  dependencies: ["dependency_url_1","dependency_url_2"]
 }
