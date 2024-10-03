@@ -1070,5 +1070,4 @@ view: mview_datos_reservas_6 {
           ELSE '1' -- Europa
           END ;;
   }
-
 }
