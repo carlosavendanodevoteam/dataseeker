@@ -15,7 +15,7 @@ looker.plugins.visualizations.add({
     create: function(element, config) {
       element.innerHTML = `<div
       id='custom-vis-container' style='width:100%; height:100%; overflow:auto;'>
-      <iframe id='embed-frame' sandbox='allow-scripts allow-forms' src='${config.url_to_embed}' style='width:100%; height:100%; border:none;'></iframe>
+      <iframe id='embed-frame' allow='fullscreen' sandbox='allow-scripts allow-forms' src='${config.url_to_embed}' style='width:100%; height:100%; border:none;'></iframe>
       </div>`;
     },
 
