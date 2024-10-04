@@ -1,8 +1,7 @@
 project_name: "bq_demo_c"
 
-visualization:{
-  id: "visualization"
-  label: "calendar"
+visualization: {
+  id: "custom_visualization"
+  label: "Visualization Label"
   file: "visualization.js"
-
 }
