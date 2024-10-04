@@ -8,7 +8,7 @@ looker.plugins.visualizations.add({
       url_to_embed: {
         type: "string",
         label: "URL to embed",
-        default: "https://www.w3schools.com"
+        default: "https://looker-viewer-dot-analysis-seeker.appspot.com/login?next=%2F"
       }
     },
 
