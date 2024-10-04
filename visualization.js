@@ -13,10 +13,10 @@ looker.plugins.visualizations.add({
     },
 
     create: function(element, config) {
-      element.innerHTML = "<div
+      element.innerHTML = `<div
       id='custom-vis-container' style='width:100%; height:100%; overflow:auto;'>
       <iframe id='embed-frame' src='${config.url_to_embed}' style='width:100%; height:100%; border:none;'></iframe>
-      </div>";
+      </div>`;
     },
 
     update: function(data, element, config, queryResponse) {
