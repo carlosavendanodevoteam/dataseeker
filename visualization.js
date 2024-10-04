@@ -8,7 +8,7 @@ looker.plugins.visualizations.add({
       url_to_embed: {
         type: "string",
         label: "URL to embed",
-        default: "https://looker-viewer-dot-analysis-seeker.appspot.com/login?next=%2F"
+        default: "https://v2-dot-call-seeker.appspot.com"
       }
     },
 
