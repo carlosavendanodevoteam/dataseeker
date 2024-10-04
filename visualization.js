@@ -10,7 +10,7 @@ looker.plugins.visualizations.add({
       url_to_embed: {
         type: "string",
         label: "URL to embed",
-        default: "http://127.0.0.1:9080/admin/calendar/"
+        default: "https://looker-viewer-dot-analysis-seeker.appspot.com/login?next=%2F"
       }
     },
 
