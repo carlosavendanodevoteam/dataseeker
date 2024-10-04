@@ -1,5 +1,5 @@
 looker.plugins.visualizations.add({
-    id: "custom_visualization",
+    id: "visualization",
     label: "Custom Visualization",
     options: {
       text_color: {
