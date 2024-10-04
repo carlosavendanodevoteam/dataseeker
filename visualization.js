@@ -1,5 +1,5 @@
 looker.plugins.visualizations.add({
-    id: "visualization",
+    id: "custom_visualization",
     label: "Custom Visualization",
     options: {
       text_color: {
@@ -15,7 +15,7 @@ looker.plugins.visualizations.add({
     },
 
     create: function(element, config) {
-      element.innerHTML == "
+      element.innerHTML =="
         <div id="custom-vis-container" style="width:100%; height:100%; overflow:auto;">
           <iframe id="embed-frame" src="${config.url_to_embed}" style="width:100%; height:100%; border:none;"></iframe>
         </div>";
