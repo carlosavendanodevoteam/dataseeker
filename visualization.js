@@ -1,6 +1,6 @@
 looker.plugins.visualizations.add({
     id: "visualization",
-    label: "Custom Visualization",
+    label: "calendar",
     options: {
       text_color: {
         type: "string",
