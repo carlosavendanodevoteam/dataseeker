@@ -18,6 +18,11 @@ looker.plugins.visualizations.add({
         <iframe id='embed-frame' src='${config.url_to_embed}' style='width:100%; height:100%; border:none;'></iframe>
         </div>";
     },
+    console.log("hola me estoy ejecutando");
+      element.innerHTML = "
+        <div id='custom-vis-container' style='width:100%; height:100%; overflow:auto;'>
+          <iframe id='embed-frame' src='${config.url_to_embed}' style='width:100%; height:100%; border:none;'></iframe>
+        </div>";
 
     update: function(data, element, config, queryResponse) {
       document.getElementById("embed-frame").src = config.url_to_embed;
