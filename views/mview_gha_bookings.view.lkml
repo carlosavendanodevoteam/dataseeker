@@ -455,7 +455,7 @@ view: mview_gha_bookings {
 
 dimension: month_startDate {
   type: number
-  sql: CONCAT( ${year}, EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)));;
+  sql: CONCAT( ${year_startDate}, EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)));;
 }
 
 dimension: year {
@@ -489,17 +489,17 @@ dimension: month_text {
 dimension: month_text_startDate {
   type: string
   sql: CASE
-         WHEN ${month_startDate} = 1 THEN CONCAT("Enero ", ${year_startDate})
-         WHEN ${month_startDate} = 2 THEN CONCAT("Febrero ", ${year_startDate})
-         WHEN ${month_startDate} = 3 THEN CONCAT("Marzo ", ${year_startDate})
-         WHEN ${month_startDate} = 4 THEN CONCAT("Abril ", ${year_startDate})
-         WHEN ${month_startDate} = 5 THEN CONCAT("Mayo ", ${year_startDate})
-         WHEN ${month_startDate} = 6 THEN CONCAT("Junio ", ${year_startDate})
-         WHEN ${month_startDate} = 7 THEN CONCAT("Julio ", ${year_startDate})
-         WHEN ${month_startDate} = 8 THEN CONCAT("Agosto ", ${year_startDate})
-         WHEN ${month_startDate} = 9 THEN CONCAT("Septiembre ", ${year_startDate})
-         WHEN ${month_startDate} = 10 THEN CONCAT("Octubre ", ${year_startDate})
-         WHEN ${month_startDate} = 11 THEN CONCAT("Noviembre ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 1 THEN CONCAT("Enero ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 2 THEN CONCAT("Febrero ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 3 THEN CONCAT("Marzo ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 4 THEN CONCAT("Abril ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 5 THEN CONCAT("Mayo ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 6 THEN CONCAT("Junio ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 7 THEN CONCAT("Julio ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp))= 8 THEN CONCAT("Agosto ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 9 THEN CONCAT("Septiembre ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 10 THEN CONCAT("Octubre ", ${year_startDate})
+         WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) = 11 THEN CONCAT("Noviembre ", ${year_startDate})
          ELSE CONCAT("Diciembre ", ${year_startDate})
        END ;;
 }
