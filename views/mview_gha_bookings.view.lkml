@@ -455,7 +455,7 @@ view: mview_gha_bookings {
 
 dimension: month_startDate {
   type: number
-  sql: CONCAT( ${year_startDate}, EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)));;
+  sql: CONCAT( ${year_startDate}, '-', EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)));;
 }
 
 dimension: year {
