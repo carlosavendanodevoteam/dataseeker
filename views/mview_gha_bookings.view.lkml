@@ -453,9 +453,17 @@ view: mview_gha_bookings {
   sql: EXTRACT(month FROM ${TABLE}.timestamp) ;;
 }
 
+dimension: month_startDate_number {
+  type: number
+  sql:Case
+        when EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) then Concat('0', EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)))
+        else EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp))
+      end;;
+}
+
 dimension: month_startDate {
   type: number
-  sql: CONCAT( ${year_startDate}, ',', EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)));;
+  sql: CONCAT( ${year_startDate}, ${month_startDate_number});;
 }
 
 dimension: year {
