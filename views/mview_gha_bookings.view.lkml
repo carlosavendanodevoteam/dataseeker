@@ -456,7 +456,7 @@ view: mview_gha_bookings {
 dimension: month_startDate_number {
   type: number
   sql:Case
-        when EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) then Concat('0', EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)))
+        when EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) then Concat(0, EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)))
         else EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp))
       end;;
 }
