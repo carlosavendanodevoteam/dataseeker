@@ -453,13 +453,13 @@ view: mview_gha_bookings {
   sql: EXTRACT(month FROM ${TABLE}.timestamp) ;;
 }
 
-dimension: month_startDate_number {
-  type: number
-  sql:Case
-        when EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) then Concat(0, EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)))
-        else EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp))
-      end;;
-}
+  dimension: month_startDate_number {
+    type: number
+    sql: CASE
+          WHEN EXTRACT(month FROM ${TABLE}.startDate) < 10 THEN CONCAT('0', EXTRACT(month FROM ${TABLE}.startDate))
+          ELSE EXTRACT(month FROM ${TABLE}.startDate)
+        END;;
+  }
 
 dimension: month_startDate {
   type: number
