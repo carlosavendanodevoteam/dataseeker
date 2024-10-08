@@ -456,10 +456,11 @@ view: mview_gha_bookings {
   dimension: month_startDate_number {
     type: number
     sql: CASE
-          WHEN EXTRACT(month FROM ${TABLE}.startDate AS timestamp ) < 10 THEN CONCAT('0', EXTRACT(month FROM ${TABLE}.startDate AS timestamp))
-          ELSE EXTRACT(month FROM ${TABLE}.startDate AS timestamp)
+          WHEN EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp)) < 10 THEN CONCAT('0', EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp))
+          ELSE EXTRACT(month FROM CAST(${TABLE}.startDate AS timestamp))
         END;;
   }
+
 
 dimension: month_startDate {
   type: number
