@@ -417,7 +417,7 @@ view: mview_comparation_bookings {
 
   dimension: promos {
     type: string
-    sql: CONCAT(${promo},  ',', ${TABLE}.Promo2, ',', ${TABLE}.PROMO3) ;;
+    sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
   }
 
 
