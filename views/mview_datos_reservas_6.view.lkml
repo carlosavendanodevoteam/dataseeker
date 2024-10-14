@@ -420,6 +420,16 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.Promo ;;
   }
 
+  dimension: promo2 {
+    type: string
+    sql: ${TABLE}.Promo2 ;;
+  }
+
+  dimension: promo3 {
+    type: string
+    sql: ${TABLE}.PROMO3 ;;
+  }
+
   dimension: promocode {
     type: string
     sql: ${TABLE}.promocode ;;

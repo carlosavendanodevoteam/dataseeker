@@ -381,6 +381,16 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.Promo ;;
   }
 
+  dimension: promo2 {
+    type: string
+    sql: ${TABLE}.Promo2 ;;
+  }
+
+  dimension: promo3 {
+    type: string
+    sql: ${TABLE}.PROMO3 ;;
+  }
+
   dimension: promocode {
     type: string
     sql: ${TABLE}.promocode ;;
