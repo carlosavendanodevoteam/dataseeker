@@ -387,7 +387,7 @@ view: mview_comparation_bookings {
     sql: case
           when ${TABLE}.Promo IS NULL THEN '-'
           When ${TABLE}.Promo = '' then '-'
-          when = ${TABLE}.Promo = 'WINTER 2024-2025' then 'Invierno 2024-2025'
+          when ${TABLE}.Promo = 'WINTER 2024-2025' then 'Invierno 2024-2025'
           else ${TABLE}.Promo
         end
         ;;
