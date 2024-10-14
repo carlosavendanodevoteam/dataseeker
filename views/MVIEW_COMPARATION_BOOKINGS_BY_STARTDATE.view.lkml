@@ -380,10 +380,43 @@ view: mview_comparation_bookings_by_start_date {
     sql: ${TABLE}.priceSupplements_in_booking_currency ;;
   }
 
-  dimension: promo {
-    type: string
-    sql: ${TABLE}.Promo ;;
-  }
+      dimension: promo {
+        type: string
+        sql: case
+          when ${TABLE}.Promo IS NULL THEN '-'
+          When ${TABLE}.Promo = '' then '-'
+          when ${TABLE}.Promo LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
+          else ${TABLE}.Promo
+        end
+        ;;
+      }
+
+      dimension: promo2 {
+        type: string
+        sql: case
+          when ${TABLE}.Promo2 IS NULL THEN '-'
+          When ${TABLE}.Promo2 = '' then '-'
+          when ${TABLE}.Promo2 LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
+          else ${TABLE}.Promo2
+        end
+        ;;
+      }
+
+      dimension: promo3 {
+        type: string
+        sql: case
+          when ${TABLE}.Promo3 IS NULL THEN '-'
+          When ${TABLE}.Promo3 = '' then '-'
+          when ${TABLE}.Promo3 LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
+          else ${TABLE}.Promo3
+        end
+        ;;
+      }
+
+      dimension: promos {
+        type: string
+        sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
+      }
 
   dimension: promocode {
     type: string
