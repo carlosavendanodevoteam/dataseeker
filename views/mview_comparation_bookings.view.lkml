@@ -399,7 +399,11 @@ view: mview_comparation_bookings {
 
   dimension: promos {
     type: string
-    sql: ${TABLE}.Promo or ${TABLE}.Promo2 or ${TABLE}.PROMO3;;
+    sql: CONCAT(
+           CONCAT(${TABLE}.Promo1, ','),
+           CONCAT(${TABLE}.Promo2, ','),
+           ${TABLE}.PROMO3
+         ) ;;
   }
 
 
@@ -1049,9 +1053,4 @@ view: mview_comparation_bookings {
     type: number
     sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
-  filter: promos1 {
-    type: string
-    sql: ${TABLE}.Promo or ${TABLE}.Promo2 or ${TABLE}.PROMO3;;
-  }
-
 }
