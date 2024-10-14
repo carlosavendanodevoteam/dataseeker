@@ -385,7 +385,7 @@ view: mview_comparation_bookings {
   dimension: promo {
     type: string
     sql: case
-          when ${TABLE}.Promo IS NULL THEN ''
+          when ${TABLE}.Promo IS NULL THEN '-'
           else ${TABLE}.Promo
         end
         ;;
@@ -394,7 +394,7 @@ view: mview_comparation_bookings {
   dimension: promo2 {
     type: string
     sql: case
-          when ${TABLE}.Promo2 IS NULL THEN ''
+          when ${TABLE}.Promo2 IS NULL THEN '-'
           else ${TABLE}.Promo2
         end
         ;;
@@ -403,7 +403,7 @@ view: mview_comparation_bookings {
   dimension: promo3 {
     type: string
     sql: case
-          when ${TABLE}.Promo3 IS NULL THEN ''
+          when ${TABLE}.Promo3 IS NULL THEN '-'
           else ${TABLE}.Promo3
         end
         ;;
