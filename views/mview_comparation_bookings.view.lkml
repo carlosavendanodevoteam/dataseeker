@@ -1049,4 +1049,9 @@ view: mview_comparation_bookings {
     type: number
     sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
+  filter: promos1 {
+    type: string
+    sql: ${TABLE}.Promo or ${TABLE}.Promo2 or ${TABLE}.PROMO3;;
+  }
+
 }
