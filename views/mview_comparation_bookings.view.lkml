@@ -386,6 +386,8 @@ view: mview_comparation_bookings {
     type: string
     sql: case
           when ${TABLE}.Promo IS NULL THEN '-'
+          When ${TABLE}.Promo = '' then '-'
+          when = ${TABLE}. Promo = 'WINTER 2024-2025' then 'Invierno 2024-2025'
           else ${TABLE}.Promo
         end
         ;;
@@ -411,7 +413,7 @@ view: mview_comparation_bookings {
 
   dimension: promos {
     type: string
-    sql: CONCAT(${TABLE}.Promo, ',', ${TABLE}.Promo2, ',', ${TABLE}.PROMO3) ;;
+    sql: CONCAT(${promo},  ',', ${TABLE}.Promo2, ',', ${TABLE}.PROMO3) ;;
   }
 
 
