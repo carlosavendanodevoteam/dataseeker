@@ -384,17 +384,29 @@ view: mview_comparation_bookings {
 
   dimension: promo {
     type: string
-    sql: ${TABLE}.Promo ;;
+    sql: case
+          when ${TABLE}.Promo IS NULL THEN ''
+          else ${TABLE}.Promo
+        end
+        ;;
   }
 
   dimension: promo2 {
     type: string
-    sql: ${TABLE}.Promo2 ;;
+    sql: case
+          when ${TABLE}.Promo2 IS NULL THEN ''
+          else ${TABLE}.Promo2
+        end
+        ;;
   }
 
   dimension: promo3 {
     type: string
-    sql: ${TABLE}.PROMO3 ;;
+    sql: case
+          when ${TABLE}.Promo3 IS NULL THEN ''
+          else ${TABLE}.Promo3
+        end
+        ;;
   }
 
   dimension: promos {
