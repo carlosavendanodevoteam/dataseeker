@@ -399,11 +399,7 @@ view: mview_comparation_bookings {
 
   dimension: promos {
     type: string
-    sql: CONCAT(
-           CONCAT(${TABLE}.Promo1, ','),
-           CONCAT(${TABLE}.Promo2, ','),
-           ${TABLE}.PROMO3
-         ) ;;
+    sql: CONCAT(${TABLE}.Promo, ',', ${TABLE}.Promo2, ',', ${TABLE}.PROMO3) ;;
   }
 
 
