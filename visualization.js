@@ -8,7 +8,7 @@ looker.plugins.visualizations.add({
       url_to_embed: {
         type: "string",
         label: "URL to embed",
-        default: "https://v2-dot-call-seeker.appspot.com"
+        default: "https://looker-viewer-dot-analysis-seeker.appspot.com/admin/calendar-hotel-puentereal/2024-06-01/2025-12-31"
       }
     },
 
