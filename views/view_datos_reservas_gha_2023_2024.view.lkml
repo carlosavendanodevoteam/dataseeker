@@ -119,7 +119,7 @@ view: view_datos_reservas_gha_2023_2024 {
 
   dimension_group: comparation_partitionTimestamp{
     type: time
-    sql: CASE TIMESTAMP_ADD(CAST(${TABLE}.partition_timestamp), INTERVAL 365 DAY);;
+    sql: TIMESTAMP_ADD(CAST(${TABLE}.partition_timestamp), INTERVAL 365 DAY);;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
