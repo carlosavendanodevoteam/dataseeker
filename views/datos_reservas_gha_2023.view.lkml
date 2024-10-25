@@ -72,7 +72,7 @@ view: DATOS_RESERVAS_GHA_2023 {
 
   dimension: month_text {
     type: string
-    sql: ${TABLE}.month_text ;;
+    sql: ${TABLE}.MONT_NAME ;;
   }
 
   dimension: scoring {
