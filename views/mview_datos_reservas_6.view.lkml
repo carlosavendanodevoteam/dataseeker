@@ -1103,23 +1103,13 @@ view: mview_datos_reservas_6 {
           END ;;
   }
 
-  parameter: number_choice {
-    type: string  # Cambiado de unquoted a string
-    allowed_value: { value: "1" }
-    allowed_value: { value: "2" }
-    allowed_value: { value: "3" }
-    allowed_value: { value: "4" }
-    allowed_value: { value: "5" }
-  }  # Asegúrate de que esta línea termine con ;}
-
-
   dimension: dashboard_text {
     type:string
     sql:Case
-      when ${number_choice} ='1' then 'General overview. How am I doing?'
-      when ${number_choice} ='2' then 'SALES (By Booking window)'
-      when ${number_choice} ='3' then 'TRAVEL REVENUE per month'
-      else ${number_choice}
+      when '1' = '1' then 'General overview. How am I doing?'
+      when '2' ='2' then 'SALES (By Booking window)'
+      when '3' ='3' then 'TRAVEL REVENUE per month'
+      else '4'
       end;;      }
 
 
