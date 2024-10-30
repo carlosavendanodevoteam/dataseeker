@@ -1106,9 +1106,9 @@ view: mview_datos_reservas_6 {
   dimension: dashboard_text {
     type:string
     sql:Case
-      when '1' then 'General overview. How am I doing?'
-      when '2' then 'SALES (By Booking window)'
-      when '3' then 'TRAVEL REVENUE per month'
+      when '1'='1' then 'General overview. How am I doing?'
+      when '2'='2' then 'SALES (By Booking window)'
+      when '3'='3' then 'TRAVEL REVENUE per month'
       else '4'
       end;;      }
 
