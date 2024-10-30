@@ -1066,7 +1066,6 @@ view: mview_datos_reservas_6 {
     type: yesno
     sql: ${TABLE}.partitionTimestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 15 DAY) AND CURRENT_TIMESTAMP() ;;
   }
-
   dimension: timestamp_converted {
     type: date
     sql: PARSE_TIMESTAMP('%Y-%m-%d', ${TABLE}.timestamp_date) ;;
@@ -1103,4 +1102,33 @@ view: mview_datos_reservas_6 {
           ELSE '1' -- Europa
           END ;;
   }
+
+  dimension: dashboard_text {
+    type:string
+    sql:Case
+      when '1' then 'General overview. How am I doing?'
+      when '2' then 'SALES (By Booking window)'
+      when '3' then 'TRAVEL REVENUE per month'
+      else '4'
+      end;;      }
+
+
+  dimension: format_text{
+    type: string
+    html: {% if value == '1' %}
+    <p style="color: red; background-color: white; font-size:100%; font-family: 'Roboto', sans-serif; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == '2' %}
+    <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'Silver' %}
+    <p style="color: black; background-color: Silver; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'BRONZE' %}
+    <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'LITE' %}
+    <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+  }
+
+
 }
