@@ -108,6 +108,11 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.ROAS ;;
   }
 
+  dimension: booking {
+    type: number
+    sql: ${TABLE}.booking ;;
+  }
+
   dimension: roas {
     type: number
     sql: case
