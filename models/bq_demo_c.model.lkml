@@ -29,6 +29,14 @@ explore: mview_gha_bookings {
   }
 }
 
+explore: view_comparation_funnel_stats {
+  join:  hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_comparation_funnel_stats.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+}}
+
+
 explore: mview_global_lead_time_stats {
   join: hotel_corporative_encrypted{
     type: inner
