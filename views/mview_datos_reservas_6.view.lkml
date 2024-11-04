@@ -1130,11 +1130,11 @@ view: mview_datos_reservas_6 {
   dimension: selected_option {
     type: string
     sql: CASE
-        WHEN {% parameter option_select %} = '1' THEN 'Opción 1'
-        WHEN {% parameter option_select %} = '2' THEN 'Opción 2'
-        WHEN {% parameter option_select %} = '3' THEN 'Opción 3'
-        WHEN {% parameter option_select %} = '4' THEN 'Opción 4'
-        WHEN {% parameter option_select %} = '5' THEN 'Opción 5'
+        WHEN {% parameter option_select %} = 1 THEN 'Opción 1'
+        WHEN {% parameter option_select %} = 2 THEN 'Opción 2'
+        WHEN {% parameter option_select %} = 3 THEN 'Opción 3'
+        WHEN {% parameter option_select %} = 4 THEN 'Opción 4'
+        WHEN {% parameter option_select %} = 5 THEN 'Opción 5'
         ELSE NULL
        END ;;
   }
