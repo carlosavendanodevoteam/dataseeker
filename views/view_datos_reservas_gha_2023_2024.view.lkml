@@ -44,6 +44,11 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.Generated ;;
   }
 
+  measure: sum_generated {
+    type: sum
+    sql: ${TABLE}.Generated ;;
+  }
+
   dimension: hotel_code {
     type: string
     sql: ${TABLE}.hotel_code ;;
@@ -98,11 +103,16 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.cost_percent ;;
   }
 
-  dimension: real_cost_2024 {
+  measure: average_of_cost_percent {
+    type: average
+    sql: ${cost_percent} ;;
+  }
+
+  measure: real_cost_2024 {
     type: number
     sql: CASE
-                WHEN ${year} = 2024 AND ${cost_percent} IS NOT NULL THEN 1
-                ELSE 0
+              WHEN ${year} = 2024 AND ${cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
+                ELSE ${coste}
              END ;;
   }
 
@@ -116,7 +126,7 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.booking ;;
   }
 
-  dimension: roas {
+  measure: roas {
     type: number
     sql: case
           when ${real_cost_2024} > 0 and ${generated} > 0 and year != 2023 then ${generated}/${real_cost_2024}
