@@ -130,8 +130,7 @@ view: view_datos_reservas_gha_2023_2024 {
     type: number
     sql: case
           when sum(${TABLE}.roas) = 0 then ${sum_generated}/${real_cost_2024}
-          when ${TABLE}.year = 2023 then sum(${TABLE}.roas)
-          else 0
+          else sum(${TABLE}.roas)
         end;;
   }
 
