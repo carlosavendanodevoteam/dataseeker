@@ -100,7 +100,7 @@ view: view_datos_reservas_gha_2023_2024 {
 
   dimension: real_cost_2024 {
     type: number
-    sql: IF(${year} = 2024 and ${cost_percent} is not null, ${generated} * (${cost_percent} / 100), ${coste}) ;;
+    sql: IF(${year} = 2024 and ${cost_percent} is not null, ${generated} * (AVG(${cost_percent}) / 100), ${coste}) ;;
   }
 
   dimension: 2023_roas {
