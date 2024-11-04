@@ -1103,20 +1103,55 @@ view: mview_datos_reservas_6 {
           END ;;
   }
 
+  dimension: option_selection {
+    type: string
+    sql: 'Opción 1' ;;
+    group_label: "Opciones"
+  }
+
+  dimension: option_2 {
+    type: string
+    sql: 'Opción 2' ;;
+    group_label: "Opciones"
+  }
+
+  dimension: option_3 {
+    type: string
+    sql: 'Opción 3' ;;
+    group_label: "Opciones"
+  }
+
+  dimension: option_4 {
+    type: string
+    sql: 'Opción 4' ;;
+    group_label: "Opciones"
+  }
+
+  dimension: option_5 {
+    type: string
+    sql: 'Opción 5' ;;
+    group_label: "Opciones"
+  }
+
+  dimension: options {
+    type: string
+    sql: 'options 1, options 2, options 3, options 4, options 5' ;;
+  }
+
   dimension: dashboard_text {
     type:string
     sql:Case
-      when '1' = '1' then 'General overview. How am I doing?'
-      when '2' ='2' then 'SALES (By Booking window)'
-      when '3' ='3' then 'TRAVEL REVENUE per month'
-      else '4'
+      when ${options} = 'options 1' then 'General overview. How am I doing?'
+      when ${options} ='options 2' then 'SALES (By Booking window)'
+      when ${options} = 'options 3' then 'TRAVEL REVENUE per month'
+      else 'options 4'
       end;;      }
 
 
   dimension: format_text{
     type: string
     sql: ${dashboard_text} ;;
-    html: {% if value == '1' %}
+    html: {% if value == 'General overview. How am I doing?' %}
     <p style="color: red; background-color: white; font-size:100%; font-family: 'Roboto', sans-serif; text-align:center">{{ rendered_value }}</p>
     {% elsif value == '2' %}
     <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
