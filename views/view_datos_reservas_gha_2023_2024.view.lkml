@@ -78,7 +78,7 @@ view: view_datos_reservas_gha_2023_2024 {
   }
 
 
-  measure: year {
+  dimension: year {
     type: number
     sql: ${TABLE}.year ;;
   }
@@ -111,7 +111,7 @@ view: view_datos_reservas_gha_2023_2024 {
   measure: real_cost_2024 {
     type: number
     sql: CASE
-              WHEN ${TABLE}.year = 2024 AND ${cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
+              WHEN ${cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
                 ELSE ${coste}
              END ;;
   }
