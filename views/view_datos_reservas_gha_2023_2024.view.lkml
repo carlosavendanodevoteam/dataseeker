@@ -88,19 +88,22 @@ view: view_datos_reservas_gha_2023_2024 {
     drill_fields: [mont_name]
   }
 
-  measure: avg.cpc {
+  measure: avg_cpc {
     type: number
     sql:  if( ${coste} > 0 and ${clicks} > 0, ${coste}/${clicks}, 0)  ;;
   }
 
   dimension: cost_percent {
     type: number
-    sql: avg(${TABLE}.cost_percent) ;;
+    sql: ${TABLE}.cost_percent ;;
   }
 
   dimension: real_cost_2024 {
     type: number
-    sql: IF(${year} = 2024 and ${cost_percent} is not null, ${generated} * (${cost_percent} / 100), ${coste}) ;;
+    sql: CASE
+                WHEN ${year} = 2024 AND ${cost_percent} IS NOT NULL THEN 1
+                ELSE 0
+             END ;;
   }
 
   dimension: 2023_roas {
