@@ -129,7 +129,7 @@ view: view_datos_reservas_gha_2023_2024 {
   measure: real_roas {
     type: number
     sql: case
-          when sum(${TABLE}.roas) = 0 then ${sum_generated}/${real_cost_2024}
+          when sum(${TABLE}.roas) > 0 then ${sum_generated}/${real_cost_2024}
           else sum(${TABLE}.roas)
         end;;
   }
