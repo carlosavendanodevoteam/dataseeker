@@ -78,7 +78,7 @@ view: view_datos_reservas_gha_2023_2024 {
   }
 
 
-  dimension: year {
+  measure: year {
     type: number
     sql: ${TABLE}.year ;;
   }
