@@ -1103,48 +1103,50 @@ view: mview_datos_reservas_6 {
           END ;;
   }
 
-  dimension: option_selection {
-    type: string
-    sql: 'Opción 1' ;;
-    group_label: "Opciones"
+  parameter: option_select {
+    type: unquoted
+    allowed_value: {
+      label: "Opción 1"
+      value: "1"
+    }
+    allowed_value: {
+      label: "Opción 2"
+      value: "2"
+    }
+    allowed_value: {
+      label: "Opción 3"
+      value: "3"
+    }
+    allowed_value: {
+      label: "Opción 4"
+      value: "4"
+    }
+    allowed_value: {
+      label: "Opción 5"
+      value: "5"
+    }
   }
 
-  dimension: option_2 {
+  dimension: selected_option {
     type: string
-    sql: 'Opción 2' ;;
-    group_label: "Opciones"
+    sql: CASE
+        WHEN {% parameter option_select %} = '1' THEN 'Opción 1'
+        WHEN {% parameter option_select %} = '2' THEN 'Opción 2'
+        WHEN {% parameter option_select %} = '3' THEN 'Opción 3'
+        WHEN {% parameter option_select %} = '4' THEN 'Opción 4'
+        WHEN {% parameter option_select %} = '5' THEN 'Opción 5'
+        ELSE NULL
+       END ;;
   }
 
-  dimension: option_3 {
-    type: string
-    sql: 'Opción 3' ;;
-    group_label: "Opciones"
-  }
-
-  dimension: option_4 {
-    type: string
-    sql: 'Opción 4' ;;
-    group_label: "Opciones"
-  }
-
-  dimension: option_5 {
-    type: string
-    sql: 'Opción 5' ;;
-    group_label: "Opciones"
-  }
-
-  dimension: options {
-    type: string
-    sql: 'options 1, options 2, options 3, options 4, options 5' ;;
-  }
 
   dimension: dashboard_text {
     type:string
     sql:Case
-      when ${options} = 'options 1' then 'General overview. How am I doing?'
-      when ${options} ='options 2' then 'SALES (By Booking window)'
-      when ${options} = 'options 3' then 'TRAVEL REVENUE per month'
-      else 'options 4'
+      when ${selected_option} = '1' then 'General overview. How am I doing?'
+      when ${selected_option} = '2' then 'SALES (By Booking window)'
+      when ${selected_option} = '3' then 'TRAVEL REVENUE per month'
+      else '4'
       end;;      }
 
 
