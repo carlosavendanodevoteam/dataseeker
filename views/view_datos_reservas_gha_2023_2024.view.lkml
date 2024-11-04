@@ -111,7 +111,7 @@ view: view_datos_reservas_gha_2023_2024 {
   measure: real_cost_2024 {
     type: number
     sql: CASE
-              WHEN ${TABLE}.year = "2024" AND ${cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
+              WHEN ${TABLE}.year 2024 AND ${cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
                 ELSE ${coste}
              END ;;
   }
@@ -129,8 +129,8 @@ view: view_datos_reservas_gha_2023_2024 {
   measure: roas {
     type: number
     sql: case
-          when ${real_cost_2024} > 0 and ${generated} > 0 and year != 2023 then ${generated}/${real_cost_2024}
-          when year = 2023 then ${TABLE}.roas
+          when ${real_cost_2024} > 0 and ${generated} > 0 and ${TABLE}.year  != 2023 then ${generated}/${real_cost_2024}
+          when ${TABLE}.year  = 2023 then ${TABLE}.roas
           else 0
         end;;
   }
