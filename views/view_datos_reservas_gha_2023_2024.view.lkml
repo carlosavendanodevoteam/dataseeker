@@ -116,8 +116,8 @@ view: view_datos_reservas_gha_2023_2024 {
              END ;;
   }
 
-  dimension: 2023_roas {
-    type: number
+  measure: 2023_roas {
+    type: sum
     sql: ${TABLE}.ROAS ;;
   }
 
