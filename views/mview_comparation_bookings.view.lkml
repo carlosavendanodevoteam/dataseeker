@@ -141,7 +141,7 @@ view: mview_comparation_bookings {
   }
 
   dimension: comments {
-    type: number
+    type: string
     sql: ${TABLE}.comments ;;
   }
 
