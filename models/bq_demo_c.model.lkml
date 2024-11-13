@@ -266,6 +266,16 @@ explore: mview_precheckins {
     sql: LEFT JOIN UNNEST(${mview_precheckins.guests}) as mview_precheckins__guests ;;
     relationship: one_to_many
   }
+  join: mview_datos_reservas_6 {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${mview_precheckins.hotel_code} = ${mview_datos_reservas_6.hotel_code} and ${mview_precheckins.identifier}=${mview_datos_reservas_6.identifier};;
+  }
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_precheckins.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
 }
 
 explore: mview_bookings_by_start_date {
