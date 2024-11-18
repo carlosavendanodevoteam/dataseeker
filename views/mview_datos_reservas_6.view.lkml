@@ -1043,6 +1043,16 @@ view: mview_datos_reservas_6 {
     END ;;
   }
 
+  dimension: call_center_agent {
+    type:  string
+
+    sql: when ${hotel_code} in ('golf-resort-oasis', 'golf-resort-river', 'golf-resort-greengarden', 'golf-resort-royalgarden') then 'egonzalez_luxury','jbarroso_river','vmolina_river','mmirpuri_ggolf','sandersen_ggolf','ddabrowska_river','jritzen_river','lunajorge_luxury','GrupoGolfYaiza','szubiria_luxury','alorenzo_luxury'
+      ELSE ${agent}
+      end ;;
+  }
+
+
+
   dimension: isSUMMUM {
     type: yesno
     sql: if(${hotel_code} in ('summum-zurbaran','summum-ratxo', 'summum-poblado-suites', 'summum-virrey-finca', 'summum-rosellon', 'summum-ventas', 'summum-joan-miro', 'villa-nazules'), TRUE, FALSE)  ;;
