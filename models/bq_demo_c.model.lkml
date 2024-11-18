@@ -467,3 +467,4 @@ explore: parkroyal_2024budget_fixed {}
 
 explore: google_hotel_center{}
 explore: derbysoft_identifier_booking{}
+explore:  ads_bill{}
