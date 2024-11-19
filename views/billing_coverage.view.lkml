@@ -35,7 +35,7 @@ view: billing_coverage {
 
   dimension_group: month {
     type: time
-    timeframes: [raw, date, week, month, quarter, year]
+    timeframes: [raw, date, week, month, month_name, quarter, year]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.Month ;;

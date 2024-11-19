@@ -43,9 +43,8 @@ view: derbysoft_identifier_booking {
           else ${hotel_name}
           End;;
   }
-   dimension_group: bookingDate {
-    type: time
-    timeframes: [raw, date, week, month, quarter, year]
+   dimension: bookingDate {
+    type: string
     sql: ${TABLE}.bookingDate ;;
    }
 
@@ -64,4 +63,5 @@ view: derbysoft_identifier_booking {
     type: count
     drill_fields: [hotel_name]
   }
+
 }
