@@ -43,6 +43,12 @@ view: derbysoft_identifier_booking {
           else ${hotel_name}
           End;;
   }
+   dimension_group: bookingDate {
+    type: time
+    timeframes: [raw, date, week, month, quarter, year]
+    sql: ${TABLE}.bookingDate ;;
+   }
+
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
