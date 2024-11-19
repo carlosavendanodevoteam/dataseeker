@@ -99,6 +99,11 @@ view: funnel_stats {
     sql: ${TABLE}.booking4_gateway ;;
   }
 
+  dimension: last_year_booking {
+    type: number
+    sql: ${TABLE}.last_year_booking ;;
+  }
+
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
