@@ -59,4 +59,39 @@ view: billing_coverage {
   measure: count {
     type: count
   }
+
+  dimension: month_number{
+    type: number
+    sql:  EXTRACT(month FROM cast(${TABLE}.month as timestamp)) ;;
+  }
+
+  dimension: year_number{
+    type: number
+    sql:  EXTRACT(YEAR FROM cast(${TABLE}.month as timestamp)) ;;
+  }
+
+  dimension: month_text{
+    type: string
+    sql: Case
+        when ${month_number} = 1 then "Jan"
+        when ${month_number} = 2 then "Feb"
+        when ${month_number} = 3 then "Mar"
+        when ${month_number} = 4 then "Apr"
+        when ${month_number} = 5 then "May"
+        when ${month_number} = 6 then "Jun"
+        when ${month_number} = 7 then "Jul"
+        when ${month_number} = 8 then "Aug"
+        when ${month_number} = 9 then "Sep"
+        when ${month_number} = 10 then "Oct"
+        when ${month_number} = 11 then "Nov"
+        else "Dec"
+      End;;
+  }
+
+  dimension: bookingDate {
+    type: string
+    sql: CONCAT(${year_number}, ' ', ${month_text}) ;;
+  }
+
+
 }
