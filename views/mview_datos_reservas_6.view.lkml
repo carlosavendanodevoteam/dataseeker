@@ -78,14 +78,14 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.birthday ;;
   }
 
-  dimension: board {
-    type: string
-    sql: ${TABLE}.Board ;;
-  }
-
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+  }
+
+  dimension: board {
+    type: string
+    sql: ${TABLE}.Board ;;
   }
 
   dimension: upper_board{
