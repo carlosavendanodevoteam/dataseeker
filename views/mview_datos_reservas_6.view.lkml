@@ -219,6 +219,12 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.endDate ;;
   }
 
+  dimension_group: end_date_timestamp {
+    type: time
+    timeframes: [raw, time, hour, date, week, month, quarter, year]
+    sql: ${TABLE}.partitionTimestamp;;
+  }
+
   dimension: es_paquete {
     type: yesno
     sql: ${TABLE}.EsPaquete ;;
@@ -1053,6 +1059,15 @@ view: mview_datos_reservas_6 {
     END ;;
   }
 
+  dimension: call_center_agent {
+    type:  string
+    sql:CASE when ${hotel_code} in ('golf-resort-oasis', 'golf-resort-river', 'golf-resort-greengarden', 'golf-resort-royalgarden') then 'egonzalez_luxury','jbarroso_river','vmolina_river','mmirpuri_ggolf','sandersen_ggolf','ddabrowska_river','jritzen_river','lunajorge_luxury','GrupoGolfYaiza','szubiria_luxury','alorenzo_luxury'
+      ELSE ${agent}
+      end ;;
+  }
+
+
+
   dimension: isSUMMUM {
     type: yesno
     sql: if(${hotel_code} in ('summum-zurbaran','summum-ratxo', 'summum-poblado-suites', 'summum-virrey-finca', 'summum-rosellon', 'summum-ventas', 'summum-joan-miro', 'villa-nazules'), TRUE, FALSE)  ;;
@@ -1076,7 +1091,6 @@ view: mview_datos_reservas_6 {
     type: yesno
     sql: ${TABLE}.partitionTimestamp BETWEEN TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 15 DAY) AND CURRENT_TIMESTAMP() ;;
   }
-
   dimension: timestamp_converted {
     type: date
     sql: PARSE_TIMESTAMP('%Y-%m-%d', ${TABLE}.timestamp_date) ;;
@@ -1113,4 +1127,61 @@ view: mview_datos_reservas_6 {
           ELSE '1' -- Europa
           END ;;
   }
+
+  parameter: option_select {
+    type: unquoted
+    allowed_value: {
+      label: "Opción 1"
+      value: "1"
+    }
+    allowed_value: {
+      label: "Opción 2"
+      value: "2"
+    }
+    allowed_value: {
+      label: "Opción 3"
+      value: "3"
+    }
+    allowed_value: {
+      label: "Opción 4"
+      value: "4"
+    }
+    allowed_value: {
+      label: "Opción 5"
+      value: "5"
+    }
+  }
+
+
+  dimension: dashboard_text {
+    type:string
+    sql:Case
+      when {% parameter option_select %} = 1 then 'General overview. How am I doing?'
+      when {% parameter option_select %} = 2 then 'SALES (By Booking window)'
+      when {% parameter option_select %} = 3 then 'TRAVEL REVENUE per month'
+      WHEN {% parameter option_select %} = 4 THEN 'Opción 4'
+      WHEN {% parameter option_select %} = 5 THEN 'Opción 5'
+      else '4'
+      end;;      }
+
+
+  dimension: format_text{
+    type: string
+    sql: ${dashboard_text} ;;
+    html: {% if value == 'General overview. How am I doing?' %}
+    <p style="color: red; background-color: white; font-size:100%; font-family: 'Roboto', sans-serif; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == '2' %}
+    <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'Silver' %}
+    <p style="color: black; background-color: Silver; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'BRONZE' %}
+    <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'LITE' %}
+    <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+  }
+
+
 }

@@ -141,8 +141,8 @@ view: mview_comparation_bookings {
   }
 
   dimension: comments {
-    type: number
-    sql: ${TABLE}.comments ;;
+    type: string
+    sql: UPPER(${TABLE}.comments) ;;
   }
 
   dimension: country {

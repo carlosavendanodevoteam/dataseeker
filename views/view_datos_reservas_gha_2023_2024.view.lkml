@@ -44,6 +44,11 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.Generated ;;
   }
 
+  measure: sum_generated {
+    type: sum
+    sql: ${TABLE}.Generated ;;
+  }
+
   dimension: hotel_code {
     type: string
     sql: ${TABLE}.hotel_code ;;
@@ -88,7 +93,7 @@ view: view_datos_reservas_gha_2023_2024 {
     drill_fields: [mont_name]
   }
 
-  measure: avg.cpc {
+  measure: avg_cpc {
     type: number
     sql:  if( ${coste} > 0 and ${clicks} > 0, ${coste}/${clicks}, 0)  ;;
   }
@@ -98,24 +103,43 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.cost_percent ;;
   }
 
-  dimension: real_cost_2024 {
-    type: number
-    sql: IF(${year} = 2024, ${generated} * (${cost_percent} / 100), ${coste}) ;;
+  measure: average_of_cost_percent {
+    type: average
+    sql: ${cost_percent} ;;
   }
 
-  dimension: 2023_roas {
+  measure: real_cost_2024 {
     type: number
+    sql: CASE
+              WHEN ${average_of_cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
+                ELSE sum(${coste})
+             END ;;
+  }
+
+  measure: roas {
+    type: sum
     sql: ${TABLE}.ROAS ;;
   }
 
-  dimension: roas {
+  dimension: booking {
+    type: number
+    sql: ${TABLE}.booking ;;
+  }
+
+  measure: real_roas {
     type: number
     sql: case
-          when ${real_cost_2024} > 0 and ${generated} > 0 and year != 2023 then ${generated}/${real_cost_2024}
-          when year = 2023 then ${TABLE}.roas
-          else 0
+          when sum(${TABLE}.roas) > 0 then ${sum_generated}/${real_cost_2024}
+          else sum(${TABLE}.roas)
         end;;
   }
+
+  dimension_group: comparation_partitionTimestamp{
+    type: time
+    sql: TIMESTAMP_ADD(${TABLE}.partitionTimestamp, INTERVAL 365 DAY);;
+    timeframes: [raw, time, date, week, month, month_name, quarter, year]
+  }
+
 
   dimension: scoring {
     type: string

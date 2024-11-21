@@ -171,6 +171,12 @@ view: mview_bookings_by_start_date {
     sql: ${TABLE}.endDate ;;
   }
 
+  dimension_group: end_date_timestamp {
+    type: time
+    timeframes: [raw, time, hour, date, week, month, quarter, year]
+    sql: ${end_date};;
+  }
+
   dimension: es_paquete {
     type: yesno
     sql: ${TABLE}.EsPaquete ;;

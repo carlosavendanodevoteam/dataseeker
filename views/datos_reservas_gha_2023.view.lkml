@@ -21,10 +21,10 @@ view: DATOS_RESERVAS_GHA_2023 {
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
   measure: total_clics {
-    type: sum
+    type: number
     sql: ${clics} ;;  }
   measure: average_clics {
-    type: average
+    type: number
     sql: ${clics} ;;  }
 
   dimension: ctr {
@@ -72,7 +72,7 @@ view: DATOS_RESERVAS_GHA_2023 {
 
   dimension: month_text {
     type: string
-    sql: ${TABLE}.month_text ;;
+    sql: ${TABLE}.MONT_NAME ;;
   }
 
   dimension: scoring {

@@ -2,7 +2,7 @@
 view: funnel_stats {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `bi_dataset.FUNNEL_STATS` ;;
+  sql_table_name: `bi_dataset.VIEW_COMPARATION_FUNNEL_STATS` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -97,6 +97,11 @@ view: funnel_stats {
   dimension: booking4_gateway {
     type: number
     sql: ${TABLE}.booking4_gateway ;;
+  }
+
+  dimension: last_year_booking {
+    type: number
+    sql: ${TABLE}.last_year_booking ;;
   }
 
   dimension: full_country {

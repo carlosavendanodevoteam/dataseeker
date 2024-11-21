@@ -29,6 +29,14 @@ explore: mview_gha_bookings {
   }
 }
 
+explore: view_comparation_funnel_stats {
+  join:  hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_comparation_funnel_stats.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+}}
+
+
 explore: mview_global_lead_time_stats {
   join: hotel_corporative_encrypted{
     type: inner
@@ -70,7 +78,7 @@ explore: rescue_seeker_log {
 explore: mview_users {
   join:  view_unique_hotel_corporative_encrypted {
     type: inner
-    relationship: many_to_many
+    relationship: many_to_one
     sql_on: ${mview_users.hotel_code} = ${view_unique_hotel_corporative_encrypted.corporative_hotel_code};;
   }
 }
@@ -257,6 +265,16 @@ explore: mview_precheckins {
     view_label: "Mview Precheckins: Guests"
     sql: LEFT JOIN UNNEST(${mview_precheckins.guests}) as mview_precheckins__guests ;;
     relationship: one_to_many
+  }
+  join: mview_datos_reservas_6 {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${mview_precheckins.hotel_code} = ${mview_datos_reservas_6.hotel_code} and ${mview_precheckins.identifier}=${mview_datos_reservas_6.identifier};;
+  }
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_precheckins.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
 }
 
@@ -448,3 +466,6 @@ explore: ClickUp_task {
 explore: parkroyal_2024budget_fixed {}
 
 explore: google_hotel_center{}
+explore: derbysoft_identifier_booking{}
+explore:  ads_bill{}
+explore:  billing_coverage{}
