@@ -12,6 +12,12 @@ view: mview_comparation_searches {
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Account" in Explore.
 
+  dimension_group: reference_timestamp {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql: ${TABLE}.referenceTimestamp ;;
+  }
+
   dimension: account {
     type: string
     sql: ${TABLE}.account ;;
@@ -204,9 +210,14 @@ view: mview_comparation_searches {
     sql: date_diff(cast(${TABLE}.endDate as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;
   }
 
+  dimension: last_year_searches{
+    type: number
+    sql: 0 ;;
+  }
+
   dimension_group: comparation_partitiontimestamp_without_future{
     type: time
-    sql: IF(${TABLE}.last_year_searches = 0, ${TABLE}.partitionTimestamp,
+    sql: IF(${last_year_searches} = 0, ${TABLE}.partitionTimestamp,
       CASE
         WHEN CAST(${TABLE}.partitionTimestamp AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
         ELSE CAST(${TABLE}.partitionTimestamp AS timestamp)
@@ -218,20 +229,6 @@ view: mview_comparation_searches {
   dimension: year{
     type: number
     sql:  EXTRACT(YEAR FROM ${TABLE}.timestamp) ;;
-  }
-
-  dimension_group: comparation_referenceTimestamp{
-    type: time
-    sql: CASE
-        WHEN TIMESTAMP_ADD(${TABLE}.referenceTimestamp, INTERVAL 365 DAY) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE TIMESTAMP_ADD(${TABLE}.referenceTimestamp, INTERVAL 365 DAY)
-      END ;;
-    timeframes: [raw, time, date, week, month, quarter, year]
-  }
-
-  dimension: last_year_searches{
-    type: number
-    sql: 0 ;;
   }
 
   dimension_group: comparation_startDate{
