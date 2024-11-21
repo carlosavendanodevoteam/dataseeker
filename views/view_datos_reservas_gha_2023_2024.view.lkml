@@ -110,7 +110,7 @@ view: view_datos_reservas_gha_2023_2024 {
   }
 
 
-  measure: real_cost_2024 {
+  dimension: real_cost_2024 {
     type: number
     sql: CASE
               WHEN ${average_of_cost_percent} IS NOT NULL THEN ${sum_generated} * (${average_of_cost_percent}/100)
