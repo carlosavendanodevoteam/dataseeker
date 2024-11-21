@@ -44,8 +44,8 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.Generated ;;
   }
 
-  measure: sum_generated {
-    type: sum
+  dimension: sum_generated {
+    type: number
     sql: ${TABLE}.Generated ;;
   }
 
@@ -104,10 +104,11 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.cost_percent ;;
   }
 
-  measure: average_of_cost_percent {
+  dimension: average_of_cost_percent {
     type: number
     sql: ${cost_percent} ;;
   }
+
 
   measure: real_cost_2024 {
     type: number
