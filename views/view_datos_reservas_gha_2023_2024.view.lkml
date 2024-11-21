@@ -49,6 +49,7 @@ view: view_datos_reservas_gha_2023_2024 {
     sql: ${TABLE}.Generated ;;
   }
 
+
   dimension: hotel_code {
     type: string
     sql: ${TABLE}.hotel_code ;;
@@ -104,7 +105,7 @@ view: view_datos_reservas_gha_2023_2024 {
   }
 
   measure: average_of_cost_percent {
-    type: average
+    type: number
     sql: ${cost_percent} ;;
   }
 
