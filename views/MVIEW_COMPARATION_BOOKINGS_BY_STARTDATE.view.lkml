@@ -9,6 +9,11 @@ view: mview_comparation_bookings_by_start_date {
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Account" in Explore.
 
+  dimension: status {
+    type: string
+    sql: ${TABLE}.status ;;
+  }
+
   dimension: account {
     type: string
     sql: ${TABLE}.account ;;
