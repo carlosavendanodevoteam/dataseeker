@@ -11,9 +11,9 @@ view: DATOS_RESERVAS_GHA_2023 {
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Clics" in Explore.
 
-  dimension: clics {
+  dimension: Clicks {
     type: number
-    sql: ${TABLE}.Clics ;;
+    sql: ${TABLE}.Clicks ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
@@ -22,10 +22,10 @@ view: DATOS_RESERVAS_GHA_2023 {
 
   measure: total_clics {
     type: number
-    sql: ${clics} ;;  }
+    sql: ${Clicks} ;;  }
   measure: average_clics {
     type: number
-    sql: ${clics} ;;  }
+    sql: ${Clicks} ;;  }
 
   dimension: ctr {
     type: number
