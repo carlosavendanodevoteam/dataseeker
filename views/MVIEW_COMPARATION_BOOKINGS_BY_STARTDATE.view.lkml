@@ -34,6 +34,12 @@ view: mview_comparation_bookings_by_start_date {
     sql: ${TABLE}.adults3 ;;
   }
 
+  dimension: status {
+    type: string
+    sql: ${TABLE}.status ;;
+  }
+
+
   dimension: agent {
     type: string
     sql: ${TABLE}.agent ;;
