@@ -48,6 +48,12 @@ view: mview_comparation_searches {
     sql: ${TABLE}.babies1 ;;
   }
 
+  dimension: no_comparation {
+    sql: Case when ${partition_timestamp_date} = Null then 0
+        else 1
+        End ;;
+  }
+
   dimension: babies2 {
     type: string
     sql: ${TABLE}.babies2 ;;
