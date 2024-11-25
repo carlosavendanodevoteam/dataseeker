@@ -41,7 +41,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: agent {
     type: string
-    sql: case when ${TABLE}.agent not in ('amartin','bsanchez','cmrodriguez','dpenkova','jcaravante','jperez','nmarin', 'jccaravente', 'jvillada') then ${TABLE}.agent
+    sql: case when ${TABLE}.agent not in ('amartin','bsanchez','cmrodriguez','dpenkova','jcaravante','jperez','nmarin', 'jccaravente', 'jvillada', '') then ${TABLE}.agent
               else null
           end;;
   }
