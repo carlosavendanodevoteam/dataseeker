@@ -234,8 +234,8 @@ view: mview_comparation_searches {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: ${TABLE}.comparation_startDate ;;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
+    sql: cast(${TABLE}.startDate as timestamp)  ;;
   }
 
   dimension_group: comparation_endDate{
