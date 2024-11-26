@@ -3,7 +3,7 @@ view: mview_comparation_searches {
 
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `bi_dataset.MVIEW_COMPARATION_SEARCHES_2` ;;
+  sql_table_name: `bi_dataset.VIEW_COMPARATION_SEARCHES` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -213,7 +213,7 @@ view: mview_comparation_searches {
 
   dimension: last_year_searches{
     type: number
-    sql: 0 ;;
+    sql: ${TABLE}.last_year_searches;;
   }
 
   dimension_group: comparation_partitiontimestamp_without_future{
