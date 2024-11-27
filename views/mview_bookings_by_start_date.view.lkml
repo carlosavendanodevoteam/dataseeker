@@ -584,6 +584,45 @@ view: mview_bookings_by_start_date {
         End;;
     }
 
+  dimension: month_year {
+    type: string
+    sql: CONCAT( ${year_startDate}, ' ', ${month_text_startDate} ;;
+  }
+
+  dimension: month_referenceTimestamp{
+    type: number
+    sql:  EXTRACT(month FROM ${TABLE}.referenceTimestamp) ;;
+  }
+
+  dimension: year_referenceTimestamp{
+    type: number
+    sql:  EXTRACT(YEAR FROM ${TABLE}.referenceTimestamp) ;;
+  }
+
+  dimension: month_text {
+    type: string
+    sql: Case
+          when ${month_referenceTimestamp} = 1 then "Jan"
+          when ${month_referenceTimestamp} = 2 then "Feb"
+          when ${month_referenceTimestamp} = 3 then "Mar"
+          when ${month_referenceTimestamp} = 4 then "Apr"
+          when ${month_referenceTimestamp} = 5 then "May"
+          when ${month_referenceTimestamp} = 6 then "Jun"
+          when ${month_referenceTimestamp} = 7 then "Jul"
+          when ${month_referenceTimestamp} = 8 then "Aug"
+          when ${month_referenceTimestamp} = 9 then "Sep"
+          when ${month_referenceTimestamp} = 10 then "Oct"
+          when ${month_referenceTimestamp} = 11 then "Nov"
+          else "Dec"
+        End;;
+  }
+
+  dimension: month_year_referenceTimestamp {
+    type: string
+    sql: CONCAT( ${year_referenceTimestamp}, ' ', ${month_text} ;;
+  }
+
+
   dimension_group: comparation_startDate{
     type: time
     sql: CASE
