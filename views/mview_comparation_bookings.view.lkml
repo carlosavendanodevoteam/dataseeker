@@ -595,7 +595,7 @@ view: mview_comparation_bookings {
     type: number
       sql:
     CASE
-    WHEN ${TABLE}.cancellationTimestamp IS NULL THEN NULL
+    WHEN ${TABLE}.cancellationTimestamp IS NULL OR ${TABLE}.cancellationTimestamp = '' THEN NULL
     ELSE DATE_DIFF(CAST(${TABLE}.startDate AS TIMESTAMP), CAST(${TABLE}.cancellationTimestamp AS TIMESTAMP), DAY)
     END ;;
   }
