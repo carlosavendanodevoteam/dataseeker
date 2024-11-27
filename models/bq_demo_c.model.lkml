@@ -469,3 +469,12 @@ explore: google_hotel_center{}
 explore: derbysoft_identifier_booking{}
 explore:  ads_bill{}
 explore:  billing_coverage{}
+
+explore:  mview_bookings_by_start_date_for_derbysoft{
+  join: derbysoft_identifier_booking {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${mview_bookings_by_start_date_for_derbysoft.identifier} = ${derbysoft_identifier_booking.identifier} and ${mview_bookings_by_start_date_for_derbysoft.hotel_code} = ${derbysoft_identifier_booking.hotel_code};;
+  }
+
+}
