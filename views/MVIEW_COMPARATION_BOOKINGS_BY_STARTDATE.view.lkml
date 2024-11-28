@@ -621,7 +621,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: month{
     type: number
-    sql:  EXTRACT(month FROM ${partition_timestamp_month}) ;;
+    sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp ;;
   }
 
   dimension: month_text {
@@ -642,7 +642,7 @@ view: mview_comparation_bookings_by_start_date {
         End;;
   }
 
-  measure: month_days {
+  dimension: month_days {
     type: number
       sql: Case
           when ${month} = 1 THEN 31
