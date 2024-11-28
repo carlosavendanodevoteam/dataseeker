@@ -613,6 +613,12 @@ view: mview_comparation_bookings_by_start_date {
       End;;
   }
 
+  dimension_group: partition_timestamp{
+    type: time
+    sql: ${TABLE}.partitionTimestamp;;
+    timeframes: [raw, time, date, week, month_name, month, quarter, year]
+  }
+
   dimension: month{
     type: number
     sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
@@ -634,12 +640,6 @@ view: mview_comparation_bookings_by_start_date {
           when ${month} = 11 then "Nov"
           else "Dec"
         End;;
-  }
-
-  dimension_group: partition_timestamp{
-    type: time
-    sql: ${TABLE}.partitionTimestamp;;
-    timeframes: [raw, time, date, week, month_name, month, quarter, year]
   }
 
   measure: month_days {
