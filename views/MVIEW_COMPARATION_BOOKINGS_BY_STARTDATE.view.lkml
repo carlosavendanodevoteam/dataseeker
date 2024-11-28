@@ -621,7 +621,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: month{
     type: number
-    sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
+    sql:  EXTRACT(month FROM ${partition_timestamp_month}) ;;
   }
 
   dimension: month_text {
