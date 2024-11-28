@@ -172,7 +172,15 @@ explore: mview_comparation_searches {
     relationship: many_to_one
     sql_on: ${mview_comparation_searches.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+
+  sql_always_where: DATE_DIFF(
+    CURRENT_DATE(),
+    CAST(${mview_comparation_searches.partition_timestamp_date} AS DATE),
+    DAY
+  ) <= 365 ;;
 }
+
+
 explore: ratio_conversion {}
 
 explore: call_agent2 {}

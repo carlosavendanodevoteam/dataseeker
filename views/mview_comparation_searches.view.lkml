@@ -269,15 +269,6 @@ view: mview_comparation_searches {
         END ;;
   }
 
-  dimension: valid_partition_date_range {
-    type: yesno
-    sql:
-    DATE_DIFF(
-      ${partition_timestamp_date},
-      CURRENT_DATE()
-    ) <= 365 ;;
-  }
-
   dimension: full_hotel_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
