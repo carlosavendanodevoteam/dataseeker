@@ -101,12 +101,12 @@ view: view_datos_reservas_gha_2023_2024 {
 
   dimension: cost_percent {
     type: number
-    sql: CAST(${TABLE}.cost_percent AS INT64) ;;
+    sql: COALESCE(CAST(${TABLE}.cost_percent AS INT64),0) ;;
     }
 
   measure: average_of_cost_percent {
     type: number
-    sql: SAFE_CAST(${TABLE}.cost_percent AS INT64) ;;
+    sql: COALESCE(SAFE_CAST(${TABLE}.cost_percent AS INT64),0) ;;
   }
 
   measure: real_cost_2024 {
