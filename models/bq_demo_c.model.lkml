@@ -484,5 +484,10 @@ explore:  mview_bookings_by_start_date_for_derbysoft{
     relationship: one_to_one
     sql_on: ${mview_bookings_by_start_date_for_derbysoft.identifier} = ${derbysoft_identifier_booking.identifier} and ${mview_bookings_by_start_date_for_derbysoft.hotel_code} = ${derbysoft_identifier_booking.hotel_code};;
   }
-
 }
+explore: derbysoft_data {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${derbysoft_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }}
