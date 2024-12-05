@@ -137,6 +137,11 @@ explore: Busquedas_reservas {
     relationship: many_to_one
     sql_on: ${Busquedas_reservas.hotel_code} = ${mview_busquedas.hotel_code} AND ${Busquedas_reservas.timestamp_date} = ${mview_busquedas.timestamp_date};;
   }
+  sql_always_where: DATE_DIFF(
+  CURRENT_DATE(),
+  CAST(${mview_busquedas.reference_timestamp_date} AS DATE),
+  DAY
+  ) <= 365 ;;
 }
 
 explore: wihp_datos_reservas{
@@ -276,11 +281,14 @@ explore: mview_busquedas {
     relationship: many_to_one
     sql_on: ${mview_busquedas.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+  sql_always_where: DATE_DIFF(
+  CURRENT_DATE(),
+  CAST(${mview_busquedas.reference_timestamp_date} AS DATE),
+  DAY
+  ) <= 365 ;;
 }
 
 explore: mview_prebookings {}
-
-explore: mview_bookings_by_cancel_date {}
 
 explore: mview_precheckins {
   join: mview_precheckins__guests {
@@ -422,8 +430,6 @@ explore: test_export {}
 explore: search_log_entry_p {}
 
 explore: user_entry_p {}
-
-explore: view_busquedas {}
 
 explore: user_rescue_reservation {}
 
