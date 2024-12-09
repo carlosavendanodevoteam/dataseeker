@@ -155,7 +155,9 @@ view: mview_comparation_searches {
 
   dimension: source_fixed {
     type: string
-    sql: ${TABLE}.source_fixed ;;
+    sql: Case
+          When upper(${TABLE}.source_fixed) = 'CALLCENTER' THEN 'Callseeker';;
+
   }
 
   dimension_group: start_date {
@@ -254,9 +256,10 @@ view: mview_comparation_searches {
   dimension: source_grouped {
     type: string
     sql: CASE
-          WHEN ${TABLE}.agentId LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
-          WHEN ${TABLE}.agentId NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
-          ELSE 'WEB'
+          WHEN ${TABLE}.source_fixed LIKE '%allcenter%' THEN 'Callseeker'
+          WHEN lower(${TABLE}.source_fixed) = 'mobile' or lower(${TABLE}.source_fixed) = 'web' THEN 'Organic'
+          When lower(${TABLE}.source_fixed) like 'rescue%' then 'Rescue-seeker'
+          ELSE 'MetaSearch'
         END ;;
   }
 
