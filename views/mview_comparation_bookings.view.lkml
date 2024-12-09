@@ -420,9 +420,20 @@ view: mview_comparation_bookings {
     sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
   }
 
+  dimension: promos_fixed {
+    type: string
+    sql: REPLACE(REPLACE(REPLACE(${promos}, '-,', ''), ',-', ''), '-', '');;
+    }
+
+  dimension: promos_fixed_filter {
+    type: string
+    sql: if(${promos_fixed} = '', null, ${promos_fixed}) ;;
+
+  }
+
   dimension: promocode {
     type: string
-    sql: ${TABLE}.promocode ;;
+    sql: lower(${TABLE}.promocode) ;;
   }
 
   dimension: promotions {
