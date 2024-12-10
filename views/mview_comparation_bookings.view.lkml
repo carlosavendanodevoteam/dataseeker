@@ -433,7 +433,7 @@ view: mview_comparation_bookings {
 
   dimension: promocode {
     type: string
-    sql: lower(${TABLE}.promocode) ;;
+    sql: upper(${TABLE}.promocode) ;;
   }
 
   dimension: promotions {
