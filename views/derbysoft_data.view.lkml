@@ -80,4 +80,18 @@ view: derbysoft_data {
         End;;
   }
 
+  dimension: logo {
+    sql: ${chanel} ;;
+    html: {% if value == 'Tripadvisor' %}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/TripAdvisor_older_Logo.svg/640px-TripAdvisor_older_Logo.svg.png" width="210" height="50">
+    {% elsif value == 'Google' %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/GoogleAds.png/640px-GoogleAds.png" width="300" height="50">
+    {% elsif value == 'Trivago' %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Trivago.svg/640px-Trivago.svg.png" width="200" height="50">
+    {% else %}
+      <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+  }
+
+
 }
