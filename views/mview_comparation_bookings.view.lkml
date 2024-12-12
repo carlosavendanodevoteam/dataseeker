@@ -1447,9 +1447,9 @@ view: mview_comparation_bookings {
     sql: Case
           when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 208
           when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 161
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 125
+          when ${month} = 9 and ${hotel_code} =  'gf-fanabe' then 125
           when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 105
-          when ${month} = 9 and ${hotel_code} = 'gf-fanabe' then 21
+          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 21
           Else 0
         END;;
   }
