@@ -177,6 +177,11 @@ view: hotel_ads_data {
     sql: ${TABLE}.device ;;
   }
 
+  dimension: all_conversions_from_interactions_rate {
+    type: number
+    sql: ${TABLE}.all_conversions_from_interactions_rate ;;
+  }
+
   dimension: country {
     type: string
     sql: CASE
