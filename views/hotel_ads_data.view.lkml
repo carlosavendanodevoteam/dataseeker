@@ -142,6 +142,41 @@ view: hotel_ads_data {
     sql: sum(${impressions}) / sum(${eligible_impressions}) ;;
   }
 
+  dimension: search_impression_share {
+    type: number
+    sql: ${TABLE}.search_impression_share ;;
+  }
+
+  dimension: search_top_impression_share {
+    type: number
+    sql: ${TABLE}.search_top_impression_share ;;
+  }
+
+  dimension: search_absolute_top_impression_share {
+    type: number
+    sql: ${TABLE}.search_absolute_top_impression_share ;;
+  }
+
+  dimension: search_rank_lost_top_impression_share {
+    type: number
+    sql: ${TABLE}.search_rank_lost_top_impression_share ;;
+  }
+
+  dimension: search_rank_lost_absolute_top_impression_share {
+    type: number
+    sql: ${TABLE}.search_rank_lost_absolute_top_impression_share ;;
+  }
+
+  dimension: search_rank_lost_impression_share {
+    type: number
+    sql: ${TABLE}.search_rank_lost_impression_share ;;
+  }
+
+  dimension: device {
+    type: string
+    sql: ${TABLE}.device ;;
+  }
+
   dimension: country {
     type: string
     sql: CASE
