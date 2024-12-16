@@ -137,6 +137,11 @@ view: hotel_ads_data {
     sql: ${TABLE}.hotel_price_difference_percentage ;;
   }
 
+  measure: Impression_share{
+    type: number
+    sql: sum(${impressions}) / sum(${eligible_impressions}) ;;
+  }
+
   dimension: country {
     type: string
     sql: CASE
