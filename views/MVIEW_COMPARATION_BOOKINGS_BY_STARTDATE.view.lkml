@@ -41,7 +41,7 @@ view: mview_comparation_bookings_by_start_date {
 
   dimension: agent {
     type: string
-    sql: case when ${TABLE}.agent not in ('amartin','bsanchez','cmrodriguez','dpenkova','jcaravante','jperez','nmarin', 'jccaravente', 'jvillada', '') then ${TABLE}.agent
+    sql: case when ${TABLE}.agent not in ('amartin','bsanchez','cmrodriguez','dpenkova','jcaravante','jperez','nmarin', 'jccaravente', 'jvillada', 'dalcolea', '') then ${TABLE}.agent
               else null
           end;;
   }
@@ -719,6 +719,15 @@ view: mview_comparation_bookings_by_start_date {
           WHEN UPPER(${TABLE}.RateName) like '% TRADE %' THEN 'Trade area'
           else ${TABLE}.RateName
         END;;
+  }
+
+  dimension: source_grouped {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Ring2travel'
+          WHEN ${TABLE}.agent NOT LIKE '%agente%' AND ${TABLE}.source_fixed LIKE '%Callcenter%' THEN 'Callseeker'
+          ELSE 'WEB'
+        END ;;
   }
 
   dimension: filter_ring2_travel_agent {
