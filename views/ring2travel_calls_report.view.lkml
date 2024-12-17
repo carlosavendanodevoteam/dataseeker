@@ -95,4 +95,24 @@ view: ring2travel_calls_report {
     type: string
     sql: ${TABLE}.Call_Outcome_name ;;
   }
+  dimension: Queue_Name {
+    type: string
+    sql: ${TABLE}.Queue_Name ;;
+  }
+
+  dimension: Queue_Name_fixed {
+    type: string
+    sql:  Case
+            when ${TABLE}.Queue_Name like '%Taiga Almería%' then 'q10-cuevas'
+            when ${TABLE}.Queue_Name like '%Taiga Conil%' then 'q10-conil'
+            when ${TABLE}.Queue_Name like '%Taiga Delta%' then 'q10-ampolla'
+            when ${TABLE}.Queue_Name like '%Taiga Lake%' then 'q10-caspe'
+            when ${TABLE}.Queue_Name like '%Taiga Tarifa%' then 'q10-teacampa'
+            when ${TABLE}.Queue_Name like '%Taiga Costa Calida%' then 'q10-portus'
+            when ${TABLE}.Queue_Name like '%Taiga Las Dunas%' then 'taiga-dunas'
+            when ${TABLE}.Queue_Name like '%Taiga Valdevaqueros%' then 'taiga-valdevaqueros'
+            else ${TABLE}.Queue_Name
+            End;;
+}
+
 }

@@ -462,7 +462,13 @@ explore: revenue_trends {
   }
 }
 
-explore: ring2travel_calls_report {}
+explore: ring2travel_calls_report {
+  join:  hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${ring2travel_calls_report.Queue_Name_fixed} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: ratecheck_log {
   join: mview_datos_reservas_6 {
