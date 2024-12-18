@@ -182,6 +182,44 @@ view: hotel_ads_data {
     sql: ${TABLE}.all_conversions_from_interactions_rate ;;
   }
 
+
+  dimension: hotel_price_bucket_text {
+    type: string
+    sql: case
+          when ${hotel_price_bucket} = '0' then 'UNSPECIFIED'
+          when ${hotel_price_bucket} = '1' then 'UNKNOWN'
+          when ${hotel_price_bucket} = '2' then 'LOWEST_TIED'
+          when ${hotel_price_bucket} = '3' then 'LOWEST_UNIQUE'
+          when ${hotel_price_bucket} = '4' then 'NOT_LOWEST'
+          when ${hotel_price_bucket} = '5' then 'ONLY_PARTNER_SHOWN'
+          ELSE ${hotel_price_bucket}
+        End;;
+  }
+
+  measure: meet_rate{
+    type: number
+    sql: sum(Case
+          when ${hotel_price_bucket} = '2' then 1
+          else 0
+        End) / sum(${impressions});;
+  }
+
+  measure: beat_rate{
+    type: number
+    sql: sum(Case
+          when ${hotel_price_bucket} = '3' then 1
+          else 0
+        End) / sum(${impressions});;
+  }
+
+  measure: lose_rate{
+    type: number
+    sql: sum(Case
+          when ${hotel_price_bucket} = '4' then 1
+          else 0
+        End)/ sum(${impressions});;
+  }
+
   dimension: country {
     type: string
     sql: CASE
