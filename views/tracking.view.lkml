@@ -27,9 +27,19 @@ view: tracking {
     sql: ${TABLE}.end_date ;;
   }
 
+  dimension: end_date_datetype {
+    type: string
+    sql: TIMESTAMP_TRUNC(${TABLE}.end_date, DAY);;
+  }
+
   dimension: start_date {
     type: number
     sql: ${TABLE}.start_date ;;
+  }
+
+  dimension: start_date_datetype {
+    type: number
+    sql: TIMESTAMP_TRUNC(${TABLE}.start_date, DAY);;
   }
 
   dimension: task_id {
