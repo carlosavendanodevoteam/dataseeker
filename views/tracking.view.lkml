@@ -28,7 +28,7 @@ view: tracking {
   }
 
   dimension: end_date_datetype {
-    type: string
+    type: date
     sql: cast(${TABLE}.end_date as timestamp);;
   }
 
