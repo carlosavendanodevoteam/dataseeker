@@ -39,7 +39,7 @@ view: tracking {
 
   dimension: start_date_datetype {
     type: number
-    sql: cast(${TABLE}.startDate as timestamp);;
+    sql: cast(${TABLE}.start_date as timestamp);;
   }
 
   dimension: task_id {
