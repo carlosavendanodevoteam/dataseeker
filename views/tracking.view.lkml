@@ -29,7 +29,7 @@ view: tracking {
 
   dimension: end_date_datetype {
     type: string
-    sql: TIMESTAMP_TRUNC(${TABLE}.end_date, DAY);;
+    sql: cast(${TABLE}.end_date as timestamp);;
   }
 
   dimension: start_date {
@@ -39,7 +39,7 @@ view: tracking {
 
   dimension: start_date_datetype {
     type: number
-    sql: TIMESTAMP_TRUNC(${TABLE}.start_date, DAY);;
+    sql: cast(${TABLE}.startDate as timestamp);;
   }
 
   dimension: task_id {
