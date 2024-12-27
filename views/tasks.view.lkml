@@ -52,6 +52,11 @@ view: ClickUp_task {
     sql: ${TABLE}.end_date ;;
   }
 
+  dimension: end_date_datetype {
+    type: string
+    sql: cast(${TABLE}.end_date as timestamp);;
+  }
+
   dimension: insertion_date {
     type: string
     sql: ${TABLE}.insertion_date ;;
@@ -76,6 +81,12 @@ view: ClickUp_task {
     type: string
     sql: ${TABLE}.start_date ;;
   }
+
+  dimension: start_date_datetype {
+    type: string
+    sql: cast(${TABLE}.start_date as timestamp);;
+  }
+
 
   dimension: status {
     type: string
