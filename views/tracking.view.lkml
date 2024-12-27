@@ -33,12 +33,12 @@ view: tracking {
   }
 
   dimension: start_date {
-    type: number
+    type: string
     sql: ${TABLE}.start_date ;;
   }
 
   dimension: start_date_datetype {
-    type: number
+    type: date
     sql: cast(${TABLE}.start_date as timestamp);;
   }
 
