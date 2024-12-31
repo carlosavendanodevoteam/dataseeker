@@ -99,7 +99,7 @@ view: ClickUp_task {
   }
 
   dimension: time_estimate {
-    type: string
+    type: number
     sql: ${TABLE}.time_estimate ;;
   }
 
