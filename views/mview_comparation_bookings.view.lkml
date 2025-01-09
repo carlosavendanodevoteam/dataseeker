@@ -1078,821 +1078,825 @@ view: mview_comparation_bookings {
     sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
 
-  #----------------------------------------------GF_gross_amount
+#   #----------------------------------------------GF_gross_amount
 
-  dimension: GF_gross_amount_jan {
-    type: number
-    sql:Case
-          when ${month} = 1 and ${hotel_code} = 'gf-victoria' then 991789.91
-          when ${month} = 1 and ${hotel_code} = 'gf-adeje' then 609934.59
-          when ${month} = 1 and ${hotel_code} = 'gf-noelia' then 329640.65
-          when ${month} = 1 and ${hotel_code} = 'gf-isabel' then 306116.88
-          when ${month} = 1 and ${hotel_code} = 'gf-fanabe' then 29449.51
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_feb {
-    type: number
-    sql:Case
-          when ${month} = 2 and ${hotel_code} = 'gf-victoria' then 703626.42
-          when ${month} = 2 and ${hotel_code} = 'gf-adeje' then 304370.01
-          when ${month} = 2 and ${hotel_code} = 'gf-fanabe' then 202601.21
-          when ${month} = 2 and ${hotel_code} = 'gf-isabel' then 121197.53
-          when ${month} = 2 and ${hotel_code} = 'gf-noelia' then 27010.82
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_mar{
-    type: number
-    sql:Case
-          when ${month} = 3 and ${hotel_code} = 'gf-victoria' then 512914.35
-          when ${month} = 3 and ${hotel_code} = 'gf-adeje' then 256861.22
-          when ${month} = 3 and ${hotel_code} = 'gf-fanabe' then 132159.65
-          when ${month} = 3 and ${hotel_code} = 'gf-isabel' then 126458.34
-          when ${month} = 3 and ${hotel_code} = 'gf-noelia' then 27976.03
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_aprl {
-    type: number
-    sql:Case
-          when ${month} = 4 and ${hotel_code} = 'gf-victoria' then 543851.36
-          when ${month} = 4 and ${hotel_code} = 'gf-adeje' then 231354.19
-          when ${month} = 4 and ${hotel_code} = 'gf-fanabe' then 101940.07
-          when ${month} = 4 and ${hotel_code} = 'gf-isabel' then 163064.01
-          when ${month} = 4 and ${hotel_code} = 'gf-noelia' then 19610.44
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_may {
-    type: number
-    sql:Case
-          when ${month} = 5 and ${hotel_code} = 'gf-victoria' then 466322.57
-          when ${month} = 5 and ${hotel_code} = 'gf-adeje' then 216218.08
-          when ${month} = 5 and ${hotel_code} = 'gf-fanabe' then 148210.16
-          when ${month} = 5 and ${hotel_code} = 'gf-isabel' then 204547.62
-          when ${month} = 5 and ${hotel_code} = 'gf-noelia' then 19065.97
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_jun{
-    type: number
-    sql:Case
-          when ${month} = 6 and ${hotel_code} = 'gf-victoria' then 366785.94
-          when ${month} = 6 and ${hotel_code} = 'gf-adeje' then 217840.14
-          when ${month} = 6 and ${hotel_code} = 'gf-fanabe' then 151819.58
-          when ${month} = 6 and ${hotel_code} = 'gf-isabel' then 109159.76
-          when ${month} = 6 and ${hotel_code} = 'gf-noelia' then 26127.85
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_jul {
-    type: number
-    sql:Case
-          when ${month} = 7 and ${hotel_code} = 'gf-victoria' then 517794.13
-          when ${month} = 7 and ${hotel_code} = 'gf-adeje' then 112889.07
-          when ${month} = 7 and ${hotel_code} = 'gf-fanabe' then 144106.06
-          when ${month} = 7 and ${hotel_code} = 'gf-isabel' then 195708.42
-          when ${month} = 7 and ${hotel_code} = 'gf-noelia' then 19451.05
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_aug {
-    type: number
-    sql:Case
-          when ${month} = 8 and ${hotel_code} = 'gf-victoria' then 711197.23
-          when ${month} = 8 and ${hotel_code} = 'gf-adeje' then 153851.15
-          when ${month} = 8 and ${hotel_code} = 'gf-fanabe' then 140631.22
-          when ${month} = 8 and ${hotel_code} = 'gf-isabel' then 189224.96
-          when ${month} = 8 and ${hotel_code} = 'gf-noelia' then 16822.54
-          Else 0
-        END;;
-  }
-
-
-  dimension: GF_gross_amount_sept {
-    type: number
-    sql:Case
-          when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 591753.84
-          when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 274762.68
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 9600.31
-          when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 126410.17
-          when ${month} = 9 and ${hotel_code} = 'gf-fanabe' then 111000.11
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_oct {
-    type: number
-    sql:Case
-          when ${month} = 10 and ${hotel_code} = 'gf-victoria' then 539495.06
-          when ${month} = 10 and ${hotel_code} = 'gf-adeje' then 276048.66
-          when ${month} = 10 and ${hotel_code} = 'gf-fanabe' then 141416.09
-          when ${month} = 10 and ${hotel_code} = 'gf-isabel' then 107412.37
-          when ${month} = 10 and ${hotel_code} = 'gf-noelia' then 14361.23
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_nov {
-    type: number
-    sql:Case
-          when ${month} = 11 and ${hotel_code} = 'gf-victoria' then 580170.85
-          when ${month} = 11 and ${hotel_code} = 'gf-adeje' then 364069.51
-          when ${month} = 11 and ${hotel_code} = 'gf-fanabe' then 181766.59
-          when ${month} = 11 and ${hotel_code} = 'gf-isabel' then 126202.92
-          when ${month} = 11 and ${hotel_code} = 'gf-noelia' then 9447.6
-          Else 0
-        END;;
-  }
-  dimension: GF_gross_amount_dec {
-    type: number
-    sql:Case
-          when ${month} = 12 and ${hotel_code} = 'gf-victoria' then 536225.58
-          when ${month} = 12 and ${hotel_code} = 'gf-adeje' then 300426.83
-          when ${month} = 12 and ${hotel_code} = 'gf-fanabe' then 145786.32
-          when ${month} = 12 and ${hotel_code} = 'gf-isabel' then 162925.71
-          when ${month} = 12 and ${hotel_code} = 'gf-noelia' then 9263.96
-          Else 0
-        END;;
-  }
-
-  #----------------------------------------------GF_net_amount
-  dimension: GF_net_amount_jan {
-    type: number
-    sql:Case
-          when ${month} = 1 and ${hotel_code} = 'gf-victoria' then 702167.77
-          when ${month} = 1 and ${hotel_code} = 'gf-adeje' then 444939.47
-          when ${month} = 1 and ${hotel_code} = 'gf-noelia' then 228255.22
-          when ${month} = 1 and ${hotel_code} = 'gf-isabel' then 198933.47
-          when ${month} = 1 and ${hotel_code} = 'gf-fanabe' then 23319.37
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_feb {
-    type: number
-    sql:Case
-          when ${month} = 2 and ${hotel_code} = 'gf-victoria' then 441714.91
-          when ${month} = 2 and ${hotel_code} = 'gf-adeje' then 235857.16
-          when ${month} = 2 and ${hotel_code} = 'gf-fanabe' then 140991.05
-          when ${month} = 2 and ${hotel_code} = 'gf-isabel' then 84857.82
-          when ${month} = 2 and ${hotel_code} = 'gf-noelia' then 16543.23
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_mar{
-    type: number
-    sql:Case
-          when ${month} = 3 and ${hotel_code} = 'gf-victoria' then 371362.27
-          when ${month} = 3 and ${hotel_code} = 'gf-adeje' then 195293.31
-          when ${month} = 3 and ${hotel_code} = 'gf-fanabe' then 94195.98
-          when ${month} = 3 and ${hotel_code} = 'gf-isabel' then 84071.72
-          when ${month} = 3 and ${hotel_code} = 'gf-noelia' then 26227.24
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_aprl {
-    type: number
-    sql:Case
-          when ${month} = 4 and ${hotel_code} = 'gf-victoria' then 415688.22
-          when ${month} = 4 and ${hotel_code} = 'gf-adeje' then 178430.36
-          when ${month} = 4 and ${hotel_code} = 'gf-fanabe' then 78212.11
-          when ${month} = 4 and ${hotel_code} = 'gf-isabel' then 118555.9
-          when ${month} = 4 and ${hotel_code} = 'gf-noelia' then 16873.99
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_may {
-    type: number
-    sql:Case
-          when ${month} = 5 and ${hotel_code} = 'gf-victoria' then 360971.98
-          when ${month} = 5 and ${hotel_code} = 'gf-adeje' then 139883.74
-          when ${month} = 5 and ${hotel_code} = 'gf-fanabe' then 111617.01
-          when ${month} = 5 and ${hotel_code} = 'gf-isabel' then 144817.92
-          when ${month} = 5 and ${hotel_code} = 'gf-noelia' then 11136.66
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_jun{
-    type: number
-    sql:Case
-          when ${month} = 6 and ${hotel_code} = 'gf-victoria' then 253763.72
-          when ${month} = 6 and ${hotel_code} = 'gf-adeje' then 159794.56
-          when ${month} = 6 and ${hotel_code} = 'gf-fanabe' then 112228.74
-          when ${month} = 6 and ${hotel_code} = 'gf-isabel' then 125645.66
-          when ${month} = 6 and ${hotel_code} = 'gf-noelia' then 17981.14
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_jul {
-    type: number
-    sql:Case
-          when ${month} = 7 and ${hotel_code} = 'gf-victoria' then 397507.17
-          when ${month} = 7 and ${hotel_code} = 'gf-adeje' then 84387.42
-          when ${month} = 7 and ${hotel_code} = 'gf-fanabe' then 106150.37
-          when ${month} = 7 and ${hotel_code} = 'gf-isabel' then 146057.17
-          when ${month} = 7 and ${hotel_code} = 'gf-noelia' then 15436.68
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_aug {
-    type: number
-    sql:Case
-          when ${month} = 8 and ${hotel_code} = 'gf-victoria' then 620038.66
-          when ${month} = 8 and ${hotel_code} = 'gf-adeje' then 142188.77
-          when ${month} = 8 and ${hotel_code} = 'gf-fanabe' then 128736.94
-          when ${month} = 8 and ${hotel_code} = 'gf-isabel' then 172729.67
-          when ${month} = 8 and ${hotel_code} = 'gf-noelia' then 10409.66
-          Else 0
-        END;;
-  }
+#   dimension: GF_COMPARATION {
+#     type: yesno
+#     sql: CASE WHEN 1 = 1 THEN TRUE ELSE FALSE END ;;
+#   }
+#   dimension: GF_gross_amount_jan {
+#     type: number
+#     sql:Case
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 991789.91
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 609934.59
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 329640.65
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 306116.88
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 29449.51
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_feb {
+#     type: number
+#     sql:Case
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 703626.42
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 304370.01
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 202601.21
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 121197.53
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 27010.82
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_mar{
+#     type: number
+#     sql:Case
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 512914.35
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 256861.22
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 132159.65
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 126458.34
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 27976.03
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_aprl {
+#     type: number
+#     sql:Case
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 543851.36
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 231354.19
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 101940.07
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 163064.01
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 19610.44
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_may {
+#     type: number
+#     sql:Case
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 466322.57
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 216218.08
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 148210.16
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 204547.62
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 19065.97
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_jun{
+#     type: number
+#     sql:Case
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 366785.94
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 217840.14
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 151819.58
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 109159.76
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 26127.85
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_jul {
+#     type: number
+#     sql:Case
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 517794.13
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 112889.07
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 144106.06
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 195708.42
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 19451.05
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_aug {
+#     type: number
+#     sql:Case
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 711197.23
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 153851.15
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 140631.22
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 189224.96
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 16822.54
+#           Else 0
+#         END;;
+#   }
 
 
-  dimension: GF_net_amount_sept {
-    type: number
-    sql:Case
-          when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 377701.92
-          when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 209952.57
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 78618.41
-          when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 71295.21
-          when ${month} = 9 and ${hotel_code} = 'gf-fanabe' then 8212.01
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_oct {
-    type: number
-    sql:Case
-          when ${month} = 10 and ${hotel_code} = 'gf-victoria' then 331463.08
-          when ${month} = 10 and ${hotel_code} = 'gf-adeje' then 174690.96
-          when ${month} = 10 and ${hotel_code} = 'gf-fanabe' then 92030.07
-          when ${month} = 10 and ${hotel_code} = 'gf-isabel' then 81001.12
-          when ${month} = 10 and ${hotel_code} = 'gf-noelia' then 10092.5
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_nov {
-    type: number
-    sql:Case
-          when ${month} = 11 and ${hotel_code} = 'gf-victoria' then 349978.9
-          when ${month} = 11 and ${hotel_code} = 'gf-adeje' then 235175.79
-          when ${month} = 11 and ${hotel_code} = 'gf-fanabe' then 109321.15
-          when ${month} = 11 and ${hotel_code} = 'gf-isabel' then 102453.58
-          when ${month} = 11 and ${hotel_code} = 'gf-noelia' then 7428.69
-          Else 0
-        END;;
-  }
-  dimension: GF_net_amount_dec {
-    type: number
-    sql:Case
-          when ${month} = 12 and ${hotel_code} = 'gf-victoria' then 359235.06
-          when ${month} = 12 and ${hotel_code} = 'gf-adeje' then 215543.96
-          when ${month} = 12 and ${hotel_code} = 'gf-fanabe' then 101100.98
-          when ${month} = 12 and ${hotel_code} = 'gf-isabel' then 118434.01
-          when ${month} = 12 and ${hotel_code} = 'gf-noelia' then 6384.95
-          Else 0
-        END;;
-  }
+#   dimension: GF_gross_amount_sept {
+#     type: number
+#     sql:Case
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 591753.84
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 274762.68
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 9600.31
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 126410.17
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 111000.11
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_oct {
+#     type: number
+#     sql:Case
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 539495.06
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 276048.66
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 141416.09
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 107412.37
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 14361.23
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_nov {
+#     type: number
+#     sql:Case
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 580170.85
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 364069.51
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 181766.59
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 126202.92
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 9447.6
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_gross_amount_dec {
+#     type: number
+#     sql:Case
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 536225.58
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 300426.83
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 145786.32
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 162925.71
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 9263.96
+#           Else 0
+#         END;;
+#   }
 
-#--------------------------------GF_booking
-
-  dimension: GF_booking_amount_jan {
-    type: number
-    sql:Case
-          when ${month} = 1 and ${hotel_code} = 'gf-victoria' then 293
-          when ${month} = 1 and ${hotel_code} = 'gf-adeje' then 358
-          when ${month} = 1 and ${hotel_code} = 'gf-noelia' then 298
-          when ${month} = 1 and ${hotel_code} = 'gf-isabel' then 195
-          when ${month} = 1 and ${hotel_code} = 'gf-fanabe' then 70
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_feb {
-    type: number
-    sql:Case
-          when ${month} = 2 and ${hotel_code} = 'gf-victoria' then 219
-          when ${month} = 2 and ${hotel_code} = 'gf-adeje' then 208
-          when ${month} = 2 and ${hotel_code} = 'gf-fanabe' then 189
-          when ${month} = 2 and ${hotel_code} = 'gf-isabel' then 108
-          when ${month} = 2 and ${hotel_code} = 'gf-noelia' then 68
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_mar{
-    type: number
-    sql:Case
-          when ${month} = 3 and ${hotel_code} = 'gf-victoria' then 166
-          when ${month} = 3 and ${hotel_code} = 'gf-adeje' then 172
-          when ${month} = 3 and ${hotel_code} = 'gf-fanabe' then 162
-          when ${month} = 3 and ${hotel_code} = 'gf-isabel' then 110
-          when ${month} = 3 and ${hotel_code} = 'gf-noelia' then 48
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_aprl {
-    type: number
-    sql:Case
-          when ${month} = 4 and ${hotel_code} = 'gf-victoria' then 196
-          when ${month} = 4 and ${hotel_code} = 'gf-adeje' then 182
-          when ${month} = 4 and ${hotel_code} = 'gf-fanabe' then 139
-          when ${month} = 4 and ${hotel_code} = 'gf-isabel' then 147
-          when ${month} = 4 and ${hotel_code} = 'gf-noelia' then 58
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_may {
-    type: number
-    sql:Case
-          when ${month} = 5 and ${hotel_code} = 'gf-victoria' then 160
-          when ${month} = 5 and ${hotel_code} = 'gf-adeje' then 180
-          when ${month} = 5 and ${hotel_code} = 'gf-fanabe' then 182
-          when ${month} = 5 and ${hotel_code} = 'gf-isabel' then 208
-          when ${month} = 5 and ${hotel_code} = 'gf-noelia' then 60
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_jun{
-    type: number
-    sql:Case
-          when ${month} = 6 and ${hotel_code} = 'gf-victoria' then 118
-          when ${month} = 6 and ${hotel_code} = 'gf-adeje' then 150
-          when ${month} = 6 and ${hotel_code} = 'gf-fanabe' then 168
-          when ${month} = 6 and ${hotel_code} = 'gf-isabel' then 166
-          when ${month} = 6 and ${hotel_code} = 'gf-noelia' then 66
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_jul {
-    type: number
-    sql:Case
-          when ${month} = 7 and ${hotel_code} = 'gf-victoria' then 171
-          when ${month} = 7 and ${hotel_code} = 'gf-adeje' then 94
-          when ${month} = 7 and ${hotel_code} = 'gf-fanabe' then 158
-          when ${month} = 7 and ${hotel_code} = 'gf-isabel' then 151
-          when ${month} = 7 and ${hotel_code} = 'gf-noelia' then 49
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_amount_aug {
-    type: number
-    sql:Case
-          when ${month} = 8 and ${hotel_code} = 'gf-victoria' then 233
-          when ${month} = 8 and ${hotel_code} = 'gf-adeje' then 93
-          when ${month} = 8 and ${hotel_code} = 'gf-fanabe' then 147
-          when ${month} = 8 and ${hotel_code} = 'gf-isabel' then 153
-          when ${month} = 8 and ${hotel_code} = 'gf-noelia' then 51
-          Else 0
-        END;;
-  }
-
-  dimension: GF_booking_sept {
-    type: number
-    sql: Case
-          when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 208
-          when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 161
-          when ${month} = 9 and ${hotel_code} =  'gf-fanabe' then 125
-          when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 105
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 21
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_oct {
-    type: number
-    sql: Case
-          when ${month} = 10 and ${hotel_code} = 'gf-victoria' then 176
-          when ${month} = 10 and ${hotel_code} = 'gf-adeje' then 195
-          when ${month} = 10 and ${hotel_code} = 'gf-fanabe' then 141
-          when ${month} = 10 and ${hotel_code} = 'gf-isabel' then 92
-          when ${month} = 10 and ${hotel_code} = 'gf-noelia' then 46
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_nov {
-    type: number
-    sql: Case
-          when ${month} = 11 and ${hotel_code} = 'gf-victoria' then 168
-          when ${month} = 11 and ${hotel_code} = 'gf-adeje' then 251
-          when ${month} = 11 and ${hotel_code} = 'gf-fanabe' then 188
-          when ${month} = 11 and ${hotel_code} = 'gf-isabel' then 121
-          when ${month} = 11 and ${hotel_code} = 'gf-noelia' then 34
-          Else 0
-        END;;
-  }
-  dimension: GF_booking_dec {
-    type: number
-    sql: Case
-          when ${month} = 12 and ${hotel_code} = 'gf-victoria' then 128
-          when ${month} = 12 and ${hotel_code} = 'gf-adeje' then 177
-          when ${month} = 12 and ${hotel_code} = 'gf-fanabe' then 137
-          when ${month} = 12 and ${hotel_code} = 'gf-isabel' then 117
-          when ${month} = 12 and ${hotel_code} = 'gf-noelia' then 32
-          Else 0
-        END;;
-  }
-
-  #-----------------------------------------------------------GF_advance
- dimension: GF_advance_amount_jan {
-  type: number
-  sql:Case
-          when ${month} = 1 and ${hotel_code} = 'gf-victoria' then 120.36
-          when ${month} = 1 and ${hotel_code} = 'gf-adeje' then 159.2
-          when ${month} = 1 and ${hotel_code} = 'gf-noelia' then 146.29
-          when ${month} = 1 and ${hotel_code} = 'gf-isabel' then 197.06
-          when ${month} = 1 and ${hotel_code} = 'gf-fanabe' then 83.03
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_feb {
-  type: number
-  sql:Case
-          when ${month} = 2 and ${hotel_code} = 'gf-victoria' then 112.8
-          when ${month} = 2 and ${hotel_code} = 'gf-adeje' then 112.8
-          when ${month} = 2 and ${hotel_code} = 'gf-fanabe' then 131.25
-          when ${month} = 2 and ${hotel_code} = 'gf-isabel' then 153.81
-          when ${month} = 2 and ${hotel_code} = 'gf-noelia' then 93.4
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_mar{
-  type: number
-  sql:Case
-          when ${month} = 3 and ${hotel_code} = 'gf-victoria' then 112.47
-          when ${month} = 3 and ${hotel_code} = 'gf-adeje' then 112.42
-          when ${month} = 3 and ${hotel_code} = 'gf-fanabe' then 84.87
-          when ${month} = 3 and ${hotel_code} = 'gf-isabel' then 144.37
-          when ${month} = 3 and ${hotel_code} = 'gf-noelia' then 77.25
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_aprl {
-  type: number
-  sql:Case
-          when ${month} = 4 and ${hotel_code} = 'gf-victoria' then 106.45
-          when ${month} = 4 and ${hotel_code} = 'gf-adeje' then 131.3
-          when ${month} = 4 and ${hotel_code} = 'gf-fanabe' then 97.52
-          when ${month} = 4 and ${hotel_code} = 'gf-isabel' then 114.37
-          when ${month} = 4 and ${hotel_code} = 'gf-noelia' then 46.26
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_may {
-  type: number
-  sql:Case
-          when ${month} = 5 and ${hotel_code} = 'gf-victoria' then 117.71
-          when ${month} = 5 and ${hotel_code} = 'gf-adeje' then 108.71
-          when ${month} = 5 and ${hotel_code} = 'gf-fanabe' then 138.67
-          when ${month} = 5 and ${hotel_code} = 'gf-isabel' then 147.05
-          when ${month} = 5 and ${hotel_code} = 'gf-noelia' then 60.95
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_jun{
-  type: number
-  sql:Case
-          when ${month} = 6 and ${hotel_code} = 'gf-victoria' then 86.58
-          when ${month} = 6 and ${hotel_code} = 'gf-adeje' then 118
-          when ${month} = 6 and ${hotel_code} = 'gf-fanabe' then 143.14
-          when ${month} = 6 and ${hotel_code} = 'gf-isabel' then 130.8
-          when ${month} = 6 and ${hotel_code} = 'gf-noelia' then 49.68
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_jul {
-  type: number
-  sql:Case
-          when ${month} = 7 and ${hotel_code} = 'gf-victoria' then 91.82
-          when ${month} = 7 and ${hotel_code} = 'gf-adeje' then 64.41
-          when ${month} = 7 and ${hotel_code} = 'gf-fanabe' then 141.46
-          when ${month} = 7 and ${hotel_code} = 'gf-isabel' then 139.48
-          when ${month} = 7 and ${hotel_code} = 'gf-noelia' then 56.18
-          Else 0
-        END;;
-}
-dimension: GF_advance_amount_aug {
-  type: number
-  sql:Case
-          when ${month} = 8 and ${hotel_code} = 'gf-victoria' then 101.38
-          when ${month} = 8 and ${hotel_code} = 'gf-adeje' then 86.12
-          when ${month} = 8 and ${hotel_code} = 'gf-fanabe' then 136.52
-          when ${month} = 8 and ${hotel_code} = 'gf-isabel' then 142.82
-          when ${month} = 8 and ${hotel_code} = 'gf-noelia' then 60.92
-          Else 0
-        END;;
-}
-
-dimension: GF_advance_sept {
-  type: number
-  sql: Case
-          when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 68.78
-          when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 124.86
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 108.6
-          when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 166.48
-          when ${month} = 9 and ${hotel_code} = 'gf-fanabe' then 52.9
-        Else 0
-        END;;
-}
-dimension: GF_advance_oct {
-  type: number
-  sql: Case
-        when ${month} = 10 and ${hotel_code} = 'gf-victoria' then 97.86
-        when ${month} = 10 and ${hotel_code} = 'gf-adeje' then 114.93
-        when ${month} = 10 and ${hotel_code} = 'gf-fanabe' then 131.34
-        when ${month} = 10 and ${hotel_code} = 'gf-isabel' then 157.96
-        when ${month} = 10 and ${hotel_code} = 'gf-noelia' then 459.59
-        Else 0
-      END;;
-}
-dimension: GF_advance_nov {
-  type: number
-  sql: Case
-          when ${month} = 11 and ${hotel_code} = 'gf-victoria' then 131.94
-          when ${month} = 11 and ${hotel_code} = 'gf-adeje' then 104.47
-          when ${month} = 11 and ${hotel_code} = 'gf-fanabe' then 135.42
-          when ${month} = 11 and ${hotel_code} = 'gf-isabel' then 141.4
-          when ${month} = 11 and ${hotel_code} = 'gf-noelia' then 49.53
-          Else 0
-        END;;
-}
-dimension: GF_advance_dec {
-  type: number
-  sql: Case
-          when ${month} = 12 and ${hotel_code} = 'gf-victoria' then 112.01
-          when ${month} = 12 and ${hotel_code} = 'gf-adeje' then 142.89
-          when ${month} = 12 and ${hotel_code} = 'gf-fanabe' then 121.47
-          when ${month} = 12 and ${hotel_code} = 'gf-isabel' then 129.55
-          when ${month} = 12 and ${hotel_code} = 'gf-noelia' then 46
-          Else 0
-        END;;
-}
-
-#-------------------------------------------GF_RN
-dimension: GF_RN_amount_jan {
-  type: number
-  sql:Case
-          when ${month} = 1 and ${hotel_code} = 'gf-victoria' then 1909
-          when ${month} = 1 and ${hotel_code} = 'gf-adeje' then 2435
-          when ${month} = 1 and ${hotel_code} = 'gf-noelia' then 1767
-          when ${month} = 1 and ${hotel_code} = 'gf-isabel' then 1436
-          when ${month} = 1 and ${hotel_code} = 'gf-fanabe' then 321
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_feb {
-  type: number
-  sql:Case
-          when ${month} = 2 and ${hotel_code} = 'gf-victoria' then 1396
-          when ${month} = 2 and ${hotel_code} = 'gf-adeje' then 1206
-          when ${month} = 2 and ${hotel_code} = 'gf-fanabe' then 992
-          when ${month} = 2 and ${hotel_code} = 'gf-isabel' then 594
-          when ${month} = 2 and ${hotel_code} = 'gf-noelia' then 269
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_mar{
-  type: number
-  sql:Case
-          when ${month} = 3 and ${hotel_code} = 'gf-victoria' then 1096
-          when ${month} = 3 and ${hotel_code} = 'gf-adeje' then 997
-          when ${month} = 3 and ${hotel_code} = 'gf-fanabe' then 725
-          when ${month} = 3 and ${hotel_code} = 'gf-isabel' then 626
-          when ${month} = 3 and ${hotel_code} = 'gf-noelia' then 277
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_aprl {
-  type: number
-  sql:Case
-          when ${month} = 4 and ${hotel_code} = 'gf-victoria' then 1151
-          when ${month} = 4 and ${hotel_code} = 'gf-adeje' then 934
-          when ${month} = 4 and ${hotel_code} = 'gf-fanabe' then 600
-          when ${month} = 4 and ${hotel_code} = 'gf-isabel' then 760
-          when ${month} = 4 and ${hotel_code} = 'gf-noelia' then 210
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_may {
-  type: number
-  sql:Case
-          when ${month} = 5 and ${hotel_code} = 'gf-victoria' then 921
-          when ${month} = 5 and ${hotel_code} = 'gf-adeje' then 933
-          when ${month} = 5 and ${hotel_code} = 'gf-fanabe' then 839
-          when ${month} = 5 and ${hotel_code} = 'gf-isabel' then 1070
-          when ${month} = 5 and ${hotel_code} = 'gf-noelia' then 186
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_jun{
-  type: number
-  sql:Case
-          when ${month} = 6 and ${hotel_code} = 'gf-victoria' then 716
-          when ${month} = 6 and ${hotel_code} = 'gf-adeje' then 855
-          when ${month} = 6 and ${hotel_code} = 'gf-fanabe' then 837
-          when ${month} = 6 and ${hotel_code} = 'gf-isabel' then 927
-          when ${month} = 6 and ${hotel_code} = 'gf-noelia' then 251
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_jul {
-  type: number
-  sql:Case
-          when ${month} = 7 and ${hotel_code} = 'gf-victoria' then 1037
-          when ${month} = 7 and ${hotel_code} = 'gf-adeje' then 419
-          when ${month} = 7 and ${hotel_code} = 'gf-fanabe' then 772
-          when ${month} = 7 and ${hotel_code} = 'gf-isabel' then 914
-          when ${month} = 7 and ${hotel_code} = 'gf-noelia' then 203
-          Else 0
-        END;;
-}
-dimension: GF_RN_amount_aug {
-  type: number
-  sql:Case
-          when ${month} = 8 and ${hotel_code} = 'gf-victoria' then 1426
-          when ${month} = 8 and ${hotel_code} = 'gf-adeje' then 557
-          when ${month} = 8 and ${hotel_code} = 'gf-fanabe' then 702
-          when ${month} = 8 and ${hotel_code} = 'gf-isabel' then 930
-          when ${month} = 8 and ${hotel_code} = 'gf-noelia' then 174
-          Else 0
-        END;;
-}
-
-dimension: GF_RN_sept{
-  type: number
-  sql:  Case
-          when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 1185
-          when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 969
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 640
-          when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 667
-          when ${month} = 9 and ${hotel_code} = 'gf-fanabe' then 115
-          Else 0
-        END;;
-}
-dimension: GF_RN_oct{
-  type: number
-  sql:  Case
-          when  ${hotel_code} = 'gf-victoria' and ${month} = 10 then 1054
-          when ${month} = 10 and ${hotel_code} = 'gf-adeje' then 1105
-          when ${month} = 10 and ${hotel_code} = 'gf-fanabe' then 779
-          when ${month} = 10 and ${hotel_code} = 'gf-isabel' then 589
-          when ${month} = 10 and ${hotel_code} = 'gf-noelia' then 140
-          Else 0
-        END;;
-}
-dimension: GF_RN_nov{
-  type: number
-  sql:  Case
-          when ${month} = 11 and ${hotel_code} = 'gf-victoria' then 1043
-          when ${month} = 11 and ${hotel_code} = 'gf-adeje' then 1334
-          when ${month} = 11 and ${hotel_code} = 'gf-fanabe' then 1032
-          when ${month} = 11 and ${hotel_code} = 'gf-isabel' then 649
-          when ${month} = 11 and ${hotel_code} = 'gf-noelia' then 89
-          Else 0
-        END;;
-}
-dimension: GF_RN_dec{
-  type: number
-  sql:case
-          when ${month} = 12 and ${hotel_code} = 'gf-victoria' then 899
-          when ${month} = 12 and ${hotel_code} = 'gf-adeje' then 1160
-          when ${month} = 12 and ${hotel_code} = 'gf-fanabe' then 764
-          when ${month} = 12 and ${hotel_code} = 'gf-isabel' then 755
-          when ${month} = 12 and ${hotel_code} = 'gf-noelia' then 88
-          Else 0
-        END;;
-}
-
-#----------------------------------------------------------- share canal_direncto
-
-dimension: GF_share_canal_directo_amount_jan {
-  type: number
-  sql:Case
-          when ${month} = 1 and ${hotel_code} = 'gf-victoria' then 2.16
-          when ${month} = 1 and ${hotel_code} = 'gf-adeje' then 1.44
-          when ${month} = 1 and ${hotel_code} = 'gf-noelia' then 1.12
-          when ${month} = 1 and ${hotel_code} = 'gf-isabel' then 1.02
-          when ${month} = 1 and ${hotel_code} = 'gf-fanabe' then 0.83
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_feb {
-  type: number
-  sql:Case
-          when ${month} = 2 and ${hotel_code} = 'gf-victoria' then 1.58
-          when ${month} = 2 and ${hotel_code} = 'gf-adeje' then 0.72
-          when ${month} = 2 and ${hotel_code} = 'gf-fanabe' then 0.63
-          when ${month} = 2 and ${hotel_code} = 'gf-isabel' then 0.42
-          when ${month} = 2 and ${hotel_code} = 'gf-noelia' then 0.7
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_mar{
-  type: number
-  sql:Case
-          when ${month} = 3 and ${hotel_code} = 'gf-victoria' then 1.24
-          when ${month} = 3 and ${hotel_code} = 'gf-adeje' then 0.59
-          when ${month} = 3 and ${hotel_code} = 'gf-fanabe' then 0.46
-          when ${month} = 3 and ${hotel_code} = 'gf-isabel' then 0.45
-          when ${month} = 3 and ${hotel_code} = 'gf-noelia' then 0.72
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_aprl {
-  type: number
-  sql:Case
-          when ${month} = 4 and ${hotel_code} = 'gf-victoria' then 1.3
-          when ${month} = 4 and ${hotel_code} = 'gf-adeje' then 0.55
-          when ${month} = 4 and ${hotel_code} = 'gf-fanabe' then 0.38
-          when ${month} = 4 and ${hotel_code} = 'gf-isabel' then 0.54
-          when ${month} = 4 and ${hotel_code} = 'gf-noelia' then 0.54
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_may {
-  type: number
-  sql:Case
-          when ${month} = 5 and ${hotel_code} = 'gf-victoria' then 1.04
-          when ${month} = 5 and ${hotel_code} = 'gf-adeje' then 0.55
-          when ${month} = 5 and ${hotel_code} = 'gf-fanabe' then 0.53
-          when ${month} = 5 and ${hotel_code} = 'gf-isabel' then 0.76
-          when ${month} = 5 and ${hotel_code} = 'gf-noelia' then 0.48
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_jun{
-  type: number
-  sql:Case
-          when ${month} = 6 and ${hotel_code} = 'gf-victoria' then 0.81
-          when ${month} = 6 and ${hotel_code} = 'gf-adeje' then 0.51
-          when ${month} = 6 and ${hotel_code} = 'gf-fanabe' then 0.53
-          when ${month} = 6 and ${hotel_code} = 'gf-isabel' then 0.66
-          when ${month} = 6 and ${hotel_code} = 'gf-noelia' then 0.65
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_jul {
-  type: number
-  sql:Case
-          when ${month} = 7 and ${hotel_code} = 'gf-victoria' then 1.17
-          when ${month} = 7 and ${hotel_code} = 'gf-adeje' then 0.25
-          when ${month} = 7 and ${hotel_code} = 'gf-fanabe' then 0.49
-          when ${month} = 7 and ${hotel_code} = 'gf-isabel' then 0.65
-          when ${month} = 7 and ${hotel_code} = 'gf-noelia' then 0.52
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_amount_aug {
-  type: number
-  sql:Case
-          when ${month} = 8 and ${hotel_code} = 'gf-victoria' then 1.61
-          when ${month} = 8 and ${hotel_code} = 'gf-adeje' then 0.33
-          when ${month} = 8 and ${hotel_code} = 'gf-fanabe' then 0.45
-          when ${month} = 8 and ${hotel_code} = 'gf-isabel' then 0.66
-          when ${month} = 8 and ${hotel_code} = 'gf-noelia' then 0.45
-          Else 0
-        END;;
-}
+#   #----------------------------------------------GF_net_amount
+#   dimension: GF_net_amount_jan {
+#     type: number
+#     sql:Case
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 702167.77
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 444939.47
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 228255.22
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 198933.47
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 23319.37
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_feb {
+#     type: number
+#     sql:Case
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 441714.91
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 235857.16
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 140991.05
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 84857.82
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 16543.23
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_mar{
+#     type: number
+#     sql:Case
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 371362.27
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 195293.31
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 94195.98
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 84071.72
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 26227.24
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_aprl {
+#     type: number
+#     sql:Case
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 415688.22
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 178430.36
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 78212.11
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 118555.9
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 16873.99
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_may {
+#     type: number
+#     sql:Case
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 360971.98
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 139883.74
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 111617.01
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 144817.92
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 11136.66
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_jun{
+#     type: number
+#     sql:Case
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 253763.72
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 159794.56
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 112228.74
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 125645.66
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 17981.14
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_jul {
+#     type: number
+#     sql:Case
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 397507.17
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 84387.42
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 106150.37
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 146057.17
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 15436.68
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_aug {
+#     type: number
+#     sql:Case
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 620038.66
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 142188.77
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 128736.94
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 172729.67
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 10409.66
+#           Else 0
+#         END;;
+#   }
 
 
-dimension: GF_share_canal_directo_sept{
-  type: number
-  sql:Case
-          when ${month} = 9 and ${hotel_code} = 'gf-victoria' then 1.34
-          when ${month} = 9 and ${hotel_code} = 'gf-adeje' then 0.57
-          when ${month} = 9 and ${hotel_code} = 'gf-noelia' then 0.41
-          when ${month} = 9 and ${hotel_code} = 'gf-isabel' then 0.48
-          when ${month} = 9 and ${hotel_code} = 'gf-fanabe' then 0.30
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_oct{
-  type: number
-  sql:Case
-          when ${month} = 10 and ${hotel_code} = 'gf-victoria' then 1.19
-          when ${month} = 10 and ${hotel_code} = 'gf-adeje' then 0.66
-          when ${month} = 10 and ${hotel_code} = 'gf-fanabe' then 0.5
-          when ${month} = 10 and ${hotel_code} = 'gf-isabel' then 0.42
-          when ${month} = 10 and ${hotel_code} = 'gf-noelia' then 0.36
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_nov{
-  type: number
-  sql:Case
-          when ${month} = 11 and ${hotel_code} = 'gf-victoria' then 1.18
-          when ${month} = 11 and ${hotel_code} = 'gf-adeje' then 0.79
-          when ${month} = 11 and ${hotel_code} = 'gf-fanabe' then 0.66
-          when ${month} = 11 and ${hotel_code} = 'gf-isabel' then 0.46
-          when ${month} = 11 and ${hotel_code} = 'gf-noelia' then 0.23
-          Else 0
-        END;;
-}
-dimension: GF_share_canal_directo_dec{
-  type: number
-  sql:Case
-        when ${month} = 12 and ${hotel_code} = 'gf-victoria' then 1.02
-          when ${month} = 12 and ${hotel_code} = 'gf-adeje' then 0.69
-          when ${month} = 12 and ${hotel_code} = 'gf-fanabe' then 0.49
-          when ${month} = 12 and ${hotel_code} = 'gf-isabel' then 0.54
-          when ${month} = 12 and ${hotel_code} = 'gf-noelia' then 0.23
-          Else 0
-        END;;
-}
+#   dimension: GF_net_amount_sept {
+#     type: number
+#     sql:Case
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 377701.92
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 209952.57
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 78618.41
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 71295.21
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 8212.01
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_oct {
+#     type: number
+#     sql:Case
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 331463.08
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 174690.96
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 92030.07
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 81001.12
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 10092.5
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_nov {
+#     type: number
+#     sql:Case
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 349978.9
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 235175.79
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 109321.15
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 102453.58
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 7428.69
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_net_amount_dec {
+#     type: number
+#     sql:Case
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 359235.06
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 215543.96
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 101100.98
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 118434.01
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 6384.95
+#           Else 0
+#         END;;
+#   }
+
+# #--------------------------------GF_booking
+
+#   dimension: GF_booking_amount_jan {
+#     type: number
+#     sql:Case
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 293
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 358
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 298
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 195
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 70
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_feb {
+#     type: number
+#     sql:Case
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 219
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 208
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 189
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 108
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 68
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_mar{
+#     type: number
+#     sql:Case
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 166
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 172
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 162
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 110
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 48
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_aprl {
+#     type: number
+#     sql:Case
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 196
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 182
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 139
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 147
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 58
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_may {
+#     type: number
+#     sql:Case
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 160
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 180
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 182
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 208
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 60
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_jun{
+#     type: number
+#     sql:Case
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 118
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 150
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 168
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 166
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 66
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_jul {
+#     type: number
+#     sql:Case
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 171
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 94
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 158
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 151
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 49
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_amount_aug {
+#     type: number
+#     sql:Case
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 233
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 93
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 147
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 153
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 51
+#           Else 0
+#         END;;
+#   }
+
+#   dimension: GF_booking_sept {
+#     type: number
+#     sql: Case
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 208
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 161
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} =  'gf-fanabe' then 125
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 105
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 21
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_oct {
+#     type: number
+#     sql: Case
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 176
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 195
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 141
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 92
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 46
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_nov {
+#     type: number
+#     sql: Case
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 168
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 251
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 188
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 121
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 34
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_booking_dec {
+#     type: number
+#     sql: Case
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 128
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 177
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 137
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 117
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 32
+#           Else 0
+#         END;;
+#   }
+
+#   #-----------------------------------------------------------GF_advance
+#   dimension: GF_advance_amount_jan {
+#     type: number
+#     sql:Case
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 120.36
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 159.2
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 146.29
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 197.06
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 83.03
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_feb {
+#     type: number
+#     sql:Case
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 112.8
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 112.8
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 131.25
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 153.81
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 93.4
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_mar{
+#     type: number
+#     sql:Case
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 112.47
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 112.42
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 84.87
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 144.37
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 77.25
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_aprl {
+#     type: number
+#     sql:Case
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 106.45
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 131.3
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 97.52
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 114.37
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 46.26
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_may {
+#     type: number
+#     sql:Case
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 117.71
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 108.71
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 138.67
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 147.05
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 60.95
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_jun{
+#     type: number
+#     sql:Case
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 86.58
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 118
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 143.14
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 130.8
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 49.68
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_jul {
+#     type: number
+#     sql:Case
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 91.82
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 64.41
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 141.46
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 139.48
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 56.18
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_amount_aug {
+#     type: number
+#     sql:Case
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 101.38
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 86.12
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 136.52
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 142.82
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 60.92
+#           Else 0
+#         END;;
+#   }
+
+#   dimension: GF_advance_sept {
+#     type: number
+#     sql: Case
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 68.78
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 124.86
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 108.6
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 166.48
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 52.9
+#         Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_oct {
+#     type: number
+#     sql: Case
+#         when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 97.86
+#         when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 114.93
+#         when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 131.34
+#         when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 157.96
+#         when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 459.59
+#         Else 0
+#       END;;
+#   }
+#   dimension: GF_advance_nov {
+#     type: number
+#     sql: Case
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 131.94
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 104.47
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 135.42
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 141.4
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 49.53
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_advance_dec {
+#     type: number
+#     sql: Case
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 112.01
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 142.89
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 121.47
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 129.55
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 46
+#           Else 0
+#         END;;
+#   }
+
+#   #-------------------------------------------GF_RN
+#   dimension: GF_RN_amount_jan {
+#     type: number
+#     sql:Case
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1909
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 2435
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 1767
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 1436
+#           when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 321
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_feb {
+#     type: number
+#     sql:Case
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1396
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 1206
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 992
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 594
+#           when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 269
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_mar{
+#     type: number
+#     sql:Case
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1096
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 997
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 725
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 626
+#           when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 277
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_aprl {
+#     type: number
+#     sql:Case
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1151
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 934
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 600
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 760
+#           when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 210
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_may {
+#     type: number
+#     sql:Case
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 921
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 933
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 839
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 1070
+#           when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 186
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_jun{
+#     type: number
+#     sql:Case
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 716
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 855
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 837
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 927
+#           when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 251
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_jul {
+#     type: number
+#     sql:Case
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1037
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 419
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 772
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 914
+#           when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 203
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_amount_aug {
+#     type: number
+#     sql:Case
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1426
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 557
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 702
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 930
+#           when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 174
+#           Else 0
+#         END;;
+#   }
+
+#   dimension: GF_RN_sept{
+#     type: number
+#     sql:  Case
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1185
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 969
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 640
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 667
+#           when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 115
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_oct{
+#     type: number
+#     sql:  Case
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1054
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 1105
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 779
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 589
+#           when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 140
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_nov{
+#     type: number
+#     sql:  Case
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1043
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 1334
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 1032
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 649
+#           when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 89
+#           Else 0
+#         END;;
+#   }
+#   dimension: GF_RN_dec{
+#     type: number
+#     sql:case
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 899
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 1160
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 764
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 755
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 88
+#           Else 0
+#         END;;
+#   }
+
+#   #----------------------------------------------------------- share canal_direncto
+
+#   dimension: GF_share_canal_directo_amount_jan {
+#     type: number
+#     sql:Case
+#             when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 2.16
+#             when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 1.44
+#             when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 1.12
+#             when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 1.02
+#             when ${month} = 1 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.83
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_feb {
+#     type: number
+#     sql:Case
+#             when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1.58
+#             when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.72
+#             when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.63
+#             when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.42
+#             when ${month} = 2 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.7
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_mar{
+#     type: number
+#     sql:Case
+#             when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1.24
+#             when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.59
+#             when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.46
+#             when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.45
+#             when ${month} = 3 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.72
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_aprl {
+#     type: number
+#     sql:Case
+#             when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1.3
+#             when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.55
+#             when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.38
+#             when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.54
+#             when ${month} = 4 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.54
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_may {
+#     type: number
+#     sql:Case
+#             when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1.04
+#             when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.55
+#             when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.53
+#             when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.76
+#             when ${month} = 5 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.48
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_jun{
+#     type: number
+#     sql:Case
+#             when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 0.81
+#             when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.51
+#             when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.53
+#             when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.66
+#             when ${month} = 6 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.65
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_jul {
+#     type: number
+#     sql:Case
+#             when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1.17
+#             when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.25
+#             when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.49
+#             when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.65
+#             when ${month} = 7 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.52
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_amount_aug {
+#     type: number
+#     sql:Case
+#             when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-victoria' then 1.61
+#             when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-adeje' then 0.33
+#             when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-fanabe' then 0.45
+#             when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-isabel' then 0.66
+#             when ${month} = 8 and ${GF_COMPARATION} != FALSE and ${hotel_code} = 'gf-noelia' then 0.45
+#             Else 0
+#           END;;
+#   }
+
+
+#   dimension: GF_share_canal_directo_sept{
+#     type: number
+#     sql:Case
+#             when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1.34
+#             when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 0.57
+#             when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 0.41
+#             when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 0.48
+#             when ${month} = 9 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 0.30
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_oct{
+#     type: number
+#     sql:Case
+#             when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1.19
+#             when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 0.66
+#             when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 0.5
+#             when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 0.42
+#             when ${month} = 10 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 0.36
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_nov{
+#     type: number
+#     sql:Case
+#             when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1.18
+#             when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 0.79
+#             when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 0.66
+#             when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 0.46
+#             when ${month} = 11 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 0.23
+#             Else 0
+#           END;;
+#   }
+#   dimension: GF_share_canal_directo_dec{
+#     type: number
+#     sql:Case
+#           when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-victoria' then 1.02
+#             when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-adeje' then 0.69
+#             when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-fanabe' then 0.49
+#             when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-isabel' then 0.54
+#             when ${month} = 12 and ${GF_COMPARATION} != FALSE and ${year} != 2023 and ${hotel_code} = 'gf-noelia' then 0.23
+#             Else 0
+#           END;;
+#   }
 
 
 }
