@@ -498,7 +498,7 @@ explore: ClickUp_task {
   join: MVIEW_TASKS {
     type: left_outer
     relationship: many_to_one
-    sql_on: ${ClickUp_task.user_id} = ${MVIEW_TASKS.user_id};;
+    sql_on: ${ClickUp_task.task_id} = ${MVIEW_TASKS.task_id};;
   }
 }
 
