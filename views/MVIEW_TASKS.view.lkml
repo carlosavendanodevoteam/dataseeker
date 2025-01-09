@@ -152,7 +152,7 @@ view: MVIEW_TASKS {
   dimension: tarea {
     type: string
     sql: CASE
-    WHEN ${TABLE}.tarea = 1 THEN 'INCIDENCIA'
+    WHEN ${TABLE}.tarea = "1" THEN 'INCIDENCIA'
     ELSE ${TABLE}.tarea
     end;;
   }
