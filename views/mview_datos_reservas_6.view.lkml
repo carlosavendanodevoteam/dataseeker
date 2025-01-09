@@ -232,6 +232,11 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.final_discounted_price ;;
   }
 
+  dimension: advance{
+    type: number
+    sql: date_diff(cast(${start_date_timestamp_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
+  }
+
   dimension: geolocation {
     type: string
     sql: ${TABLE}.geolocation ;;
@@ -621,10 +626,6 @@ view: mview_datos_reservas_6 {
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
 
-  dimension: advance{
-    type: number
-    sql: date_diff(cast(${TABLE}.startDate as timestamp), cast(${TABLE}.timestamp as timestamp), day) ;;
-  }
 
   dimension: hotel_code_by_account {
     type: string
