@@ -153,7 +153,8 @@ view: MVIEW_TASKS {
     type: string
     sql: CASE
     WHEN ${TABLE}.tarea = 1 THEN 'INCIDENCIA'
-    ELSE ${TABLE}.tarea;;
+    ELSE ${TABLE}.tarea
+    end;;
   }
 
   dimension: client_commitment {
