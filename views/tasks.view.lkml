@@ -93,6 +93,11 @@ view: ClickUp_task {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: status_unique {
+    type: string
+    sql: distinct(${TABLE}.status) ;;
+  }
+
   dimension: tags {
     type: string
     sql: ${TABLE}.tags ;;
