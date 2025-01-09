@@ -495,6 +495,11 @@ explore: ClickUp_task {
     relationship: many_to_one
     sql_on: ${ClickUp_task.user_id} = ${users.user_id};;
   }
+  join: MVIEW_TASKS {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${ClickUp_task.user_id} = ${MVIEW_TASKS.user_id}};;
+  }
 }
 
 explore: parkroyal_2024budget_fixed {}
