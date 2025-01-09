@@ -2,7 +2,7 @@
 view: ClickUp_task {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `analysis-seeker.clickup_dataset.MVIEW_TASKS` ;;
+  sql_table_name: `analysis-seeker.clickup_dataset.TASKS` ;;
   drill_fields: [task_id]
 
   # This primary key is the unique key for this table in the underlying database.
