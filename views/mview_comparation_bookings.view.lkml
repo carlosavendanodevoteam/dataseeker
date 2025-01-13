@@ -608,7 +608,7 @@ view: mview_comparation_bookings {
     sql:
     CASE
     WHEN ${TABLE}.cancellationTimestamp IS NULL OR ${TABLE}.cancellationTimestamp = '' THEN NULL
-    ELSE DATE_DIFF(CAST(${start_date_timestamp_date} AS TIMESTAMP), CAST(${cancellation_timestamp_date} AS TIMESTAMP), DAY)
+    ELSE DATE_DIFF(CAST(${TABLE}.startDate AS TIMESTAMP), CAST(${TABLE}.cancellationTimestamp AS TIMESTAMP), DAY)
     END ;;
   }
 
@@ -661,7 +661,7 @@ view: mview_comparation_bookings {
 
   dimension: month_startDate{
     type: number
-    sql:  EXTRACT(month FROM cast(${start_date_timestamp_date} as timestamp)) ;;
+    sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
   }
 
   dimension: year{
@@ -671,7 +671,7 @@ view: mview_comparation_bookings {
 
   dimension: year_startDate{
     type: number
-    sql:  EXTRACT(YEAR FROM cast(${start_date_timestamp_date} as timestamp)) ;;
+    sql:  EXTRACT(YEAR FROM cast(${TABLE}.startDate as timestamp)) ;;
   }
 
   dimension: month_text {
@@ -723,7 +723,7 @@ view: mview_comparation_bookings {
 
   dimension_group: comparation_startDate{
     type: time
-    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${start_date_timestamp_date} AS timestamp) ELSE TIMESTAMP_ADD(CAST(${start_date_timestamp_date} AS timestamp), INTERVAL 365 DAY) END;;
+    sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.startDate AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
 
@@ -762,10 +762,10 @@ view: mview_comparation_bookings {
 
   dimension_group: comparation_startDate_without_future{
     type: time
-    sql: IF(${TABLE}.last_year_booking = 0, ${start_date_timestamp_date},
+    sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
       CASE
-        WHEN CAST(${start_date_timestamp_date} AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
-        ELSE CAST(${start_date_timestamp_date} AS timestamp)
+        WHEN CAST(${TABLE}.startDate AS timestamp) > CURRENT_TIMESTAMP() THEN NULL
+        ELSE CAST(${TABLE}.startDate AS timestamp)
       END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
@@ -1077,5 +1077,6 @@ view: mview_comparation_bookings {
     type: number
     sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
+
 
 }
