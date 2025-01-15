@@ -107,6 +107,27 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.price_in_hotel_currency ;;
   }
 
+  dimension: priceSupplements_in_hotel_currency {
+    type: number
+    sql: ${TABLE}.priceSupplements_in_hotel_currency ;;
+  }
+
+  dimension: revenue_in_hotel_currency {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
+        END;;
+  }
+
+  dimension: cancellation_in_hotel_currency {
+    type: number
+    sql: CASE
+        WHEN ${TABLE}.cancelled = False THEN 0
+        WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
+      END;;
+  }
+
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
