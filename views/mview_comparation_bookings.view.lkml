@@ -96,6 +96,17 @@ view: mview_comparation_bookings {
     type: string
     sql: ${TABLE}.booking_currency ;;
   }
+
+  dimension: hotel_currency {
+    type: string
+    sql: ${TABLE}.hotel_currency ;;
+  }
+
+  dimension: price_in_hotel_currency {
+    type: number
+    sql: ${TABLE}.price_in_hotel_currency ;;
+  }
+
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
