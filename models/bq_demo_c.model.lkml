@@ -37,6 +37,12 @@ explore: view_comparation_funnel_stats {
     relationship: many_to_one
     sql_on: ${view_comparation_funnel_stats.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
 }
+  sql_always_where: DATE_DIFF(
+  CURRENT_DATE(),
+  CAST(${view_comparation_funnel_stats.partition_timestamp_date} AS DATE),
+  DAY
+  ) <= 365
+  AND  last_year_booking = 0 ;;
 }
 
 
@@ -236,13 +242,6 @@ explore: funnel_stats {
     relationship: many_to_one
     sql_on: ${funnel_stats.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
-
-  sql_always_where: DATE_DIFF(
-    CURRENT_DATE(),
-    CAST(${funnel_stats.partition_timestamp_date} AS DATE),
-    DAY
-  ) <= 365
-  AND  last_year_booking = 0 ;;
   }
 
 explore: google_ads_campaign_data {}
