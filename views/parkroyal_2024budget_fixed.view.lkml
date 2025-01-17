@@ -114,21 +114,25 @@ view: parkroyal_2024budget_fixed {
   dimension: month_timestamp {
     type: string
     sql: Case
-          when UPPER(${month}) = "ENERO" then "2024-01"
-          when UPPER(${month}) = "FEBRERO" then "2024-02"
-          when UPPER(${month}) = "MARZO" then "2024-03"
-          when UPPER(${month}) = "ABRIL" then "2024-04"
-          when UPPER(${month}) = "MAYO" then "2024-05"
-          when UPPER(${month}) = "JUNIO" then "2024-06"
-          when UPPER(${month}) = "JULIO" then "2024-07"
-          when UPPER(${month}) = "AGOSTO" then "2024-08"
-          when UPPER(${month}) = "SEPTIEMBRE" then "2024-09"
-          when UPPER(${month}) = "OCTUBRE" then "2024-10"
-          when UPPER(${month}) = "NOVIEMBRE" then "2024-11"
-          else "2024-12"
+          when UPPER(${month}) = "ENERO" then "2025-01"
+          when UPPER(${month}) = "FEBRERO" then "2025-02"
+          when UPPER(${month}) = "MARZO" then "2025-03"
+          when UPPER(${month}) = "ABRIL" then "2025-04"
+          when UPPER(${month}) = "MAYO" then "2025-05"
+          when UPPER(${month}) = "JUNIO" then "2025-06"
+          when UPPER(${month}) = "JULIO" then "2025-07"
+          when UPPER(${month}) = "AGOSTO" then "2025-08"
+          when UPPER(${month}) = "SEPTIEMBRE" then "2025-09"
+          when UPPER(${month}) = "OCTUBRE" then "2025-10"
+          when UPPER(${month}) = "NOVIEMBRE" then "2025-11"
+          else "2025-12"
         End;;
   }
 
+  dimension: year {
+    type: number
+    sql:${TABLE}.year ;;
+  }
   dimension_group: month_date {
     type: time
     timeframes: [month]
