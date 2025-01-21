@@ -25,17 +25,6 @@ view: mview_comparation_bookings {
   default_value: "USD"
   }
 
-  dimension: revenue_final{
-    sql:
-    {% if filter._parameter_value == "USD" %}
-    cast(${revenue} as FLOAT64)
-    {% elsif filter._parameter_value == "MXN" %}
-    cast(${revenue_in_hotel_currency} as FLOAT64)
-    {% else %}
-    cast(${revenue} as FLOAT64)
-    {% endif %};;
-  }
-
   dimension: uniques_accounts{
     type: string
     sql: distinct ${account};;
@@ -596,6 +585,18 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INTEGER)
         END;;
   }
+
+  dimension: revenue_final{
+    sql:
+    {% if filter._parameter_value == "USD" %}
+    sum(${revenue})
+    {% elsif filter._parameter_value == "MXN" %}
+    sum(${revenue_in_hotel_currency})
+    {% else %}
+    sum(${revenue})
+    {% endif %};;
+  }
+
 
   dimension: ADR {
     type: number
