@@ -3,124 +3,110 @@ view: mview_comparation_bookings {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
   sql_table_name: `bi_dataset.COMPARATION_BOOKINGS` ;;
-
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
-
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Account" in Explore.
-
   dimension: account {
     type: string
     sql: ${TABLE}.account;;
   }
-
   parameter: filter {
-  type: unquoted
-  allowed_value: {label: "USD"
-    value: "USD"}
-  allowed_value: {label: "MXN"
-    value: "MXN"}
-  default_value: "USD"
+    type: unquoted
+    allowed_value: {label: "USD"
+      value: "USD"}
+    allowed_value: {label: "MXN"
+      value: "MXN"}
+    default_value: "USD"
   }
-
+  dimension: revenue_final{
+    sql:
+    {% if filter._parameter_value == "USD" %}
+    cast(${revenue} as FLOAT64)
+    {% elsif filter._parameter_value == "MXN" %}
+    cast(${revenue_in_hotel_currency} as FLOAT64)
+    {% else %}
+    cast(${revenue} as FLOAT64)
+    {% endif %};;
+  }
   dimension: uniques_accounts{
     type: string
     sql: distinct ${account};;
   }
-
   dimension: additional_services {
     type: string
     sql: ${TABLE}.additionalServices ;;
   }
-
   dimension: adults1 {
     type: number
     sql: ${TABLE}.adults1 ;;
   }
-
   dimension: adults2 {
     type: number
     sql: ${TABLE}.adults2 ;;
   }
-
   dimension: adults3 {
     type: number
     sql: ${TABLE}.adults3 ;;
   }
-
   dimension: agent {
     type: string
     sql: ${TABLE}.agent ;;
   }
-
   dimension: amended_price {
     type: number
     sql: ${TABLE}.amendedPrice ;;
   }
-
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
-
   measure: total_amended_price {
     type: sum
     sql: ${amended_price} ;;  }
   measure: average_amended_price {
     type: average
     sql: ${amended_price} ;;  }
-
   dimension: babies1 {
     type: number
     sql: ${TABLE}.babies1 ;;
   }
-
   dimension: babies2 {
     type: number
     sql: ${TABLE}.babies2 ;;
   }
-
   dimension: babies3 {
     type: number
     sql: ${TABLE}.babies3 ;;
   }
-
   dimension: birthday {
     type: string
     sql: ${TABLE}.birthday ;;
   }
-
   dimension: board {
     type: string
     sql: ${TABLE}.Board ;;
   }
-
   dimension: bono_gift_used {
     type: string
     sql: ${TABLE}.bono_gift_used ;;
   }
-
   dimension: booking_currency {
     type: string
     sql: ${TABLE}.booking_currency ;;
   }
-
   dimension: hotel_currency {
     type: string
     sql: ${TABLE}.hotel_currency ;;
   }
-
   dimension: price_in_hotel_currency {
     type: number
     sql: ${TABLE}.price_in_hotel_currency ;;
   }
-
   dimension: priceSupplements_in_hotel_currency {
     type: number
     sql: ${TABLE}.priceSupplements_in_hotel_currency ;;
   }
-
   dimension: revenue_in_hotel_currency {
     type: number
     sql: CASE
@@ -128,7 +114,6 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
         END;;
   }
-
   dimension: cancellation_in_hotel_currency {
     type: number
     sql: CASE
@@ -136,293 +121,235 @@ view: mview_comparation_bookings {
         WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
       END;;
   }
-
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
-
   dimension_group: cancelation_datetime {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.cancelationDatetime ;;
   }
-
   dimension: cancellation_reason {
     type: string
     sql: ${TABLE}.cancellation_reason ;;
   }
-
   dimension: cancellation_timestamp {
     type: string
     sql: ${TABLE}.cancellationTimestamp ;;
   }
-
   dimension: cancellation_timestamp_date {
     type: string
     sql: ${TABLE}.cancellation_timestamp_date ;;
   }
-
   dimension: cancellation_timestamp_dayofweek {
     type: number
     sql: ${TABLE}.cancellation_timestamp_dayofweek ;;
   }
-
   dimension: cancelled {
     type: yesno
     sql: ${TABLE}.cancelled ;;
   }
-
   dimension: club_member_id {
     type: string
     sql: ${TABLE}.club_member_id ;;
   }
-
   dimension: comission {
     type: number
     sql: ${TABLE}.comission ;;
   }
-
   dimension: comments {
     type: string
     sql: UPPER(${TABLE}.comments) ;;
   }
-
   dimension: country {
     type: string
     map_layer_name: countries
     sql: UPPER(${TABLE}.country) ;;
   }
-
   dimension: credit_card {
     type: string
     sql: ${TABLE}.creditCard ;;
   }
-
   dimension: currency {
     type: string
     sql: ${TABLE}.currency ;;
   }
-
   dimension: day {
     type: string
     sql: ${TABLE}.day ;;
   }
-
   dimension: encrypted {
     type: string
     sql: ${TABLE}.encrypted ;;
   }
-
   dimension: end_date {
     type: string
     sql: ${TABLE}.endDate ;;
   }
-
   dimension: es_paquete {
     type: yesno
     sql: ${TABLE}.EsPaquete ;;
   }
-
   dimension: final_discounted_price {
     type: number
     sql: ${TABLE}.final_discounted_price ;;
   }
-
   dimension: geolocation {
     type: string
     sql: ${TABLE}.geolocation ;;
   }
-
   dimension: goals {
     type: string
     sql: ${TABLE}.goals ;;
   }
-
   dimension: hotel_city {
     type: string
     sql: ${TABLE}.HotelCity ;;
   }
-
   dimension: hotel_code {
     primary_key: yes
     type: string
     sql: ${TABLE}.hotel_code ;;
   }
-
   dimension: hotel_country {
     type: string
     sql: ${TABLE}.HotelCountry ;;
   }
-
   dimension: hotel_name {
     type: string
     sql: ${TABLE}.HotelName ;;
   }
-
   dimension: hotel_state {
     type: string
     sql: ${TABLE}.HotelState ;;
   }
-
   dimension: hotel_zone {
     type: string
     sql: ${TABLE}.HotelZone ;;
   }
-
   dimension: identifier {
     type: string
     sql: ${TABLE}.identifier ;;
   }
-
   dimension: incidents {
     type: string
     sql: ${TABLE}.incidents ;;
   }
-
   dimension: invalid_credit_card {
     type: number
     sql: ${TABLE}.invalidCreditCard ;;
   }
-
   dimension: ip_address {
     type: string
     sql: ${TABLE}.ip_address ;;
   }
-
   dimension: ip_geo_city {
     type: string
     sql: ${TABLE}.ip_geo_city ;;
   }
-
   dimension: ip_geo_latlon {
     type: string
     sql: ${TABLE}.ip_geo_latlon ;;
   }
-
   dimension: is_club_member {
     type: yesno
     sql: ${TABLE}.is_club_member ;;
   }
-
   dimension: kids1 {
     type: number
     sql: ${TABLE}.kids1 ;;
   }
-
   dimension: kids2 {
     type: number
     sql: ${TABLE}.kids2 ;;
   }
-
   dimension: kids3 {
     type: number
     sql: ${TABLE}.kids3 ;;
   }
-
   dimension: language {
     type: string
     sql: ${TABLE}.LANGUAGE ;;
   }
-
   dimension: local_resident {
     type: yesno
     sql: ${TABLE}.local_resident ;;
   }
-
   dimension: media {
     type: string
     sql: ${TABLE}.media ;;
   }
-
   dimension: modification_timestamp {
     type: string
     sql: ${TABLE}.modificationTimestamp ;;
   }
-
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
   }
-
   dimension: nights {
     type: number
     sql: ${TABLE}.nights ;;
   }
-
   dimension: num_rooms {
     type: number
     sql: ${TABLE}.numRooms ;;
   }
-
   dimension: original_price_before_discount {
     type: number
     sql: ${TABLE}.original_price_before_discount ;;
   }
-
   dimension: package_name {
     type: string
     sql: ${TABLE}.PackageName ;;
   }
-
   dimension: parity_maker {
     type: yesno
     sql: ${TABLE}.parity_maker ;;
   }
-
   dimension: partner {
     type: string
     sql: ${TABLE}.partner ;;
   }
-
   dimension: payment_method {
     type: string
     sql: ${TABLE}.payment_method ;;
   }
-
   dimension: percentage_commission {
     type: string
     sql: ${TABLE}.percentage_commission ;;
   }
-
   dimension: pm_discount {
     type: number
     sql: ${TABLE}.pm_discount ;;
   }
-
   dimension: pm_original_price {
     type: number
     sql: ${TABLE}.pm_original_price ;;
   }
-
   dimension: pm_ota_price {
     type: number
     sql: ${TABLE}.pm_ota_price ;;
   }
-
   dimension: price {
     type: number
     sql: ${TABLE}.price ;;
   }
-
   dimension: price_in_booking_currency {
     type: number
     sql: ${TABLE}.price_in_booking_currency ;;
   }
-
   dimension: price_increase {
     type: string
     sql: ${TABLE}.priceIncrease ;;
   }
-
   dimension: price_supplements {
     type: number
     sql: ${TABLE}.priceSupplements ;;
   }
-
   dimension: price_supplements_in_booking_currency {
     type: number
     sql: ${TABLE}.priceSupplements_in_booking_currency ;;
   }
-
   dimension: promo {
     type: string
     sql: case
@@ -433,7 +360,6 @@ view: mview_comparation_bookings {
         end
         ;;
   }
-
   dimension: promo2 {
     type: string
     sql: case
@@ -444,7 +370,6 @@ view: mview_comparation_bookings {
         end
         ;;
   }
-
   dimension: promo3 {
     type: string
     sql: case
@@ -455,84 +380,67 @@ view: mview_comparation_bookings {
         end
         ;;
   }
-
   dimension: promos {
     type: string
     sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
   }
-
   dimension: promos_fixed {
     type: string
     sql: REPLACE(REPLACE(REPLACE(${promos}, '-,', ''), ',-', ''), '-', '');;
   }
-
   dimension: promos_fixed_filter {
     type: string
     sql: if(${promos_fixed} = '', null, ${promos_fixed}) ;;
-
   }
-
   dimension: promocode {
     type: string
     sql: upper(${TABLE}.promocode) ;;
   }
-
   dimension: promotions {
     type: string
     sql: ${TABLE}.promotions ;;
   }
-
   dimension: rate {
     type: string
     sql: ${TABLE}.rate ;;
   }
-
   dimension: rate_name {
     type: string
     sql: ${TABLE}.RateName ;;
   }
-
   dimension: reference_timestamp {
     type: string
     sql: ${TABLE}.referenceTimestamp ;;
   }
-
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.partitionTimestamp;;
   }
-
   dimension: regimen {
     type: string
     sql: ${TABLE}.regimen ;;
   }
-
   dimension: room {
     type: string
     sql: ${TABLE}.Room ;;
   }
-
   dimension: room_type1 {
     type: string
     sql: ${TABLE}.roomType1 ;;
   }
-
   dimension: room_type2 {
     type: string
     sql: ${TABLE}.roomType2 ;;
   }
-
   dimension: room_type3 {
     type: string
     sql: ${TABLE}.roomType3 ;;
   }
-
   dimension: source {
     type: string
     sql: ${TABLE}.source ;;
   }
-
   dimension: callseeker {
     type: string
     sql: Case
@@ -540,7 +448,6 @@ view: mview_comparation_bookings {
           else ${TABLE}.source_fixed
         End;;
   }
-
   dimension: source_fixed {
     type: string
     sql: CASE
@@ -558,18 +465,15 @@ view: mview_comparation_bookings {
   #         ELSE ${TABLE}.source_fixed
   #       END ;;
   # }
-
   dimension: start_date {
     type: date
     sql: ${TABLE}.startDate ;;
   }
-
   dimension_group: start_date_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: cast(${TABLE}.startDate as timestamp);;
   }
-
   dimension: revenue {
     type: number
     sql: CASE
@@ -577,7 +481,6 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
-
   dimension: rn {
     type: number
     sql: CASE
@@ -585,24 +488,10 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INTEGER)
         END;;
   }
-
-  dimension: revenue_final{
-    sql:
-    {% if filter._parameter_value == "USD" %}
-    sum(${revenue})
-    {% elsif filter._parameter_value == "MXN" %}
-    sum(${revenue_in_hotel_currency})
-    {% else %}
-    sum(${revenue})
-    {% endif %};;
-  }
-
-
   dimension: ADR {
     type: number
     sql: ${revenue} / ${rn} ;;
   }
-
   dimension: rn_cancelled {
     type: number
     sql: CASE
@@ -610,7 +499,6 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = True THEN ${TABLE}.nights * CAST(${TABLE}.numRooms as INTEGER)
         END;;
   }
-
   dimension: cancellation {
     type: number
     sql: CASE
@@ -618,44 +506,35 @@ view: mview_comparation_bookings {
         WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
       END;;
   }
-
   dimension_group: timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.timestamp ;;
   }
-
   dimension: timestamp_date_datos_reservas_6 {
     type: string
     sql: ${TABLE}.timestamp_date ;;
   }
-
   dimension: timestamp_dayofweek {
     type: number
     sql: ${TABLE}.timestamp_dayofweek ;;
   }
-
   dimension: used_bono {
     type: yesno
     sql: ${TABLE}.used_bono ;;
   }
-
   measure: count {
     type: count
     drill_fields: [hotel_name, rate_name, name, package_name]
   }
-
   measure: num_reservas {
     type:  count
     drill_fields: [identifier]
   }
-
   dimension: occupation {
     type: string
     sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
   }
-
-
   dimension: advance_cancellation{
     type: number
     sql:
@@ -664,7 +543,6 @@ view: mview_comparation_bookings {
     ELSE DATE_DIFF(CAST(${TABLE}.startDate AS TIMESTAMP), CAST(${TABLE}.cancellationTimestamp AS TIMESTAMP), DAY)
     END ;;
   }
-
   dimension: rateName_fixed {
     type: string
     sql:CASE
@@ -672,7 +550,6 @@ view: mview_comparation_bookings {
           else ${TABLE}.RateName
         END;;
   }
-
   dimension: hotel_code_by_account {
     type: string
     sql: CASE
@@ -705,28 +582,22 @@ view: mview_comparation_bookings {
           ELSE ${TABLE}.hotel_code
         END ;;
   }
-
   dimension: month{
     type: number
     sql:  EXTRACT(month FROM ${TABLE}.partitionTimestamp) ;;
   }
-
-
   dimension: month_startDate{
     type: number
     sql:  EXTRACT(month FROM cast(${TABLE}.startDate as timestamp)) ;;
   }
-
   dimension: year{
     type: number
     sql:  EXTRACT(YEAR FROM ${TABLE}.partitionTimestamp) ;;
   }
-
   dimension: year_startDate{
     type: number
     sql:  EXTRACT(YEAR FROM cast(${TABLE}.startDate as timestamp)) ;;
   }
-
   dimension: month_text {
     type: string
     sql: Case
@@ -744,8 +615,6 @@ view: mview_comparation_bookings {
           else "Dec"
         END;;
   }
-
-
   dimension: month_text_startDate {
     type: string
     sql: Case
@@ -763,35 +632,29 @@ view: mview_comparation_bookings {
           else "Dec"
         END;;
   }
-
   dimension: device {
     type: string
     sql: IFNULL(${TABLE}.device, 'Web') ;;
   }
-
   dimension: partition_string {
     type: string
     sql: ${TABLE}.partitionTimestamp;;
   }
-
   dimension_group: comparation_startDate{
     type: time
     sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.startDate AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.startDate AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, month_name, quarter, year]
   }
-
   dimension_group: comparation_endDate{
     type: time
     sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.endDate AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.endDate AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
   dimension_group: comparation_cancellationTimestamp{
     type: time
     sql: CASE WHEN ${TABLE}.last_year_booking = 0 THEN CAST(${TABLE}.cancellationTimestamp AS timestamp) ELSE TIMESTAMP_ADD(CAST(${TABLE}.cancellationTimestamp AS timestamp), INTERVAL 365 DAY) END;;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
   dimension_group: comparation_partitiontimestamp_without_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
@@ -801,7 +664,6 @@ view: mview_comparation_bookings {
       END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
   dimension_group: comparation_cancellatioTimestamp_without_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.partitionTimestamp,
@@ -811,8 +673,6 @@ view: mview_comparation_bookings {
       END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
-
   dimension_group: comparation_startDate_without_future{
     type: time
     sql: IF(${TABLE}.last_year_booking = 0, ${TABLE}.startDate,
@@ -822,12 +682,10 @@ view: mview_comparation_bookings {
       END);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
   dimension: last_year_booking {
     type: number
     sql: ${TABLE}.last_year_booking ;;
   }
-
   dimension: source_grouped {
     type: string
     sql: CASE
@@ -836,7 +694,6 @@ view: mview_comparation_bookings {
           ELSE 'WEB'
         END ;;
   }
-
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
     type: string
@@ -1110,7 +967,6 @@ view: mview_comparation_bookings {
     type:  number
     sql: ${week_string_booking} ;;
   }
-
   dimension: week_string_cancellation {
     type: string
     sql: CAST(EXTRACT(WEEK FROM ${comparation_cancellatioTimestamp_without_future_date}) AS STRING) ;;
@@ -1119,17 +975,13 @@ view: mview_comparation_bookings {
     type:  number
     sql: ${week_string_booking} ;;
   }
-
   dimension_group: comparation_timestamp {
     type: time
     sql: timestamp_add(${timestamp_date} Interval 365 days);;
     timeframes: [raw, time, date, week, month, quarter, year]
   }
-
   dimension: advance{
     type: number
     sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
-
-
 }
