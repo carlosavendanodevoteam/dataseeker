@@ -16,6 +16,26 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.account;;
   }
 
+  parameter: filter {
+  type: unquoted
+  allowed_value: {label: "USD"
+    value: "USD"}
+  allowed_value: {label: "MXN"
+    value: "MXN"}
+  default_value: "USD"
+  }
+
+  dimension: revenue_final{
+    sql:
+    {% if filter._parameter_value == "USD" %}
+    cast(${revenue} as FLOAT64)
+    {% elsif filter._parameter_value == "MXN" %}
+    cast(${revenue_in_hotel_currency} as FLOAT64)
+    {% else %}
+    cast(${revenue} as FLOAT64)
+    {% endif %};;
+  }
+
   dimension: uniques_accounts{
     type: string
     sql: distinct ${account};;
