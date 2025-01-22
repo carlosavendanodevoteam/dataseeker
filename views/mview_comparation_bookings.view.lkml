@@ -12,14 +12,6 @@ view: mview_comparation_bookings {
     type: string
     sql: ${TABLE}.account;;
   }
-  parameter: filter {
-    type: unquoted
-    allowed_value: {label: "USD"
-      value: "USD"}
-    allowed_value: {label: "MXN"
-      value: "MXN"}
-    default_value: "USD"
-  }
 
   dimension: uniques_accounts{
     type: string
@@ -86,32 +78,7 @@ view: mview_comparation_bookings {
     type: string
     sql: ${TABLE}.booking_currency ;;
   }
-  dimension: hotel_currency {
-    type: string
-    sql: ${TABLE}.hotel_currency ;;
-  }
-  dimension: price_in_hotel_currency {
-    type: number
-    sql: ${TABLE}.price_in_hotel_currency ;;
-  }
-  dimension: priceSupplements_in_hotel_currency {
-    type: number
-    sql: ${TABLE}.priceSupplements_in_hotel_currency ;;
-  }
-  dimension: revenue_in_hotel_currency {
-    type: number
-    sql: CASE
-          WHEN ${TABLE}.cancelled = True THEN 0
-          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
-        END;;
-  }
-  dimension: cancellation_in_hotel_currency {
-    type: number
-    sql: CASE
-        WHEN ${TABLE}.cancelled = False THEN 0
-        WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
-      END;;
-  }
+
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
   dimension_group: cancelation_datetime {
@@ -342,6 +309,42 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.priceSupplements_in_booking_currency ;;
   }
 
+  dimension: hotel_currency {
+    type: string
+    sql: ${TABLE}.hotel_currency ;;
+  }
+  dimension: price_in_hotel_currency {
+    type: number
+    sql: ${TABLE}.price_in_hotel_currency ;;
+  }
+  dimension: priceSupplements_in_hotel_currency {
+    type: number
+    sql: ${TABLE}.priceSupplements_in_hotel_currency ;;
+  }
+  dimension: revenue_in_hotel_currency {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.cancelled = True THEN 0
+          WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
+        END;;
+  }
+  dimension: cancellation_in_hotel_currency {
+    type: number
+    sql: CASE
+        WHEN ${TABLE}.cancelled = False THEN 0
+        WHEN ${TABLE}.cancelled = True THEN ${TABLE}.price_in_hotel_currency + COALESCE(${TABLE}.priceSupplements_in_hotel_currency, 0)
+      END;;
+  }
+
+  parameter: filter {
+    type: unquoted
+    allowed_value: {label: "USD"
+      value: "USD"}
+    allowed_value: {label: "MXN"
+      value: "MXN"}
+    default_value: "USD"
+  }
+
   dimension: revenue_final{
     type: number
     sql:
@@ -351,6 +354,18 @@ view: mview_comparation_bookings {
     cast(${revenue_in_hotel_currency} as FLOAT64)
     {% else %}
     cast(${revenue} as FLOAT64)
+    {% endif %};;
+  }
+
+  dimension: cancellation_final{
+    type: number
+    sql:
+    {% if filter._parameter_value == "USD" %}
+    cast(${cancellation} as FLOAT64)
+    {% elsif filter._parameter_value == "MXN" %}
+    cast(${cancellation_in_hotel_currency} as FLOAT64)
+    {% else %}
+    cast(${cancellation} as FLOAT64)
     {% endif %};;
   }
 
