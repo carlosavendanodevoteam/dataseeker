@@ -20,16 +20,7 @@ view: mview_comparation_bookings {
       value: "MXN"}
     default_value: "USD"
   }
-  dimension: revenue_final{
-    sql:
-    {% if filter._parameter_value == "USD" %}
-    cast(${revenue} as FLOAT64)
-    {% elsif filter._parameter_value == "MXN" %}
-    cast(${revenue_in_hotel_currency} as FLOAT64)
-    {% else %}
-    cast(${revenue} as FLOAT64)
-    {% endif %};;
-  }
+
   dimension: uniques_accounts{
     type: string
     sql: distinct ${account};;
@@ -350,6 +341,19 @@ view: mview_comparation_bookings {
     type: number
     sql: ${TABLE}.priceSupplements_in_booking_currency ;;
   }
+
+  dimension: revenue_final{
+    type: number
+    sql:
+    {% if filter._parameter_value == "USD" %}
+    cast(${revenue} as FLOAT64)
+    {% elsif filter._parameter_value == "MXN" %}
+    cast(${revenue_in_hotel_currency} as FLOAT64)
+    {% else %}
+    cast(${revenue} as FLOAT64)
+    {% endif %};;
+  }
+
   dimension: promo {
     type: string
     sql: case
@@ -417,6 +421,7 @@ view: mview_comparation_bookings {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.partitionTimestamp;;
   }
+
   dimension: regimen {
     type: string
     sql: ${TABLE}.regimen ;;
