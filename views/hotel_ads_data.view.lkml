@@ -174,7 +174,16 @@ view: hotel_ads_data {
 
   dimension: device {
     type: string
-    sql: ${TABLE}.device ;;
+    sql: case
+          when ${TABLE}.device = '0' then 'UNSPECIFIED'
+          when ${TABLE}.device = '1' then 'UNKNOWN'
+          when ${TABLE}.device = '2' then 'MOBILE'
+          when ${TABLE}.device = '3' then 'TABLET'
+          when ${TABLE}.device = '4' then 'DESKTOP'
+          when ${TABLE}.device = '5' then 'CONNECTED_TV'
+          when ${TABLE}.device = '6' then 'OTHER'
+          ELSE 'UNKNOWN'
+        End;;
   }
 
   dimension: all_conversions_from_interactions_rate {
