@@ -1234,5 +1234,13 @@ view: mview_datos_reservas_6 {
     {% endif %};;
   }
 
+  dimension: date_predetermined{
+    type: yesno
+    sql:
+    Case
+      when DATE_ADD(${partition_timestamp_date}, INTERVAL 1 DAY) = ${start_date_timestamp_date} and ${nights} = 1 then True
+      else False
+      end;;
+  }
 
 }
