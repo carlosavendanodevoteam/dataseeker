@@ -205,6 +205,21 @@ view: hotel_ads_data {
         End;;
   }
 
+  dimension: length_of_stay {
+    type: number
+    sql: ${TABLE}.length_of_stay ;;
+  }
+
+  dimension: hotel_check_in_date {
+    type: date
+    sql: ${TABLE}.hotel_check_in_date ;;
+  }
+
+  dimension: hotel_check_in_date_month {
+    type: date_month_num
+    sql: ${TABLE}.hotel_check_in_date ;;
+  }
+
   measure: meet_rate{
     type: number
     sql: sum(Case
