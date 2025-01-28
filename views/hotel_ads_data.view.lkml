@@ -220,6 +220,24 @@ view: hotel_ads_data {
     sql: ${TABLE}.hotel_check_in_date ;;
   }
 
+  dimension: month_text_startDate {
+    type: string
+    sql: Case
+          when ${hotel_check_in_date_month} = 1 then "Jan"
+          when ${hotel_check_in_date_month} = 2 then "Feb"
+          when ${hotel_check_in_date_month} = 3 then "Mar"
+          when ${hotel_check_in_date_month} = 4 then "Apr"
+          when ${hotel_check_in_date_month} = 5 then "May"
+          when ${hotel_check_in_date_month} = 6 then "Jun"
+          when ${hotel_check_in_date_month} = 7 then "Jul"
+          when ${hotel_check_in_date_month} = 8 then "Aug"
+          when ${hotel_check_in_date_month} = 9 then "Sep"
+          when ${hotel_check_in_date_month} = 10 then "Oct"
+          when ${hotel_check_in_date_month} = 11 then "Nov"
+          else "Dec"
+        End;;
+  }
+
   measure: meet_rate{
     type: number
     sql: sum(Case
