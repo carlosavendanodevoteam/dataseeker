@@ -1243,4 +1243,14 @@ view: mview_datos_reservas_6 {
       end;;
   }
 
+  dimension: oasishoteles_complejos {
+    type: string
+    sql: Case
+          when ${hotel_code} in ('oasishoteles-grandcancun', 'oasishoteles-pyramid') then 'Complejos GOC'
+          when ${hotel_code} in ('oasishoteles-oasispalm', 'oasishoteles-grandpalm', 'oasishoteles-senscancun') then 'Complejos Palm'
+          when ${hotel_code} in ('oasishoteles-ohurban', 'oasishoteles-smart') then 'Complejos Centro'
+          Else 'Complejos Tulum'
+         End ;;
+  }
+
 }
