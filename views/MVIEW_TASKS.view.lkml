@@ -33,7 +33,7 @@ view: MVIEW_TASKS {
   }
 
   dimension: date_updated {
-    type: string
+    type: date
     sql: ${TABLE}.date_updated ;;
   }
 

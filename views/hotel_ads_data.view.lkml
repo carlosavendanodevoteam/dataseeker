@@ -238,6 +238,15 @@ view: hotel_ads_data {
         End;;
   }
 
+  dimension: date_predetermined{
+    type: yesno
+    sql:
+    Case
+      when DATE_ADD(${partition_timestamp_date}, INTERVAL 1 DAY) = ${hotel_check_in_date} and ${length_of_stay} = 1 then True
+      else False
+      end;;
+  }
+
   measure: meet_rate{
     type: number
     sql: sum(Case
