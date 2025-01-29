@@ -1,5 +1,5 @@
 view: reservas_historicas_gf {
-  sql_table_name: `bi_dataset_US.reservas_historicas_GF` ;;
+  sql_table_name: `bi_dataset.reservas_historicas_GF` ;;
 
   dimension: bookings {
     type: number
