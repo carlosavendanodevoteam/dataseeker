@@ -1004,4 +1004,14 @@ view: mview_comparation_bookings {
     type: number
     sql: date_diff(cast(${comparation_startDate_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
+
+  dimension: oasishoteles_complejos {
+    type: string
+    sql: Case
+          when ${hotel_code} in ('oasishoteles-grandcancun', 'oasishoteles-pyramid') then 'Complejos GOC'
+          when ${hotel_code} in ('oasishoteles-oasispalm', 'oasishoteles-grandpalm', 'oasishoteles-senscancun') then 'Complejos Palm'
+          when ${hotel_code} in ('oasishoteles-ohurban', 'oasishoteles-smart') then 'Complejos Centro'
+          Else 'Complejos Tulum'
+         End ;;
+  }
 }
