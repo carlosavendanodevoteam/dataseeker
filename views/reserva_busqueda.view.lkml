@@ -42,14 +42,14 @@ view: reserva_busqueda {
         ) AS ADR,
         'RESERVAS + BUSQUEDAS' as query_source
       FROM
-        `bi_dataset.MVIEW_DATOS_RESERVAS_6` DR
+        `bi_dataset.VIEW_DATOS_RESERVAS_6` DR
       LEFT JOIN (
         SELECT
           hotel_code,
           SUM(CASE WHEN cancelled = TRUE THEN 0 ELSE price + priceSupplements END) as revenue_starts_today,
           COUNT(*) as count_starts_today
         FROM
-          `analysis-seeker.bi_dataset.MVIEW_BOOKINGS_BY_START_DATE`
+          `analysis-seeker.bi_dataset.VIEW_BOOKINGS_BY_START_DATE`
         WHERE
           EXTRACT(DATE FROM startDateTime) >= PARSE_DATE('%Y%m%d', @DS_START_DATE) AND EXTRACT(DATE FROM startDateTime) <= PARSE_DATE('%Y%m%d', @DS_END_DATE)
         GROUP BY
@@ -62,7 +62,7 @@ view: reserva_busqueda {
           SUM(CASE WHEN result = 'OK' THEN 1 ELSE 0 END) as Ok,
           SUM(CASE WHEN result = 'RESTRICTIONS' THEN 1 ELSE 0 END) as Restrictions
         FROM
-          `bi_dataset.MVIEW_BUSQUEDAS`
+          `bi_dataset.VIEW_BUSQUEDAS`
         WHERE
           EXTRACT(DATE FROM referenceTimestamp) >= PARSE_DATE('%Y%m%d', @DS_START_DATE) AND EXTRACT(DATE FROM referenceTimestamp) <= PARSE_DATE('%Y%m%d', @DS_END_DATE)
         GROUP BY

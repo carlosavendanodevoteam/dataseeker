@@ -2,7 +2,7 @@
 view: mview_global_lead_time_stats {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `bi_dataset.MVIEW_GLOBAL_LEAD_TIME_STATS` ;;
+  sql_table_name: `bi_dataset.VIEW_GLOBAL_LEAD_TIME_STATS` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.

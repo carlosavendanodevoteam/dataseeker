@@ -1,5 +1,5 @@
 view: reservations_with_hotel_code_filter {
-  sql_table_name: `bi_dataset.MVIEW_DATOS_RESERVAS_6` ;;
+  sql_table_name: `bi_dataset.VIEW_DATOS_RESERVAS_6` ;;
 
   dimension: account {
     type: string

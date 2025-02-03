@@ -9,14 +9,14 @@ view: ratio_conversion {
         COUNT(*) as total_reservas,
         'Ratio conversion' as query_source
       FROM
-        `bi_dataset.MVIEW_DATOS_RESERVAS_6` DR
+        `bi_dataset.VIEW_DATOS_RESERVAS_6` DR
       LEFT JOIN (
         SELECT
           hotel_code,
           COUNT(*) as count_busquedas,
           SUM(CASE WHEN result='OK' THEN 1 ELSE 0 END) as Ok
         FROM
-          `bi_dataset.MVIEW_BUSQUEDAS`
+          `bi_dataset.VIEW_BUSQUEDAS`
         WHERE
           EXTRACT(DATE FROM referenceTimestamp) >= PARSE_DATE('%Y%m%d', @DS_START_DATE) AND EXTRACT(DATE FROM referenceTimestamp) <= PARSE_DATE('%Y%m%d', @DS_END_DATE)
         GROUP BY
