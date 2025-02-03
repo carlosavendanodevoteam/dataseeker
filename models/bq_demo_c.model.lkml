@@ -88,7 +88,13 @@ explore: mview_users {
 
 explore: mview_horario_r2t {}
 
-explore: hotel_ads_data {}
+explore: hotel_ads_data {
+    join:  hotel_corporative_encrypted {
+      type: inner
+      relationship: many_to_one
+      sql_on: ${hotel_ads_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+    }
+}
 
 explore: ring2_travel_agents_report {}
 
