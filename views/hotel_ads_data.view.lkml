@@ -271,6 +271,11 @@ view: hotel_ads_data {
         End)/ sum(${impressions});;
   }
 
+  dimension: advance{
+    type: number
+    sql: date_diff(cast(${hotel_check_in_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
+  }
+
   dimension: country {
     type: string
     sql: CASE
