@@ -242,8 +242,8 @@ view: hotel_ads_data {
     type: yesno
     sql:
     Case
-      when DATE_ADD(${partition_timestamp_date}, INTERVAL 1 DAY) = ${hotel_check_in_date} then True
-      else False
+      WHEN hotel_check_in_date IS NULL THEN False
+     ELSE True
       end;;
   }
 
