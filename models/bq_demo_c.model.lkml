@@ -479,28 +479,28 @@ explore: ratecheck_log {
 
 }
 
-explore: ClickUp_task {
-  join: tracking {
-    type: left_outer
-    relationship: many_to_many
-    sql_on: ${ClickUp_task.task_id} = ${tracking.task_id}  ;;
-  }
-  join: users {
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${ClickUp_task.user_id} = ${users.user_id};;
-  }
-  join: MVIEW_TASKS {
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${ClickUp_task.task_id} = ${MVIEW_TASKS.task_id};;
-  }
-  join: MVIEW_TASKS_BY_CREATED_DATE {
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${ClickUp_task.task_id} = ${MVIEW_TASKS_BY_CREATED_DATE.task_id};;
-  }
-}
+# explore: ClickUp_task {
+#   join: tracking {
+#     type: left_outer
+#     relationship: many_to_many
+#     sql_on: ${ClickUp_task.task_id} = ${tracking.task_id}  ;;
+#   }
+#   join: users {
+#     type: left_outer
+#     relationship: many_to_one
+#     sql_on: ${ClickUp_task.user_id} = ${users.user_id};;
+#   }
+#   join: MVIEW_TASKS {
+#     type: left_outer
+#     relationship: many_to_one
+#     sql_on: ${ClickUp_task.task_id} = ${MVIEW_TASKS.task_id};;
+#   }
+#   join: MVIEW_TASKS_BY_CREATED_DATE {
+#     type: left_outer
+#     relationship: many_to_one
+#     sql_on: ${ClickUp_task.task_id} = ${MVIEW_TASKS_BY_CREATED_DATE.task_id};;
+#   }
+# }
 
 explore: parkroyal_2024budget_fixed {}
 
