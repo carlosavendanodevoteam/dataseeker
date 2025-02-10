@@ -22,6 +22,14 @@ view: MVIEW_TASKS {
     sql: ${TABLE}.client ;;
   }
 
+  dimension: client_mapping {
+    type: string
+    sql: case
+          when ${client} = 'f53d65a2-a4a4-4d93-9047-9f571ad62107' then 'oasis hoteles'
+          else ${client}
+        end;;
+  }
+
   dimension: created_by {
     type: string
     sql: ${TABLE}.created_by ;;
