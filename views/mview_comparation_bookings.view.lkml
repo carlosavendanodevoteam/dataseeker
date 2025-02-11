@@ -68,7 +68,7 @@ view: mview_comparation_bookings {
   }
   dimension: board {
     type: string
-    sql: UPPER(${TABLE}.Board) ;;
+    sql: TRIM(UPPER(${TABLE}.Board)) ;;
   }
   dimension: bono_gift_used {
     type: string
@@ -563,13 +563,15 @@ view: mview_comparation_bookings {
     ELSE DATE_DIFF(CAST(${TABLE}.startDate AS TIMESTAMP), CAST(${TABLE}.cancellationTimestamp AS TIMESTAMP), DAY)
     END ;;
   }
+
   dimension: rateName_fixed {
     type: string
     sql:CASE
           WHEN UPPER(${TABLE}.RateName) like '% TRADE %' THEN 'Trade area'
-          else REPLACE(UPPER(${TABLE}.RateName), '.', '')
+          else REPLACE(TRIM(UPPER(${TABLE}.RateName)), '.', '')
         end;;
   }
+
   dimension: hotel_code_by_account {
     type: string
     sql: CASE
