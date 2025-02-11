@@ -502,6 +502,8 @@ explore: ratecheck_log {
 #   }
 # }
 
+explore: MVIEW_TASKS {}
+
 explore: parkroyal_2024budget_fixed {}
 
 explore: google_hotel_center{}
