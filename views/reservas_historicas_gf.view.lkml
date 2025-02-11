@@ -17,11 +17,13 @@ view: reservas_historicas_gf {
     type: number
     sql: ${TABLE}.lead_time ;;
   }
+
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.partitionTimestamp ;;
+    sql: DATE_FORMAT(${TABLE}.partitionTimestamp, '%Y-%m') ;;
   }
+
   dimension: revenue_gross {
     type: number
     sql: ${TABLE}.revenue_gross ;;

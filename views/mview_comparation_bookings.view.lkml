@@ -68,7 +68,7 @@ view: mview_comparation_bookings {
   }
   dimension: board {
     type: string
-    sql: ${TABLE}.Board ;;
+    sql: UPPER(${TABLE}.Board) ;;
   }
   dimension: bono_gift_used {
     type: string
@@ -567,8 +567,8 @@ view: mview_comparation_bookings {
     type: string
     sql:CASE
           WHEN UPPER(${TABLE}.RateName) like '% TRADE %' THEN 'Trade area'
-          else ${TABLE}.RateName
-        END;;
+          else REPLACE(UPPER(${TABLE}.RateName), '.', '')
+        end;;
   }
   dimension: hotel_code_by_account {
     type: string
