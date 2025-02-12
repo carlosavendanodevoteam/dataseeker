@@ -21,7 +21,7 @@ view: reservas_historicas_gf {
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: DATE_FORMAT(${TABLE}.partitionTimestamp, '%Y-%m') ;;
+    sql: ${TABLE}.partitionTimestamp ;;
   }
 
   dimension: revenue_gross {
