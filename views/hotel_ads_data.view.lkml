@@ -238,14 +238,23 @@ view: hotel_ads_data {
         End;;
   }
 
-  dimension: date_predetermined{
-    type: yesno
-    sql:
-    Case
-      WHEN hotel_check_in_date IS NULL THEN False
-     ELSE True
-      end;;
-  }
+  # dimension: date_predetermined{
+  #   type: yesno
+  #   sql:
+  #   Case
+  #     WHEN ${hotel_check_in_date} IS NULL THEN False
+  #   ELSE True
+  #     end;;
+  # }
+
+  dimension: hotel_date_selection_type {
+    type: string
+    sql: Case
+          when ${TABLE}.hotel_date_selection_type = 50 then 'DEFAULT DATE'
+          when ${TABLE}.hotel_date_selection_type = 51 then 'USER SELECTED'
+          else 'UNKNOW'
+          end
+;;  }
 
   measure: meet_rate{
     type: number
