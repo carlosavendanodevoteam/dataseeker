@@ -2,7 +2,7 @@
 view: mview_gha_bookings {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `analysis-seeker.Google_ads_dataset.VIEW_GHA_BOOKINGS` ;;
+  sql_table_name: `analysis-seeker.Google_ads_dataset.VIEW_DATOS_RESERVAS_GHA` ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.

@@ -22,7 +22,7 @@ explore: mview_gha_bookings {
   join:  wi_hp_gha_bookings_identifier_fixed{
     type: left_outer
     relationship: one_to_one
-    sql_on:${mview_gha_bookings.identifier} = ${wi_hp_gha_bookings_identifier_fixed.identifier} and ${mview_gha_bookings.hotel_code} = ${wi_hp_gha_bookings_identifier_fixed.hotel_code}  ;;
+    sql_on: ${mview_gha_bookings.hotel_code} = ${wi_hp_gha_bookings_identifier_fixed.hotel_code}  ;;
   }
   join: hotel_corporative_encrypted {
     type: inner
