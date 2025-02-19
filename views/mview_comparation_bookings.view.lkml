@@ -461,6 +461,12 @@ view: mview_comparation_bookings {
     type: string
     sql: ${TABLE}.source ;;
   }
+
+  dimension: utm_source {
+    type: string
+    sql: ${TABLE}.utm_source ;;
+  }
+
   dimension: callseeker {
     type: string
     sql: Case
