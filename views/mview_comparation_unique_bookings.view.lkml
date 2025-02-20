@@ -679,8 +679,8 @@ view: mview_comparation_unique_bookings {
   dimension: source_grouped {
     type: string
     sql: CASE
-          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${agent} not like '%landmar%' and ${agent} not like '%oasis%' and ${agent} not like '%qhotels%' and ${agent} not like '%_ona' and ${source_fixed} like '%Callcenter%' THEN 'Ring2travel'
-          WHEN ((${hotel_code} like '%nau-%' and ${agent} like '%agente%') or ${agent} like '%-nau%' or ${agent} like '%landmar%' or ${agent} like '%oasis%' or ${agent} like '%qhotels%' or ${agent} like '%_ona' or ${TABLE}.agent not LIKE '%agente%') and ${source_fixed} like '%Callcenter%' then 'Callseeker'
+          when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${agent} not like '%landmar%' and ${agent} not like '%oasis%' and ${agent} not like '%qhotels%' and ${agent} not like '%_ona' and ${source_fixed} like '%allcenter%' THEN 'Ring2travel'
+          WHEN ((${hotel_code} like '%nau-%' and ${agent} like '%agente%') or ${agent} like '%-nau%' or ${agent} like '%landmar%' or ${agent} like '%oasis%' or ${agent} like '%qhotels%' or ${agent} like '%_ona' or ${TABLE}.agent not LIKE '%agente%') and ${source_fixed} like '%allcenter%' then 'Callseeker'
           ELSE 'WEB'
         END ;;
   }
