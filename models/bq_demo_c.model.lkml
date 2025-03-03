@@ -9,7 +9,7 @@ include: "/views/**/*.view.lkml"
 
 datagroup: bq_demo_c_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "2 hour"
+  max_cache_age: "4 hour"
 }
 
 explore: reservas_historicas_gf {}
