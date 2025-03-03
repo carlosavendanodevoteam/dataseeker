@@ -443,7 +443,7 @@ view: mview_comparation_bookings {
   }
   dimension: room {
     type: string
-    sql: ${TABLE}.Room ;;
+    sql: TRIM(${TABLE}.Room) ;;
   }
   dimension: room_type1 {
     type: string
@@ -1022,5 +1022,77 @@ view: mview_comparation_bookings {
           when ${hotel_code} in ('oasishoteles-ohurban', 'oasishoteles-smart') then 'Complejos Centro'
           Else 'Complejos Tulum'
          End ;;
+  }
+  dimension: room_name {
+    type: string
+    sql: CASE
+          WHEN UPPER(${room}) IN ("STANDARD DOUBLE ROOM", "DOUBLE ROOM", "DOUBLE ROOM", "DOUBLE ROOM") THEN "Standard Double room"
+          WHEN UPPER(${room}) IN ("ONE-BEDROOM APARTMENT", "1 BEDROOM APARTMENT") THEN "One-Bedroom Apartment"
+          WHEN UPPER(${room}) = "PREMIUM ROOM" THEN "Premium room"
+          WHEN UPPER(${room}) IN ("SUPERIOR DOUBLE ROOM", "SUPERIOR ROOM") THEN "Superior Double room"
+          WHEN UPPER(${room}) = "DOUBLE ROOM WITHOUT VIEW" THEN "Double room Without View"
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM WITH SEA VIEW" THEN "Superior Double room with Sea View"
+          WHEN UPPER(${room}) = "DOUBLE ROOM WITH SEA VIEWS" THEN "Double room with Sea Views"
+          WHEN UPPER(${room}) = "JUNIOR SUITE ROOM" THEN "Junior Suite room"
+          WHEN UPPER(${room}) = "DOUBLE SIDE SEA VIEW ROOM" THEN "Double Side Sea View room"
+          WHEN UPPER(${room}) = "ONE-BEDROOM APARTMENT WITH SEA OR POOL VIEW" THEN "One-Bedroom Apartment with Sea or Pool View"
+          WHEN UPPER(${room}) = "TWO-BEDROOM APARTMENT" THEN "Two-Bedroom Apartment"
+          WHEN UPPER(${room}) = "SINGLE ROOM" THEN "Single room"
+          WHEN UPPER(${room}) IN ("DOUBLE ROOM WITH POOL VIEWS", "DOUBLE ROOM WITH POOL VIEW") THEN "Double room with Pool View"
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM SWIM UP" THEN "Superior Double room Swim Up"
+          WHEN UPPER(${room}) = "DOUBLE ROOM WITHOUT VIEWS" THEN "Double room Without View"
+          WHEN UPPER(${room}) = "DOUBLE ROOM FOR SINGLE USE" THEN "Single room"
+          WHEN UPPER(${room}) = "FAMILY ROOM" THEN "Family room"
+          WHEN UPPER(${room}) = "DOUBLE ROOM - 1 OR 2 BEDS" THEN "Standard Double room"
+          WHEN UPPER(${room}) = "EXTERIOR FAMILY ROOM" THEN "Family room"
+          WHEN UPPER(${room}) = "2 BEDROOM APARTMENT WITH SEA OR POOL VIEW" THEN "2 Bedroom Apartment with sea or pool view"
+          WHEN UPPER(${room}) = "STANDARD DOUBLE ROOM SIDE SEA VIEW" THEN "Double Side Sea View room"
+          WHEN UPPER(${room}) = "PREMIUM DOUBLE ROOM" THEN "Premium room"
+          WHEN UPPER(${room}) = "MASTER SUITE ROOM" THEN "Master Suite room"
+          WHEN UPPER(${room}) IN ("QUADRUPLE ROOM", "STANDARD QUADRUPLE ROOM") THEN "Quadruple room"
+          WHEN UPPER(${room}) = "SEA VIEW FAMILY ROOM" THEN "Sea View Family room"
+          WHEN UPPER(${room}) = "STUDIO" THEN "Studio"
+          WHEN UPPER(${room}) = "SUITE ROOM" THEN "Suite room"
+          WHEN UPPER(${room}) = "FRONTAL SEA VIEW DOUBLE ROOM" THEN "Double room with Sea Views"
+
+          -- Nuevas adiciones
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM FRONT SEA VIEW" THEN "Superior Double Room with Sea View"
+          WHEN UPPER(${room}) = "DOUBLE ROOM SEA VIEW" THEN "Double Room with Sea Views"
+          WHEN UPPER(${room}) = "STANDARD DOUBLE ROOM WITH POOL VIEW" THEN "Standard Double Room"
+          WHEN UPPER(${room}) = "TWIN ROOM" THEN "Twin Room"
+          WHEN UPPER(${room}) = "SINGLE ROOM" THEN "Single Room"
+          WHEN UPPER(${room}) = "TWIN ROOM" THEN "Twin Room"
+          WHEN UPPER(${room}) = "HABITACIÓN SUITE" THEN "Suite Room"
+          WHEN UPPER(${room}) = "SENATOR ROOM" THEN "Superior Double Room"
+          WHEN UPPER(${room}) = "2 BEDROOM APARTMENT" THEN "Two-Bedroom Apartment"
+          WHEN UPPER(${room}) = "JUNIOR SUITE" THEN "Junior Suite"
+          WHEN UPPER(${room}) = "DOUBLE ROOM - 1 BED" THEN "Standard Double Room"
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM WITH POOL VIEW" THEN "Superior Double Room with Pool View"
+          WHEN UPPER(${room}) = "DOUBLE SUPERIOR ROOM" THEN "Superior Double Room"
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM SEA VIEW" THEN "Superior Double Room with Sea View"
+          WHEN UPPER(${room}) = "DOUBLE ROOM POOL VIEW" THEN "Double Room with Pool View"
+          WHEN UPPER(${room}) = "INDIVIDUAL DOUBLE USE" THEN "Single Room"
+          WHEN UPPER(${room}) = "STUDIO (1 ADULT)" THEN "Studio"
+          WHEN UPPER(${room}) = "DOUBLE ROOM (1 ADULT)" THEN "Standard Double Room"
+          WHEN UPPER(${room}) = "DOUBLE ROOM WITH FRONTAL SEA VIEW" THEN "Double Room with Sea Views"
+          WHEN UPPER(${room}) = "JUNIOR SUITE" THEN "Junior Suite"
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM - 1 BED" THEN "Superior Double Room"
+          WHEN UPPER(${room}) = "SUPERIOR ROOM WITH BALCONY" THEN "Superior Double Room"
+          WHEN UPPER(${room}) = "FAMILY SUITE" THEN "Family room"
+          WHEN UPPER(${room}) = "DOUBLE ROOM WITH SEA VIEWS FOR SINGLE USE" THEN "Double Room with Sea Views"
+          WHEN UPPER(${room}) = "FAMILY ROOM" THEN "Family room"
+          WHEN UPPER(${room}) = "SINGLE BED" THEN "Single Room"
+          WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM - 2 BEDS" THEN "Superior Double Room"
+
+          ELSE ${room} -- En caso de que haya valores no mapeados, se mantiene el original
+        END;;
+  }
+
+  dimension: standarized_room {
+    type: string
+    sql: Case
+          when ${hotel_code} LIKE 'best%' or ${hotel_code} LIKE 'serenade%' then ${room_name}
+          else ${room}
+        END;;
   }
 }
