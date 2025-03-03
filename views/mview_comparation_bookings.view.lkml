@@ -462,6 +462,7 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.source ;;
   }
 
+
   dimension: utm_source {
     type: string
     sql: ${TABLE}.utm_source ;;
