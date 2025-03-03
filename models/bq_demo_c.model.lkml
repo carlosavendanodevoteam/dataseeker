@@ -246,6 +246,7 @@ explore: funnel_stats {
 
 explore: google_ads_campaign_data {}
 
+explore: social_ads_campaign_data {}
 explore: hotels_data {
   join: hotel_corporative_encrypted {
     type: inner
