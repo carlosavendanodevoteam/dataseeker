@@ -465,7 +465,10 @@ view: mview_comparation_bookings {
 
   dimension: utm_source {
     type: string
-    sql: ${TABLE}.utm_source ;;
+    sql: CASE
+          WHEN ${TABLE}.utm_source IN ('%7BEMM%7D', '{EMM}'} THEN 'EMM'
+          ELSE ${TABLE}.utm_source
+        End ;;
   }
 
   dimension: callseeker {
