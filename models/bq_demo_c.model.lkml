@@ -503,6 +503,10 @@ explore: ratecheck_log {
 #   }
 # }
 
+explore: ClickUp_task {
+  join: MVIEW_TASKS {}
+}
+
 explore: MVIEW_TASKS {}
 
 explore: MVIEW_TASKS_BY_CREATED_DATE {}
