@@ -144,7 +144,7 @@ view: MVIEW_TASKS {
 
   dimension: username {
     type: string
-    sql: ${TABLE}.username ;;
+    sql: ${TABLE}.user_name ;;
   }
 
   dimension: id {
@@ -160,16 +160,16 @@ view: MVIEW_TASKS {
   dimension: tarea {
     type: string
     sql: CASE
-    WHEN ${TABLE}.tarea = "0" THEN 'INCIDENCIA'
-    WHEN ${TABLE}.tarea = "1" THEN 'MEJORA'
-    WHEN ${TABLE}.tarea = "2" THEN 'NUEVA FUNCIONALIDAD'
-    WHEN ${TABLE}.tarea = "3" THEN 'DESARROLLO INTERNO'
-    WHEN ${TABLE}.tarea = "4" THEN 'OTRO'
-    WHEN ${TABLE}.tarea = "5" THEN 'AJUSTES'
-    WHEN ${TABLE}.tarea = "6" THEN 'TAREAS'
-    WHEN ${TABLE}.tarea = "7" THEN 'INTEGRACION'
-    ELSE ${TABLE}.tarea
-    end;;
+          WHEN ${TABLE}.tarea = "0" THEN 'INCIDENCIA'
+          WHEN ${TABLE}.tarea = "1" THEN 'MEJORA'
+          WHEN ${TABLE}.tarea = "2" THEN 'NUEVA FUNCIONALIDAD'
+          WHEN ${TABLE}.tarea = "3" THEN 'DESARROLLO INTERNO'
+          WHEN ${TABLE}.tarea = "4" THEN 'OTRO'
+          WHEN ${TABLE}.tarea = "5" THEN 'AJUSTES'
+          WHEN ${TABLE}.tarea = "6" THEN 'TAREAS'
+          WHEN ${TABLE}.tarea = "7" THEN 'INTEGRACION'
+          ELSE ${TABLE}.tarea
+          end;;
   }
 
   dimension: client_commitment {
