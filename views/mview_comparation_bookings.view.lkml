@@ -467,6 +467,7 @@ view: mview_comparation_bookings {
     type: string
     sql: CASE
           WHEN ${TABLE}.utm_source IN ('%7BEMM%7D', '{EMM}') THEN 'EMM'
+          When ${TABLE}.utm_source = 'newsletter' THEN Null
           ELSE ${TABLE}.utm_source
         End ;;
   }
