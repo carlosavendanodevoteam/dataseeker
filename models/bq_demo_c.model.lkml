@@ -507,6 +507,8 @@ explore: ratecheck_log {
 
 explore: MVIEW_TASKS {}
 
+explore: MVIEW_TASKS_BY_CREATED_DATE {}
+
 explore: parkroyal_2024budget_fixed {}
 
 explore: google_hotel_center{}
