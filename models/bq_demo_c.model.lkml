@@ -12,6 +12,8 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "4 hour"
 }
 
+explore: hotel_ads_cpa_data {}
+
 explore: reservas_historicas_gf {}
 
 explore: mview_parkroyal_all_marketing {}
