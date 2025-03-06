@@ -11,7 +11,7 @@ view: MVIEW_TASKS {
   dimension: task_id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.task_id ;;
+    sql: distinct ${TABLE}.task_id ;;
   }
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
