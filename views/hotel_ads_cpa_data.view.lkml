@@ -42,7 +42,7 @@ view: hotel_ads_cpa_data {
     sql: ${TABLE}.conversionsValue ;;
   }
 
-  measure: cpa_cost {
+  dimension: cpa_cost {
     type: number
     sql: CASE
           WHEN ${TABLE}.hotel_code like 'tafer%' then ${conversionsValue}/10
