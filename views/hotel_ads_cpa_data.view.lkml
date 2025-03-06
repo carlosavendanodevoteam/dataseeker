@@ -34,7 +34,7 @@ view: hotel_ads_cpa_data {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.cost ;;
+    sql: ${TABLE}.cost / 1000000;;
   }
 
   dimension: conversionsValue {
