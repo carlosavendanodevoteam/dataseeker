@@ -12,7 +12,13 @@ datagroup: bq_demo_c_default_datagroup {
   max_cache_age: "4 hour"
 }
 
-explore: hotel_ads_cpa_data {}
+explore: hotel_ads_cpa_data {
+  join:  hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${hotel_ads_cpa_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
 
 explore: reservas_historicas_gf {}
 
