@@ -37,6 +37,19 @@ view: hotel_ads_cpa_data {
     sql: ${TABLE}.cost ;;
   }
 
+  dimension: conversionsValue {
+    type: number
+    sql: ${TABLE}.conversionsValue ;;
+  }
+
+  measure: cpa_cost {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.hotel_code like 'tafer%' then ${conversionsValue}/10
+          else 0
+        End;;
+  }
+
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
   # measures for this dimension, but you can also add measures of many different aggregates.
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
@@ -61,11 +74,6 @@ view: hotel_ads_cpa_data {
   dimension: impressions {
     type: number
     sql: ${TABLE}.impressions ;;
-  }
-
-  dimension: conversionsValue {
-    type: number
-    sql: ${TABLE}.conversionsValue ;;
   }
 
   dimension: eligible_impressions {
