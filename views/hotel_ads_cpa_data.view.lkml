@@ -46,6 +46,7 @@ view: hotel_ads_cpa_data {
     type: number
     sql: CASE
           WHEN ${TABLE}.hotel_code like 'tafer%' then ${conversionsValue}/10
+          WHEN ${TABLE}.hotel_code like 'best%' then ${conversionsValue}/10
           else 0
         End;;
   }
