@@ -87,10 +87,10 @@ explore: rescue_seeker_log {
 }
 
 explore: mview_users {
-  join:  view_unique_hotel_corporative_encrypted {
+  join:  hotel_corporative_encrypted {
     type: inner
     relationship: many_to_one
-    sql_on: ${mview_users.hotel_code} = ${view_unique_hotel_corporative_encrypted.corporative_hotel_code};;
+    sql_on: ${mview_users.hotel_code} = ${hotel_corporative_encrypted.corporative_hotel_code};;
   }
 }
 
