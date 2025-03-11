@@ -466,8 +466,9 @@ view: mview_comparation_bookings {
   dimension: utm_source {
     type: string
     sql: CASE
-          WHEN ${TABLE}.utm_source IN ('%7BEMM%7D', '{EMM}') THEN 'EMM'
+          WHEN upper(${TABLE}.utm_source) IN ('%7BEMM%7D', '{EMM}', 'EMAIL') THEN 'EMM'
           When ${TABLE}.utm_source = 'newsletter' THEN Null
+          When upper(${TABLE}.utm_source) In ('FACEBOOK', 'FB') then 'facebook'
           ELSE ${TABLE}.utm_source
         End ;;
   }

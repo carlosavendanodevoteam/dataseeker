@@ -490,6 +490,16 @@ view: mview_comparation_bookings_by_start_date {
         END ;;
   }
 
+  dimension: utm_source {
+    type: string
+    sql: CASE
+          WHEN upper(${TABLE}.utm_source) IN ('%7BEMM%7D', '{EMM}', 'EMAIL') THEN 'EMM'
+          When ${TABLE}.utm_source = 'newsletter' THEN Null
+          When upper(${TABLE}.utm_source) In ('FACEBOOK', 'FB') then 'facebook'
+          ELSE ${TABLE}.utm_source
+        End ;;
+  }
+
   dimension: start_date {
     type: string
     sql: ${TABLE}.startDate ;;
