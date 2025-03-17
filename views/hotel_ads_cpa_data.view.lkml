@@ -1,6 +1,12 @@
 view: hotel_ads_cpa_data {
-  sql_table_name: `Google_ads_dataset.HOTEL_ADS_CPA_DATA` ;;
-
+  derived_table: {
+    sql:
+      SELECT
+        *,
+        MAX(DATE(partition_timestamp)) OVER () AS max_partition_date,
+        MIN(DATE(partition_timestamp)) OVER () AS min_partition_date
+      FROM `analysis-seeker.Google_ads_dataset.VIEW_COMPARATION_HOTEL_ADS_CPA`  ;;
+  }
 
   dimension: average_cpc {
     type: number
@@ -284,6 +290,34 @@ view: hotel_ads_cpa_data {
     type: number
     sql: date_diff(cast(${hotel_check_in_date} as timestamp), cast(${partition_timestamp_date} as timestamp), day) ;;
   }
+
+  dimension: copy {
+    type: number
+    sql: ${TABLE}.copy ;;
+  }
+
+  dimension: max_partition_date {
+    type: date
+    sql: ${TABLE}.max_partition_date ;;
+  }
+
+  dimension: min_partition_date {
+    type: date
+    sql: ${TABLE}.min_partition_date ;;
+  }
+
+  dimension_group: comparison_date {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql:
+     CASE
+      WHEN ${copy} = 0 THEN TIMESTAMP(${partition_timestamp_date})
+      ELSE TIMESTAMP_SUB(
+        TIMESTAMP(${min_partition_date}),
+        INTERVAL DATE_DIFF(${max_partition_date}, ${min_partition_date}, DAY) DAY)
+    END ;;
+  }
+
 
   dimension: country {
     type: string

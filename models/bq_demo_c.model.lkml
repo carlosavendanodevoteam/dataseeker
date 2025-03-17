@@ -20,6 +20,14 @@ explore: hotel_ads_cpa_data {
   }
 }
 
+explore: view_comparation_hotel_ads_cpa {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_comparation_hotel_ads_cpa.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+}
+
 explore: reservas_historicas_gf {}
 
 explore: mview_parkroyal_all_marketing {}
