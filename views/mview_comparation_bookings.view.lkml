@@ -513,6 +513,10 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
+  dimension: revenue_complete {
+    type: number
+    sql:${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0);;
+  }
   dimension: rn {
     type: number
     sql: CASE
