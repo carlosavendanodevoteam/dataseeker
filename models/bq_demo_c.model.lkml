@@ -70,6 +70,11 @@ explore: view_searches_by_start_date {
     relationship: many_to_one
     sql_on: ${view_searches_by_start_date.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
     }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_searches_by_start_date.hotel_code} = ${hotels_data.hotel_code};;
+  }
   }
 
 explore: agent_work_time {}
@@ -203,6 +208,11 @@ explore: mview_comparation_searches {
     relationship: many_to_one
     sql_on: ${mview_comparation_searches.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_comparation_searches.hotel_code} = ${hotels_data.hotel_code};;
+  }
 
   sql_always_where: DATE_DIFF(
     CURRENT_DATE(),
@@ -293,6 +303,11 @@ explore: mview_busquedas {
     type: inner
     relationship: many_to_one
     sql_on: ${mview_busquedas.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_busquedas.hotel_code} = ${hotels_data.hotel_code};;
   }
   sql_always_where: DATE_DIFF(
   CURRENT_DATE(),
