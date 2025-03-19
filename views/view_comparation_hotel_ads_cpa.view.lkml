@@ -1,12 +1,6 @@
 view: view_comparation_hotel_ads_cpa {
-  derived_table: {
-    sql:
-      SELECT
-        *,
-        MAX(DATE(partition_timestamp)) OVER () AS max_partition_date,
-        MIN(DATE(partition_timestamp)) OVER () AS min_partition_date
-      FROM `analysis-seeker.Google_ads_dataset.VIEW_COMPARATION_HOTEL_ADS_CPA`  ;;
-  }
+  sql_table_name: `` ;;
+
 
   dimension: all_conversions_from_interactions_rate {
     type: number
@@ -133,25 +127,39 @@ view: view_comparation_hotel_ads_cpa {
     type: count
     drill_fields: [campaign_name]
   }
-  dimension: max_partition_date {
-    type: date
-    sql: ${TABLE}.max_partition_date ;;
-  }
+  # dimension: max_partition_date {
+  #   type: date
+  #   sql: ${TABLE}.max_partition_date ;;
+  # }
 
-  dimension: min_partition_date {
-    type: date
-    sql: ${TABLE}.min_partition_date ;;
-  }
+  # dimension: min_partition_date {
+  #   type: date
+  #   sql: ${TABLE}.min_partition_date ;;
+  # }
 
-  dimension_group: comparison_date {
-    type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
-    sql:
-     CASE
-      WHEN ${copy} = 0 THEN TIMESTAMP(${partition_timestamp_date})
-      ELSE TIMESTAMP_SUB(
-        TIMESTAMP(${min_partition_date}),
-        INTERVAL DATE_DIFF(${max_partition_date}, ${min_partition_date}, DAY) DAY)
-    END ;;
-  }
+  # dimension_group: comparison_date {
+  #   type: time
+  #   timeframes: [raw, time, date, week, month, quarter, year]
+  #   sql:
+  #   CASE
+  #     WHEN ${copy} = 0 THEN ${partition_timestamp_date}
+  #     ELSE TIMESTAMP_SUB(
+  #       TIMESTAMP(${partition_timestamp_date}),
+  #       INTERVAL DATE_DIFF(
+  #         (SELECT MIN(DATE(partition_timestamp)) FROM `analysis-seeker.Google_ads_dataset.VIEW_COMPARATION_HOTEL_ADS_CPA` WHERE DATE(partition_timestamp) BETWEEN CURRENT_DATE() - INTERVAL 30 DAY AND CURRENT_DATE()),
+  #         ${max_partition_date},
+  #         DAY
+  #       ) DAY
+  #     )
+  #   END ;;
+  #   }
+
+  # filter: dynamic_date_range {
+  #   type: date
+  #   sql:
+  #   CASE
+  #     WHEN ${copy} = 0 THEN ${comparison_date_date}
+  #     ELSE TIMESTAMP_SUB(${{comparison_date_date}, INTERVAL DATE_DIFF(${max_partition_date}, ${min_partition_date}, DAY) DAY)
+  #   END ;;
+  # }
 }
