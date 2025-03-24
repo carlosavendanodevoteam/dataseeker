@@ -240,7 +240,8 @@ view: mview_busquedas {
     type: string
     sql: Case
           when ${comparation_referenceTimestamp_date} != ${reference_timestamp_date} then 1
-          else 0;;
+          else 0
+           END;;
   }
 
   measure: count_if_google_hotel_ads {
