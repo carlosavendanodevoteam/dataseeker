@@ -42,7 +42,7 @@ view: mview_prebookings {
   dimension_group: prebooking_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    sql: ${TABLE}.prebooking_timestamp ;;
+    sql: ${TABLE}.partitionTimestamp ;;
   }
   measure: count {
     type: count

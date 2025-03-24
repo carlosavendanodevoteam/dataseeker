@@ -1,11 +1,21 @@
 view: view_comparation_hotel_ads_cpa {
-  sql_table_name: `` ;;
+  sql_table_name: `Google_ads_dataset.VIEW_COMPARATION_HOTEL_ADS_CPA` ;;
 
 
   dimension: all_conversions_from_interactions_rate {
     type: number
     sql: ${TABLE}.all_conversions_from_interactions_rate ;;
   }
+  dimension: copy {
+    type: number
+    sql: ${TABLE}.copy ;;
+  }
+
+  measure: metrica_copy {
+    type: number
+    sql: ${TABLE}.copy ;;
+  }
+
   dimension: average_cpc {
     type: number
     sql: ${TABLE}.average_cpc ;;
@@ -38,10 +48,17 @@ view: view_comparation_hotel_ads_cpa {
     type: number
     sql: ${TABLE}.conversionsValue ;;
   }
-  dimension: copy {
+
+  measure: conversions_value_real {
     type: number
-    sql: ${TABLE}.copy ;;
+    sql: if(${copy}=0, sum(${conversions_value}), 0) ;;
   }
+
+  measure: conversions_value_copy {
+    type: number
+    sql: if(${copy}=1, sum(${conversions_value}), 0) ;;
+  }
+
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
@@ -127,32 +144,25 @@ view: view_comparation_hotel_ads_cpa {
     type: count
     drill_fields: [campaign_name]
   }
-  # dimension: max_partition_date {
-  #   type: date
-  #   sql: ${TABLE}.max_partition_date ;;
-  # }
+  measure: min_partition_date {
+    type: min
+    sql: ${partition_timestamp_date} ;;
+  }
 
-  # dimension: min_partition_date {
-  #   type: date
-  #   sql: ${TABLE}.min_partition_date ;;
-  # }
+  measure: max_partition_date {
+    type: max
+    sql: ${partition_timestamp_date} ;;
+  }
 
-  # dimension_group: comparison_date {
-  #   type: time
-  #   timeframes: [raw, time, date, week, month, quarter, year]
-  #   sql:
-  #   CASE
-  #     WHEN ${copy} = 0 THEN ${partition_timestamp_date}
-  #     ELSE TIMESTAMP_SUB(
-  #       TIMESTAMP(${partition_timestamp_date}),
-  #       INTERVAL DATE_DIFF(
-  #         (SELECT MIN(DATE(partition_timestamp)) FROM `analysis-seeker.Google_ads_dataset.VIEW_COMPARATION_HOTEL_ADS_CPA` WHERE DATE(partition_timestamp) BETWEEN CURRENT_DATE() - INTERVAL 30 DAY AND CURRENT_DATE()),
-  #         ${max_partition_date},
-  #         DAY
-  #       ) DAY
-  #     )
-  #   END ;;
-  #   }
+  dimension: fecha_final {
+    type: date
+    sql:
+    CASE
+      WHEN ${copy} = 0 THEN ${partition_timestamp_date}
+      ELSE DATE_ADD(${partition_timestamp_date}, INTERVAL -7 DAY)
+
+    END ;;
+  }
 
   # filter: dynamic_date_range {
   #   type: date
