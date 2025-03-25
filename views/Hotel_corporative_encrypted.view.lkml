@@ -32,7 +32,7 @@ view: hotel_corporative_encrypted {
   dimension: clean_name_for_oasis {
     type: string
     sql: Case
-          when ${TABLE}.name LIKE 'Oasis Hoteles%' THEN replace(${TABLE}.name, 'Oasis Hoteles', '')
+          when ${TABLE}.name LIKE 'Oasis Hoteles%' THEN replace(${TABLE}.name, 'Oasis Hoteles: ', '')
           else ${TABLE}.name
         END;;
   }
