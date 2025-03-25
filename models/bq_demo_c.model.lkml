@@ -316,7 +316,12 @@ explore: mview_busquedas {
   ) <= 365 ;;
 }
 
-explore: mview_prebookings {}
+explore: mview_prebookings {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_prebookings.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }}
 
 explore: mview_precheckins {
   join: mview_precheckins__guests {

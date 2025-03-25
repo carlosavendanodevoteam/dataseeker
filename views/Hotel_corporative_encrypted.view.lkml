@@ -29,6 +29,15 @@ view: hotel_corporative_encrypted {
     sql: ${TABLE}.name ;;
   }
 
+  dimension: clean_name_for_oasis {
+    type: string
+    sql: Case
+          when ${TABLE}.name LIKE 'Oasis Hoteles%' THEN replace(${TABLE}.name, 'Oasis Hoteles', '')
+          else ${TABLE}.name
+        END;;
+  }
+
+
   dimension: name_fixed {
     type: string
     sql: CASE
