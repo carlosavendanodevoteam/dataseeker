@@ -1,5 +1,5 @@
 view: mview_comparation_searches {
- # The name of this view in Looker is "Mview Busquedas"
+  # The name of this view in Looker is "Mview Busquedas"
 
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
@@ -20,7 +20,7 @@ view: mview_comparation_searches {
 
   dimension: country {
     type: string
-    sql: ${TABLE}.country;;}
+    sql: upper(${TABLE}.country);;}
 
   dimension: account {
     type: string
@@ -59,7 +59,7 @@ view: mview_comparation_searches {
   dimension: source_fixed {
     type: string
     sql: Case
-          When upper(${TABLE}.source_fixed) = 'CALLCENTER' THEN 'Callseeker';;
+      When upper(${TABLE}.source_fixed) = 'CALLCENTER' THEN 'Callseeker';;
 
   }
 
