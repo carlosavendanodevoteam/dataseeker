@@ -114,6 +114,10 @@ view: mview_comparation_bookings {
     type: number
     sql: ${TABLE}.comission ;;
   }
+  dimension: gateway_type {
+    type: string
+    sql: ${TABLE}.gateway_type ;;
+  }
   dimension: comments {
     type: string
     sql: UPPER(${TABLE}.comments) ;;
