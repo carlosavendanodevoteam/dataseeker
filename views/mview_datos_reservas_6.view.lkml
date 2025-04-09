@@ -792,6 +792,11 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.device ;;
   }
 
+  dimension: gateway_type {
+    type: string
+    sql: ${TABLE}.gateway_type ;;
+  }
+
   dimension: partition_string {
     type: string
     sql: ${TABLE}.partitionTimestamp;;
