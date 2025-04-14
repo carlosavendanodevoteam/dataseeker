@@ -340,6 +340,15 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
+  dimension: identifier_comparation {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${identifier}
+          ELSE 0
+        END;;
+  }
+
+
   dimension: new_filter_start_date {
     type: date
     sql: {% date_start new_filter %};;
