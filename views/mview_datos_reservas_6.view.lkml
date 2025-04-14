@@ -7,14 +7,14 @@ view: mview_datos_reservas_6 {
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
 
-    # Here's what a typical dimension looks like in LookML.
-    # A dimension is a groupable field that can be used to filter query results.
-    # This dimension will be called "Account" in Explore.
+  # Here's what a typical dimension looks like in LookML.
+  # A dimension is a groupable field that can be used to filter query results.
+  # This dimension will be called "Account" in Explore.
 
   dimension: account {
     type: string
     sql: ${TABLE}.account
-    ;;
+      ;;
   }
 
   dimension: additional_services {
@@ -328,6 +328,28 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.kids3 ;;
   }
 
+  filter: new_filter {
+    type: date
+  }
+
+  dimension: revenue_comparation {
+        type: number
+    sql: CASE
+          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${revenue}
+          ELSE 0
+        END;;
+  }
+
+  dimension: new_filter_start_date {
+    type: date
+    sql: {% date_start new_filter %};;
+  }
+
+  dimension: new_filter_end_date {
+    type: date
+    sql:{% date_end new_filter %};;
+  }
+
   dimension: language {
     type: string
     sql: ${TABLE}.LANGUAGE ;;
@@ -433,43 +455,43 @@ view: mview_datos_reservas_6 {
     sql: ${TABLE}.priceSupplements_in_booking_currency ;;
   }
 
-    dimension: promo {
-      type: string
-      sql: case
+  dimension: promo {
+    type: string
+    sql: case
           when ${TABLE}.Promo IS NULL THEN '-'
           When ${TABLE}.Promo = '' then '-'
           when ${TABLE}.Promo LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
           else ${TABLE}.Promo
         end
         ;;
-    }
+  }
 
-    dimension: promo2 {
-      type: string
-      sql: case
+  dimension: promo2 {
+    type: string
+    sql: case
           when ${TABLE}.Promo2 IS NULL THEN '-'
           When ${TABLE}.Promo2 = '' then '-'
           when ${TABLE}.Promo2 LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
           else ${TABLE}.Promo2
         end
         ;;
-    }
+  }
 
-    dimension: promo3 {
-      type: string
-      sql: case
+  dimension: promo3 {
+    type: string
+    sql: case
           when ${TABLE}.Promo3 IS NULL THEN '-'
           When ${TABLE}.Promo3 = '' then '-'
           when ${TABLE}.Promo3 LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
           else ${TABLE}.Promo3
         end
         ;;
-    }
+  }
 
-    dimension: promos {
-      type: string
-      sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
-    }
+  dimension: promos {
+    type: string
+    sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
+  }
 
   dimension: promocode {
     type: string
@@ -1236,18 +1258,18 @@ view: mview_datos_reservas_6 {
     type: string
     sql: ${dashboard_text} ;;
     html: {% if value == 'General overview. How am I doing?' %}
-    <p style="color: red; background-color: white; font-size:100%; font-family: 'Roboto', sans-serif; text-align:center">{{ rendered_value }}</p>
-    {% elsif value == '2' %}
-    <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% elsif value == 'Silver' %}
-    <p style="color: black; background-color: Silver; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% elsif value == 'BRONZE' %}
-    <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% elsif value == 'LITE' %}
-    <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% else %}
-    <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% endif %};;
+          <p style="color: red; background-color: white; font-size:100%; font-family: 'Roboto', sans-serif; text-align:center">{{ rendered_value }}</p>
+          {% elsif value == '2' %}
+          <p style="color: black; background-color: GOLD; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% elsif value == 'Silver' %}
+          <p style="color: black; background-color: Silver; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% elsif value == 'BRONZE' %}
+          <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% elsif value == 'LITE' %}
+          <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% else %}
+          <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% endif %};;
   }
 
   dimension: date_predetermined{
