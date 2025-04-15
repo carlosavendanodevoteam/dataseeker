@@ -327,19 +327,47 @@ view: mview_datos_reservas_6 {
     type: number
     sql: ${TABLE}.kids3 ;;
   }
+  ################################################################################################################################
+  dimension: partition_timestamp_date_end_date {
+    type: date
+    sql: CASE
+          WHEN {% date_end partition_timestamp_date %} IS NULL THEN TIMESTAMP(CURRENT_DATE)
+          ELSE {% date_end partition_timestamp_date %}
+        END ;;
+  }
 
+  dimension: partition_timestamp_date_start_date {
+    type: date
+    sql: CASE
+          WHEN {% date_start partition_timestamp_date %} IS NULL THEN TIMESTAMP(CURRENT_DATE)
+          ELSE {% date_start partition_timestamp_date %}
+        END ;;
+  }
+
+  dimension: diff_num_partition_timestamp {
+    type: number
+    sql: DATE_DIFF(${partition_timestamp_date_end_date}, ${partition_timestamp_date_start_date}, DAY);;
+  }
+
+  dimension: diff_date_partition_timestamp {
+    type: date
+    sql: DATE_SUB(${partition_timestamp_date}, INTERVAL ${diff_num_partition_timestamp} DAY) ;;
+  }
+
+  dimension: start_date_diff_date_partition_timestamp {
+    type: date
+    sql: DATE_SUB({% date_start partition_timestamp_date %}, INTERVAL ${diff_num_partition_timestamp} DAY) ;;
+  }
+
+  dimension: end_date_diff_date_partition_timestamp {
+    type: date
+    sql: DATE_SUB({% date_end partition_timestamp_date %}, INTERVAL ${diff_num_partition_timestamp} DAY) ;;
+  }
+  ################################################################################################################################
   filter: new_filter {
     type: date
-  }
-
-  dimension: revenue_comparation {
-        type: number
-    sql: CASE
-          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${revenue}
-          ELSE 0
-        END;;
-  }
-
+    }
+    #sql:DATE_SUB(${partition_timestamp_date}, INTERVAL ${diff_num_partition_timestamp} DAY) ;;
   dimension: new_filter_start_date {
     type: date
     sql: {% date_start new_filter %};;
@@ -350,6 +378,24 @@ view: mview_datos_reservas_6 {
     sql:{% date_end new_filter %};;
   }
 
+  ################################################################################################################################
+
+  dimension: revenue_comparation_final {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.partitionTimestamp >= TIMESTAMP(${start_date_diff_date_partition_timestamp}) and ${TABLE}.partitionTimestamp <= TIMESTAMP(${end_date_diff_date_partition_timestamp}) THEN ${revenue}
+          ELSE 0
+        END;;
+  }
+  ################################################################################################################################
+  dimension: revenue_comparation {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${revenue}
+          ELSE 0
+        END;;
+  }
+  ################################################################################################################################
   dimension: language {
     type: string
     sql: ${TABLE}.LANGUAGE ;;
