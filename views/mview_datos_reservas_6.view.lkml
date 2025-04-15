@@ -364,19 +364,23 @@ view: mview_datos_reservas_6 {
     sql: DATE_SUB({% date_end partition_timestamp_date %}, INTERVAL ${diff_num_partition_timestamp} DAY) ;;
   }
   ################################################################################################################################
-  filter: new_filter {
-    type: date
-    }
-    #sql:DATE_SUB(${partition_timestamp_date}, INTERVAL ${diff_num_partition_timestamp} DAY) ;;
-  dimension: new_filter_start_date {
-    type: date
-    sql: {% date_start new_filter %};;
+
+  dimension: revenue_comparation {
+        type: number
+    sql: CASE
+          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${revenue}
+          ELSE 0
+        END;;
   }
 
-  dimension: new_filter_end_date {
-    type: date
-    sql:{% date_end new_filter %};;
+  dimension: identifier_comparation {
+    type: number
+    sql: CASE
+          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${identifier}
+          ELSE 0
+        END;;
   }
+
 
   ################################################################################################################################
 
@@ -384,14 +388,6 @@ view: mview_datos_reservas_6 {
     type: number
     sql: CASE
           WHEN ${TABLE}.partitionTimestamp >= TIMESTAMP(${start_date_diff_date_partition_timestamp}) and ${TABLE}.partitionTimestamp <= TIMESTAMP(${end_date_diff_date_partition_timestamp}) THEN ${revenue}
-          ELSE 0
-        END;;
-  }
-  ################################################################################################################################
-  dimension: revenue_comparation {
-    type: number
-    sql: CASE
-          WHEN ${TABLE}.partitionTimestamp >= {% date_start new_filter %} and ${TABLE}.partitionTimestamp <= {% date_end new_filter %} THEN ${revenue}
           ELSE 0
         END;;
   }
