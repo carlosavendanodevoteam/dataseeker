@@ -104,6 +104,22 @@ view: mview_comparation_searches {
   END ;;
   }
 
+  measure: CLOSED_BOARD{
+    type: sum
+    sql: CASE
+          WHEN ${TABLE}.result ='CLOSED_BOARD' THEN 1
+          ELSE 0
+  END ;;
+  }
+
+  measure: WRONG_PROMOCODE{
+    type: sum
+    sql: CASE
+          WHEN ${TABLE}.result ='WRONG_PROMOCODE' THEN 1
+          ELSE 0
+  END ;;
+  }
+
   measure:  no_availability{
     type: sum
     sql: CASE
