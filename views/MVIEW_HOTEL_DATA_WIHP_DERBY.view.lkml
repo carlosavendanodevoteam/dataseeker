@@ -29,6 +29,10 @@ view: MVIEW_HOTEL_DATA_WIHP_DERBY {
     type: string
     sql: ${TABLE}.device_type ;;
   }
+  dimension: origin {
+    type: string
+    sql: ${TABLE}.origin ;;
+  }
   dimension: sum_elegible_impresion {
     type: number
     sql: ${TABLE}.sum_elegible_impresion ;;
@@ -38,6 +42,7 @@ view: MVIEW_HOTEL_DATA_WIHP_DERBY {
   #  sql: ${TABLE}.first_position_share_raw ;;
   #}
   dimension: hotel_code {
+    primary_key: yes
     type: string
     sql: ${TABLE}.hotel_code ;;
   }
@@ -64,7 +69,6 @@ view: MVIEW_HOTEL_DATA_WIHP_DERBY {
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
-    datatype: datetime
     sql: ${TABLE}.partition_timestamp ;;
   }
   measure: count {
