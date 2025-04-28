@@ -115,6 +115,16 @@ explore: hotel_ads_data {
       relationship: many_to_one
       sql_on: ${hotel_ads_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
     }
+    join:  derbysoft_data {
+      type: left_outer
+      relationship: many_to_one
+      sql_on: ${derbysoft_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+    }
+    join:  wihp_datos_reservas {
+      type: left_outer
+      relationship: many_to_one
+      sql_on: ${wihp_datos_reservas.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+    }
 }
 
 explore: ring2_travel_agents_report {}

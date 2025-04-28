@@ -73,9 +73,20 @@ view: derbysoft_data {
   }
 
   dimension: hotel_code {
+    primary_key: yes
     type: string
     sql: Case
           when ${hotel_name} = 'Garza Blanca Cancun' then 'tafer-garza-blanca'
+          WHEN ${hotel_name} ='GF VICTORIA' THEN 'gf-victoria'
+          WHEN ${hotel_name} ='GF Gran Costa Adeje Hotel' THEN 'gf-adeje'
+          WHEN ${hotel_name} ='Garza Blanca Cancun' THEN 'tafer-garza-blanca'
+          WHEN ${hotel_name} ='GF NOELIA' THEN 'gf-noelia'
+          WHEN ${hotel_name} ='GF FANABE' THEN 'gf-fanabe'
+          WHEN ${hotel_name} ='GF ISABEL' THEN 'gf-isabel'
+          WHEN ${hotel_name} ='Palmar Beach Resort & Spa Riviera Maya' THEN 'tafer-palmar-azul'
+          WHEN ${hotel_name} ='The Beachfront By The Fives Hotels' THEN 'fives-beachfront'
+          WHEN ${hotel_name} ='The Fives Beach Hotel & Residences' THEN 'fives-beach'
+          WHEN ${hotel_name} ='The Fives Oceanfront Puerto Morelos' THEN 'fives-oceanfront'
           else Null
         End;;
   }
