@@ -7,7 +7,7 @@ view: MVIEW_HOTEL_DATA_WIHP_DERBY {
   }
   dimension: sum_booking {
     type: number
-    sql: ${TABLE}.bookings_raw ;;
+    sql: ${TABLE}.sum_booking ;;
   }
   #dimension: campaign {
   #  type: string
