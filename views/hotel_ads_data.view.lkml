@@ -43,7 +43,7 @@ view: hotel_ads_data {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.cost ;;
+    sql: ${TABLE}.cost/1000000 ;;
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
