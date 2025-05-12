@@ -167,6 +167,11 @@ view: hotel_ads_data {
     sql: ${TABLE}.search_rank_lost_absolute_top_impression_share ;;
   }
 
+  dimension: search_rank_lost_absolute_top_impression_share_str {
+    type: string
+    sql: ${TABLE}.search_rank_lost_absolute_top_impression_share ;;
+  }
+
   dimension: search_rank_lost_impression_share {
     type: number
     sql: ${TABLE}.search_rank_lost_impression_share ;;
