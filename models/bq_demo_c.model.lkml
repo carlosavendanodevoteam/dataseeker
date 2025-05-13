@@ -551,7 +551,12 @@ explore: MVIEW_TASKS {}
 
 explore: MVIEW_TASKS_BY_CREATED_DATE {}
 
-explore: parkroyal_2024budget_fixed {}
+explore: parkroyal_2024budget_fixed {
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${parkroyal_2024budget_fixed.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }}
 
 explore: google_hotel_center{}
 explore: derbysoft_identifier_booking{}
