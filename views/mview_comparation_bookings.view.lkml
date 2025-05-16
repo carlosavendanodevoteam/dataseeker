@@ -480,7 +480,7 @@ view: mview_comparation_bookings {
   dimension: callseeker {
     type: string
     sql: Case
-          when ${TABLE}.source_fixed like '%allcenter%' and ${TABLE}.agent not like '%ort_%' then 'Callseeker'
+          when ${TABLE}.source_fixed like '%allcenter%' and not (${TABLE}.agent  like '%ort_%' or LOWER(${TABLE}.agent)  like '%_port%') then 'Callseeker'
           else ${TABLE}.source_fixed
         End;;
   }
