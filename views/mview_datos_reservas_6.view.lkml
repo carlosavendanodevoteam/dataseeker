@@ -1245,6 +1245,11 @@ view: mview_datos_reservas_6 {
     sql: ${week_string_cxl} ;;
   }
 
+  dimension: revenue_complete {
+    type: number
+    sql:${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0);;
+  }
+
   dimension: continent {
     type: string
     sql: Case
