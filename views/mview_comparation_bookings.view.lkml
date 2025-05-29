@@ -1102,7 +1102,7 @@ view: mview_comparation_bookings {
           WHEN UPPER(${room}) = "2 BEDROOM APARTMENT WITH SEA VIEWS (6 PEOPLE)" THEN "2 Bedroom Apartment with sea views ( max 6 people)"
           WHEN UPPER(${room}) = "2-BEDROOM APARTMENT (6 PEOPLE)" THEN "2 Bedroom Apartment Standard (max 6 people)"
            WHEN UPPER(${room}) = "STANDARD 2 BEDROOM APARTMENT" THEN "2 Bedroom Apartment Standard (max 6 people)"
-          WHEN UPPER(${room}) = "2-Bedroom Apartment with Sea View (6 people)" THEN "2 Bedroom Apartment with sea views ( max 6 people)"
+          WHEN UPPER(${room}) = "2-BEDROOM APARTMENT WITH SEA VIEW (6 PEOPLE)" THEN "2 Bedroom Apartment with sea views ( max 6 people)"
 
 
           WHEN UPPER(${room}) = "1 BEDROOM APARTMENT" THEN "1 Bedroom Apartment (max 4 people)"
