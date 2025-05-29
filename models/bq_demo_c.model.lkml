@@ -30,6 +30,8 @@ explore: view_comparation_hotel_ads_cpa {
 
 explore: reservas_historicas_gf {}
 
+explore: mview_meta_campaign_data {}
+
 explore: mview_parkroyal_all_marketing {}
 
 explore: wi_hp_gha_bookings_identifier_fixed{}
