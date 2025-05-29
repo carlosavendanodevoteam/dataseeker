@@ -1096,6 +1096,13 @@ view: mview_comparation_bookings {
           WHEN UPPER(${room}) = "FAMILY ROOM" THEN "Family room"
           WHEN UPPER(${room}) = "SINGLE BED" THEN "Single Room"
           WHEN UPPER(${room}) = "SUPERIOR DOUBLE ROOM - 2 BEDS" THEN "Superior Double Room"
+          WHEN UPPER(${room}) = "2 BEDROOM APARTMENT WITH PRIVATE GARDEN" THEN "2 Bedroom Apartment with private garden (max 6 people)"
+          WHEN UPPER(${room}) = "2 BEDROOM APARTMENT WITH PRIVATE GARDEN (6 PEOPLE)" THEN "2 Bedroom Apartment with private garden (max 6 people)"
+          WHEN UPPER(${room}) = "2 BEDROOM APARTMENT WITH SEA VIEWS" THEN "2 Bedroom Apartment with sea views ( max 6 people)"
+          WHEN UPPER(${room}) = "2 BEDROOM APARTMENT WITH SEA VIEWS (6 PEOPLE)" THEN "2 Bedroom Apartment with sea views ( max 6 people)"
+          WHEN UPPER(${room}) = "2-BEDROOM APARTMENT (6 PEOPLE)" THEN "2 Bedroom Apartment Standard (max 6 people)"
+          WHEN UPPER(${room}) = "STANDARD 2 BEDROOM APARTMENT" THEN "2 Bedroom Apartment Standard (max 6 people)"
+          WHEN UPPER(${room}) = "1 BEDROOM APARTMENT" THEN "1 Bedroom Apartment (max 4 people)"
 
           ELSE ${room} -- En caso de que haya valores no mapeados, se mantiene el original
         END;;
