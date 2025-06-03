@@ -727,7 +727,7 @@ view: mview_datos_reservas_6 {
 
   dimension_group: real_timestamp_ {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year, hour]
     sql: ${TABLE}.timestamp ;;
   }
 
