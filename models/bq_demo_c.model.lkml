@@ -187,6 +187,11 @@ explore: wihp_datos_reservas{
     relationship: many_to_one
     sql_on: ${wihp_datos_reservas.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
+  join: map_additional_services {
+    type: left_outer
+    sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code} ;;
+    relationship: many_to_many
+  }
 }
 
 explore: view_datos_reservas_gha_2023_2024 {
@@ -236,6 +241,8 @@ explore: ratio_conversion {}
 explore: call_agent2 {}
 
 explore: additional_services_consolidate {}
+
+explore: map_additional_services {}
 
 explore: boards_spanish {}
 
@@ -348,6 +355,11 @@ explore: mview_precheckins {
     relationship: many_to_one
     sql_on: ${mview_precheckins.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }
+  join: map_additional_services {
+    type: left_outer
+    sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code} ;;
+    relationship: many_to_many
+  }
 }
 
 explore: mview_bookings_by_start_date {
@@ -373,6 +385,11 @@ explore: mview_datos_reservas_6 {
     type: inner
     relationship: many_to_one
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${hotels_data.hotel_code};;
+  }
+  join: map_additional_services {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code};;
   }
 }
 
@@ -522,6 +539,12 @@ explore: ratecheck_log {
     type: inner
     relationship: many_to_one
     sql_on: ${ratecheck_log.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+
+  join: map_additional_services {
+    type: left_outer
+    sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code} ;;
+    relationship: many_to_many
   }
 
 }

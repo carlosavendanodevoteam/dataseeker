@@ -1337,5 +1337,46 @@ view: mview_datos_reservas_6 {
           Else 'Complejos Tulum'
          End ;;
   }
+  dimension: hotel_name_from_joined_map {
+    type: string
+    sql: ${map_additional_services.values_map} ;;
+    label: "Hotel Name (from Joined Map)"
+    description: "This dimension pulls the hotel name from the map_additional_services view via a join in the Explore."
+  }
+  dimension: key_map_from_joined_map {
+    type: string
+    sql: ${map_additional_services.key_map} ;;
+    label: "key map (from Joined Map)"
+    description: "This dimension pulls the hotel name from the map_additional_services view via a join in the Explore."
+  }
 
+  dimension: mach_map {
+    type: yesno
+    sql:
+
+    EXISTS (
+          SELECT 1
+          FROM
+              (SELECT TRIM(LOWER(val)) AS clean_element
+               FROM UNNEST(SPLIT(${map_additional_services.values_map}, ',')) AS val
+               WHERE TRIM(val) != '') AS element1_set -- Filtra elementos vacíos
+          JOIN
+              (SELECT TRIM(LOWER(val)) AS clean_element
+               FROM UNNEST(SPLIT(${mview_datos_reservas_6.additional_services}, ';')) AS val
+               WHERE TRIM(val) != '') AS element2_set -- Filtra elementos vacíos
+          ON element1_set.clean_element = element2_set.clean_element
+      )
+    ;;
+    description: "Indica si las dos cadenas delimitadas por comas comparten al menos un elemento en común (comparación insensible a mayúsculas/minúsculas y espacios)."
+  }
+
+  measure: sum_of_revenue_additional_service_map {
+    type: sum_distinct
+    sql: CASE
+          WHEN ${mach_map} = True THEN ${revenue}
+          WHEN ${mach_map} = False THEN 0
+        END;;
+      sql_distinct_key: ${identifier} ;;
+      label: "Sum of Revenue (Mapped Services)"
+    }
 }
