@@ -228,11 +228,8 @@ explore: mview_comparation_searches {
     sql_on: ${mview_comparation_searches.hotel_code} = ${hotels_data.hotel_code};;
   }
 
-  sql_always_where: DATE_DIFF(
-    CURRENT_DATE(),
-    CAST(${mview_comparation_searches.partition_timestamp_date} AS DATE),
-    DAY
-  ) <= 365 ;;
+  sql_always_where:  partitionTimestamp >= TIMESTAMP(DATE_SUB(CURRENT_DATE(), INTERVAL 365 DAY))
+  AND partitionTimestamp < TIMESTAMP(CURRENT_DATE()) ;;
 }
 
 
