@@ -1,5 +1,5 @@
 - dashboard: sales_2_0_mejorado
-  title: Sales 3.0 (Paraty Tech)
+  title: Sales 3.0
   layout: tile
   tile_size: 100
   crossfilter_enabled: true
