@@ -1,8 +1,4 @@
-# SALES DASHBOARD 2.0 - Rediseñado para importación completa en Looker
-
-# Configuración del dashboard
-
-- title: SALES DASHBOARD V2
+- title: SALES DASHBOARD V3
   layout: single_column
   preferred_viewer: dashboards-next
   description: "Resumen ejecutivo, tendencias y segmentaciones clave del rendimiento comercial"
@@ -27,7 +23,7 @@
     elements:
       - title: Revenue (€)
         name: Revenue
-        model: bq_demo_c
+
         explore: mview_comparation_bookings
         type: single_value
         fields: [revenue, revenue_last_year]
@@ -49,7 +45,7 @@
 
       - title: Bookings
         name: Bookings
-        model: bq_demo_c
+
         explore: mview_comparation_bookings
         type: single_value
         fields: [bookings, bookings_last_year]
@@ -70,7 +66,7 @@
 
       - title: Average Daily Rate (ADR)
         name: ADR
-        model: bq_demo_c
+
         explore: mview_comparation_bookings
         type: single_value
         fields: [revenue, rn]
@@ -82,7 +78,7 @@
 
       - title: Average Length of Stay
         name: LoS
-        model: bq_demo_c
+
         explore: mview_comparation_bookings
         type: single_value
         fields: [nights]
@@ -94,7 +90,7 @@
 
       - title: "% Cancelaciones"
         name: Cancelaciones
-        model: bq_demo_c
+
         explore: mview_comparation_bookings
         type: single_value
         fields: [cancellations, bookings]
@@ -109,7 +105,7 @@
     # -------------------------
   - title: Monthly Trends
     name: Monthly Trends
-    model: bq_demo_c
+
     explore: mview_comparation_bookings_by_start_date
     type: line
     fields: [partition_timestamp_month, revenue, bookings, rn]
@@ -122,7 +118,7 @@
     # -------------------------
   - title: Funnel Conversion
     name: Funnel Conversion
-    model: bq_demo_c
+
     explore: funnel_stats
     type: looker_funnel
     fields: [booking1, booking2, booking3]
@@ -134,7 +130,7 @@
     # -------------------------
   - title: Performance by Market
     name: Markets
-    model: bq_demo_c
+
     explore: mview_comparation_bookings
     type: looker_grid
     fields: [full_country, bookings, revenue, rn]
@@ -148,7 +144,7 @@
     # -------------------------
   - title: Device/Room/Board Breakdown
     name: Segments
-    model: bq_demo_c
+
     explore: mview_comparation_bookings
     type: looker_grid
     fields: [device, room, board, revenue, bookings, rn]
@@ -160,7 +156,7 @@
     # -------------------------
   - title: On The Books
     name: OTB
-    model: bq_demo_c
+
     explore: mview_comparation_bookings_by_start_date
     type: looker_grid
     fields: [partition_timestamp_month, bookings, revenue, rn]

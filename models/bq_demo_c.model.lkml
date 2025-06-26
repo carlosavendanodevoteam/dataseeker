@@ -1,6 +1,5 @@
 # Define the database connection to be used for this model.
 connection: "bq_demo_c"
-
 # include all the views
 include: "/views/**/*.view.lkml"
 
