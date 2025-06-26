@@ -598,5 +598,3 @@ explore: derbysoft_data {
     relationship: many_to_one
     sql_on: ${derbysoft_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }}
-
-  include: "/dashboards/bucked.dashboard.lookml"
