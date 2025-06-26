@@ -1,12 +1,11 @@
-- title: SALES DASHBOARD V3
+# SALES DASHBOARD 2.0 - Rediseñado para importación completa en Looker
+
+- title: SALES DASHBOARD V2
   layout: single_column
   preferred_viewer: dashboards-next
   description: "Resumen ejecutivo, tendencias y segmentaciones clave del rendimiento comercial"
   elements:
 
-    # -------------------------
-    # Encabezado principal
-    # -------------------------
   - type: text
     title_text: "SALES DASHBOARD 2.0"
     body_text: '[{"type":"h1","children":[{"text":"SALES DASHBOARD 2.0","bold":true}]}]'
@@ -15,15 +14,11 @@
     width: 24
     height: 2
 
-    # -------------------------
-    # KPIs Ejecutivos
-    # -------------------------
   - type: row
     title: "Executive Summary"
     elements:
       - title: Revenue (€)
         name: Revenue
-
         explore: mview_comparation_bookings
         type: single_value
         fields: [revenue, revenue_last_year]
@@ -45,7 +40,6 @@
 
       - title: Bookings
         name: Bookings
-
         explore: mview_comparation_bookings
         type: single_value
         fields: [bookings, bookings_last_year]
@@ -66,7 +60,6 @@
 
       - title: Average Daily Rate (ADR)
         name: ADR
-
         explore: mview_comparation_bookings
         type: single_value
         fields: [revenue, rn]
@@ -78,7 +71,6 @@
 
       - title: Average Length of Stay
         name: LoS
-
         explore: mview_comparation_bookings
         type: single_value
         fields: [nights]
@@ -90,7 +82,6 @@
 
       - title: "% Cancelaciones"
         name: Cancelaciones
-
         explore: mview_comparation_bookings
         type: single_value
         fields: [cancellations, bookings]
@@ -100,12 +91,8 @@
             expression: "${cancellations}/${bookings}"
             value_format_name: percent_1
 
-    # -------------------------
-    # Tendencia Mensual
-    # -------------------------
   - title: Monthly Trends
     name: Monthly Trends
-
     explore: mview_comparation_bookings_by_start_date
     type: line
     fields: [partition_timestamp_month, revenue, bookings, rn]
@@ -113,24 +100,16 @@
     filters:
       mview_comparation_bookings_by_start_date.cancelled: 'No'
 
-    # -------------------------
-    # Funnel de conversión
-    # -------------------------
   - title: Funnel Conversion
     name: Funnel Conversion
-
     explore: funnel_stats
     type: looker_funnel
     fields: [booking1, booking2, booking3]
     limit: 50
     sorts: [booking1 desc]
 
-    # -------------------------
-    # Análisis por Mercado
-    # -------------------------
   - title: Performance by Market
     name: Markets
-
     explore: mview_comparation_bookings
     type: looker_grid
     fields: [full_country, bookings, revenue, rn]
@@ -139,24 +118,16 @@
       mview_comparation_bookings.cancelled: 'No'
     enable_conditional_formatting: true
 
-    # -------------------------
-    # Segmentación
-    # -------------------------
   - title: Device/Room/Board Breakdown
     name: Segments
-
     explore: mview_comparation_bookings
     type: looker_grid
     fields: [device, room, board, revenue, bookings, rn]
     filters:
       mview_comparation_bookings.cancelled: 'No'
 
-    # -------------------------
-    # On the Books
-    # -------------------------
   - title: On The Books
     name: OTB
-
     explore: mview_comparation_bookings_by_start_date
     type: looker_grid
     fields: [partition_timestamp_month, bookings, revenue, rn]
