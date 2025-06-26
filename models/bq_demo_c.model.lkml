@@ -2,6 +2,8 @@
 connection: "bq_demo_c"
 # include all the views
 include: "/views/**/*.view.lkml"
+include: "/sales.dashboard.lookml"
+include: "/dashboards/*"
 
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
