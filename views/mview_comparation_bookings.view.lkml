@@ -1111,6 +1111,16 @@ view: mview_comparation_bookings {
         END;;
   }
 
+  dimension: source_metabuscador {
+    type: string
+    sql:Case
+    when lower(${source}) LIKE '%rivago%' then "Trivago"
+    when lower(${source}) LIKE '%ripadvisor%' then "Tripadvisor"
+    when lower(${source}) LIKE "%kyscanner%" then "Skyscanner"
+    else ''
+    END;;
+  }
+
   dimension: standarized_room {
     type: string
     sql: Case
