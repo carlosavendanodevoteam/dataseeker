@@ -1,8 +1,9 @@
 # Define the database connection to be used for this model.
 connection: "bq_demo_c"
-
 # include all the views
 include: "/views/**/*.view.lkml"
+include: "/sales.dashboard.lookml"
+include: "/dashboards/*"
 
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
@@ -598,5 +599,3 @@ explore: derbysoft_data {
     relationship: many_to_one
     sql_on: ${derbysoft_data.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
   }}
-
-  include: "/dashboards/bucked.dashboard.lookml"
