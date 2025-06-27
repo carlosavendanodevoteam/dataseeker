@@ -31,7 +31,18 @@ explore: view_comparation_hotel_ads_cpa {
 
 explore: reservas_historicas_gf {}
 
-explore: mview_meta_campaign_data {}
+explore: mview_meta_campaign_data {
+  join: view_unique_hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_meta_campaign_data.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
+  }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_meta_campaign_data.hotel_code} = ${hotels_data.hotel_code};;
+  }
+}
 
 explore: mview_parkroyal_all_marketing {}
 
