@@ -48,6 +48,10 @@ view: MVIEW_HOTEL_DATA_WIHP_DERBY {
     type: number
     sql: ${TABLE}.sum_revenue ;;
   }
+  dimension: campaign {
+    type: string
+    sql: ${TABLE}.campaign ;;
+  }
   dimension_group: partition_timestamp {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]

@@ -45,6 +45,14 @@ view: mview_campaign_data {
     type: number
     sql: ${TABLE}.cost ;;
   }
+  dimension: click {
+    type: number
+    sql: ${TABLE}.click ;;
+  }
+  dimension: impressions {
+    type: number
+    sql: ${TABLE}.impressions ;;
+  }
 
   dimension: search_top_impression_share {
     type: number
