@@ -95,6 +95,18 @@ view: ring2travel_calls_report {
     type: string
     sql: ${TABLE}.Call_Outcome_name ;;
   }
+
+  dimension: Call_Outcome_name_fixed {
+    type: string
+    sql:  CASE
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%cancelar reserva%' THEN 'Cancelar reserva (Podemos ver - hacer)'
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%modificar%' OR LOWER(${TABLE}.Call_Outcome_name) LIKE '%modificaci%' THEN 'Modificar reserva (Podemos ver - hacer)'
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%oferta no disponible%' THEN 'Oferta No disponible Ring2Travel'
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%reservas que no podemos gestionar%' THEN 'Reservas que no podemos gestionar (OTAS, Central, Web, bonos, cofres, tarjetas regalo, Daypass, Spa, Restaurante, CXL fuera de plazo o NR, etc)'
+            ELSE ${TABLE}.Call_Outcome_name
+          END;;
+  }
+
   dimension: Queue_Name {
     type: string
     sql: ${TABLE}.Queue_Name ;;
@@ -109,8 +121,9 @@ view: ring2travel_calls_report {
             when ${TABLE}.Queue_Name like '%Taiga Lake%' then 'q10-caspe'
             when ${TABLE}.Queue_Name like '%Taiga Tarifa%' then 'q10-teacampa'
             when ${TABLE}.Queue_Name like '%Taiga Costa Calida%' then 'q10-portus'
-            when ${TABLE}.Queue_Name like '%Taiga Las Dunas%' then 'taiga-dunas'
+            when ${TABLE}.Queue_Name like '%Taiga Las Dunas%' OR ${TABLE}.Queue_Name like '%Taiga Puerto Santa María%' then 'taiga-dunas'
             when ${TABLE}.Queue_Name like '%Taiga Valdevaqueros%' then 'taiga-valdevaqueros'
+            when ${TABLE}.DDI_Description like '%Casa Dorada%' then 'casa-dorada'
             else ${TABLE}.Queue_Name
             End;;
 }
