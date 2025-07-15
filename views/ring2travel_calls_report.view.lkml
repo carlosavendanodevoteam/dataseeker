@@ -100,9 +100,11 @@ view: ring2travel_calls_report {
     type: string
     sql:  CASE
             WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%cancelar reserva%' THEN 'Cancelar reserva (Podemos ver - hacer)'
-            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%modificar%' OR LOWER(${TABLE}.Call_Outcome_name) LIKE '%modificaci%' THEN 'Modificar reserva (Podemos ver - hacer)'
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%modifica%reserva%' THEN 'Modificar reserva (Podemos ver - hacer)'
             WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%oferta no disponible%' THEN 'Oferta No disponible Ring2Travel'
             WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%reservas que no podemos gestionar%' THEN 'Reservas que no podemos gestionar (OTAS, Central, Web, bonos, cofres, tarjetas regalo, Daypass, Spa, Restaurante, CXL fuera de plazo o NR, etc)'
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%sin disponibilidad%' THEN 'Sin disponibilidad (motivo + email (solo ocupación))'
+            WHEN LOWER(${TABLE}.Call_Outcome_name) LIKE '%tarjeta%crédito%' THEN 'Tarjeta de crédito (motivo)'
             ELSE ${TABLE}.Call_Outcome_name
           END;;
   }
