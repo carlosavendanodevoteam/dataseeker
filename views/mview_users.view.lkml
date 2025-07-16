@@ -7,9 +7,9 @@ view: mview_users {
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
 
-    # Here's what a typical dimension looks like in LookML.
-    # A dimension is a groupable field that can be used to filter query results.
-    # This dimension will be called "Address" in Explore.
+  # Here's what a typical dimension looks like in LookML.
+  # A dimension is a groupable field that can be used to filter query results.
+  # This dimension will be called "Address" in Explore.
 
   dimension: address {
     type: string
@@ -134,6 +134,14 @@ view: mview_users {
   dimension: loyalty_level {
     type: string
     sql: ${TABLE}.loyalty_level ;;
+  }
+
+  dimension: loyalty_level_fixed {
+    type: string
+    sql: CASE
+          WHEN ${TABLE}.loyalty_level IS NULL AND ${TABLE}.hotel_code LIKE '%q10%' THEN 'TAIGA FAN'
+          ELSE ${TABLE}.loyalty_level
+          END;;
   }
 
   dimension: modification_timestamp {
