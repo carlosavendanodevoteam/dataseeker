@@ -128,6 +128,11 @@ view: ring2travel_calls_report {
             when ${TABLE}.DDI_Description like '%Casa Dorada%' then 'casa-dorada'
             else ${TABLE}.Queue_Name
             End;;
-}
+  }
+
+  dimension: Comments {
+    type: string
+    sql: ${TABLE}.Comments ;;
+  }
 
 }

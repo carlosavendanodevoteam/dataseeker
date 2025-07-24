@@ -146,6 +146,7 @@ view: mview_datos_reservas_6 {
     type: string
     sql: Case
           when ${agent} like 'agente%' and ${agent} not like '%-nau%' and ${agent} not like '%landmar%' and ${agent} not like '%oasis%' and ${agent} not like '%qhotels%' and ${agent} not like '%_ona' and ${source_fixed} like '%Callcenter%' THEN 'True'
+          when ${source_fixed} like '%Callcenter%' and ${hotel_code} like 'casa-dorada' THEN 'True'
           else 'False'
         End;;
   }

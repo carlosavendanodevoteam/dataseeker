@@ -805,6 +805,7 @@ view: mview_comparation_bookings_by_start_date {
     type: string
     sql: Case
           when ${TABLE}.agent like 'agente%' and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%' and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and ${TABLE}.source_fixed like '%allcenter%' THEN 'True'
+          when ${source_fixed} like '%Callcenter%' and ${hotel_code} like 'casa-dorada' THEN 'True'
           else 'False'
         End;;
   }
