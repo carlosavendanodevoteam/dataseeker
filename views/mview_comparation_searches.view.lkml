@@ -191,6 +191,22 @@ view: mview_comparation_searches {
     type: number
     sql: ${OK}+${Restrictions} ;;
   }
+  measure: busqueda_LY_0 {
+    type: sum
+    sql: CASE
+          WHEN ${TABLE}.last_year_searches = 0 THEN 1
+          ELSE 0
+       END ;;
+  }
+
+  measure: busqueda_LY_1 {
+    type: sum
+    sql: CASE
+          WHEN ${TABLE}.last_year_searches = 1 THEN 1
+          ELSE 0
+       END ;;
+  }
+
 
   dimension: full_country {
     # Nueva dimensión para los nombres completos de los países
