@@ -573,7 +573,7 @@ view: mview_comparation_bookings {
   }
   dimension: occupation {
     type: string
-    sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
+    sql: concat((${TABLE}.adults1+${TABLE}.adults2+${TABLE}.adults3), "-", (${TABLE}.kids1 + ${TABLE}.kids2 + ${TABLE}.kids3), "-", (${TABLE}.babies1 + ${TABLE}.babies2 + ${TABLE}.babies3)) ;;
   }
   dimension: advance_cancellation{
     type: number
