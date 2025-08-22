@@ -366,6 +366,10 @@ view: derbysoft_data {
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/GoogleAds.png/640px-GoogleAds.png" width="300" height="50">
     {% elsif value == 'Trivago' %}
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Trivago.svg/640px-Trivago.svg.png" width="200" height="50">
+    {% elsif value == 'Kayak' %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/KAYAK_Software_Corporation_logo.svg/1920px-KAYAK_Software_Corporation_logo.svg.png" width="200" height="50">
+    {% elsif value == 'Bing' %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Bing_logo.svg/1920px-Microsoft_Bing_logo.svg.png" width="200" height="50">
     {% else %}
       <p style="color: black; background-color: white; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% endif %};;
