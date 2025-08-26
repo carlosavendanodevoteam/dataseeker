@@ -53,6 +53,11 @@ view: rate {
     type: string
     sql: ${TABLE}.type ;;
   }
+  dimension: flightHotel {
+    type: yesno
+    sql: ${TABLE}.flightHotel ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [name]

@@ -418,6 +418,11 @@ explore: mview_comparation_bookings {
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings.hotel_code} = ${hotels_data.hotel_code} ;;
   }
+  join: rate {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${rate.key} = ${mview_comparation_bookings.rate};;
+  }
 }
 
 explore: encrypted_hotel_code  {}

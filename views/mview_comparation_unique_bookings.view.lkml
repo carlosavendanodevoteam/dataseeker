@@ -474,6 +474,17 @@ view: mview_comparation_unique_bookings {
       END;;
   }
 
+  dimension: revenue_in_euros {
+    type: number
+    sql: CASE
+        WHEN ${TABLE}.currency = 'EUR' THEN ${revenue}
+        WHEN ${TABLE}.currency = 'USD' THEN ${revenue} * 0,86
+        WHEN ${TABLE}.currency = 'MXN' THEN ${revenue} * 0,046
+        WHEN ${TABLE}.currency = 'COP' THEN ${revenue} * 0,00021
+        WHEN ${TABLE}.currency = 'MAD' THEN ${revenue} * 0,095
+      END;;
+  }
+
   dimension: rn {
     type: number
     sql: CASE
