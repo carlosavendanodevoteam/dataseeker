@@ -517,6 +517,13 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
+  dimension: revenue_fh {
+    type: number
+    sql: CASE
+          WHEN ${rate.flightHotel} = False THEN 0
+          WHEN ${rate.flightHotel} = True THEN ${revenue}
+        END;;
+  }
   dimension: revenue_complete {
     type: number
     sql:${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0);;
@@ -591,6 +598,14 @@ view: mview_comparation_bookings {
           else REPLACE(TRIM(UPPER(${TABLE}.RateName)), '.', '')
         end;;
   }
+
+  dimension: rateName_FH {
+    type: string
+    sql:CASE
+          WHEN ${rate.flightHotel} = True THEN ${rateName_fixed}
+        end;;
+  }
+
 
   dimension: hotel_code_by_account {
     type: string
