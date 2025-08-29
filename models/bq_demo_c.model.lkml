@@ -138,6 +138,8 @@ explore: MVIEW_HOTEL_DATA_WIHP_DERBY {
   }
 }
 
+explore: conversion_rates_map {}
+
 explore: ring2_travel_agents_report {}
 
 explore: view_unique_hotel_corporative_encrypted {}
@@ -152,6 +154,11 @@ explore:mview_comparation_unique_bookings {
     type: inner
     relationship: many_to_one
     sql_on: ${mview_comparation_unique_bookings.hotel_code} = ${hotels_data.hotel_code};;
+  }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_comparation_unique_bookings.currency} = ${conversion_rates_map.currency};;
   }
 }
 
