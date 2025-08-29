@@ -632,6 +632,12 @@ view: mview_datos_reservas_6 {
         END;;
   }
 
+  dimension: revenue_in_euros {
+    type: number
+    sql: ${revenue} * ${conversion_rates_map.rate} ;;
+    value_format_name: eur
+  }
+
   dimension: rn {
     type: number
     sql: CASE

@@ -524,6 +524,13 @@ view: mview_comparation_bookings {
           WHEN ${rate.flightHotel} = True THEN ${revenue}
         END;;
   }
+
+  dimension: revenue_in_euros {
+    type: number
+    sql: ${revenue} * ${conversion_rates_map.rate} ;;
+    value_format_name: eur
+  }
+
   dimension: revenue_complete {
     type: number
     sql:${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0);;
