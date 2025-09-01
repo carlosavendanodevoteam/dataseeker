@@ -346,7 +346,13 @@ explore: mview_prebookings {
     type: inner
     relationship: many_to_one
     sql_on: ${mview_prebookings.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
-  }}
+  }
+  join: mview_comparation_bookings {
+    type: left_outer
+    relationship: many_to_many
+    sql_on: ${mview_prebookings.hotel_code} = ${mview_comparation_bookings.hotel_code} and ${mview_prebookings.identifier}=${mview_comparation_bookings.identifier};;
+  }
+  }
 
 explore: mview_precheckins {
   join: mview_precheckins__guests {
