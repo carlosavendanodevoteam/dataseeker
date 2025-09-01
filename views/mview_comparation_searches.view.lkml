@@ -127,6 +127,15 @@ view: mview_comparation_searches {
           ELSE 0
   END ;;
   }
+
+  measure:  capacity{
+    type: sum
+    sql: CASE
+          WHEN ${TABLE}.result ='CAPACITY' THEN 1
+          ELSE 0
+  END ;;
+  }
+
   dimension: nights{
     type: number
     sql: date_diff(cast(${TABLE}.endDate as timestamp), cast(${TABLE}.startDate as timestamp), day) ;;

@@ -517,6 +517,20 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
+  dimension: revenue_fh {
+    type: number
+    sql: CASE
+          WHEN ${rate.flightHotel} = False THEN 0
+          WHEN ${rate.flightHotel} = True THEN ${revenue}
+        END;;
+  }
+
+  dimension: revenue_in_euros {
+    type: number
+    sql: ${revenue} * ${conversion_rates_map.rate} ;;
+    value_format_name: eur
+  }
+
   dimension: revenue_complete {
     type: number
     sql:${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0);;
@@ -573,7 +587,7 @@ view: mview_comparation_bookings {
   }
   dimension: occupation {
     type: string
-    sql: concat(${TABLE}.adults1, "-", ${TABLE}.kids1, "-", ${TABLE}.babies1) ;;
+    sql: concat((${TABLE}.adults1+${TABLE}.adults2+${TABLE}.adults3), "-", (${TABLE}.kids1 + ${TABLE}.kids2 + ${TABLE}.kids3), "-", (${TABLE}.babies1 + ${TABLE}.babies2 + ${TABLE}.babies3)) ;;
   }
   dimension: advance_cancellation{
     type: number
@@ -591,6 +605,14 @@ view: mview_comparation_bookings {
           else REPLACE(TRIM(UPPER(${TABLE}.RateName)), '.', '')
         end;;
   }
+
+  dimension: rateName_FH {
+    type: string
+    sql:CASE
+          WHEN ${rate.flightHotel} = True THEN ${rateName_fixed}
+        end;;
+  }
+
 
   dimension: hotel_code_by_account {
     type: string

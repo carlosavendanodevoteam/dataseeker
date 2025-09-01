@@ -474,6 +474,12 @@ view: mview_comparation_unique_bookings {
       END;;
   }
 
+  dimension: revenue_in_euros {
+    type: number
+    sql: ${revenue} * ${conversion_rates_map.rate} ;;
+    value_format_name: eur
+  }
+
   dimension: rn {
     type: number
     sql: CASE

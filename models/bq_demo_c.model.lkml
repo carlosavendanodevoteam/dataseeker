@@ -138,6 +138,8 @@ explore: MVIEW_HOTEL_DATA_WIHP_DERBY {
   }
 }
 
+explore: conversion_rates_map {}
+
 explore: ring2_travel_agents_report {}
 
 explore: view_unique_hotel_corporative_encrypted {}
@@ -152,6 +154,11 @@ explore:mview_comparation_unique_bookings {
     type: inner
     relationship: many_to_one
     sql_on: ${mview_comparation_unique_bookings.hotel_code} = ${hotels_data.hotel_code};;
+  }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_comparation_unique_bookings.currency} = ${conversion_rates_map.currency};;
   }
 }
 
@@ -203,6 +210,11 @@ explore: wihp_datos_reservas{
     type: left_outer
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code} ;;
     relationship: many_to_many
+  }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_datos_reservas_6.currency} = ${conversion_rates_map.currency};;
   }
 }
 
@@ -375,6 +387,11 @@ explore: mview_precheckins {
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code} ;;
     relationship: many_to_many
   }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_datos_reservas_6.currency} = ${conversion_rates_map.currency};;
+  }
 }
 
 explore: mview_bookings_by_start_date {
@@ -406,6 +423,11 @@ explore: mview_datos_reservas_6 {
     relationship: many_to_many
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code};;
   }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_datos_reservas_6.currency} = ${conversion_rates_map.currency};;
+  }
 }
 
 explore: mview_comparation_bookings {
@@ -423,6 +445,16 @@ explore: mview_comparation_bookings {
     type: left_outer
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings.hotel_code} = ${hotels_data.hotel_code} ;;
+  }
+  join: rate {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${rate.key} = ${mview_comparation_bookings.rate};;
+  }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_comparation_bookings.currency} = ${conversion_rates_map.currency};;
   }
 }
 
@@ -555,11 +587,15 @@ explore: ratecheck_log {
     relationship: many_to_one
     sql_on: ${ratecheck_log.hotel_code} = ${view_unique_hotel_corporative_encrypted.hotel_code};;
   }
-
   join: map_additional_services {
     type: left_outer
     sql_on: ${mview_datos_reservas_6.hotel_code} = ${map_additional_services.hotel_code} ;;
     relationship: many_to_many
+  }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_datos_reservas_6.currency} = ${conversion_rates_map.currency};;
   }
 
 }
