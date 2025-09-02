@@ -517,17 +517,24 @@ view: mview_comparation_bookings {
           WHEN ${TABLE}.cancelled = False THEN ${TABLE}.price + COALESCE(${TABLE}.priceSupplements, 0)
         END;;
   }
-  dimension: revenue_fh {
-    type: number
-    sql: CASE
-          WHEN ${rate.flightHotel} = False THEN 0
-          WHEN ${rate.flightHotel} = True THEN ${revenue}
-        END;;
-  }
 
   dimension: revenue_in_euros {
     type: number
-    sql: ${revenue} * ${conversion_rates_map.rate} ;;
+    sql:
+      -- Primero, creamos una variable Liquid y buscamos si el join existe
+      {% assign crm_is_joined = false %}
+      {% for join in _explore.joins %}
+        {% if join.name == 'conversion_rates_map' %}
+          {% assign crm_is_joined = true %}
+        {% endif %}
+      {% endfor %}
+
+      -- Ahora, usamos esa variable para nuestra condición
+      {% if crm_is_joined %}
+      ${revenue} * {{ conversion_rates_map.rate._sql }}
+      {% else %}
+      ${revenue}
+      {% endif %} ;;
     value_format_name: eur
   }
 
@@ -608,9 +615,14 @@ view: mview_comparation_bookings {
 
   dimension: rateName_FH {
     type: string
-    sql:CASE
-          WHEN ${rate.flightHotel} = True THEN ${rateName_fixed}
-        end;;
+    sql: {% if rate._is_joined %}
+         CASE
+           WHEN {{ rate.flightHotel._sql }} = TRUE THEN ${rateName_fixed}
+           ELSE NULL
+         END
+       {% else %}
+         NULL
+       {% endif %} ;;
   }
 
 

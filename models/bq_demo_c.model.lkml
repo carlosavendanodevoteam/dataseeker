@@ -237,6 +237,11 @@ explore: mview_comparation_bookings_by_start_date {
     relationship: many_to_one
     sql_on: ${mview_comparation_bookings_by_start_date.hotel_code} = ${hotels_data.hotel_code};;
   }
+  join: rate {
+    type: inner
+    relationship: one_to_one
+    sql_on: ${rate.key} = ${mview_comparation_bookings_by_start_date.rate};;
+  }
 
 }
 
@@ -364,7 +369,7 @@ explore: mview_prebookings {
     relationship: many_to_many
     sql_on: ${mview_prebookings.hotel_code} = ${mview_comparation_bookings.hotel_code} and ${mview_prebookings.identifier}=${mview_comparation_bookings.identifier};;
   }
-  }
+}
 
 explore: mview_precheckins {
   join: mview_precheckins__guests {
