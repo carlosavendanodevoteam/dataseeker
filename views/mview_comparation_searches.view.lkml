@@ -196,6 +196,11 @@ view: mview_comparation_searches {
         END ;;
   }
 
+  dimension: flightOrigin {
+    type: string
+    sql: upper(${TABLE}.flightOrigin) ;;
+  }
+
   measure: sumatoria {
     type: number
     sql: ${OK}+${Restrictions} ;;
