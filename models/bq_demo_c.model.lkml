@@ -453,8 +453,8 @@ explore: mview_comparation_bookings {
   }
   join: rate {
     type: inner
-    relationship: one_to_one
-    sql_on: ${rate.key} = ${mview_comparation_bookings.rate};;
+    relationship: one_to_many
+    sql_on: ${mview_comparation_bookings.rate} = ${rate.key};;
   }
   join: conversion_rates_map {
     type: left_outer

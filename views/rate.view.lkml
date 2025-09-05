@@ -10,6 +10,13 @@ view: rate {
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
+  dimension: rate_unique_id {
+    primary_key: yes
+    hidden: yes
+    type: string
+    sql: CONCAT(${TABLE}.key, "-", ${TABLE}.language) ;;
+  }
+
   dimension_group: _partitiondate {
     type: time
     timeframes: [raw, date, week, month, quarter, year]

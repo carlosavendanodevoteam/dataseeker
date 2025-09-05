@@ -168,7 +168,6 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.HotelCity ;;
   }
   dimension: hotel_code {
-    primary_key: yes
     type: string
     sql: ${TABLE}.hotel_code ;;
   }
@@ -189,6 +188,7 @@ view: mview_comparation_bookings {
     sql: ${TABLE}.HotelZone ;;
   }
   dimension: identifier {
+    primary_key: yes
     type: string
     sql: ${TABLE}.identifier ;;
   }
