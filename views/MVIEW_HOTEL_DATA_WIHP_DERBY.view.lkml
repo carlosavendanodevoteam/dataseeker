@@ -322,5 +322,14 @@ view: MVIEW_HOTEL_DATA_WIHP_DERBY {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.partition_timestamp ;;
   }
+  dimension: source {
+    type: string
+    sql: CASE
+            WHEN ${campaign}='Commission-Trivago' THEN 'Trivago'
+            WHEN ${campaign}='Commission-TripAdvisor' THEN 'TripAdvisor'
+            WHEN ${campaign}='Commission-DSCP' THEN 'DSCP'
+            else ${campaign}
+          END;;
+  }
 
 }
