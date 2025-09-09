@@ -42,6 +42,21 @@ view: mview_meta_campaign_data {
     sql: ${TABLE}.ConversionsValue ;;
   }
 
+  dimension: fixed_conversions_value {
+    type: number
+    sql: CASE
+          WHEN ${country} = 'AR' THEN (${conversions_value} * 0.0011) -- ARS to USD
+          WHEN ${country} = 'BR' THEN (${conversions_value} * 0.18)   -- BRL to USD
+          WHEN ${country} = 'CA' THEN (${conversions_value} * 0.73)   -- CAD to USD
+          WHEN ${country} = 'CO' THEN (${conversions_value} * 0.00024) -- COP to USD
+          WHEN ${country} = 'CR' THEN (${conversions_value} * 0.0019) -- CRC to USD
+          WHEN ${country} = 'MX' THEN (${conversions_value} * 0.059)  -- MXN to USD
+          WHEN ${country} = 'PE' THEN (${conversions_value} * 0.27)   -- PEN to USD
+          WHEN ${country} IN ('PR', 'US') THEN ${conversions_value} -- Already in USD
+          ELSE ${conversions_value}
+        END ;;
+  }
+
   dimension: cost {
     type: number
     sql: ${TABLE}.Cost ;;
