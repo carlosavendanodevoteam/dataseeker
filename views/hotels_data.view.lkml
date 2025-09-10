@@ -146,6 +146,11 @@ view: hotels_data {
     sql: ${TABLE}.ring2travel_budget ;;
   }
 
+  dimension: flightHotel {
+    type: yesno
+    sql: ${TABLE}.flightHotel;;
+  }
+
   measure: count {
     type: count
     drill_fields: [name]
