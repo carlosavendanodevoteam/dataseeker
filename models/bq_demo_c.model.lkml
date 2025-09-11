@@ -369,6 +369,11 @@ explore: mview_prebookings {
     relationship: many_to_many
     sql_on: ${mview_prebookings.hotel_code} = ${mview_comparation_bookings.hotel_code} and ${mview_prebookings.identifier}=${mview_comparation_bookings.identifier};;
   }
+  join: rate {
+    type: inner
+    relationship: one_to_many
+    sql_on: ${mview_comparation_bookings.rate} = ${rate.key};;
+  }
 }
 
 explore: mview_precheckins {
