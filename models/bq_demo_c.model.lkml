@@ -374,6 +374,11 @@ explore: mview_prebookings {
     relationship: one_to_many
     sql_on: ${mview_comparation_bookings.rate} = ${rate.key};;
   }
+  join: conversion_rates_map {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${mview_comparation_bookings.currency} = ${conversion_rates_map.currency};;
+  }
 }
 
 explore: mview_precheckins {

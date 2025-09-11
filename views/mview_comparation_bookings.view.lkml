@@ -520,18 +520,7 @@ view: mview_comparation_bookings {
 
   dimension: revenue_in_euros {
     type: number
-    sql:
-      {% assign crm_is_joined = false %}
-      {% for join in _explore.joins %}
-        {% if join.name == 'conversion_rates_map' %}
-          {% assign crm_is_joined = true %}
-        {% endif %}
-      {% endfor %}
-      {% if crm_is_joined %}
-        ${revenue} * {{ conversion_rates_map.rate._sql }}
-      {% else %}
-        ${revenue}
-      {% endif %} ;;
+    sql: ${revenue} * ${conversion_rates_map.rate} ;;
     value_format_name: eur
   }
 
