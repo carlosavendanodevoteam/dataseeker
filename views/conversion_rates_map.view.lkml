@@ -12,4 +12,14 @@ view: conversion_rates_map {
      type: number
      sql: ${TABLE}.rate ;;
    }
+
+  dimension: rate_to_eur {
+    type: number
+    sql: ${TABLE}.rate_to_eur ;;
+  }
+
+  dimension: rate_to_usd {
+    type: number
+    sql: ${TABLE}.rate_to_usd ;;
+  }
 }
