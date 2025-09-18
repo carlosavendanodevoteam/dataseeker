@@ -21,6 +21,8 @@ explore: hotel_ads_cpa_data {
   }
 }
 
+explore: company_logo {}
+
 explore: view_comparation_hotel_ads_cpa {
   join: hotel_corporative_encrypted {
     type: inner
