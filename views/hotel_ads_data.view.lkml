@@ -243,14 +243,14 @@ view: hotel_ads_data {
         End;;
   }
 
-  # dimension: date_predetermined{
-  #   type: yesno
-  #   sql:
-  #   Case
-  #     WHEN ${hotel_check_in_date} IS NULL THEN False
-  #   ELSE True
-  #     end;;
-  # }
+  dimension: date_predetermined{
+     type: yesno
+     sql:
+     Case
+       WHEN ${hotel_check_in_date} IS NULL THEN False
+     ELSE True
+       end;;
+  }
 
   dimension: hotel_date_selection_type {
     type: string
