@@ -378,6 +378,7 @@ view: mview_comparation_bookings {
     sql: case
           when ${TABLE}.Promo IS NULL THEN '-'
           When ${TABLE}.Promo = '' then '-'
+          When ${TABLE}.Promo = ' ' then '-'
           when ${TABLE}.Promo LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
           else ${TABLE}.Promo
         end
@@ -388,6 +389,7 @@ view: mview_comparation_bookings {
     sql: case
           when ${TABLE}.Promo2 IS NULL THEN '-'
           When ${TABLE}.Promo2 = '' then '-'
+          When ${TABLE}.Promo2 = ' ' then '-'
           when ${TABLE}.Promo2 LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
           else ${TABLE}.Promo2
         end
@@ -398,10 +400,32 @@ view: mview_comparation_bookings {
     sql: case
           when ${TABLE}.Promo3 IS NULL THEN '-'
           When ${TABLE}.Promo3 = '' then '-'
+          When ${TABLE}.Promo3 = ' ' then '-'
           when ${TABLE}.Promo3 LIKE 'WINTER 2024-202%' then 'INVIERNO 2024-2025'
           else ${TABLE}.Promo3
         end
         ;;
+  }
+  dimension: promos_consolidadas {
+    type: string
+    sql:
+    COALESCE(
+      (
+        SELECT
+          ARRAY_TO_STRING(
+            ARRAY_AGG(promo_name ORDER BY promo_name),
+            ' | '
+          )
+        FROM
+          UNNEST([
+            ${promo},
+            ${promo2},
+            ${promo3}
+          ]) AS promo_name
+        WHERE promo_name != '-'
+      ),
+      '-'
+    ) ;;
   }
   dimension: promos {
     type: string
