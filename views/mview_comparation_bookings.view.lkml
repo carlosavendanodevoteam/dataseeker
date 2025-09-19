@@ -414,7 +414,7 @@ view: mview_comparation_bookings {
         SELECT
           ARRAY_TO_STRING(
             ARRAY_AGG(promo_name ORDER BY promo_name),
-            ' | '
+            ' - '
           )
         FROM
           UNNEST([
