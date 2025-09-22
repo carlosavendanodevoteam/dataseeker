@@ -560,6 +560,60 @@ explore: view_datos_reservas_4 {}
 
 explore: user_rescue {}
 
+explore: mview_upgrades {
+
+  # Joins para ROOM
+  join: original_room_info {
+    from: room
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${mview_upgrades.original_room} = ${original_room_info.key} AND ${original_room_info.language} = 'SPANISH';;
+  }
+
+  join: upgraded_room_info {
+    from: room
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${mview_upgrades.upgraded_room} = ${upgraded_room_info.key} AND ${upgraded_room_info.language} = 'SPANISH';;
+  }
+
+  # Joins para RATE
+  #join: original_rate_info {
+  #  from: rate
+  #  type: left_outer
+  #  relationship: many_to_one
+  #  sql_on: ${mview_upgrades.original_rate} = ${original_rate_info.key} AND ${original_rate_info.language} = 'SPANISH';;
+  #}
+
+  #join: upgraded_rate_info {
+  #  from: rate
+  #  type: left_outer
+  #  relationship: many_to_one
+  #  sql_on: ${mview_upgrades.upgraded_rate} = ${upgraded_rate_info.key} AND ${upgraded_rate_info.language} = 'SPANISH';;
+  #}
+
+  # Joins para BOARD
+  #join: original_board_info {
+  #  from: board
+  #  type: left_outer
+  #  relationship: many_to_one
+  #  sql_on: ${mview_upgrades.original_board} = ${original_board_info.key} AND ${original_board_info.language} = 'SPANISH';;
+  #}
+
+  #join: upgraded_board_info {
+  #  from: board
+  #  type: left_outer
+  #  relationship: many_to_one
+  #  sql_on: ${mview_upgrades.upgraded_board} = ${upgraded_board_info.key} AND ${upgraded_board_info.language} = 'SPANISH';;
+  #}
+
+  join: hotel_corporative_encrypted {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${mview_upgrades.hotel_code} = ${hotel_corporative_encrypted.hotel_code} ;;
+  }
+}
+
 explore: wi_hp_unique {
   join: view_unique_hotel_corporative_encrypted {
     type: inner
