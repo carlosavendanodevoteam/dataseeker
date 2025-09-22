@@ -567,14 +567,14 @@ explore: mview_upgrades {
     from: room
     type: left_outer
     relationship: many_to_one
-    sql_on: ${mview_upgrades.original_room} = ${original_room_info.key} AND ${original_room_info.language} = 'SPANISH';;
+    sql_on: ${mview_upgrades.original_room} = ${original_room_info.key} AND ${original_room_info.language} = 'ENGLISH';;
   }
 
   join: upgraded_room_info {
     from: room
     type: left_outer
     relationship: many_to_one
-    sql_on: ${mview_upgrades.upgraded_room} = ${upgraded_room_info.key} AND ${upgraded_room_info.language} = 'SPANISH';;
+    sql_on: ${mview_upgrades.upgraded_room} = ${upgraded_room_info.key} AND ${upgraded_room_info.language} = 'ENGLISH';;
   }
 
   # Joins para RATE
@@ -582,14 +582,14 @@ explore: mview_upgrades {
   #  from: rate
   #  type: left_outer
   #  relationship: many_to_one
-  #  sql_on: ${mview_upgrades.original_rate} = ${original_rate_info.key} AND ${original_rate_info.language} = 'SPANISH';;
+  #  sql_on: ${mview_upgrades.original_rate} = ${original_rate_info.key} AND ${original_rate_info.language} = 'ENGLISH';;
   #}
 
   #join: upgraded_rate_info {
   #  from: rate
   #  type: left_outer
   #  relationship: many_to_one
-  #  sql_on: ${mview_upgrades.upgraded_rate} = ${upgraded_rate_info.key} AND ${upgraded_rate_info.language} = 'SPANISH';;
+  #  sql_on: ${mview_upgrades.upgraded_rate} = ${upgraded_rate_info.key} AND ${upgraded_rate_info.language} = 'ENGLISH';;
   #}
 
   # Joins para BOARD
@@ -597,14 +597,14 @@ explore: mview_upgrades {
   #  from: board
   #  type: left_outer
   #  relationship: many_to_one
-  #  sql_on: ${mview_upgrades.original_board} = ${original_board_info.key} AND ${original_board_info.language} = 'SPANISH';;
+  #  sql_on: ${mview_upgrades.original_board} = ${original_board_info.key} AND ${original_board_info.language} = 'ENGLISH';;
   #}
 
   #join: upgraded_board_info {
   #  from: board
   #  type: left_outer
   #  relationship: many_to_one
-  #  sql_on: ${mview_upgrades.upgraded_board} = ${upgraded_board_info.key} AND ${upgraded_board_info.language} = 'SPANISH';;
+  #  sql_on: ${mview_upgrades.upgraded_board} = ${upgraded_board_info.key} AND ${upgraded_board_info.language} = 'ENGLISH';;
   #}
 
   join: hotel_corporative_encrypted {
