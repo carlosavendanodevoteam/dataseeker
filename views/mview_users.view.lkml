@@ -221,6 +221,20 @@ view: mview_users {
     type: string
     sql: ${TABLE}.username ;;
   }
+
+  dimension: referred_id {
+    type: string
+    sql: ${TABLE}.referred_id ;;
+  }
+
+  dimension:  is_referred_signup {
+    type: yesno
+    sql: CASE
+      WHEN ${referred_id} IS NOT NULL THEN TRUE
+      ELSE FALSE
+    END ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [surname, name, username]
