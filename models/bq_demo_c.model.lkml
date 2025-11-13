@@ -63,6 +63,22 @@ explore: mview_gha_bookings {
   }
 }
 
+
+explore: view_marketing_digital{
+  join: hotel_corporative_encrypted{
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_marketing_digital.hotel_code} = ${hotel_corporative_encrypted.hotel_code};;
+  }
+  join: hotels_data {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${view_marketing_digital.hotel_code} = ${hotels_data.hotel_code};;
+  }
+}
+
+
+
 explore: view_comparation_funnel_stats {
   join:  hotel_corporative_encrypted{
     type: inner
