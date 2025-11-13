@@ -443,12 +443,11 @@ view: hotels_data {
   dimension: continent {
     type: string
     sql: Case
-          when  (UPPER(${country}) = 'PORTUGAL' or UPPER(${country}) = 'ESPANHA' or  UPPER(${country}) = 'CABO VERDE') and ${hotel_code}  not in('serenade-all-suites','best-serenade','impressive-puntacana',
+          when  (UPPER(${country}) = 'PORTUGAL' or UPPER(${country}) = 'ESPANHA' or  UPPER(${country}) = 'CABO VERDE') and ${hotel_code} not in('serenade-all-suites','best-serenade','impressive-puntacana',
           'impressive-premium','casual-belle-epoque','casual-incas','casual-raizes','smy-lisboa','smy-eulalia-algarve','vik-cayena','vik-arenablanca',
           'summum-poblado-suites','habitus-mesod-jungle', 'o7-bluebay-villasdoradas', 'o7-bluebay-esmeralda') then '3' --Portugal
           when UPPER(${country}) IN ('USA', 'MEXICO', 'MÉXICO', 'ESTADOS UNIDOS', 'UNITED STATES', 'COSTA RICA', 'COLOMBIA', 'REPUBLICA DOMINICANA', 'ARGENTINA', 'DOMINICAN REPUBLIC',
-          'REPÚBLICA DOMINICANA', 'PANAMA', 'PERÚ', 'PERU', 'PUERTO RICO') and ${hotel_code} not in('serenade-all-suites','best-serenade','impressive-puntacana','impressive-premium','casual-belle-epoque','casual-incas','casual-raizes','smy-lisboa','smy-eulalia-algarve','vik-cayena','vik-arenablanca',
-          'summum-poblado-suites','habitus-mesod-jungle', 'o7-bluebay-villasdoradas', 'o7-bluebay-esmeralda') then '2' --Latam
+          'REPÚBLICA DOMINICANA', 'PANAMA', 'PERÚ', 'PERU', 'PUERTO RICO') and ${hotel_code} not in('serenade-all-suites','best-serenade','impressive-puntacana','impressive-premium','casual-belle-epoque','casual-incas','casual-raizes','smy-lisboa','smy-eulalia-algarve','vik-cayena','vik-arenablanca', 'summum-poblado-suites','habitus-mesod-jungle', 'o7-bluebay-villasdoradas', 'o7-bluebay-esmeralda', 'smy-territorio') then '2' --Latam
           when UPPER(${country}) != 'DEMO' THEN '1' -- Europa
           ELSE '4'
           END ;;
