@@ -501,23 +501,36 @@ view: mview_comparation_bookings {
         End ;;
   }
 
-  dimension: callseeker {
-    type: string
-    sql: Case
-          when ${TABLE}.source_fixed like '%allcenter%' and not (${TABLE}.agent  like '%ort_%' or LOWER(${TABLE}.agent)  like '%_port%') then 'Callseeker'
-          else ${TABLE}.source_fixed
-        End;;
-  }
-  dimension: source_fixed {
-    type: string
-    sql: CASE
-          when ${callseeker} = 'Callseeker' and ${TABLE}.agent like 'agent%'  and ${TABLE}.agent not like '%-nau%' and ${TABLE}.agent not like '%landmar%' and ${TABLE}.agent not like '%oasis%'
-          and ${TABLE}.agent not like '%qhotels%' and ${TABLE}.agent not like '%_ona' and ${TABLE}.agent not like '%ort_%' THEN 'Ring2travel'
-          WHEN ${callseeker} = 'Callseeker' then 'Callseeker'
-          WHEN upper(${TABLE}.source_fixed) LIKE 'RESCUE%' then 'Rescue'
-          ELSE ${TABLE}.source_fixed
-      END ;;
-  }
+
+dimension: callseeker {
+  type: string
+  sql: Case
+      when ${TABLE}.source_fixed like '%allcenter%'
+           and not (${TABLE}.agent like '%ort_%' or LOWER(${TABLE}.agent) like '%_port%')
+      then 'Callseeker'
+      else ${TABLE}.source_fixed
+    End;;
+}
+
+dimension: source_fixed {
+  type: string
+  sql: CASE
+      when ${callseeker} = 'Callseeker'
+           and ${TABLE}.agent like 'agent%'
+           and ${TABLE}.agent not like '%-nau%'
+           and ${TABLE}.agent not like '%landmar%'
+           and ${TABLE}.agent not like '%oasis%'
+           and ${TABLE}.agent not like '%qhotels%'
+           and ${TABLE}.agent not like '%_ona'
+           and ${TABLE}.agent not like '%ort_%'
+      THEN 'Ring2travel'
+
+      WHEN ${callseeker} = 'Callseeker' then 'Callseeker'
+      WHEN upper(${TABLE}.source_fixed) LIKE 'RESCUE%' then 'Rescue'
+      ELSE ${TABLE}.source_fixed
+    END ;;
+}
+
   #   type: string
   #   sql: CASE
   #         WHEN ${TABLE}.agent LIKE '%agente%' AND ${TABLE}.agent not LIKE '%-nau%' AND ${TABLE}.source_fixed LIKE 'Callcenter%' THEN 'Ring2travel'
