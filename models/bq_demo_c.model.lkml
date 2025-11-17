@@ -489,6 +489,26 @@ explore: mview_comparation_bookings {
     relationship: one_to_one
     sql_on: ${mview_comparation_bookings.currency} = ${conversion_rates_map.currency};;
   }
+  join: promotion_1 {
+    from: promotions
+    type: left_outer
+    sql_on: ${mview_comparation_bookings.promotions} = ${promotion_1.key} ;;
+    relationship: one_to_one
+  }
+
+  join: promotion_2 {
+    from: promotions
+    type: left_outer
+    sql_on: ${mview_comparation_bookings.promotions2} = ${promotion_2.key} ;;
+    relationship: one_to_one
+  }
+
+  join: promotion_3 {
+    from: promotions
+    type: left_outer
+    sql_on: ${mview_comparation_bookings.promotions3} = ${promotion_3.key} ;;
+    relationship: one_to_one
+  }
 }
 
 explore: encrypted_hotel_code  {}

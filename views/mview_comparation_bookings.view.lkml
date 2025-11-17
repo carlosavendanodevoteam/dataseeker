@@ -447,6 +447,14 @@ view: mview_comparation_bookings {
     type: string
     sql: ${TABLE}.promotions ;;
   }
+  dimension: promotions2 {
+    type: string
+    sql: ${TABLE}.promotions2 ;;
+  }
+  dimension: promotions3 {
+    type: string
+    sql: ${TABLE}.promotions3 ;;
+  }
   dimension: rate {
     type: string
     sql: ${TABLE}.rate ;;

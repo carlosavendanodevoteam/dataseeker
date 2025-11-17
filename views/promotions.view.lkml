@@ -35,6 +35,11 @@ view: promotions {
     type: string
     sql: ${TABLE}.type ;;
   }
+
+  dimension: identifier {
+    type: string
+    sql: ${TABLE}.identifier ;;
+  }
   measure: count {
     type: count
     drill_fields: [name]
