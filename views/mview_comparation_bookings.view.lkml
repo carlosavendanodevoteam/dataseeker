@@ -427,6 +427,27 @@ view: mview_comparation_bookings {
       '-'
     ) ;;
   }
+  dimension: promo_identifiers_consolidados {
+    type: string
+    sql:
+    COALESCE(
+      (
+        SELECT
+          ARRAY_TO_STRING(
+            ARRAY_AGG(promo_identifier ORDER BY promo_identifier),
+            '-'
+          )
+        FROM
+          UNNEST([
+            ${promotion_1.identifier},
+            ${promotion_2.identifier},
+            ${promotion_3.identifier}
+          ]) AS promo_identifier
+        WHERE promo_identifier IS NOT NULL AND promo_identifier != '-'
+      ),
+      ''
+    ) ;;
+  }
   dimension: promos {
     type: string
     sql: CONCAT(${promo},  ',', ${promo2}, ',', ${promo3}) ;;
