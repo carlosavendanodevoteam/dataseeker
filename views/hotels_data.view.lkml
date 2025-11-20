@@ -141,14 +141,29 @@ view: hotels_data {
     sql: ${TABLE}.web_budget ;;
   }
 
+  dimension: web_budget_next_year {
+    type: number
+    sql: ${TABLE}.web_budget_ny ;;
+  }
+
   dimension: ring2travel_budget {
     type: number
     sql: ${TABLE}.ring2travel_budget ;;
   }
 
+  dimension: ring2travel_budget_next_year {
+    type: number
+    sql: ${TABLE}.ring2travel_budget_ny ;;
+  }
+
   dimension: flightHotel_budget {
     type: number
     sql: ${TABLE}.flightHotel_budget ;;
+  }
+
+  dimension: flightHotel_budget_next_year {
+    type: number
+    sql: ${TABLE}.flightHotel_budget_ny ;;
   }
 
   dimension: flightHotel {
